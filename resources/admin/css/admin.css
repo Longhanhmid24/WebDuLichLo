@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-image: url('AdminImages.jpg'); /* Đường dẫn đến hình ảnh của bạn */
+    background-image: url('../images/AdminImages.jpg'); /* Đường dẫn đến hình ảnh của bạn */
     background-size: cover; /* Đảm bảo hình ảnh bao phủ toàn bộ màn hình */
     background-position: center; /* Căn giữa hình ảnh */
     background-repeat: no-repeat;/* Không lặp lại hình ảnh */
