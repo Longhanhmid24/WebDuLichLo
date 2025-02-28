@@ -90,6 +90,76 @@
         .nav-item:hover .dropdown-menu {
             display: block;
         }
+
+        .search-box {
+            width: 600px;
+            background-color: rgba(88, 124, 231, 0.5);
+            width: 100%;   
+            padding: 12px;
+            border-radius: 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box input,
+        .search-box select,
+        .search-box button {
+            border: none;
+            padding: 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .search-box input[type="text"] {
+            width: 100%;
+            background-color: #f8f8f8;
+            margin-bottom: 10px;
+        }
+
+        .search-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .search-row input[type="date"],
+        .search-row select {
+            flex: 1;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+
+        .search-row button {
+            background-color: #ff8000;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            width: 80px;
+            text-align: center;
+        }
+
+        .search-row button:hover {
+            background-color: #e67300;
+        }
+
+        .calendar-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .calendar-icon::after {
+            content: "📅";
+            position: absolute;
+            right: 10px;
+            pointer-events: none;
+            font-size: 16px;
+        }
+
+        .search-row input[type="date"] {
+            padding-right: 30px;
+        }
     </style>
 </head>
 
@@ -134,10 +204,26 @@
     <!-- Phần trang chủ -->
     <section id="home" class="home-section">
         <div class="container">
-            <h2 class="text-center" style="color: white; border: 2px solid yellowgreen; padding: 10px; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; margin-top: 0; position: absolute; top: 0; left: 50%; transform: translateX(-50%); white-space: nowrap;">
+            <h2 class="text-center" style="color: white; border: 2px solid cyan; padding: 10px; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; margin-top: 0; position: absolute; top: 0; left: 50%; transform: translateX(-50%); white-space: nowrap;">
                 Khám phá những điểm đến tuyệt vời trên khắp thế giới!
             </h2>
+     <div class="search-box">
+        <input type="text" placeholder="Bạn muốn đi đâu?">
+        <div class="search-row">
+            <div class="calendar-icon">
+                <input type="date">
+            </div>
+            <div class="calendar-icon">
+                <input type="date">
+            </div>
+            <select>
+                <option>2 người lớn, 0 trẻ</option>
+                <option>1 người lớn, 0 trẻ</option>
+                <option>2 người lớn, 1 trẻ</option>
+            </select>
+            <button>Tìm</button>
         </div>
+    </div>
     </section>
 
     <!-- Phần điểm đến -->
