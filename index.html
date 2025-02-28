@@ -40,13 +40,23 @@
             /* Điều chỉnh chiều rộng để phù hợp với chiều rộng hình ảnh */
         }
 
+        .home section {
+        background: url('resources/images/brand/banner.jpg') center/cover no-repeat;
+        padding: 20px;
+        margin: 10px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+}
         .carousel-cell:hover .carousel-caption {
             background: rgba(0, 0, 0, 0.7);
             /* Làm tối nền khi di chuột */
         }
 
         .home-section {
-            background: url('images/brand/banner.jpg') no-repeat center center;
+            background: url('resources/images/brand/banner.jpg') center/cover no-repeat;
             background-size: cover;
             width: 100%;
             height: 35vh;
@@ -124,7 +134,9 @@
     <!-- Phần trang chủ -->
     <section id="home" class="home-section">
         <div class="container">
-            <h2 class="text-center" style="color: white">Khám phá những điểm đến tuyệt vời trên khắp thế giới!</h2>
+            <h2 class="text-center" style="color: white; border: 2px solid yellowgreen; padding: 10px; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px;">
+                Khám phá những điểm đến tuyệt vời trên khắp thế giới!
+            </h2>
         </div>
     </section>
 
