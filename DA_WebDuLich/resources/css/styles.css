@@ -1,0 +1,324 @@
+/* Phong cách toàn cục */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+/* Phong cách tiêu đề */
+header {
+    background: #152db8;
+    color: white;
+    padding: 5px 0;
+    text-align: left;
+}
+
+/* Phong cách điều hướng */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    /* Căn giữa các mục theo chiều ngang */
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white; /* Đổi màu văn bản thành trắng */
+    text-decoration: none;
+    text-align: center;
+    /* Căn giữa văn bản */
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+    /* Thêm gạch chân khi rê chuột */
+}
+
+.nav-item:hover .nav-link {
+    cursor: pointer;
+}
+
+/* Phong cách phần */
+section {
+    padding: 20px;
+    margin: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+h2 {
+    padding: 20px;
+    margin: auto 0;
+}
+
+/* Phong cách điểm đến */
+.destination {
+    background: white;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    /* Đặt chiều cao cố định cho hình ảnh */
+    object-fit: cover;
+    /* Đảm bảo hình ảnh không bị méo */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: left;
+}
+
+.navbar-brand img {
+    height: auto;
+    max-height: 75px;
+    /* Tăng chiều cao tối đa của logo */
+    width: auto;
+}
+
+/* Phong cách thư viện ảnh */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.gallery img {
+    width: 100%;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+
+.img-fluid.mb-4 {
+    width: 100%;
+    height: 225px;
+    /* Đặt chiều cao cố định cho hình ảnh */
+    object-fit: cover;
+    /* Đảm bảo hình ảnh không bị méo */
+    border-radius: 0;
+    /* Loại bỏ bo tròn để tạo hình chữ nhật */
+}
+
+.col-md-4:hover {
+    transform: scale(1.05);
+    /* Phóng to nhẹ cột khi rê chuột */
+    transition: transform 0.3s ease;
+    /* Chuyển đổi mượt mà */
+}
+
+.card:hover {
+    cursor: pointer;
+}
+
+.carousel-cell:hover {
+    cursor: pointer;
+}
+
+/* Phong cách chân trang */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background: #152db8;
+    color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Màu nền cho carousel */
+.carousel {
+    background: #f4f4f4;
+}
+
+.carousel-cell {
+    width: calc(33.333% - 20px);
+    /* Chiều rộng của mỗi ô trừ đi khoảng cách */
+    margin-right: 10px;
+    /* Khoảng cách giữa các ô */
+    height: 225px;
+    /* Chiều cao cố định cho ô */
+    display: flex;
+    /* Để căn giữa hình ảnh */
+    justify-content: center;
+    /* Căn giữa hình ảnh theo chiều ngang */
+    align-items: center;
+    /* Căn giữa hình ảnh theo chiều dọc */
+    border-radius: 10px;
+    /* Bo tròn góc cho ô */
+    overflow: hidden;
+    /* Ẩn phần hình ảnh vượt ra ngoài ô */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Thêm hiệu ứng chuyển đổi */
+}
+
+.carousel-cell:hover {
+    transform: scale(1.05);
+    /* Phóng to nhẹ khi hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    /* Thêm bóng đổ */
+}
+
+.carousel-cell:last-child {
+    margin-right: 10px;
+    /* Không có khoảng cách bên phải cho ô cuối cùng */
+}
+
+.carousel-image {
+    width: 100%;
+    /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng của ô */
+    height: 100%;
+    /* Đảm bảo hình ảnh chiếm toàn bộ chiều cao của ô */
+    object-fit: cover;
+    /* Đảm bảo hình ảnh không bị méo */
+    border-radius: 10px;
+    /* Bo tròn góc cho hình ảnh */
+}
+
+.navbar-nav .account-icon {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.navbar-nav .account-icon img {
+    width: 40px; /* Increased from 30px */
+    height: 40px; /* Increased from 30px */
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.navbar-nav .account-dropdown {
+    display: none;
+    position: absolute;
+    background-color: #152db8;
+    min-width: 160px;
+    z-index: 1;
+    right: 0;
+    top: 100%;
+}
+
+.navbar-nav .account-dropdown a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.navbar-nav .account-dropdown a:hover {
+    background-color: #1a3db8;
+}
+
+.navbar-nav .account-icon:hover .account-dropdown {
+    display: block;
+}
+
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        /* Căn giữa các mục */
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+        width: auto;
+        /* Đảm bảo các mục có chiều rộng tự động */
+    }
+
+    nav ul li a {
+        display: block;
+        /* Biến liên kết thành phần khối */
+        width: auto;
+        /* Đảm bảo liên kết có chiều rộng tự động */
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Căn giữa các mục trong container */
+    }
+
+    .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .gallery img {
+        margin: 10px 0;
+    }
+
+    .col-md-4 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 769px) {
+    nav ul {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        /* Căn giữa các mục theo chiều ngang */
+    }
+
+    nav ul li {
+        display: inline;
+        margin: 0 15px;
+    }
+
+    nav ul li a {
+        text-align: center;
+        /* Căn giữa văn bản */
+        display: inline;
+        /* Biến liên kết thành phần inline */
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Căn giữa các mục trong container */
+    }
+}
+
+@media (max-width: 576px) {
+    header {
+        padding: 5px 0;
+    }
+
+    section {
+        padding: 10px;
+        margin: 5px;
+    }
+
+    .card-body h3 {
+        font-size: 1.2em;
+    }
+
+    .card-body p {
+        font-size: 0.9em;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* Căn giữa các mục trong container */
+    }
+}
