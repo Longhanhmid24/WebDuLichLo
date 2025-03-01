@@ -76,3 +76,18 @@ document.querySelectorAll('a.nav-link').forEach(anchor => {
         });
     });
 });
+
+function toggleDropdown() {
+    const dropdownMenu = document.querySelector('.summary .dropdown-menu');
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+}
+
+function updateCount(type, value) {
+    const countElement = document.getElementById(type);
+    let count = parseInt(countElement.innerText);
+    count = Math.max(0, count + value);
+    countElement.innerText = count;
+
+    // Update summary text
+    document.getElementById(`${type}-summary`).innerText = count;
+}

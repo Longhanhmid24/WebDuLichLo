@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trang Web Du Lịch</title>
     <link rel="stylesheet" href="resources/css/styles.css">
-    <!-- Thư viện Flickity CSS -->
+        <!-- Thư viện Flickity CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
     <!-- Thư viện Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -122,13 +122,6 @@
             gap: 10px;
         }
 
-        .search-row input[type="date"],
-        .search-row select {
-            flex: 1;
-            background-color: #f8f8f8;
-            text-align: center;
-        }
-
         .search-row button {
             background-color: #ff8000;
             color: white;
@@ -142,7 +135,6 @@
         .search-row button:hover {
             background-color: #e67300;
         }
-
         .calendar-icon {
             position: relative;
             display: flex;
@@ -157,9 +149,7 @@
             font-size: 16px;
         }
 
-        .search-row input[type="date"] {
-            padding-right: 30px;
-        }
+        
     </style>
 </head>
 
@@ -216,16 +206,46 @@
             <div class="calendar-icon">
                 <input type="date">
             </div>
-            <select>
-                <option>2 người lớn, 0 trẻ</option>
-                <option>1 người lớn, 0 trẻ</option>
-                <option>2 người lớn, 1 trẻ</option>
-            </select>
+            
+            <div class="summary dropdown">
+                <p class="dropdown-toggle" onclick="toggleDropdown()">
+                    <strong><span id="adults-summary">2</span> Người lớn, 
+                    <span id="children-summary">0</span> Trẻ em, 
+                    <span id="rooms">1</span> Phòng</strong>
+                </p>
+                <div class="dropdown-menu">
+                    <div class="option">
+                        <span>Phòng</span>
+                        <div class="counter">
+                            <button onclick="updateCount('rooms', -1)">-</button>
+                            <span id="rooms">1</span>
+                            <button onclick="updateCount('rooms', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>Người Lớn</span>
+                        <div class="counter">
+                            <button onclick="updateCount('adults', -1)">-</button>
+                            <span id="adults">2</span>
+                            <button onclick="updateCount('adults', 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="option">
+                        <span>Trẻ em</span>
+                        <div class="counter">
+                            <button onclick="updateCount('children', -1)">-</button>
+                            <span id="children">0</span>
+                            <button onclick="updateCount('children', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <button>Tìm</button>
         </div>
     </div>
     </section>
-
+   
+    
     <!-- Phần điểm đến -->
     <section id="destinations" class="py-5 bg-light">
         <div class="container">

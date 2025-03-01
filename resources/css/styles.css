@@ -226,6 +226,62 @@ footer {
     display: block;
 }
 
+
+.summary {
+    flex: 1;
+    background-color: #f8f8f8;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    position: relative;
+    color: black;
+}
+
+.summary .dropdown-toggle {
+    display: block;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: white;
+}
+
+.summary .dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.summary .dropdown-menu .option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.summary .dropdown-menu .counter {
+    display: flex;
+    align-items: center;
+}
+
+.summary .dropdown-menu .counter button {
+    width: 25px;
+    height: 25px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    background: white;
+    cursor: pointer;
+    }
+
+.summary .dropdown-menu .counter span {
+    margin: 0 10px;
+    font-size: 16px;
+}
+
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -321,4 +377,38 @@ footer {
         align-items: center;
         /* Căn giữa các mục trong container */
     }
+    .booking-container {
+        display: none;
+        width: 250px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        display: none;
+    }
+
+
+    .option {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0;
+    }
+    .counter {
+        display: flex;
+        align-items: center;
+    }
+    .counter button {
+        width: 25px;
+        height: 25px;
+        font-size: 18px;
+        border: 1px solid #ccc;
+        background: white;
+        cursor: pointer;
+    }
+    .counter span {
+        margin: 0 10px;
+        font-size: 16px;
+    }
+
 }
