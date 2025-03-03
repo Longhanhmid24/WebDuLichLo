@@ -84,8 +84,40 @@
                 <img src="../../../resources/images/destinations/danang.jpg" alt="Đà Nẵng">
                 <img src="../../../resources/images/destinations/danang.jpg" alt="Đà Nẵng">
             </div>
+            <form action="/submit-tour" method="post" class="tour-form">
+                <div class="form-group">
+                    <h3>Đăng Ký Tour</h3>
+                    <label for="tour-date">Chọn Ngày:</label>
+                    <input type="date" id="tour-date" name="tour-date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="adults">Người Lớn:</label>
+                    <input type="number" id="adults" name="adults" class="form-control" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="children">Trẻ Em:</label>
+                    <input type="number" id="children" name="children" class="form-control" min="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="total-price">Tổng Giá:</label>
+                    <p>$800.</p>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng Ký</button>
+            </form>
         </div>
     </section>
+    
+    <style>
+        .tour-form {
+            position: fixed;
+            top: 20%;
+            right: 5%;
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 
     <!-- Phần chân trang -->
     <footer class="bg-primary text-white text-center py-3">
