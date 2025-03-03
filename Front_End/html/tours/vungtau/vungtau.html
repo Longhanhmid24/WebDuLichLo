@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New York, Mỹ</title>
+    <title>Vũng Tàu, Việt Nam</title>
     <link rel="stylesheet" href="../../../resources/css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -72,20 +72,75 @@
         </div>
     </header>
 
-    <!-- Phần thông tin chuyến đi -->
     <section class="py-5">
         <div class="container">
             <h2>Thông Tin Chuyến Đi</h2>
-            <p>Thành phố không bao giờ ngủ với nhiều điểm tham quan hấp dẫn.</p>
-            <p><strong>Giá: $1500</strong></p>
+            <p>Thành phố biển với nhiều bãi biển đẹp và hải sản tươi ngon.</p>
+            <p><strong>Giá: $600</strong></p>
             <h3>Hình Ảnh</h3>
             <div class="gallery">
-                <img src="../../../resources/images/destinations/newyork.jpg" alt="New York">
-                <img src="../../../resources/images/destinations/newyork.jpg" alt="New York">
-                <img src="../../../resources/images/destinations/newyork.jpg" alt="New York">
+                <img src="../../../resources/images/destinations/vungtau.jpg" alt="Vũng Tàu">
+                <img src="../../../resources/images/destinations/vungtau.jpg" alt="Vũng Tàu">
+                <img src="../../../resources/images/destinations/vungtau.jpg" alt="Vũng Tàu">
             </div>
+            <form action="/submit-tour" method="post" class="tour-form">
+                <div class="form-group">
+                    <h3>Đăng Ký Tour</h3>
+                    <label for="tour-date">Chọn Ngày:</label>
+                    <input type="date" id="tour-date" name="tour-date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="adults">Người Lớn:</label>
+                    <input type="number" id="adults" name="adults" class="form-control" min="0" value="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="children">Trẻ Em:</label>
+                    <input type="number" id="children" name="children" class="form-control" min="0" value="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="total-price">Tổng Giá:</label>
+                    <p id="total-price">$600</p>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng Ký</button>
+            </form>
         </div>
     </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const adultsInput = document.getElementById('adults');
+            const childrenInput = document.getElementById('children');
+            const totalPriceElement = document.getElementById('total-price');
+    
+            function calculateTotalPrice() {
+                const basePrice = 600;
+                const adultPrice = 30;
+                const childPrice = 20;
+                const adults = parseInt(adultsInput.value) || 0;
+                const children = parseInt(childrenInput.value) || 0;
+                const totalPrice = basePrice + (adults * adultPrice) + (children * childPrice);
+                totalPriceElement.textContent = `$${totalPrice}`;
+            }
+    
+            adultsInput.addEventListener('input', calculateTotalPrice);
+            childrenInput.addEventListener('input', calculateTotalPrice);
+    
+            // Tính toán tổng giá ban đầu
+            calculateTotalPrice();
+        });
+    </script>
+
+    <style>
+        .tour-form {
+            position: fixed;
+            top: 20%;
+            right: 5%;
+            width: 300px;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 
     <!-- Phần chân trang -->
     <footer class="bg-primary text-white text-center py-3">
@@ -94,8 +149,6 @@
             longtravel@mail.com</p>
         <p>&copy; 2023 Khám Phá Thế Giới. Bảo lưu mọi quyền.</p>
     </footer>
-
-    <script src="../../../resources/js/scripts.js"></script> <!-- Thêm tệp JS tùy chỉnh -->
 </body>
 
 </html>
