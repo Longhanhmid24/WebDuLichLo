@@ -31,6 +31,82 @@
         .nav-item:hover .dropdown-menu {
             display: block;
         }
+
+        .tour-form {
+            position: fixed;
+            top: 20%;
+            right: 5%;
+            width: 300px;
+            background-color: rgb(255, 255, 255);
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .tour-form {
+                display: none;
+            }
+
+            .modal-content {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                border-radius: 0;
+                max-width: none;
+            }
+
+            #book-now {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 1000;
+            }
+        }
+
+        /* Ẩn nút đặt vé trên điện thoại khi ở chế độ web */
+        @media (min-width: 769px) {
+            #book-now {
+                display: none;
+            }
+        }
     </style>
 </head>
 
@@ -106,42 +182,101 @@
             </form>
         </div>
     </section>
-    
+
+    <!-- Nút đặt vé -->
+    <button id="book-now" class="btn btn-primary">Đặt Vé</button>
+
+    <!-- Modal -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form id="tour-form-modal" action="/submit-tour" method="post">
+                <div class="form-group">
+                    <h3>Đăng Ký Tour</h3>
+                    <label for="tour-date-modal">Chọn Ngày:</label>
+                    <input type="date" id="tour-date-modal" name="tour-date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="adults-modal">Người Lớn:</label>
+                    <input type="number" id="adults-modal" name="adults" class="form-control" min="0" value="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="children-modal">Trẻ Em:</label>
+                    <input type="number" id="children-modal" name="children" class="form-control" min="0" value="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="modal-total-price">Tổng Giá:</label>
+                    <p id="modal-total-price">$1500</p>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng Ký</button>
+            </form>
+            <div id="success-message" class="alert alert-success" style="display: none; margin-top: 20px;">
+                Đăng ký thành công!
+            </div>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const adultsInput = document.getElementById('adults');
             const childrenInput = document.getElementById('children');
+            const modalAdultsInput = document.getElementById('adults-modal');
+            const modalChildrenInput = document.getElementById('children-modal');
             const totalPriceElement = document.getElementById('total-price');
-    
+            const modalTotalPriceElement = document.getElementById('modal-total-price');
+            const tourForm = document.getElementById('tour-form');
+            const tourFormModal = document.getElementById('tour-form-modal');
+            const successMessage = document.getElementById('success-message');
+            const bookNowButton = document.getElementById('book-now');
+            const modal = document.getElementById('bookingModal');
+            const closeModal = document.getElementsByClassName('close')[0];
+
             function calculateTotalPrice() {
                 const basePrice = 1500;
                 const adultPrice = 30;
                 const childPrice = 20;
                 const adults = parseInt(adultsInput.value) || 0;
                 const children = parseInt(childrenInput.value) || 0;
+                const modalAdults = parseInt(modalAdultsInput.value) || 0;
+                const modalChildren = parseInt(modalChildrenInput.value) || 0;
                 const totalPrice = basePrice + (adults * adultPrice) + (children * childPrice);
+                const modalTotalPrice = basePrice + (modalAdults * adultPrice) + (modalChildren * childPrice);
                 totalPriceElement.textContent = `$${totalPrice}`;
+                modalTotalPriceElement.textContent = `$${modalTotalPrice}`;
             }
-    
+
             adultsInput.addEventListener('input', calculateTotalPrice);
             childrenInput.addEventListener('input', calculateTotalPrice);
-    
+            modalAdultsInput.addEventListener('input', calculateTotalPrice);
+            modalChildrenInput.addEventListener('input', calculateTotalPrice);
+
             // Tính toán tổng giá ban đầu
             calculateTotalPrice();
-        });
-    </script>    
 
-    <style>
-        .tour-form {
-            position: fixed;
-            top: 20%;
-            right: 5%;
-            width: 300px;
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+            // Hiển thị modal khi nhấp vào nút "Đặt Vé"
+            bookNowButton.addEventListener('click', function () {
+                modal.style.display = 'block';
+            });
+
+            // Đóng modal khi nhấp vào nút đóng
+            closeModal.addEventListener('click', function () {
+                modal.style.display = 'none';
+            });
+
+            // Đóng modal khi nhấp ra ngoài modal
+            window.addEventListener('click', function (event) {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            // Hiển thị thông báo thành công khi form được gửi
+            tourFormModal.addEventListener('submit', function (event) {
+                event.preventDefault(); // Ngăn chặn hành động mặc định của form
+                successMessage.style.display = 'block'; // Hiển thị thông báo thành công
+            });
+        });
+    </script>
 
     <!-- Phần chân trang -->
     <footer class="bg-primary text-white text-center py-3">
