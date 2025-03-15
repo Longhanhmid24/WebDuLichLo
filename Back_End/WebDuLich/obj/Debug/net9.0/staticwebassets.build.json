@@ -1,0 +1,20 @@
+{
+  "Version": 1,
+  "Hash": "zxLeN9NshMD6CqPG7GRKtO+HXY33rMbXLwdnoU6hkCs=",
+  "Source": "WebDuLich",
+  "BasePath": "_content/WebDuLich",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebDuLich\\wwwroot",
+      "Source": "WebDuLich",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [],
+  "Endpoints": []
+}

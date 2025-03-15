@@ -1,0 +1,102 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "WebDuLich",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/Tour/add": {
+      "post": {
+        "tags": [
+          "Tour"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "Gia",
+                  "Sokhach",
+                  "Tentour"
+                ],
+                "type": "object",
+                "properties": {
+                  "Matour": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "Tentour": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Gia": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "Mota": {
+                    "type": "string"
+                  },
+                  "Sokhach": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "HinhAnh": {
+                    "maxLength": 500,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "imageFile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "Matour": {
+                  "style": "form"
+                },
+                "Tentour": {
+                  "style": "form"
+                },
+                "Gia": {
+                  "style": "form"
+                },
+                "Mota": {
+                  "style": "form"
+                },
+                "Sokhach": {
+                  "style": "form"
+                },
+                "HinhAnh": {
+                  "style": "form"
+                },
+                "imageFile": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Tour/all": {
+      "get": {
+        "tags": [
+          "Tour"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": { }
+}

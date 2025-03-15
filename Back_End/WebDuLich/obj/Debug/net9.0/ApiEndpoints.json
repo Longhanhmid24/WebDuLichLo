@@ -1,0 +1,58 @@
+[
+  {
+    "ContainingType": "WebDuLich.Controllers.TourController",
+    "Method": "AddTour",
+    "RelativePath": "api/Tour/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Matour",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tentour",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gia",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "Mota",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sokhach",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "HinhAnh",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "imageFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TourController",
+    "Method": "GetAllTours",
+    "RelativePath": "api/Tour/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
