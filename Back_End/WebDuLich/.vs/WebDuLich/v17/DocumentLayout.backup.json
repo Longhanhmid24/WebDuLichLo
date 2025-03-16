@@ -138,7 +138,8 @@
               "RelativeToolTip": "Models\\Tour.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T07:48:29.223Z"
+              "WhenOpened": "2025-03-15T07:48:29.223Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -148,7 +149,7 @@
               "RelativeDocumentMoniker": "Controllers\\TourController.cs",
               "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
               "RelativeToolTip": "Controllers\\TourController.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAwwDoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAADwvzoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-15T08:43:34.847Z",
               "EditorCaption": ""
