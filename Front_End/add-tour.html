@@ -116,57 +116,92 @@
 <body>
     <div class="container">
         <h2>Thêm Tour Du Lịch</h2>
-        <form>
+        <form id="addTourForm">
             <div class="form-group">
-                <label for="name">Tên Tour</label>
-                <input type="text" id="name" name="name" placeholder="Nhập tên tour">
+                <label for="Tentour">Tên Tour</label>
+                <input type="text" id="Tentour" name="Tentour" placeholder="Nhập tên tour" required>
             </div>
             
             <div class="form-group">
-                <label for="price">Giá</label>
-                <input type="number" id="price" name="price" placeholder="Nhập giá">
+                <label for="Gia">Giá (VND)</label>
+                <input type="number" id="Gia" name="Gia" placeholder="Nhập giá" required min="0" step="1000">
             </div>
+    
             <div class="form-group">
-                <label for="itinerary">Mô tả</label>
-                <textarea id="itinerary" name="itinerary" placeholder="Nhập mô tả"></textarea>
+                <label for="Mota">Mô tả</label>
+                <textarea id="Mota" name="Mota" placeholder="Nhập mô tả"></textarea>
             </div>
+    
             <div class="form-group">
-                <label for="image"><strong>Hình Ảnh</strong></label>
-                <div class="file-upload" onclick="document.getElementById('image').click()">
-                    <input type="file" id="image" name="image" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                <label for="Sokhach">Số khách</label>
+                <input type="number" id="Sokhach" name="Sokhach" placeholder="Số khách tối đa" required min="1">
+            </div>
+    
+            <div class="form-group">
+                <label for="HinhAnh"><strong>Hình Ảnh</strong></label>
+                <div class="file-upload" onclick="document.getElementById('HinhAnh').click()">
+                    <input type="file" id="HinhAnh" name="HinhAnh" accept="image/*" onchange="previewImage(event)" style="display: none;">
                     <div id="preview-container" class="preview-container">
                         <span id="upload-text">Tải Ảnh</span>
-                        <img id="preview" src="" alt="Ảnh xem trước" style="display: none;">
+                        <img id="preview" src="" alt="Ảnh xem trước" style="display: none; max-width: 100px; max-height: 100px;">
                     </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="availability">Số khách</label>
-                <input type="text" id="availability" name="availability" placeholder="Số khách tối đa">
-            </div>
+    
             <button type="submit">Thêm Tour</button>
         </form>
     </div>
+    
     <script>
         function previewImage(event) {
-    const file = event.target.files[0];
-    const preview = document.getElementById('preview');
-    const uploadText = document.getElementById('upload-text');
-
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-            preview.src = e.target.result;
-            preview.style.display = 'block';
-            uploadText.style.display = 'none'; // Ẩn chữ "Tải Ảnh"
-        };
-        reader.readAsDataURL(file);
-    } else {
-        preview.src = "";
-        preview.style.display = 'none';
-        uploadText.style.display = 'block';
-    }
-}
+            const preview = document.getElementById("preview");
+            const uploadText = document.getElementById("upload-text");
+    
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    preview.src = e.target.result;
+                    preview.style.display = "block";
+                    uploadText.style.display = "none";
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    
+        document.getElementById("addTourForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+    
+            const formData = new FormData();
+            formData.append("Tentour", document.getElementById("Tentour").value);
+            formData.append("Gia", document.getElementById("Gia").value);
+            formData.append("Mota", document.getElementById("Mota").value);
+            formData.append("Sokhach", document.getElementById("Sokhach").value);
+    
+            const imageFile = document.getElementById("HinhAnh").files[0];
+            if (imageFile) {
+                formData.append("HinhAnh", imageFile);
+            }
+    
+            fetch("https://localhost:7265/api/Tour/add", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Tour đã được thêm thành công!");
+                console.log("Dữ liệu trả về:", data);
+                document.getElementById("addTourForm").reset();
+                document.getElementById("preview").src = "";
+                document.getElementById("preview").style.display = "none";
+                document.getElementById("upload-text").style.display = "block";
+            })
+            .catch(error => {
+                console.error("Lỗi khi gửi yêu cầu:", error);
+                alert("Đã xảy ra lỗi: " + error.message);
+            });
+        });
     </script>
+    
 </body>
 </html>

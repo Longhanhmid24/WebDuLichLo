@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "O3aqBKp9DO1NTJRYqKqbhn7blYbnNxFsff78/BHFpDY=",
+  "Hash": "SDzb5xkzha/aRn+qBnulxr7nvIjQHSD+q77kLAfoPs0=",
   "Source": "WebDuLich",
   "BasePath": "_content/WebDuLich",
   "Mode": "Default",
@@ -36,6 +36,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\anh-gai-xinh-14.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\3b3aecdb-8963-408e-b285-390ae2660800.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "images/tours/3b3aecdb-8963-408e-b285-390ae2660800#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rjciu4e5fj",
+      "Integrity": "B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\tours\\3b3aecdb-8963-408e-b285-390ae2660800.jpg"
     }
   ],
   "Endpoints": [
@@ -62,7 +83,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 06:50:14 GMT"
+          "Value": "Sun, 16 Mar 2025 08:38:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -99,7 +120,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 06:50:14 GMT"
+          "Value": "Sun, 16 Mar 2025 08:38:06 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -114,6 +135,88 @@
         {
           "Name": "label",
           "Value": "images/anh-gai-xinh-14.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/3b3aecdb-8963-408e-b285-390ae2660800.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\3b3aecdb-8963-408e-b285-390ae2660800.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "58723"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 16 Mar 2025 09:08:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/3b3aecdb-8963-408e-b285-390ae2660800.rjciu4e5fj.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\3b3aecdb-8963-408e-b285-390ae2660800.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "58723"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 16 Mar 2025 09:08:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rjciu4e5fj"
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/3b3aecdb-8963-408e-b285-390ae2660800.jpg"
         },
         {
           "Name": "integrity",

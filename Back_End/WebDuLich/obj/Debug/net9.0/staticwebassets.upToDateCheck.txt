@@ -1,1 +1,2 @@
 wwwroot\images\anh-gai-xinh-14.jpg
+wwwroot\images\tours\3b3aecdb-8963-408e-b285-390ae2660800.jpg

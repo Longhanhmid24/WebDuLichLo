@@ -24,17 +24,26 @@ namespace WebDuLich.Controllers
         {
             try
             {
-                if (tour == null) 
+                if (tour == null)
                     return BadRequest("Dữ liệu không hợp lệ");
 
                 if (imageFile != null)
                 {
-                    var filePath = Path.Combine("wwwroot/images", imageFile.FileName);
+                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/tours");
+                    if (!Directory.Exists(uploadsFolder))
+                    {
+                        Directory.CreateDirectory(uploadsFolder);
+                    }
+
+                    var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
                     using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await imageFile.CopyToAsync(stream);
                     }
-                    tour.HinhAnh = "/images/" + imageFile.FileName;
+
+                    tour.HinhAnh = "/images/tours/" + uniqueFileName;
                 }
 
                 _context.Tours.Add(tour);
@@ -47,6 +56,7 @@ namespace WebDuLich.Controllers
                 return StatusCode(500, $"Lỗi server: {ex.Message}");
             }
         }
+
 
 
         // API lấy danh sách tất cả Tour

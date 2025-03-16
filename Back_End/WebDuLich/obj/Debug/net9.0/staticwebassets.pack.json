@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\images\\anh-gai-xinh-14.jpg"
     },
     {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\3b3aecdb-8963-408e-b285-390ae2660800.jpg",
+      "PackagePath": "staticwebassets\\images\\tours\\3b3aecdb-8963-408e-b285-390ae2660800.jpg"
+    },
+    {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebDuLich.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
