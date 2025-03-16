@@ -16,7 +16,7 @@ namespace WebDuLich.Models
         [Required]
         [Column(TypeName = "decimal(18,2)")]
         public decimal Gia { get; set; }
-
+   
         public string? Mota { get; set; }
 
         [Required]

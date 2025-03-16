@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\anh-gai-xinh-14.jpg",
+      "PackagePath": "staticwebassets\\images\\anh-gai-xinh-14.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebDuLich.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebDuLich.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.WebDuLich.props",
+      "PackagePath": "build\\WebDuLich.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.WebDuLich.props",
+      "PackagePath": "buildMultiTargeting\\WebDuLich.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.WebDuLich.props",
+      "PackagePath": "buildTransitive\\WebDuLich.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,6 +1,6 @@
 @WebDuLich_HostAddress = http://localhost:5042
 
-GET {{WebDuLich_HostAddress}}/weatherforecast/
+GET {{WebDuLich_HostAddress}}/Tour/
 Accept: application/json
 
 ###

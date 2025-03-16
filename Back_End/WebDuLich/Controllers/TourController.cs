@@ -19,11 +19,12 @@ namespace WebDuLich.Controllers
 
         // API để thêm tour
         [HttpPost("add")]
+        [Consumes("multipart/form-data")]
         public async Task<IActionResult> AddTour([FromForm] Tour tour, IFormFile? imageFile)
         {
             try
             {
-                if (tour == null)
+                if (tour == null) 
                     return BadRequest("Dữ liệu không hợp lệ");
 
                 if (imageFile != null)
