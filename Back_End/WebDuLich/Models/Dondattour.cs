@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebDuLich.Models
 {
@@ -22,8 +22,13 @@ namespace WebDuLich.Models
         [Required]
         public int Songuoi { get; set; }
 
-        // Navigation Property (Quan hệ với Tour)
-        [ForeignKey("Matour")]
+        // FK đến TaiKhoan (Người đặt tour)
+        [Required]
+        [ForeignKey("TaiKhoan")]
+        public string Emaildangki { get; set; } = string.Empty;
+
+        // Navigation Properties
         public virtual Tour? Tour { get; set; }
+        public virtual TaiKhoan? TaiKhoan { get; set; }
     }
 }
