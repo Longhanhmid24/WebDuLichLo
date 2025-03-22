@@ -4,107 +4,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New York, Mỹ</title>
+    <title>Đà Lạt, Việt Nam</title>
     <link rel="stylesheet" href="../../../resources/css/styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #152db8;
-            min-width: 160px;
-            z-index: 1;
-        }
-
-        .dropdown-menu a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
+        /* Định vị bảng đặt tour ở góc phải màn hình */
+        #ticketBookingModal {
             display: block;
-            text-align: left;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #1a3db8;
-        }
-
-        .nav-item:hover .dropdown-menu {
-            display: block;
-        }
-
-        .tour-form {
             position: fixed;
-            top: 20%;
-            right: 5%;
+            top: 20px;
+            right: 20px;
             width: 300px;
-            background-color: rgb(255, 255, 255);
+            z-index: 1000;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .modal {
+        /* Định dạng modal trên điện thoại */
+        @media (max-width: 767px) {
+            #ticketBookingModal {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 90%;
+                max-height: 80%;
+                overflow-y: auto;
+                z-index: 1000;
+                background-color: #fff;
+                border: 1px solid #ccc;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                padding: 20px;
+            }
+        }
+
+        /* Định dạng bảng thông tin đăng ký */
+        #bookingModal {
             display: none;
             position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.4);
-            padding-top: 60px;
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 5% auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            z-index: 1000;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            max-width: 500px;
+            overflow-y: auto;
         }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .tour-form {
-                display: none;
+        /* Định dạng modal trên điện thoại */
+        @media (max-width: 767px) {
+            #bookingModal {
+                width: 90%;
+                height: auto;
+                max-height: 90%;
+                overflow-y: auto;
             }
+        }
 
-            .modal-content {
-                width: 100%;
-                height: 100%;
-                margin: 0;
-                border-radius: 0;
-                max-width: none;
+        /* Định dạng modal hiển thị thông tin người dùng */
+        #userInfoModal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            z-index: 1000;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        /* Định dạng modal trên điện thoại */
+        @media (max-width: 767px) {
+            #userInfoModal {
+                width: 90%;
+                height: auto;
+                max-height: 80%;
+                overflow-y: auto;
             }
+        }
 
-            #book-now {
+        /* Định dạng hình ảnh trong phần thông tin chuyến đi */
+    .gallery img {
+        width: 150px; /* Đặt chiều rộng nhỏ hơn */
+        height: auto; /* Tự động điều chỉnh chiều cao theo tỷ lệ */
+        margin: 5px; /* Thêm khoảng cách giữa các hình ảnh */
+        border-radius: 5px; /* Bo góc nhẹ cho hình ảnh */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Thêm hiệu ứng đổ bóng */
+    }
+
+    /* Định dạng trên thiết bị di động */
+    @media (max-width: 767px) {
+        .gallery img {
+            width: 100px; /* Giảm kích thước hình ảnh trên màn hình nhỏ */
+        }
+    }
+
+
+        /* Nút "Đăng Ký" cố định ở dưới màn hình trên điện thoại */
+        @media (max-width: 767px) {
+            #register-button {
                 position: fixed;
-                bottom: 20px;
-                right: 20px;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
                 z-index: 1000;
+                background-color: #007bff;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                padding: 10px 20px;
+                font-size: 16px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
             }
-        }
 
-        /* Ẩn nút đặt vé trên điện thoại khi ở chế độ web */
-        @media (min-width: 769px) {
-            #book-now {
-                display: none;
+            #register-button:hover {
+                background-color: #0056b3;
             }
         }
     </style>
@@ -160,122 +190,204 @@
                 <img src="../../../resources/images/destinations/newyork.jpg" alt="New York">
                 <img src="../../../resources/images/destinations/newyork.jpg" alt="New York">
             </div>
-            <form action="/submit-tour" method="post" class="tour-form">
-                <div class="form-group">
-                    <h3>Đăng Ký Tour</h3>
-                    <label for="tour-date">Chọn Ngày:</label>
-                    <input type="date" id="tour-date" name="tour-date" class="form-control" required>
-                </div>
-                <div class="form-group">
-                    <label for="adults">Người Lớn:</label>
-                    <input type="number" id="adults" name="adults" class="form-control" min="0" value="0" required>
-                </div>
-                <div class="form-group">
-                    <label for="children">Trẻ Em:</label>
-                    <input type="number" id="children" name="children" class="form-control" min="0" value="0" required>
-                </div>
-                <div class="form-group">
-                    <label for="total-price">Tổng Giá:</label>
-                    <p id="total-price">$1500</p>
-                </div>
-                <button type="submit" class="btn btn-primary">Đăng Ký</button>
-            </form>
+           
         </div>
     </section>
 
-    <!-- Nút đặt vé -->
-    <button id="book-now" class="btn btn-primary">Đặt Vé</button>
 
-    <!-- Modal -->
+<body>
+    <!-- Nút "Đăng Ký" cố định trên điện thoại -->
+    <button id="register-button" class="btn btn-primary d-md-none">Đăng Ký</button>
+
+    <!-- Modal chọn ngày và số vé -->
+    <div id="ticketBookingModal">
+        <div class="modal-content">
+            <form id="ticket-form-modal" action="#" method="post">
+                <div class="form-group">
+                    <h3>Đăng Ký Tour</h3>
+                    <label for="tour-date-ticket">Chọn Ngày:</label>
+                    <input type="date" id="tour-date-ticket" name="tour-date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="adults-ticket">Số Vé Người Lớn ($30/vé):</label>
+                    <input type="number" id="adults-ticket" name="adults" class="form-control" min="0" value="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="children-ticket">Số Vé Trẻ Em ($20/vé):</label>
+                    <input type="number" id="children-ticket" name="children" class="form-control" min="0" value="0" required>
+                </div>
+                <div class="form-group">
+                    <label for="total-price-ticket">Tổng Tiền:</label>
+                    <p id="total-price-ticket">$1500</p>
+                </div>
+                <button type="submit" class="btn btn-primary">Tiếp Tục</button>
+                <button type="button" id="cancel-ticket-button" class="btn btn-secondary d-md-none">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal nhập thông tin người dùng -->
     <div id="bookingModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <form id="tour-form-modal" action="/submit-tour" method="post">
+            <form id="tour-form-modal" action="#" method="post">
                 <div class="form-group">
-                    <h3>Đăng Ký Tour</h3>
-                    <label for="tour-date-modal">Chọn Ngày:</label>
-                    <input type="date" id="tour-date-modal" name="tour-date" class="form-control" required>
+                    <h3>Thông Tin Người Dùng</h3>
+                    <label for="name-modal">Tên Khách Hàng:</label>
+                    <input type="text" id="name-modal" name="name" class="form-control" placeholder="Nhập tên của bạn" required>
                 </div>
                 <div class="form-group">
-                    <label for="adults-modal">Người Lớn:</label>
-                    <input type="number" id="adults-modal" name="adults" class="form-control" min="0" value="0" required>
+                    <label for="phone-modal">Số Điện Thoại:</label>
+                    <input type="tel" id="phone-modal" name="phone" class="form-control" placeholder="Nhập số điện thoại"
+                        pattern="[0-9]{10,11}" title="Vui lòng nhập số điện thoại hợp lệ (10-11 chữ số)" required>
                 </div>
                 <div class="form-group">
-                    <label for="children-modal">Trẻ Em:</label>
-                    <input type="number" id="children-modal" name="children" class="form-control" min="0" value="0" required>
+                    <label for="email-modal">Email:</label>
+                    <input type="email" id="email-modal" name="email" class="form-control" placeholder="Nhập email" required>
                 </div>
                 <div class="form-group">
-                    <label for="modal-total-price">Tổng Giá:</label>
-                    <p id="modal-total-price">$1500</p>
+                    <label for="address-modal">Địa Chỉ:</label>
+                    <textarea id="address-modal" name="address" class="form-control" rows="3" placeholder="Nhập địa chỉ" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Đăng Ký</button>
+                <button type="button" id="cancel-button" class="btn btn-secondary">Cancel</button>
             </form>
-            <div id="success-message" class="alert alert-success" style="display: none; margin-top: 20px;">
-                Đăng ký thành công!
+        </div>
+    </div>
+
+    <!-- Modal hiển thị thông tin người dùng -->
+    <div id="userInfoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-user-info">&times;</span>
+            <h3>Thông Tin Người Đăng Ký</h3>
+            <div id="user-info-content">
+                <!-- Thông tin người dùng sẽ được hiển thị ở đây -->
             </div>
+            <button class="btn btn-success">Thanh Toán</button>
+            <button type="button" id="cancel-user-info-button" class="btn btn-secondary">Cancel</button>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const adultsInput = document.getElementById('adults');
-            const childrenInput = document.getElementById('children');
-            const modalAdultsInput = document.getElementById('adults-modal');
-            const modalChildrenInput = document.getElementById('children-modal');
-            const totalPriceElement = document.getElementById('total-price');
-            const modalTotalPriceElement = document.getElementById('modal-total-price');
-            const tourForm = document.getElementById('tour-form');
-            const tourFormModal = document.getElementById('tour-form-modal');
-            const successMessage = document.getElementById('success-message');
-            const bookNowButton = document.getElementById('book-now');
-            const modal = document.getElementById('bookingModal');
-            const closeModal = document.getElementsByClassName('close')[0];
+        const ticketBookingModal = document.getElementById('ticketBookingModal');
+        const registerButton = document.getElementById('register-button');
+        const ticketFormModal = document.getElementById('ticket-form-modal');
+        const bookingModal = document.getElementById('bookingModal');
+        const tourFormModal = document.getElementById('tour-form-modal');
+        const userInfoModal = document.getElementById('userInfoModal');
+        const userInfoContent = document.getElementById('user-info-content');
+        const adultsInput = document.getElementById('adults-ticket');
+        const childrenInput = document.getElementById('children-ticket');
+        const totalPriceElement = document.getElementById('total-price-ticket');
+        const cancelButton = document.getElementById('cancel-button');
+        const cancelTicketButton = document.getElementById('cancel-ticket-button');
+        const cancelUserInfoButton = document.getElementById('cancel-user-info-button');
+        const paymentButton = document.querySelector('.btn-success');
 
-            function calculateTotalPrice() {
-                const basePrice = 1500;
-                const adultPrice = 30;
-                const childPrice = 20;
-                const adults = parseInt(adultsInput.value) || 0;
-                const children = parseInt(childrenInput.value) || 0;
-                const modalAdults = parseInt(modalAdultsInput.value) || 0;
-                const modalChildren = parseInt(modalChildrenInput.value) || 0;
-                const totalPrice = basePrice + (adults * adultPrice) + (children * childPrice);
-                const modalTotalPrice = basePrice + (modalAdults * adultPrice) + (modalChildren * childPrice);
-                totalPriceElement.textContent = `$${totalPrice}`;
-                modalTotalPriceElement.textContent = `$${modalTotalPrice}`;
+        const basePrice = 1500;
+        const adultPrice = 30;
+        const childPrice = 20;
+
+        // Kiểm tra nếu đang ở chế độ điện thoại
+        function isMobile() {
+            return window.innerWidth <= 767;
+        }
+
+        // Hiển thị modal "Chọn Ngày và Số Vé" khi nhấn nút "Đăng Ký" trên điện thoại
+        registerButton.addEventListener('click', function () {
+            if (isMobile()) {
+                ticketBookingModal.style.display = 'block'; // Hiển thị modal trên điện thoại
             }
-
-            adultsInput.addEventListener('input', calculateTotalPrice);
-            childrenInput.addEventListener('input', calculateTotalPrice);
-            modalAdultsInput.addEventListener('input', calculateTotalPrice);
-            modalChildrenInput.addEventListener('input', calculateTotalPrice);
-
-            // Tính toán tổng giá ban đầu
-            calculateTotalPrice();
-
-            // Hiển thị modal khi nhấp vào nút "Đặt Vé"
-            bookNowButton.addEventListener('click', function () {
-                modal.style.display = 'block';
-            });
-
-            // Đóng modal khi nhấp vào nút đóng
-            closeModal.addEventListener('click', function () {
-                modal.style.display = 'none';
-            });
-
-            // Đóng modal khi nhấp ra ngoài modal
-            window.addEventListener('click', function (event) {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            });
-
-            // Hiển thị thông báo thành công khi form được gửi
-            tourFormModal.addEventListener('submit', function (event) {
-                event.preventDefault(); // Ngăn chặn hành động mặc định của form
-                successMessage.style.display = 'block'; // Hiển thị thông báo thành công
-            });
         });
+
+        // Tính tổng tiền khi thay đổi số vé
+        function calculateTotalPrice() {
+            const adults = parseInt(adultsInput.value) || 0;
+            const children = parseInt(childrenInput.value) || 0;
+            const total = basePrice + (adults * adultPrice) + (children * childPrice);
+            totalPriceElement.textContent = `$${total}`;
+        }
+
+        adultsInput.addEventListener('input', calculateTotalPrice);
+        childrenInput.addEventListener('input', calculateTotalPrice);
+
+        // Xử lý sự kiện "Tiếp Tục"
+        ticketFormModal.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const tourDate = document.getElementById('tour-date-ticket').value;
+            const adults = parseInt(adultsInput.value) || 0;
+            const children = parseInt(childrenInput.value) || 0;
+            const totalPrice = totalPriceElement.textContent;
+
+            ticketBookingModal.style.display = 'none';
+            bookingModal.style.display = 'block';
+
+            tourFormModal.dataset.tourDate = tourDate;
+            tourFormModal.dataset.totalPrice = totalPrice;
+        });
+
+        // Xử lý sự kiện "Đăng Ký"
+        tourFormModal.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name-modal').value;
+            const phone = document.getElementById('phone-modal').value;
+            const email = document.getElementById('email-modal').value;
+            const address = document.getElementById('address-modal').value;
+            const tourDate = tourFormModal.dataset.tourDate;
+            const totalPrice = tourFormModal.dataset.totalPrice;
+
+            const infoContent = `
+                <p><strong>Ngày Đăng Ký:</strong> ${tourDate}</p>
+                <p><strong>Tên Khách Hàng:</strong> ${name}</p>
+                <p><strong>Số Điện Thoại:</strong> ${phone}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Địa Chỉ:</strong> ${address}</p>
+                <p><strong>Tổng Tiền:</strong> ${totalPrice}</p>
+            `;
+
+            userInfoContent.innerHTML = infoContent;
+            bookingModal.style.display = 'none';
+            userInfoModal.style.display = 'block';
+        });
+
+        // Xử lý sự kiện "Thanh Toán"
+        paymentButton.addEventListener('click', function () {
+            alert('Thanh toán thành công!');
+            userInfoModal.style.display = 'none'; // Đóng modal thông tin người dùng
+            ticketBookingModal.style.display = 'block'; // Trả về modal đăng ký tour
+            tourFormModal.reset(); // Xóa dữ liệu trong form thông tin người dùng
+            ticketFormModal.reset(); // Xóa dữ liệu trong form chọn ngày và số vé
+            totalPriceElement.textContent = `$1500`; // Đặt lại tổng tiền về giá trị mặc định
+        });
+
+        // Xử lý sự kiện "Cancel" trong modal thông tin người dùng
+        cancelUserInfoButton.addEventListener('click', function () {
+            userInfoModal.style.display = 'none';
+            ticketBookingModal.style.display = 'block'; // Trả về modal đăng ký tour
+            tourFormModal.reset(); // Xóa dữ liệu trong form thông tin người dùng
+            ticketFormModal.reset(); // Xóa dữ liệu trong form chọn ngày và số vé
+            totalPriceElement.textContent = `$1500`; // Đặt lại tổng tiền về giá trị mặc định
+        });
+
+        // Xử lý sự kiện "Cancel" trong modal đặt tour (chỉ trên điện thoại)
+        cancelTicketButton.addEventListener('click', function () {
+            if (isMobile()) {
+                ticketBookingModal.style.display = 'none';
+                ticketFormModal.reset(); // Xóa dữ liệu trong form chọn ngày và số vé
+                totalPriceElement.textContent = `$1500`; // Đặt lại tổng tiền về giá trị mặc định
+            }
+        });
+
+        // Xử lý sự kiện "Cancel" trong modal thông tin đăng ký
+        cancelButton.addEventListener('click', function () {
+            bookingModal.style.display = 'none';
+            ticketBookingModal.style.display = 'block'; // Trả về modal đăng ký tour
+            tourFormModal.reset(); // Xóa dữ liệu trong form thông tin người dùng
+        });
+    });
     </script>
 
     <!-- Phần chân trang -->
@@ -285,8 +397,6 @@
             longtravel@mail.com</p>
         <p>&copy; 2023 Khám Phá Thế Giới. Bảo lưu mọi quyền.</p>
     </footer>
-
-    <script src="../../../resources/js/scripts.js"></script> <!-- Thêm tệp JS tùy chỉnh -->
 </body>
 
 </html>

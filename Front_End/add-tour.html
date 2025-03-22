@@ -21,7 +21,9 @@
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px;
+            max-width: 400px; /* Existing width adjustment */
+            max-height: 500px; /* Added height limit */
+            overflow-y: auto; /* Enable scrolling if content exceeds height */
         }
         h2 {
             text-align: center;
@@ -126,7 +128,12 @@
                 <label for="Gia">Giá (VND)</label>
                 <input type="number" id="Gia" name="Gia" placeholder="Nhập giá" required min="0" step="1000">
             </div>
-    
+            
+            <div class="form-group">
+                <label for="Ngay">Ngày Khởi Hành</label>
+                <input type="date" id="Ngay" name="Ngay" required>
+            </div>
+
             <div class="form-group">
                 <label for="Mota">Mô tả</label>
                 <textarea id="Mota" name="Mota" placeholder="Nhập mô tả"></textarea>
@@ -170,37 +177,38 @@
         }
     
         document.getElementById("addTourForm").addEventListener("submit", function (e) {
-            e.preventDefault();// Ngăn chặn hành động mặc định (tránh việc reload trang)
-    
-            const formData = new FormData();// Tạo một đối tượng FormData để gửi dữ liệu dưới dạng multipart/form-data
-            formData.append("Tentour", document.getElementById("Tentour").value);
-            formData.append("Gia", document.getElementById("Gia").value);
-            formData.append("Mota", document.getElementById("Mota").value);
-            formData.append("Sokhach", document.getElementById("Sokhach").value);
-    
-            const imageFile = document.getElementById("HinhAnh").files[0];
-            if (imageFile) {
-                formData.append("imageFile", imageFile);// Thêm ảnh vào FormData nếu có
-            }
-    
-            fetch("https://localhost:7265/api/Tour/add", {
-                method: "POST",
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert("Tour đã được thêm thành công!");
-                console.log("Dữ liệu trả về:", data);
-                document.getElementById("addTourForm").reset();
-                document.getElementById("preview").src = "";
-                document.getElementById("preview").style.display = "none";
-                document.getElementById("upload-text").style.display = "block";
-            })
-            .catch(error => {
-                console.error("Lỗi khi gửi yêu cầu:", error);
-                alert("Đã xảy ra lỗi: " + error.message);
-            });
+    e.preventDefault(); // Ngăn chặn hành động mặc định (tránh việc reload trang)
+
+    const formData = new FormData(); // Tạo một đối tượng FormData để gửi dữ liệu dưới dạng multipart/form-data
+    formData.append("Tentour", document.getElementById("Tentour").value);
+    formData.append("Gia", document.getElementById("Gia").value);
+    formData.append("Mota", document.getElementById("Mota").value);
+    formData.append("Sokhach", document.getElementById("Sokhach").value);
+    formData.append("Ngay", document.getElementById("Ngay").value); // Thêm ngày khởi hành
+
+    const imageFile = document.getElementById("HinhAnh").files[0];
+    if (imageFile) {
+        formData.append("imageFile", imageFile); // Thêm ảnh vào FormData nếu có
+    }
+
+    fetch("https://localhost:7265/api/Tour/add", {
+        method: "POST",
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            alert("Tour đã được thêm thành công!");
+            console.log("Dữ liệu trả về:", data);
+            document.getElementById("addTourForm").reset();
+            document.getElementById("preview").src = "";
+            document.getElementById("preview").style.display = "none";
+            document.getElementById("upload-text").style.display = "block";
+        })
+        .catch(error => {
+            console.error("Lỗi khi gửi yêu cầu:", error);
+            alert("Đã xảy ra lỗi: " + error.message);
         });
+});
     </script>
     
 </body>

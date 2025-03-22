@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân Quyền Người Dùng</title>
+    <style>
+        body {
+            background: url('/Front_End/resources/images/brand/hinh-nen-vu-tru-72.jpg') center/cover no-repeat;
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+
+
+        /* Định dạng container danh sách người dùng */
+        .user-list-container {
+            width: 400px; /* Chiều rộng của danh sách */
+            height: 300px; /* Chiều cao của danh sách */
+            border: 1px solid #ccc; /* Viền cho danh sách */
+            border-radius: 5px; /* Bo góc */
+            overflow-y: auto; /* Thêm thanh cuộn dọc */
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+            background-color: #ffffff; /* Màu nền trắng */
+        }
+
+        
+
+        /* Định dạng từng mục trong danh sách */
+        .user-item {
+            padding: 10px;
+            border-bottom: 1px solid #eee; /* Đường kẻ dưới mỗi mục */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .user-item:last-child {
+            border-bottom: none; /* Xóa đường kẻ dưới mục cuối cùng */
+        }
+
+        .user-item select {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .user-item select:hover {
+            border-color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Phân Quyền Người Dùng</h1>
+    <div class="user-list-container">
+        <div class="user-item">
+            <span>Người Dùng 1</span>
+            <select>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+        <div class="user-item">
+            <span>Người Dùng 2</span>
+            <select>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+        <div class="user-item">
+            <span>Người Dùng 3</span>
+            <select>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+        <div class="user-item">
+            <span>Người Dùng 4</span>
+            <select>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+        <div class="user-item">
+            <span>Người Dùng 5</span>
+            <select>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+        <div class="user-item">
+            <span>Người Dùng 6</span>
+            <select>
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+                <option value="manager">Manager</option>
+            </select>
+        </div>
+    </div>
+</body>
+</html>

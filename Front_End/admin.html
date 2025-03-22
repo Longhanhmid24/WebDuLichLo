@@ -27,6 +27,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // Thêm sự kiện onclick vào logo
+        document.querySelector('.badge img').addEventListener('click', function () {
+            window.location.href = 'index.html'; // Chuyển hướng đến trang index.html
+        });
+    </script>
+
     <!-- Menu của Admin -->
     <div id="sidebar" class="sidebar">
         <div class="sidebar-header">
@@ -35,10 +43,10 @@
         </div>
         <ul>
             <li><a href="#">Trang chủ</a></li>
-            <li><a href="#">Hồ sơ người dùng</a></li>
+            <li><a href="HoSo.html" id="HoSo-link">Hồ sơ người dùng</a></li>
             <li><a href="add-tour.html" id="add-tour-link">Thêm Tour</a></li>
             <li><a href="#">Danh sách hóa đơn</a></li>
-            <li><a href="#">Yêu cầu - Trợ giúp</a></li>
+            <li><a href="PhanQuyen.html" id="HoSo-link">PhanQuyen</a></li>
             <li><a href="#">Đánh giá </a></li>
             <li><a href="#">Quản lý Tour</a></li>
             <li><a href="#">Phân quyền</a></li>
