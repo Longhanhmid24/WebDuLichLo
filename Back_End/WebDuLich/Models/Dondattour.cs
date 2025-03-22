@@ -20,9 +20,6 @@ namespace WebDuLich.Models
         public decimal Tongtien { get; set; }
 
         [Required]
-        public string Trangthai { get; set; } = string.Empty;
-
-        [Required]
         public int Songuoi { get; set; }
 
         // Navigation Property (Quan hệ với Tour)

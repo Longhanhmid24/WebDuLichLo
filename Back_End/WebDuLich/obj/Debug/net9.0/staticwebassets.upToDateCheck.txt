@@ -2,6 +2,8 @@ wwwroot\images\anh-gai-xinh-14.jpg
 wwwroot\images\tours\0082fa20-866d-4e3a-954e-4a317834eb4a.jpg
 wwwroot\images\tours\3b3aecdb-8963-408e-b285-390ae2660800.jpg
 wwwroot\images\tours\4028b4f6-4beb-40fb-801f-3ee49fbfa556.jpg
+wwwroot\images\tours\65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg
 wwwroot\images\tours\ac0c096b-4ab9-4788-8dd2-041dfd941454.jpg
+wwwroot\images\tours\b376b08b-2802-4fd3-b922-ebfbde158659.jpg
 wwwroot\images\tours\c1cfb663-3bca-41ae-9021-29b0c867f772.jpg
 wwwroot\images\tours\e25f8b8f-7e98-42ff-ae24-0dd8e12f3b31.jpg

@@ -331,6 +331,88 @@
       ]
     },
     {
+      "Route": "images/tours/65f8bff8-fdff-42f7-8c69-1fb948fa1769.834td59vbg.jpg",
+      "AssetFile": "images/tours/65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "149078"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9GoDklcdurk2mNjgApIe1rYGDfP5dgpIds1CWvzgkMA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 22 Mar 2025 06:43:40 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "834td59vbg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-9GoDklcdurk2mNjgApIe1rYGDfP5dgpIds1CWvzgkMA="
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg",
+      "AssetFile": "images/tours/65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "149078"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"9GoDklcdurk2mNjgApIe1rYGDfP5dgpIds1CWvzgkMA=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 22 Mar 2025 06:43:40 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-9GoDklcdurk2mNjgApIe1rYGDfP5dgpIds1CWvzgkMA="
+        }
+      ]
+    },
+    {
       "Route": "images/tours/ac0c096b-4ab9-4788-8dd2-041dfd941454.834td59vbg.jpg",
       "AssetFile": "images/tours/ac0c096b-4ab9-4788-8dd2-041dfd941454.jpg",
       "Selectors": [],
@@ -409,6 +491,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-9GoDklcdurk2mNjgApIe1rYGDfP5dgpIds1CWvzgkMA="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/b376b08b-2802-4fd3-b922-ebfbde158659.jpg",
+      "AssetFile": "images/tours/b376b08b-2802-4fd3-b922-ebfbde158659.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54189"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FwvsHjU7j8o9J1e1WAabpJFHqlSiDc7TpSDdbe7BQdo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 22 Mar 2025 06:42:08 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-FwvsHjU7j8o9J1e1WAabpJFHqlSiDc7TpSDdbe7BQdo="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/b376b08b-2802-4fd3-b922-ebfbde158659.z1pd3ia9bx.jpg",
+      "AssetFile": "images/tours/b376b08b-2802-4fd3-b922-ebfbde158659.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "54189"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"FwvsHjU7j8o9J1e1WAabpJFHqlSiDc7TpSDdbe7BQdo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 22 Mar 2025 06:42:08 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "z1pd3ia9bx"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-FwvsHjU7j8o9J1e1WAabpJFHqlSiDc7TpSDdbe7BQdo="
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/b376b08b-2802-4fd3-b922-ebfbde158659.jpg"
         }
       ]
     },
