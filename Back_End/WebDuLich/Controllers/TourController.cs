@@ -27,6 +27,9 @@ namespace WebDuLich.Controllers
                 if (tour == null)
                     return BadRequest("Dữ liệu không hợp lệ");
 
+                if (tour.NgayKetThuc < tour.NgayKhoiHanh)
+                    return BadRequest("Ngày kết thúc phải sau ngày khởi hành");
+
                 if (imageFile != null)
                 {
                     var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/tours");

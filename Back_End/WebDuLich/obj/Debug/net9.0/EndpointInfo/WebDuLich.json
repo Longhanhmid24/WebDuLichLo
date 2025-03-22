@@ -16,6 +16,9 @@
               "schema": {
                 "required": [
                   "Gia",
+                  "LoaiTour",
+                  "NgayKetThuc",
+                  "NgayKhoiHanh",
                   "Sokhach",
                   "Tentour"
                 ],
@@ -34,12 +37,25 @@
                     "type": "number",
                     "format": "double"
                   },
+                  "NgayKhoiHanh": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "NgayKetThuc": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
                   "Mota": {
                     "type": "string"
                   },
                   "Sokhach": {
                     "type": "integer",
                     "format": "int32"
+                  },
+                  "LoaiTour": {
+                    "maxLength": 50,
+                    "minLength": 0,
+                    "type": "string"
                   },
                   "HinhAnh": {
                     "maxLength": 500,
@@ -62,10 +78,19 @@
                 "Gia": {
                   "style": "form"
                 },
+                "NgayKhoiHanh": {
+                  "style": "form"
+                },
+                "NgayKetThuc": {
+                  "style": "form"
+                },
                 "Mota": {
                   "style": "form"
                 },
                 "Sokhach": {
+                  "style": "form"
+                },
+                "LoaiTour": {
                   "style": "form"
                 },
                 "HinhAnh": {
