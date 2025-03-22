@@ -21,9 +21,9 @@
             border-radius: 12px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 400px; /* Existing width adjustment */
-            max-height: 500px; /* Added height limit */
-            overflow-y: auto; /* Enable scrolling if content exceeds height */
+            max-width: 400px;
+            max-height: 600px;
+            overflow-y: auto;
         }
         h2 {
             text-align: center;
@@ -74,45 +74,6 @@
         button:hover {
             background-color: #0056b3;
         }
-        .file-upload {
-        width: 300px;
-        height: 200px;
-        border: 2px dashed #ccc;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        position: relative;
-    }
-
-    .file-upload:hover {
-        border-color: #999;
-    }
-
-    #preview-container {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-    }
-
-    #preview {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-    }
-
-    #upload-text {
-        font-size: 18px;
-        color: #666;
-        z-index: 1;
-    }
     </style>
 </head>
 <body>
@@ -135,6 +96,11 @@
             </div>
 
             <div class="form-group">
+                <label for="NgayKetThuc">Ngày Kết Thúc</label>
+                <input type="date" id="NgayKetThuc" name="NgayKetThuc" required>
+            </div>
+
+            <div class="form-group">
                 <label for="Mota">Mô tả</label>
                 <textarea id="Mota" name="Mota" placeholder="Nhập mô tả"></textarea>
             </div>
@@ -142,6 +108,15 @@
             <div class="form-group">
                 <label for="Sokhach">Số khách</label>
                 <input type="number" id="Sokhach" name="Sokhach" placeholder="Số khách tối đa" required min="1">
+            </div>
+    
+            <div class="form-group">
+                <label><strong>Loại Tour</strong></label>
+                <label for="trongnuoc">Trong nước</label>
+                <input type="radio" id="trongnuoc" name="LoaiTour" value="Trong nước" required>
+                <label for="ngoainuoc">Ngoài nước</label>
+                <input type="radio" id="ngoainuoc" name="LoaiTour" value="Ngoài nước">
+                
             </div>
     
             <div class="form-group">
@@ -158,6 +133,9 @@
             <button type="submit">Thêm Tour</button>
         </form>
     </div>
+</body>
+</html>
+
     
     <script>
         function previewImage(event) {
