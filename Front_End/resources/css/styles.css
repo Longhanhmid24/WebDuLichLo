@@ -141,13 +141,16 @@ footer {
 /* Màu nền cho carousel */
 .carousel {
     background: #f4f4f4;
+    width: 100%;
+    overflow: hidden;
 }
 
 .carousel-cell {
-    width: calc(33.333% - 20px);
+    width: 300px; 
     /* Chiều rộng của mỗi ô trừ đi khoảng cách */
     margin-right: 10px;
     /* Khoảng cách giữa các ô */
+    display: block;
     height: 225px;
     /* Chiều cao cố định cho ô */
     display: flex;

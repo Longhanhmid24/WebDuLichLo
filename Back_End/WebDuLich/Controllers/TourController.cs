@@ -60,11 +60,26 @@ namespace WebDuLich.Controllers
 
 
         // API lấy danh sách tất cả Tour
-        [HttpGet("all")]
-        public async Task<IActionResult> GetAllTours()
+        //[HttpGet("all")]
+        //public async Task<IActionResult> GetAllTours()
+        //{
+        //    var tours = await _context.Tours.ToListAsync();
+        //    return Ok(tours);
+        //}
+
+        [HttpGet("long")]
+        public async Task<IActionResult> GetRandomTours()
         {
             var tours = await _context.Tours.ToListAsync();
-            return Ok(tours);
+            var randomTours = tours.OrderBy(t => Guid.NewGuid()).ToList(); // Xáo trộn ngẫu nhiên
+            return Ok(randomTours);
+        }
+
+        [HttpGet("popular")]
+        public async Task<IActionResult> GetPopularTours()
+        {
+            var randomTours = await _context.Tours.OrderBy(r => Guid.NewGuid()).Take(7).ToListAsync();
+            return Ok(randomTours);
         }
     }
 }

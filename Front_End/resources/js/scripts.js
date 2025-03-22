@@ -91,4 +91,3 @@ function updateCount(type, value) {
     // Update summary text
     document.getElementById(`${type}-summary`).innerText = count;
 }
-

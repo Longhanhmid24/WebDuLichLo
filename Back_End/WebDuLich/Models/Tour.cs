@@ -22,6 +22,7 @@ namespace WebDuLich.Models
         [Required]
         public int Sokhach { get; set; }
 
+
         [StringLength(500)]
         public string? HinhAnh { get; set; } // Lưu đường dẫn ảnh
     }
