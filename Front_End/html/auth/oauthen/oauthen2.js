@@ -34,4 +34,5 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
         window.location.href = "https://localhost:7265/api/TaiKhoan/google-login"; // Chuyển hướng tới API Google
     });
+
 });

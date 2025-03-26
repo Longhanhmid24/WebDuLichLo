@@ -28,9 +28,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "model",
-        "Type": "WebDuLich.Models.TaiKhoan",
-        "IsRequired": true
+        "Name": "emaildangki",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "matkhau",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

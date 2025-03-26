@@ -59,12 +59,13 @@ namespace WebDuLich.Controllers
 
 
         // API Đăng nhập tài khoản
+
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromBody] TaiKhoan model)
+        public async Task<IActionResult> Login([FromForm] string emaildangki, [FromForm] string matkhau)
         {
             // Tìm tài khoản theo email
-            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == model.Emaildangki);
-            if (user == null || !BCrypt.Net.BCrypt.Verify(model.Matkhau, user.Matkhau)) // Kiểm tra mật khẩu
+            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == emaildangki);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(matkhau, user.Matkhau)) // Kiểm tra mật khẩu
             {
                 return Unauthorized(new { Message = "Email hoặc mật khẩu không đúng!" });
             }

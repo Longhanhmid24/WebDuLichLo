@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\controllers\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:controllers\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\controllers\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:controllers\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\models\\dondattour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:models\\dondattour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\models\\dondattour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:models\\dondattour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\models\\tour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -74,19 +74,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAwDgAAAA7AAAAAAAAAA==",
+              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAwGIAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T08:19:21.556Z"
+              "WhenOpened": "2025-03-22T08:19:21.556Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Dondattour.cs",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\Dondattour.cs",
               "RelativeDocumentMoniker": "Models\\Dondattour.cs",
@@ -94,11 +95,12 @@
               "RelativeToolTip": "Models\\Dondattour.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T06:50:32.87Z"
+              "WhenOpened": "2025-03-22T06:50:32.87Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -128,31 +130,33 @@
               "RelativeDocumentMoniker": "Controllers\\TaiKhoanController.cs",
               "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TaiKhoanController.cs",
               "RelativeToolTip": "Controllers\\TaiKhoanController.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAgwEsAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAYwEkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T14:23:43.444Z"
+              "WhenOpened": "2025-03-22T14:23:43.444Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "TaiKhoan.cs",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\TaiKhoan.cs",
               "RelativeDocumentMoniker": "Models\\TaiKhoan.cs",
               "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\TaiKhoan.cs",
               "RelativeToolTip": "Models\\TaiKhoan.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAywCoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwCUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T15:01:35.353Z"
+              "WhenOpened": "2025-03-22T15:01:35.353Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "TourController.cs",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
               "RelativeDocumentMoniker": "Controllers\\TourController.cs",
               "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
               "RelativeToolTip": "Controllers\\TourController.cs",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAswFAAAAADAAAAAAAAAA==",
+              "ViewState": "AgIAADYAAAAAAAAAAAAswFAAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-22T14:23:38.772Z",
               "EditorCaption": ""

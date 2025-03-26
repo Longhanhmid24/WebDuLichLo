@@ -55,19 +55,25 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/TaiKhoan"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaiKhoan"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/TaiKhoan"
+                "type": "object",
+                "properties": {
+                  "emaildangki": {
+                    "type": "string"
+                  },
+                  "matkhau": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "emaildangki": {
+                  "style": "form"
+                },
+                "matkhau": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -233,65 +239,5 @@
       }
     }
   },
-  "components": {
-    "schemas": {
-      "TaiKhoan": {
-        "required": [
-          "emaildangki",
-          "ngayTao",
-          "phanquyen"
-        ],
-        "type": "object",
-        "properties": {
-          "emaildangki": {
-            "minLength": 1,
-            "type": "string",
-            "format": "email"
-          },
-          "tendangnhap": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "matkhau": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "sodienthoai": {
-            "type": "string",
-            "nullable": true
-          },
-          "diachi": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "gioitinh": {
-            "type": "string",
-            "nullable": true
-          },
-          "hinhAnh": {
-            "maxLength": 500,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "phanquyen": {
-            "maxLength": 20,
-            "minLength": 0,
-            "type": "string"
-          },
-          "ngayTao": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      }
-    }
-  }
+  "components": { }
 }

@@ -76,14 +76,14 @@
     <section class="py-5">
         <div class="container">
             <h2 class="text-center">Đăng Nhập</h2>
-            <form>
+            <form id="loginForm">  <!-- THÊM ID Ở ĐÂY -->
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Nhập email">
+                    <label for="Emaildangki">Email:</label>
+                    <input type="email" class="form-control" id="Emaildangki" placeholder="Nhập email">
                 </div>
                 <div class="form-group">
-                    <label for="password">Mật Khẩu:</label>
-                    <input type="password" class="form-control" id="password" placeholder="Nhập mật khẩu">
+                    <label for="Matkhau">Mật Khẩu:</label>
+                    <input type="password" class="form-control" id="Matkhau" placeholder="Nhập mật khẩu">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Đăng Nhập</button>
                 <p class="text-center mt-3"><a href="forgot-password.html">Quên mật khẩu?</a></p>
@@ -96,7 +96,7 @@
             </form>
         </div>
     </section>
-
+    <script src="oauthen/login.js"></script>
     <!-- Phần chân trang -->
     <footer class="bg-primary text-white text-center py-3">
         <h2 class="text-center">Liên Hệ</h2>
@@ -105,6 +105,7 @@
         <p>&copy; 2023 Khám Phá Thế Giới. Bảo lưu mọi quyền.</p>
     </footer>
     <script src="../../resources/js/scripts.js"></script>
+   
 </body>
 
 </html>
