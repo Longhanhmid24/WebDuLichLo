@@ -1,5 +1,67 @@
 [
   {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "GoogleCallback",
+    "RelativePath": "api/TaiKhoan/google-callback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "GoogleLogin",
+    "RelativePath": "api/TaiKhoan/google-login",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "Login",
+    "RelativePath": "api/TaiKhoan/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "WebDuLich.Models.TaiKhoan",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "Register",
+    "RelativePath": "api/TaiKhoan/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "emaildangki",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "tendangnhap",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "matkhau",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebDuLich.Controllers.TourController",
     "Method": "AddTour",
     "RelativePath": "api/Tour/add",

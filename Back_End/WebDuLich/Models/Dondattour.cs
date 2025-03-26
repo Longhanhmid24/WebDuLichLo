@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace WebDuLich.Models
 {
@@ -29,6 +30,8 @@ namespace WebDuLich.Models
 
         // Navigation Properties
         public virtual Tour? Tour { get; set; }
+
+        [JsonIgnore]
         public virtual TaiKhoan? TaiKhoan { get; set; }
     }
 }

@@ -1,7 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebDuLich.Data;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
+
 var builder = WebApplication.CreateBuilder(args);
+
 // Đọc chuỗi kết nối từ appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -9,12 +14,49 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
+// Cấu hình Identity (Quản lý tài khoản)
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+})
+.AddCookie()
+.AddGoogle(options =>
+{
+    var googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
+    options.ClientId = googleAuthNSection["ClientId"];
+    options.ClientSecret = googleAuthNSection["ClientSecret"];
+    options.CallbackPath = "/signin-google"; // ✅ Đảm bảo đường dẫn này đúng!
+    options.SaveTokens = true;
+    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme; // ✅ Giúp lưu trạng thái OAuth
+
+    // Kiểm tra ClientId và ClientSecret có null không
+    Console.WriteLine($"Google Auth Config - ClientId: {options.ClientId}, CallbackPath: {options.CallbackPath}");
+});
+
+// Thêm dịch vụ Controller
 builder.Services.AddControllers();
-
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<CookiePolicyOptions>(options =>
+{
+    options.MinimumSameSitePolicy = SameSiteMode.Lax;
+});
+
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.SameSite = SameSiteMode.Lax;
+    //options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+});
+// Cấu hình CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins",
@@ -26,6 +68,10 @@ builder.Services.AddCors(options =>
         });
 });
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Hoặc .None nếu dùng localhost
+});
 
 var app = builder.Build();
 
@@ -37,6 +83,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Cấu hình Cache cho file tĩnh
 app.UseStaticFiles(new StaticFileOptions
 {
     OnPrepareResponse = ctx =>
@@ -46,7 +93,9 @@ app.UseStaticFiles(new StaticFileOptions
         ctx.Context.Response.Headers.Append("Expires", "0");
     }
 });
+
 app.UseHttpsRedirection();
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 

@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Migrations\\20250322080637_UpdateLanThu1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250322080637_UpdateLanThu1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\controllers\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,6 +15,14 @@
       "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\models\\dondattour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:models\\dondattour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -27,28 +31,12 @@
       "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:models\\tour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\migrations\\20250322065329_removetrangthaifromdondattour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:migrations\\20250322065329_removetrangthaifromdondattour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\migrations\\20250322063000_webdulich.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:migrations\\20250322063000_webdulich.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\webdulich.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
       "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:webdulich.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\webdulich.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:webdulich.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,147 +74,105 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20250322080637_UpdateLanThu1.cs",
-              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Migrations\\20250322080637_UpdateLanThu1.cs",
-              "RelativeDocumentMoniker": "Migrations\\20250322080637_UpdateLanThu1.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Migrations\\20250322080637_UpdateLanThu1.cs",
-              "RelativeToolTip": "Migrations\\20250322080637_UpdateLanThu1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T08:06:37.288Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAIwBgAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:55:32.825Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "TaiKhoan.cs",
-              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\TaiKhoan.cs",
-              "RelativeDocumentMoniker": "Models\\TaiKhoan.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\TaiKhoan.cs",
-              "RelativeToolTip": "Models\\TaiKhoan.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAmwCgAAAAAAAAAAAAAAA==",
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwDgAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T07:49:23.988Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T08:19:21.556Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "20250322065329_RemoveTrangthaiFromDondattour.cs",
-              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Migrations\\20250322065329_RemoveTrangthaiFromDondattour.cs",
-              "RelativeDocumentMoniker": "Migrations\\20250322065329_RemoveTrangthaiFromDondattour.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Migrations\\20250322065329_RemoveTrangthaiFromDondattour.cs",
-              "RelativeToolTip": "Migrations\\20250322065329_RemoveTrangthaiFromDondattour.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T06:53:29.266Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Dondattour.cs",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\Dondattour.cs",
               "RelativeDocumentMoniker": "Models\\Dondattour.cs",
               "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\Dondattour.cs",
               "RelativeToolTip": "Models\\Dondattour.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T06:50:32.87Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-22T06:50:32.87Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Tour.cs",
-              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\Tour.cs",
-              "RelativeDocumentMoniker": "Models\\Tour.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\Tour.cs",
-              "RelativeToolTip": "Models\\Tour.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAkwCcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T07:48:29.223Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TourController.cs",
-              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
-              "RelativeDocumentMoniker": "Controllers\\TourController.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
-              "RelativeToolTip": "Controllers\\TourController.cs",
-              "ViewState": "AgIAADcAAAAAGaa6cm4FwD0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T06:37:33.995Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "20250322063000_WebDuLich.cs",
-              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Migrations\\20250322063000_WebDuLich.cs",
-              "RelativeDocumentMoniker": "Migrations\\20250322063000_WebDuLich.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Migrations\\20250322063000_WebDuLich.cs",
-              "RelativeToolTip": "Migrations\\20250322063000_WebDuLich.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T06:30:00.203Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ApplicationDbContextModelSnapshot.cs",
-              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeToolTip": "Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-22T06:54:41.789Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-22T06:28:43.17Z"
+              "WhenOpened": "2025-03-25T11:24:02.82Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "WebDuLich.csproj",
-              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj",
-              "RelativeDocumentMoniker": "WebDuLich.csproj",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj",
-              "RelativeToolTip": "WebDuLich.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-03-15T07:43:10.238Z"
+              "DocumentIndex": 6,
+              "Title": "Tour.cs",
+              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\Tour.cs",
+              "RelativeDocumentMoniker": "Models\\Tour.cs",
+              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\Tour.cs",
+              "RelativeToolTip": "Models\\Tour.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAmwBEAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-25T11:22:18.53Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 0,
+              "Title": "TaiKhoanController.cs",
+              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TaiKhoanController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TaiKhoanController.cs",
+              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TaiKhoanController.cs",
+              "RelativeToolTip": "Controllers\\TaiKhoanController.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAQwDMAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:23:43.444Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TaiKhoan.cs",
+              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\TaiKhoan.cs",
+              "RelativeDocumentMoniker": "Models\\TaiKhoan.cs",
+              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\TaiKhoan.cs",
+              "RelativeToolTip": "Models\\TaiKhoan.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAywCoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T15:01:35.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TourController.cs",
+              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TourController.cs",
+              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
+              "RelativeToolTip": "Controllers\\TourController.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAAAswFAAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:23:38.772Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAiwBkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-22T14:23:35.405Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "WebDuLich",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj",
               "RelativeDocumentMoniker": "WebDuLich.csproj",

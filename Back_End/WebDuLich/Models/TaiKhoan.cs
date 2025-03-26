@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace WebDuLich.Models
 {
@@ -16,7 +17,6 @@ namespace WebDuLich.Models
         [StringLength(255)]
         public string? Matkhau { get; set; } // Có thể null nếu đăng nhập OAuth2
 
-        [Phone]
         public string? Sodienthoai { get; set; } // Có thể null
 
         [StringLength(255)]
@@ -35,6 +35,8 @@ namespace WebDuLich.Models
         public DateTime NgayTao { get; set; } = DateTime.UtcNow; // Ngày tạo tài khoản
 
         // Danh sách đơn đặt tour của tài khoản này
-        public virtual ICollection<Dondattour>? Dondattours { get; set; }
+        [JsonIgnore]
+        public virtual ICollection<Dondattour> Dondattours { get; set; } = new List<Dondattour>();
+
     }
 }

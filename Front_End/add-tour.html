@@ -3,80 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/admin/css/admin.css">
     <title>Thêm Tour Du Lịch</title>
     <style>
-        body {
-            background: url('/Front_End/resources/images/brand/banner.jpg') center/cover no-repeat;
-            font-family: Arial, sans-serif;
-            background-color: #f3f4f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-            max-height: 600px;
-            overflow-y: auto;
-        }
-        h2 {
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        input, textarea {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-        .file-upload {
-            position: relative;
-            width: 100%;
-            height: 200px;
-            border: 2px dashed #ccc;
-            border-radius: 6px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            text-align: center;
-        }
-        .file-upload input[type="file"] {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            cursor: pointer;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #0056b3;
-        }
+ .container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px; /* Rộng hơn để dễ nhập liệu */
+    margin: auto;
+    border: 1px solid #ccc;
+}
+
+h2 {
+    text-align: center;
+    color: #152db8; /* Màu chủ đạo của sidebar */
+    font-size: 22px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.file-upload {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    border: 2px dashed #ccc;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+.file-upload:hover {
+    background-color: #e0e0e0;
+}
+.tieude{
+    color: #fff;
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    background-color: #152db8;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #0e1e78;
+}
+
+/* Đảm bảo hiển thị đẹp trên các thiết bị nhỏ hơn */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        max-width: none;
+    }
+}
+
     </style>
 </head>
 <body>
+    <div class="toolbar">
+        <div class="menu-button" onclick="toggleSidebar()">
+            <img src="resources/admin/icons/menu_admin.png" alt="Menu Icon" class="menu">
+        </div>
+        <div class="toolbar-icons">
+            <div class="icon" onclick="toggleFullscreen()">
+                <img src="resources/admin/icons/fullscreen.png" alt="Fullscreen Icon" class="menu-icon">
+            </div>
+            <div class="icon" onclick="toggleDarkMode()">
+                <img src="resources/admin/icons/dark.png" alt="Dark Icon" class="menu-icon">
+            </div>
+            <div class="icon">
+                <img src="resources/admin/icons/option.png" alt="Settings Icon" class="menu-icon">
+            </div>
+            <div class="badge">
+                <img src="resources/images/brand/brandlogo.png" alt="Logo">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Thêm sự kiện onclick vào logo
+        document.querySelector('.badge img').addEventListener('click', function () {
+            window.location.href = 'index.html'; // Chuyển hướng đến trang index.html
+        });
+    </script>
     <div class="container">
         <h2>Thêm Tour Du Lịch</h2>
         <form id="addTourForm">
@@ -133,7 +185,31 @@
             <button type="submit">Thêm Tour</button>
         </form>
     </div>
+
+
+    <!-- Menu của Admin -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            
+            <span class="close-btn" onclick="toggleSidebar()">×</span>
+        </div>
+        <ul>
+            <h2 class="tieude">DU LỊCH - KHÁM PHÁ</h2>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="HoSo.html" id="HoSo-link">Hồ sơ người dùng</a></li>
+            <li><a href="add-tour.html" id="add-tour-link">Thêm Tour</a></li>
+            <li><a href="#">Danh sách hóa đơn</a></li>
+            <li><a href="PhanQuyen.html" id="HoSo-link">Phân Quyền</a></li>
+            <li><a href="#">Đánh giá </a></li>
+            <li><a href="#">Quản lý Tour</a></li>
+            <li><a href="#">Thống kê</a></li>
+        </ul>
+    </div>
+
+    <script src="resources/admin/js/admin.js"></script>
 </body>
+
+
 </html>
 
     

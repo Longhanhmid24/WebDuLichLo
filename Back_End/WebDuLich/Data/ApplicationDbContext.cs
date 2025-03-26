@@ -10,7 +10,7 @@ namespace WebDuLich.Data
         public DbSet<Tour> Tours { get; set; }
         public DbSet<Dondattour> Dondattours { get; set; }
 
-        public DbSet<TaiKhoan> taiKhoans { get; set; }
+        public DbSet<TaiKhoan> TaiKhoans { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

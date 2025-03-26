@@ -168,3 +168,11 @@ D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\obj\Debug\net9.0\WebDuLich.pdb
 D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\obj\Debug\net9.0\WebDuLich.genruntimeconfig.cache
 D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\obj\Debug\net9.0\ref\WebDuLich.dll
 D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.Google.dll
+D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\bin\Debug\net9.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
+D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
+D:\LapTrinhWeb\WebDuLichLo\Back_End\WebDuLich\bin\Debug\net9.0\BCrypt.Net-Next.dll
