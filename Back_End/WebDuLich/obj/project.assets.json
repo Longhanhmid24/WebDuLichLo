@@ -6001,26 +6001,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DELL\\.nuget\\packages\\": {},
-    "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages": {},
+    "C:\\Users\\Nguyen Le Trong Phuc\\.nuget\\packages\\": {},
+    "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj",
+      "projectUniqueName": "C:\\Users\\Nguyen Le Trong Phuc\\OneDrive\\Máy tính\\luu_tru_visual\\XXX\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj",
       "projectName": "WebDuLich",
-      "projectPath": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj",
-      "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\obj\\",
+      "projectPath": "C:\\Users\\Nguyen Le Trong Phuc\\OneDrive\\Máy tính\\luu_tru_visual\\XXX\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj",
+      "packagesPath": "C:\\Users\\Nguyen Le Trong Phuc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Nguyen Le Trong Phuc\\OneDrive\\Máy tính\\luu_tru_visual\\XXX\\WebDuLichLo\\Back_End\\WebDuLich\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
+        "C:\\Program Files\\DevExpress 24.1\\Components\\Offline Packages",
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
+        "C:\\Users\\Nguyen Le Trong Phuc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.1.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -6029,7 +6029,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
+        "C:\\Program Files\\DevExpress 24.1\\Components\\System\\Components\\Packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -6046,7 +6046,7 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
+        "auditMode": "direct"
       },
       "SdkAnalysisLevel": "9.0.100"
     },
@@ -6130,7 +6130,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

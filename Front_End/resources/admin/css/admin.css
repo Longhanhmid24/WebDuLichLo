@@ -116,9 +116,9 @@ body.dark-mode .toolbar {
     padding-top: 20px;
 }
 
+
 .sidebar.show {
-    left: 0; /* Đảm bảo sidebar trượt ra khi có class 'show' */
-    transition: left 0.3s ease-in-out;
+    left:0; /* Đảm bảo sidebar trượt ra khi có class 'show' */
 }
 
 .sidebar-header {
@@ -131,6 +131,7 @@ body.dark-mode .toolbar {
 .close-btn {
     cursor: pointer;
     font-size: 24px;
+    /* margin-left: 209px; dung de chinh nut close sang ben phai cua sidebar add tour, luu ý ben add se hong */
 }
 
 .sidebar ul {
