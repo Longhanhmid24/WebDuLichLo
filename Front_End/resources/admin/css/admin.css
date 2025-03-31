@@ -126,6 +126,7 @@ body.dark-mode .toolbar {
     justify-content: space-between;
     padding: 15px;
     background: #152db8;
+
 }
 
 .close-btn {
@@ -151,4 +152,8 @@ body.dark-mode .toolbar {
 }
 .sidebar ul li a:hover {
     transform: scale3d(1.1, 1.1, 1);
+}
+.sidebar-header h2 {
+    color: white; /* Hoặc chọn một màu tương phản với nền */
+    text-align: left; /* Căn trái tiêu đề */
 }
