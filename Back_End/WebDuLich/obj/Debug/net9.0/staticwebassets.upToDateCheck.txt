@@ -9,6 +9,7 @@ wwwroot\images\tours\ac0c096b-4ab9-4788-8dd2-041dfd941454.jpg
 wwwroot\images\tours\b2c38acb-0220-4869-9eb4-685e676c25a5.jpg
 wwwroot\images\tours\b376b08b-2802-4fd3-b922-ebfbde158659.jpg
 wwwroot\images\tours\bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg
+wwwroot\images\tours\c0fd1b27-9d4b-4a9a-8098-3a28bbce3ea5.jpg
 wwwroot\images\tours\c1cfb663-3bca-41ae-9021-29b0c867f772.jpg
 wwwroot\images\tours\d13c3cba-e296-412a-afa6-b70a98da9982.jpg
 wwwroot\images\tours\e25f8b8f-7e98-42ff-ae24-0dd8e12f3b31.jpg
