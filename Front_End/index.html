@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
     <!-- Thư viện Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/css/get_tour.css">
+
     <!-- Phong cách-->
     <style>
         /* Phong cách thanh ngang */
@@ -247,97 +249,17 @@
    
     
     <!-- Phần điểm đến -->
-    <section id="destinations" class="py-5 bg-light">
-        <div class="container">
-            <!-- Du lịch nước ngoài -->
-            <h2 class="text-center">Du Lịch Nước Ngoài</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="html/tours/paris/paris.html">
-                            <img src="resources/images/destinations/paris.jpg" class="card-img-top" alt="Paris">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title">Paris, Pháp</h3>
-                            <p class="card-text">Thành phố của ánh sáng với tháp Eiffel nổi tiếng.</p>
-                            <p class="card-text"><strong>Giá: $1000</strong></p>
-                            <a href="html/tours/paris/paris.html" class="btn btn-primary">Đặt Vé</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="html/tours/tokyo/tokyo.html">
-                            <img src="resources/images/destinations/tokyo.jpg" class="card-img-top" alt="Tokyo">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title">Tokyo, Nhật Bản</h3>
-                            <p class="card-text">Thành phố hiện đại với văn hóa truyền thống phong phú.</p>
-                            <p class="card-text"><strong>Giá: $1200</strong></p>
-                            <a href="html/tours/tokyo/tokyo.html" class="btn btn-primary">Đặt Vé</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="html/tours/newyork/newyork.html">
-                            <img src="resources/images/destinations/newyork.jpg" class="card-img-top" alt="New York">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title">New York, Mỹ</h3>
-                            <p class="card-text">Thành phố không bao giờ ngủ với nhiều điểm tham quan hấp dẫn.</p>
-                            <p class="card-text"><strong>Giá: $1500</strong></p>
-                            <a href="html/tours/newyork/newyork.html" class="btn btn-primary">Đặt Vé</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Du lịch trong nước -->
-            <h2 class="text-center">Du Lịch Trong Nước</h2>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="html/tours/danang/danang.html">
-                            <img src="resources/images/destinations/danang.jpg" class="card-img-top" alt="Đà Nẵng">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title">Đà Nẵng, Việt Nam</h3>
-                            <p class="card-text">Thành phố biển với nhiều bãi biển đẹp và cầu Rồng nổi tiếng.</p>
-                            <p class="card-text"><strong>Giá: $800</strong></p>
-                            <a href="html/tours/danang/danang.html" class="btn btn-primary">Đặt Vé</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="html/tours/dalat/dalat.html">
-                            <img src="resources/images/destinations/dalat.jpg" class="card-img-top" alt="Đà Lạt">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title">Đà Lạt, Việt Nam</h3>
-                            <p class="card-text">Thành phố ngàn hoa với khí hậu mát mẻ quanh năm.</p>
-                            <p class="card-text"><strong>Giá: $700</strong></p>
-                            <a href="html/tours/dalat/dalat.html" class="btn btn-primary">Đặt Vé</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4">
-                        <a href="html/tours/vungtau/vungtau.html">
-                            <img src="resources/images/destinations/vungtau.jpg" class="card-img-top" alt="Vũng Tàu">
-                        </a>
-                        <div class="card-body">
-                            <h3 class="card-title">Vũng Tàu, Việt Nam</h3>
-                            <p class="card-text">Thành phố biển với nhiều bãi biển đẹp và hải sản tươi ngon.</p>
-                            <p class="card-text"><strong>Giá: $600</strong></p>
-                            <a href="html/tours/vungtau/vungtau.html" class="btn btn-primary">Đặt Vé</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="text-center">
+        <h2>Tour Ngoài Nước</h2>
+        <div id="tour-list-ngoai" class="tour-container"></div>
+    </div>
+    
+    <div class="text-center">
+        <h2>Tour Trong Nước</h2>
+        <div id="tour-list-trongnuoc" class="tour-container"></div>
+    </div>
+    
+    
 
     <!-- Phần Điểm du lịch phổ biến -->
     <section id="popular_destinations" class="py-5 bg-white">
@@ -396,6 +318,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
     <!-- Thư viện Flickity JS -->
     <script src="resources/js/scripts.js"></script> <!-- Thêm tệp JS tùy chỉnh -->
+    <script src="resources/js/get_tour.js"></script>
+
 </body>
 
 </html>

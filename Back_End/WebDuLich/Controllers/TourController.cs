@@ -3,6 +3,7 @@ using WebDuLich.Models;
 using WebDuLich.Data;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace WebDuLich.Controllers
 {
@@ -60,29 +61,24 @@ namespace WebDuLich.Controllers
             }
         }
 
-
-
-        // API lấy danh sách tất cả Tour
-        //[HttpGet("all")]
-        //public async Task<IActionResult> GetAllTours()
-        //{
-        //    var tours = await _context.Tours.ToListAsync();
-        //    return Ok(tours);
-        //}
-
-        [HttpGet("long")]
-        public async Task<IActionResult> GetRandomTours()
+        [HttpGet("get-tour")]
+        public async Task<IActionResult> GetAllTours()
         {
-            var tours = await _context.Tours.ToListAsync();
-            var randomTours = tours.OrderBy(t => Guid.NewGuid()).ToList(); // Xáo trộn ngẫu nhiên
-            return Ok(randomTours);
+            var baseUrl = $"{Request.Scheme}://{Request.Host}"; // Lấy URL gốc của server
+
+            var tours = await _context.Tours
+                .Select(t => new
+                {
+                    t.Tentour,
+                    t.Mota,
+                    t.Gia,
+                    HinhAnh = string.IsNullOrEmpty(t.HinhAnh) ? null : $"{baseUrl}{t.HinhAnh}", // Tạo đường dẫn đầy đủ
+                    t.LoaiTour
+                })
+                .ToListAsync();
+
+            return Ok(tours);
         }
 
-        [HttpGet("popular")]
-        public async Task<IActionResult> GetPopularTours()
-        {
-            var randomTours = await _context.Tours.OrderBy(r => Guid.NewGuid()).Take(7).ToListAsync();
-            return Ok(randomTours);
-        }
     }
 }

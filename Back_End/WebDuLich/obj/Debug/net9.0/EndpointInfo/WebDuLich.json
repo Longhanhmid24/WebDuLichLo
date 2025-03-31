@@ -214,19 +214,7 @@
         }
       }
     },
-    "/api/Tour/long": {
-      "get": {
-        "tags": [
-          "Tour"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Tour/popular": {
+    "/api/Tour/get-tour": {
       "get": {
         "tags": [
           "Tour"

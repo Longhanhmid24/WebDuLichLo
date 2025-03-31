@@ -366,13 +366,7 @@ footer {
         margin: 5px;
     }
 
-    .card-body h3 {
-        font-size: 1.2em;
-    }
 
-    .card-body p {
-        font-size: 0.9em;
-    }
 
     .container {
         display: flex;

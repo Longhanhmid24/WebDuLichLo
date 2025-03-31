@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "IT3F3vFZTTavbQQhmVYpFSZs3Nf6pypsCwAK+/hPmDs=",
+  "Hash": "+4/HLlC1pICPeKpzxWEYJw6fjOpgSi9YgTPeNS3KbH4=",
   "Source": "WebDuLich",
   "BasePath": "_content/WebDuLich",
   "Mode": "Default",
@@ -101,6 +101,27 @@
       "OriginalItemSpec": "wwwroot\\images\\tours\\4028b4f6-4beb-40fb-801f-3ee49fbfa556.jpg"
     },
     {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\4805c6a7-d852-4dc8-8b62-198f2f90e930.webp",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "images/tours/4805c6a7-d852-4dc8-8b62-198f2f90e930#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3zefo6ogmi",
+      "Integrity": "cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\tours\\4805c6a7-d852-4dc8-8b62-198f2f90e930.webp"
+    },
+    {
       "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg",
       "SourceId": "WebDuLich",
       "SourceType": "Discovered",
@@ -122,6 +143,27 @@
       "OriginalItemSpec": "wwwroot\\images\\tours\\65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg"
     },
     {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\98b62a4e-ee26-4cd4-8cef-99b5fef692fe.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "images/tours/98b62a4e-ee26-4cd4-8cef-99b5fef692fe#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6b42j3s3g0",
+      "Integrity": "UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\tours\\98b62a4e-ee26-4cd4-8cef-99b5fef692fe.jpg"
+    },
+    {
       "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\ac0c096b-4ab9-4788-8dd2-041dfd941454.jpg",
       "SourceId": "WebDuLich",
       "SourceType": "Discovered",
@@ -141,6 +183,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\tours\\ac0c096b-4ab9-4788-8dd2-041dfd941454.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b2c38acb-0220-4869-9eb4-685e676c25a5.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "images/tours/b2c38acb-0220-4869-9eb4-685e676c25a5#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "l49xn9lask",
+      "Integrity": "i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\tours\\b2c38acb-0220-4869-9eb4-685e676c25a5.jpg"
     },
     {
       "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b376b08b-2802-4fd3-b922-ebfbde158659.jpg",
@@ -183,6 +246,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\tours\\c1cfb663-3bca-41ae-9021-29b0c867f772.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\d13c3cba-e296-412a-afa6-b70a98da9982.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "images/tours/d13c3cba-e296-412a-afa6-b70a98da9982#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6b42j3s3g0",
+      "Integrity": "UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\tours\\d13c3cba-e296-412a-afa6-b70a98da9982.jpg"
     },
     {
       "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\e25f8b8f-7e98-42ff-ae24-0dd8e12f3b31.jpg",
@@ -536,6 +620,88 @@
       ]
     },
     {
+      "Route": "images/tours/4805c6a7-d852-4dc8-8b62-198f2f90e930.3zefo6ogmi.webp",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\4805c6a7-d852-4dc8-8b62-198f2f90e930.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "403728"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 07:31:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3zefo6ogmi"
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/4805c6a7-d852-4dc8-8b62-198f2f90e930.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/4805c6a7-d852-4dc8-8b62-198f2f90e930.webp",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\4805c6a7-d852-4dc8-8b62-198f2f90e930.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "403728"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 07:31:39 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio="
+        }
+      ]
+    },
+    {
       "Route": "images/tours/65f8bff8-fdff-42f7-8c69-1fb948fa1769.834td59vbg.jpg",
       "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg",
       "Selectors": [],
@@ -618,6 +784,88 @@
       ]
     },
     {
+      "Route": "images/tours/98b62a4e-ee26-4cd4-8cef-99b5fef692fe.6b42j3s3g0.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\98b62a4e-ee26-4cd4-8cef-99b5fef692fe.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82783"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 07:46:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6b42j3s3g0"
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/98b62a4e-ee26-4cd4-8cef-99b5fef692fe.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/98b62a4e-ee26-4cd4-8cef-99b5fef692fe.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\98b62a4e-ee26-4cd4-8cef-99b5fef692fe.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82783"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 07:46:09 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E="
+        }
+      ]
+    },
+    {
       "Route": "images/tours/ac0c096b-4ab9-4788-8dd2-041dfd941454.834td59vbg.jpg",
       "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\ac0c096b-4ab9-4788-8dd2-041dfd941454.jpg",
       "Selectors": [],
@@ -696,6 +944,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-9GoDklcdurk2mNjgApIe1rYGDfP5dgpIds1CWvzgkMA="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/b2c38acb-0220-4869-9eb4-685e676c25a5.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b2c38acb-0220-4869-9eb4-685e676c25a5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8103"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 07:43:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/b2c38acb-0220-4869-9eb4-685e676c25a5.l49xn9lask.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b2c38acb-0220-4869-9eb4-685e676c25a5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8103"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 07:43:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l49xn9lask"
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/b2c38acb-0220-4869-9eb4-685e676c25a5.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo="
         }
       ]
     },
@@ -860,6 +1190,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-WFKZkABpDuBmMmVQKIHIyVn/8d3FoHz7FsoodMZwp1I="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/d13c3cba-e296-412a-afa6-b70a98da9982.6b42j3s3g0.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\d13c3cba-e296-412a-afa6-b70a98da9982.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82783"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 07:32:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6b42j3s3g0"
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/d13c3cba-e296-412a-afa6-b70a98da9982.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/d13c3cba-e296-412a-afa6-b70a98da9982.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\d13c3cba-e296-412a-afa6-b70a98da9982.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82783"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 07:32:58 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E="
         }
       ]
     },

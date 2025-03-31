@@ -129,18 +129,8 @@
   },
   {
     "ContainingType": "WebDuLich.Controllers.TourController",
-    "Method": "GetRandomTours",
-    "RelativePath": "api/Tour/long",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "WebDuLich.Controllers.TourController",
-    "Method": "GetPopularTours",
-    "RelativePath": "api/Tour/popular",
+    "Method": "GetAllTours",
+    "RelativePath": "api/Tour/get-tour",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

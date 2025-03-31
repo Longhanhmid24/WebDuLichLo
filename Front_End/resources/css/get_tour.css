@@ -1,0 +1,89 @@
+.text-center {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Grid layout cho danh sách tour */
+.tour-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 20px;
+    align-items: stretch; /* Đảm bảo tất cả item có cùng chiều cao */
+    height: 100%;
+}
+
+/* Mỗi tour */
+.tour-item {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
+
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 400px;
+}
+
+.tour-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Ảnh tour */
+.card-img-top {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Nội dung trong card */
+.card-body {
+    padding: 15px;
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Tiêu đề */
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Mô tả */
+.card-text {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+/* Giá tour */
+.tour-price {
+    font-size: 18px;
+    color: #f7931e;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Nút đặt tour */
+.btn-book {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 15px;
+    width: 100%;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-book:hover {
+    background-color: #0056b3;
+}

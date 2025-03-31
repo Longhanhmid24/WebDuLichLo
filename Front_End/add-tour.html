@@ -126,7 +126,7 @@ button:hover {
     <script>
         // Thêm sự kiện onclick vào logo
         document.querySelector('.badge img').addEventListener('click', function () {
-            window.location.href = 'index.html'; // Chuyển hướng đến trang index.html
+            window.location.href = '../../index.html'; // Chuyển hướng đến trang index.html
         });
     </script>
     <div class="container">
@@ -214,55 +214,62 @@ button:hover {
 
     
     <script>
-        function previewImage(event) {
-            const preview = document.getElementById("preview");
-            const uploadText = document.getElementById("upload-text");
+function previewImage(event) {
+    const preview = document.getElementById("preview");
+    const uploadText = document.getElementById("upload-text");
     
-            const file = event.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    preview.src = e.target.result;
-                    preview.style.display = "block";
-                    uploadText.style.display = "none";
-                };
-                reader.readAsDataURL(file);
-            }
-        }
-    
-        document.getElementById("addTourForm").addEventListener("submit", function (e) {
-    e.preventDefault(); // Ngăn chặn hành động mặc định (tránh việc reload trang)
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            preview.style.display = "block";
+            uploadText.style.display = "none";
+        };
+        reader.readAsDataURL(file);
+    }
+}
 
-    const formData = new FormData(); // Tạo một đối tượng FormData để gửi dữ liệu dưới dạng multipart/form-data
+document.getElementById("addTourForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    
+    const formData = new FormData();
     formData.append("Tentour", document.getElementById("Tentour").value);
     formData.append("Gia", document.getElementById("Gia").value);
     formData.append("Mota", document.getElementById("Mota").value);
     formData.append("Sokhach", document.getElementById("Sokhach").value);
-    formData.append("Ngay", document.getElementById("Ngay").value); // Thêm ngày khởi hành
+    formData.append("Ngay", document.getElementById("Ngay").value);
+    
+    // Lấy giá trị LoaiTour từ input radio
+    const loaiTourValue = document.querySelector('input[name="LoaiTour"]:checked');
+    if (loaiTourValue) {
+        formData.append("LoaiTour", loaiTourValue.value);
+    }
 
     const imageFile = document.getElementById("HinhAnh").files[0];
     if (imageFile) {
-        formData.append("imageFile", imageFile); // Thêm ảnh vào FormData nếu có
+        formData.append("imageFile", imageFile);
     }
 
     fetch("https://localhost:7265/api/Tour/add", {
         method: "POST",
         body: formData
     })
-        .then(response => response.json())
-        .then(data => {
-            alert("Tour đã được thêm thành công!");
-            console.log("Dữ liệu trả về:", data);
-            document.getElementById("addTourForm").reset();
-            document.getElementById("preview").src = "";
-            document.getElementById("preview").style.display = "none";
-            document.getElementById("upload-text").style.display = "block";
-        })
-        .catch(error => {
-            console.error("Lỗi khi gửi yêu cầu:", error);
-            alert("Đã xảy ra lỗi: " + error.message);
-        });
+    .then(response => response.json())
+    .then(data => {
+        alert("Tour đã được thêm thành công!");
+        console.log("Dữ liệu trả về:", data);
+        document.getElementById("addTourForm").reset();
+        document.getElementById("preview").src = "";
+        document.getElementById("preview").style.display = "none";
+        document.getElementById("upload-text").style.display = "block";
+    })
+    .catch(error => {
+        console.error("Lỗi khi gửi yêu cầu:", error);
+        alert("Đã xảy ra lỗi: " + error.message);
+    });
 });
+
     </script>
     
 </body>
