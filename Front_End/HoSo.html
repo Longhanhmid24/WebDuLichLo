@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hồ Sơ Người Dùng</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="resources/admin/css/admin.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,6 +40,53 @@
 </head>
 
 <body>
+
+    <!-- Thanh công cụ của Admin -->
+    <div class="toolbar">
+        <div class="menu-button" onclick="toggleSidebar()">
+            <img src="resources/admin/icons/menu_admin.png" alt="Menu Icon" class="menu">
+        </div>
+        <div class="toolbar-icons">
+            <div class="icon" onclick="toggleFullscreen()">
+                <img src="resources/admin/icons/fullscreen.png" alt="Fullscreen Icon" class="menu-icon">
+            </div>
+            <div class="icon" onclick="toggleDarkMode()">
+                <img src="resources/admin/icons/dark.png" alt="Dark Icon" class="menu-icon">
+            </div>
+            <div class="icon">
+                <img src="resources/admin/icons/option.png" alt="Settings Icon" class="menu-icon">
+            </div>
+            <div class="badge">
+                <img src="resources/images/brand/brandlogo.png" alt="Logo">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Thêm sự kiện onclick vào logo
+        document.querySelector('.badge img').addEventListener('click', function () {
+            window.location.href = 'index.html'; // Chuyển hướng đến trang index.html
+        });
+    </script>
+
+    <!-- Menu của Admin -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>DU LỊCH - KHÁM PHÁ</h2>
+            <span class="close-btn" onclick="toggleSidebar()">×</span>
+        </div>
+        <ul>
+            <li><a href="admin.html">Trang chủ</a></li>
+            <li><a href="HoSo.html" id="HoSo-link">Hồ sơ người dùng</a></li>
+            <li><a href="add-tour.html" id="add-tour-link">Thêm Tour</a></li>
+            <li><a href="#">Danh sách hóa đơn</a></li>
+            <li><a href="PhanQuyen.html" id="HoSo-link">Phân Quyền</a></li>
+            <li><a href="#">Đánh giá </a></li>
+            <li><a href="#">Quản lý Tour</a></li>
+            <li><a href="#">Thống kê</a></li>
+        </ul>
+    </div>
+
     <div class="profile-container">
         <h2>Hồ Sơ Người Dùng</h2>
         <form>
@@ -55,7 +103,7 @@
                 <input type="email" class="form-control" id="email" placeholder="Nhập email" required>
             </div>
             <div class="form-group">
-                <label for="address">Địa Chỉ</label>
+                <label for="address"> Địa Chỉ</label>
                 <textarea class="form-control" id="address" rows="3" placeholder="Nhập địa chỉ" required></textarea>
             </div>
             <div class="form-group">
@@ -74,7 +122,7 @@
             <button type="submit" class="btn btn-primary">Cập Nhật Thông Tin</button>
         </form>
     </div>
+
+    <script src="resources/admin/js/admin.js"></script>
 </body>
-
-
 </html>

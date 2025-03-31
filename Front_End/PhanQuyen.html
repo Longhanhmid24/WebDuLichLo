@@ -4,19 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phân Quyền Người Dùng</title>
+    <link rel="stylesheet" href="resources/admin/css/admin.css">
     <style>
         body {
             background: url('/Front_End/resources/images/brand/hinh-nen-vu-tru-72.jpg') center/cover no-repeat;
             font-family: Arial, sans-serif;
             background-color: #f3f4f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
             margin: 0;
         }
 
+        /* Thanh công cụ của Admin */
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: #343a40;
+            color: white;
+        }
 
+        .menu-button {
+            cursor: pointer;
+        }
+
+        .toolbar-icons {
+            display: flex;
+            align-items: center;
+        }
+
+        .icon {
+            margin-left: 15px;
+            cursor: pointer;
+        }
+
+        .badge img {
+            height: 40px;
+        }
 
         /* Định dạng container danh sách người dùng */
         .user-list-container {
@@ -28,9 +51,8 @@
             padding: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
             background-color: #ffffff; /* Màu nền trắng */
+            margin: 50px auto; /* Căn giữa */
         }
-
-        
 
         /* Định dạng từng mục trong danh sách */
         .user-item {
@@ -59,12 +81,59 @@
     </style>
 </head>
 <body>
-    <h1>Phân Quyền Người Dùng</h1>
+
+    <!-- Thanh công cụ của Admin -->
+    <div class="toolbar">
+        <div class="menu-button" onclick="toggleSidebar()">
+            <img src="resources/admin/icons/menu_admin.png" alt="Menu Icon" class="menu">
+        </div>
+        <div class="toolbar-icons">
+            <div class="icon" onclick="toggleFullscreen()">
+                <img src="resources/admin/icons/fullscreen.png" alt="Fullscreen Icon" class="menu-icon">
+            </div>
+            <div class="icon" onclick="toggleDarkMode()">
+                <img src="resources/admin/icons/dark.png" alt="Dark Icon" class="menu-icon">
+            </div>
+            <div class="icon">
+                <img src="resources/admin/icons/option.png" alt="Settings Icon" class="menu-icon">
+            </div>
+            <div class="badge">
+                <img src="resources/images/brand/brandlogo.png" alt="Logo">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Thêm sự kiện onclick vào logo
+        document.querySelector('.badge img').addEventListener('click', function () {
+            window.location.href = 'index.html'; // Chuyển hướng đến trang index.html
+        });
+    </script>
+
+    <!-- Menu của Admin -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <h2>DU LỊCH - KHÁM PHÁ</h2>
+            <span class="close-btn" onclick="toggleSidebar()">×</span>
+        </div>
+        <ul>
+            <li><a href="admin.html">Trang chủ</a></li>
+            <li><a href="HoSo.html" id="HoSo-link">Hồ sơ người dùng</a></li>
+            <li><a href="add-tour.html" id="add-tour-link">Thêm Tour</a></li>
+            <li><a href="#">Danh sách hóa đơn</a></li>
+            <li><a href="PhanQuyen.html" id="HoSo-link">Phân Quyền</a></li>
+            <li><a href="#">Đánh giá </a></li>
+            <li><a href="#">Quản lý Tour</a></li>
+            <li><a href="#">Thống kê</a></li>
+        </ul>
+    </div>
+
     <div class="user-list-container">
+        <h1>Phân Quyền Người Dùng</h1>
         <div class="user-item">
             <span>Người Dùng 1</span>
             <select>
-                <option value="user">User</option>
+                <option value="user">User </option>
                 <option value="admin">Admin</option>
                 <option value="manager">Manager</option>
             </select>
@@ -72,7 +141,7 @@
         <div class="user-item">
             <span>Người Dùng 2</span>
             <select>
-                <option value="user">User</option>
+                <option value="user">User </option>
                 <option value="admin">Admin</option>
                 <option value="manager">Manager</option>
             </select>
@@ -80,7 +149,7 @@
         <div class="user-item">
             <span>Người Dùng 3</span>
             <select>
-                <option value="user">User</option>
+                <option value="user">User </option>
                 <option value="admin">Admin</option>
                 <option value="manager">Manager</option>
             </select>
@@ -88,7 +157,7 @@
         <div class="user-item">
             <span>Người Dùng 4</span>
             <select>
-                <option value="user">User</option>
+                <option value="user">User </option>
                 <option value="admin">Admin</option>
                 <option value="manager">Manager</option>
             </select>
@@ -96,7 +165,7 @@
         <div class="user-item">
             <span>Người Dùng 5</span>
             <select>
-                <option value="user">User</option>
+                <option value="user">User </option>
                 <option value="admin">Admin</option>
                 <option value="manager">Manager</option>
             </select>
@@ -104,11 +173,13 @@
         <div class="user-item">
             <span>Người Dùng 6</span>
             <select>
-                <option value="user">User</option>
+                <option value="user">User </option>
                 <option value="admin">Admin</option>
                 <option value="manager">Manager</option>
             </select>
         </div>
     </div>
+
+    <script src="resources/admin/js/admin.js"></script>
 </body>
 </html>
