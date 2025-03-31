@@ -905,6 +905,88 @@
       ]
     },
     {
+      "Route": "images/tours/c0fd1b27-9d4b-4a9a-8098-3a28bbce3ea5.jpg",
+      "AssetFile": "images/tours/c0fd1b27-9d4b-4a9a-8098-3a28bbce3ea5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252518"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 10:07:01 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/c0fd1b27-9d4b-4a9a-8098-3a28bbce3ea5.qlvuuauj9c.jpg",
+      "AssetFile": "images/tours/c0fd1b27-9d4b-4a9a-8098-3a28bbce3ea5.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252518"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 10:07:01 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qlvuuauj9c"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU="
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/c0fd1b27-9d4b-4a9a-8098-3a28bbce3ea5.jpg"
+        }
+      ]
+    },
+    {
       "Route": "images/tours/c1cfb663-3bca-41ae-9021-29b0c867f772.cff5pr7omk.jpg",
       "AssetFile": "images/tours/c1cfb663-3bca-41ae-9021-29b0c867f772.jpg",
       "Selectors": [],
