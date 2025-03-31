@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+4/HLlC1pICPeKpzxWEYJw6fjOpgSi9YgTPeNS3KbH4=",
+  "Hash": "XIv3JhNk40WDx2dKbisOb/bg3WXMrmYPYHLqoHMIEHg=",
   "Source": "WebDuLich",
   "BasePath": "_content/WebDuLich",
   "Mode": "Default",
@@ -225,6 +225,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\tours\\b376b08b-2802-4fd3-b922-ebfbde158659.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "images/tours/bb0ac12e-f21a-483f-99e2-1fa2038f3a03#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "l6tbyhpz9c",
+      "Integrity": "ff5YncPEhIgreAYdUCkHy9OUYsN2U3ohhRCYAaZZR6s=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\tours\\bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg"
     },
     {
       "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\c1cfb663-3bca-41ae-9021-29b0c867f772.jpg",
@@ -642,7 +663,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 07:31:39 GMT"
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -687,7 +708,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 07:31:39 GMT"
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -806,7 +827,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 07:46:09 GMT"
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -851,7 +872,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 07:46:09 GMT"
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -970,7 +991,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 07:43:31 GMT"
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1007,7 +1028,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 07:43:31 GMT"
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1108,6 +1129,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-FwvsHjU7j8o9J1e1WAabpJFHqlSiDc7TpSDdbe7BQdo="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "85450"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ff5YncPEhIgreAYdUCkHy9OUYsN2U3ohhRCYAaZZR6s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-ff5YncPEhIgreAYdUCkHy9OUYsN2U3ohhRCYAaZZR6s="
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/bb0ac12e-f21a-483f-99e2-1fa2038f3a03.l6tbyhpz9c.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "85450"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"ff5YncPEhIgreAYdUCkHy9OUYsN2U3ohhRCYAaZZR6s=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l6tbyhpz9c"
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-ff5YncPEhIgreAYdUCkHy9OUYsN2U3ohhRCYAaZZR6s="
         }
       ]
     },
@@ -1216,7 +1319,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 07:32:58 GMT"
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -1261,7 +1364,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 31 Mar 2025 07:32:58 GMT"
+          "Value": "Mon, 31 Mar 2025 10:01:53 GMT"
         },
         {
           "Name": "Cache-Control",
