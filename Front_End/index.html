@@ -183,10 +183,14 @@
                         <li class="nav-item account-icon dropdown">
                             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Account Icon">
                             <div class="dropdown-menu">
-                                <a href="html/auth/login.html">Đăng Nhập</a>
-                                <a href="html/auth/register.html">Đăng Ký</a>
+                                <div id="user-info">
+                                    <a href="html/auth/login.html" id="login-link">Đăng nhập</a>
+                                    <a href="html/auth/register.html" id="register-link">Đăng ký</a>
+                                </div>
                             </div>
+                            <span id="user-name" style="color: white; margin-left: 10px;"></span>
                         </li>
+                        
                     </ul>
                 </div>
             </nav>
@@ -319,6 +323,7 @@
     <!-- Thư viện Flickity JS -->
     <script src="resources/js/scripts.js"></script> <!-- Thêm tệp JS tùy chỉnh -->
     <script src="resources/js/get_tour.js"></script>
+    <script src="html/auth/oauthen/login.js"></script>
 
 </body>
 
