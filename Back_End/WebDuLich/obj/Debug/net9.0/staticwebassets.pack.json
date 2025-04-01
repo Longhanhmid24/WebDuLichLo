@@ -1,92 +1,104 @@
 {
   "Files": [
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\anh-gai-xinh-14.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\anh-gai-xinh-14.jpg",
       "PackagePath": "staticwebassets\\images\\anh-gai-xinh-14.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\0082fa20-866d-4e3a-954e-4a317834eb4a.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\0082fa20-866d-4e3a-954e-4a317834eb4a.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\0082fa20-866d-4e3a-954e-4a317834eb4a.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\39da5f7b-97d0-4c0e-bfdd-8c9137ba9ce1.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\27552c5a-1c80-49f8-87e4-89afb7d597ea.webp",
+      "PackagePath": "staticwebassets\\images\\tours\\27552c5a-1c80-49f8-87e4-89afb7d597ea.webp"
+    },
+    {
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\39da5f7b-97d0-4c0e-bfdd-8c9137ba9ce1.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\39da5f7b-97d0-4c0e-bfdd-8c9137ba9ce1.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\3b3aecdb-8963-408e-b285-390ae2660800.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\3b3aecdb-8963-408e-b285-390ae2660800.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\3b3aecdb-8963-408e-b285-390ae2660800.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\4028b4f6-4beb-40fb-801f-3ee49fbfa556.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\4028b4f6-4beb-40fb-801f-3ee49fbfa556.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\4028b4f6-4beb-40fb-801f-3ee49fbfa556.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\4805c6a7-d852-4dc8-8b62-198f2f90e930.webp",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\4805c6a7-d852-4dc8-8b62-198f2f90e930.webp",
       "PackagePath": "staticwebassets\\images\\tours\\4805c6a7-d852-4dc8-8b62-198f2f90e930.webp"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\812d1e26-c733-4a1e-898b-d6c5a16bb01e.png",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\812d1e26-c733-4a1e-898b-d6c5a16bb01e.png",
       "PackagePath": "staticwebassets\\images\\tours\\812d1e26-c733-4a1e-898b-d6c5a16bb01e.png"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\97074d06-953a-464f-a55e-6f80617f93ae.png",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\97074d06-953a-464f-a55e-6f80617f93ae.png",
       "PackagePath": "staticwebassets\\images\\tours\\97074d06-953a-464f-a55e-6f80617f93ae.png"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\98b62a4e-ee26-4cd4-8cef-99b5fef692fe.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\98b62a4e-ee26-4cd4-8cef-99b5fef692fe.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\98b62a4e-ee26-4cd4-8cef-99b5fef692fe.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\a7fad951-9769-4305-843b-1cd859ce2359.png",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\a7fad951-9769-4305-843b-1cd859ce2359.png",
       "PackagePath": "staticwebassets\\images\\tours\\a7fad951-9769-4305-843b-1cd859ce2359.png"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\ac0c096b-4ab9-4788-8dd2-041dfd941454.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\ac0c096b-4ab9-4788-8dd2-041dfd941454.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\ac0c096b-4ab9-4788-8dd2-041dfd941454.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b2c38acb-0220-4869-9eb4-685e676c25a5.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b2c38acb-0220-4869-9eb4-685e676c25a5.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\b2c38acb-0220-4869-9eb4-685e676c25a5.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b35d16f1-8d22-4ff5-b656-2932f6df371c.png",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b35d16f1-8d22-4ff5-b656-2932f6df371c.png",
       "PackagePath": "staticwebassets\\images\\tours\\b35d16f1-8d22-4ff5-b656-2932f6df371c.png"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b376b08b-2802-4fd3-b922-ebfbde158659.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\b376b08b-2802-4fd3-b922-ebfbde158659.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\b376b08b-2802-4fd3-b922-ebfbde158659.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\bb0ac12e-f21a-483f-99e2-1fa2038f3a03.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\c0fd1b27-9d4b-4a9a-8098-3a28bbce3ea5.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\c0fd1b27-9d4b-4a9a-8098-3a28bbce3ea5.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\c0fd1b27-9d4b-4a9a-8098-3a28bbce3ea5.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\c1cfb663-3bca-41ae-9021-29b0c867f772.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\c1cfb663-3bca-41ae-9021-29b0c867f772.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\c1cfb663-3bca-41ae-9021-29b0c867f772.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\c5c18d50-668c-4392-b633-ae9326f1dd9b.png",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\c5c18d50-668c-4392-b633-ae9326f1dd9b.png",
       "PackagePath": "staticwebassets\\images\\tours\\c5c18d50-668c-4392-b633-ae9326f1dd9b.png"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\d13c3cba-e296-412a-afa6-b70a98da9982.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\d13c3cba-e296-412a-afa6-b70a98da9982.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\d13c3cba-e296-412a-afa6-b70a98da9982.jpg"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\d80be0b6-a9e6-4ca9-8022-2bf8d640c8c4.png",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\d80be0b6-a9e6-4ca9-8022-2bf8d640c8c4.png",
       "PackagePath": "staticwebassets\\images\\tours\\d80be0b6-a9e6-4ca9-8022-2bf8d640c8c4.png"
     },
     {
-      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\e25f8b8f-7e98-42ff-ae24-0dd8e12f3b31.jpg",
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\e25f8b8f-7e98-42ff-ae24-0dd8e12f3b31.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\e25f8b8f-7e98-42ff-ae24-0dd8e12f3b31.jpg"
+    },
+    {
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\e9592f69-0946-404b-b114-9c65fbce5caf.webp",
+      "PackagePath": "staticwebassets\\images\\tours\\e9592f69-0946-404b-b114-9c65fbce5caf.webp"
+    },
+    {
+      "Id": "D:\\CÁC FILE KO DC XOÁ\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\febb2e31-a06a-448b-8a9f-647626e333f3.jpg",
+      "PackagePath": "staticwebassets\\images\\tours\\febb2e31-a06a-448b-8a9f-647626e333f3.jpg"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebDuLich.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
