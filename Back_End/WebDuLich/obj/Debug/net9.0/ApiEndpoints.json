@@ -136,5 +136,15 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TourController",
+    "Method": "GetRandomTours",
+    "RelativePath": "api/Tour/random-tours",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   }
 ]

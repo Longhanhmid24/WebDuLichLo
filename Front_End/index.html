@@ -8,7 +8,7 @@
     <title>Trang Web Du Lịch</title>
     <link rel="stylesheet" href="resources/css/styles.css">
         <!-- Thư viện Flickity CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- Thư viện Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="resources/css/get_tour.css">
@@ -151,6 +151,34 @@
             font-size: 16px;
         }
 
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
         
     </style>
 </head>
@@ -255,50 +283,41 @@
     <!-- Phần điểm đến -->
     <div class="text-center">
         <h2>Tour Ngoài Nước</h2>
-        <div id="tour-list-ngoai" class="tour-container"></div>
+        <div id="tour-list-ngoai" class="tour-container">
+            <!-- Example tour item dynamically added -->
+            <div class="tour-item">
+                <h3>Tên Tour Ngoài Nước</h3>
+                <button class="btn btn-primary" onclick="openBookingModal('Tên Tour Ngoài Nước')">Đặt Vé Ngay</button>
+            </div>
+            
+        </div>
     </div>
     
     <div class="text-center">
         <h2>Tour Trong Nước</h2>
-        <div id="tour-list-trongnuoc" class="tour-container"></div>
+        <div id="tour-list-trongnuoc" class="tour-container">
+            <!-- Example tour item dynamically added -->
+            <div class="tour-item">
+                <h3>Tên Tour Trong Nước</h3>
+                <button class="btn btn-primary" onclick="openBookingModal('Tên Tour Trong Nước')">Đặt Vé Ngay</button>
+            </div>
+            <!-- Repeat for other tours -->
+        </div>
     </div>
     
     
 
-    <!-- Phần Điểm du lịch phổ biến -->
-    <section id="popular_destinations" class="py-5 bg-white">
-        <h2 class="text-center">Các Điểm Du Lịch Phổ Biến</h2>
-        <div class="carousel js-flickity" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
-            <div class="carousel-cell" data-href="html/tours/paris/paris.html">
-                <img src="resources/images/destinations/paris.jpg" alt="Paris" class="carousel-image">
-                <div class="carousel-caption">Paris</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/tokyo/tokyo.html">
-                <img src="resources/images/destinations/tokyo.jpg" alt="Tokyo" class="carousel-image">
-                <div class="carousel-caption">Tokyo</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/newyork/newyork.html">
-                <img src="resources/images/destinations/newyork.jpg" alt="New York" clas=s="carousel-image">
-                <div class="carousel-caption">New York</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/danang/danang.html">
-                <img src="resources/images/destinations/danang.jpg" alt="Đà Nẵng" class="carousel-image">
-                <div class="carousel-caption">Đà Nẵng</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/dalat/dalat.html">
-                <img src="resources/images/destinations/dalat.jpg" alt="Đà Lạt" class="carousel-image">
-                <div class="carousel-caption">Đà Lạt</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/vungtau/vungtau.html">
-                <img src="resources/images/destinations/vungtau.jpg" alt="Vũng Tàu" class="carousel-image">
-                <div class="carousel-caption">Vũng Tàu</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/hanoi/hanoi.html">
-                <img src="resources/images/destinations/hanoi.jpg" alt="Hà Nội" class="carousel-image">
-                <div class="carousel-caption">Hà Nội</div>
-            </div>
+
+ <!-- Phần Điểm du lịch phổ biến -->
+ <section id="popular_destinations" class="py-5 bg-white">
+    <h2 class="text-center">Các Điểm Du Lịch Phổ Biến</h2>
+    <div id="tourCarousel" class="carousel js-flickity tour-carousel-style">
+        <div class="carousel-placeholder">Đang tải dữ liệu tour...</div>
+
+
         </div>
-    </section>
+</section>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
     <!-- Phần giới thiệu -->
     <section id="about" class="py-5 bg-light">
@@ -324,6 +343,36 @@
     <script src="resources/js/scripts.js"></script> <!-- Thêm tệp JS tùy chỉnh -->
     <script src="resources/js/get_tour.js"></script>
     <script src="html/auth/oauthen/login.js"></script>
+    <script src="resources/js/random_tour.js"></script>
+
+    <!-- Modal for booking -->
+    <div id="bookingModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close" onclick="closeBookingModal()">&times;</span>
+            <h2>Thông Tin Đặt Vé</h2>
+            <p id="selectedTour"></p>
+            <form>
+                <label for="name">Họ và Tên:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="phone">Số Điện Thoại:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <button type="submit" class="btn btn-success">Xác Nhận</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openBookingModal(tourName) {
+            document.getElementById('selectedTour').textContent = `Bạn đang đặt vé cho: ${tourName}`;
+            document.getElementById('bookingModal').style.display = 'flex';
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').style.display = 'none';
+        }
+    </script>
 
 </body>
 

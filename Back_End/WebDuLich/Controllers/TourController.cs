@@ -57,6 +57,7 @@ namespace WebDuLich.Controllers
             }
             catch (Exception ex)
             {
+
                 return StatusCode(500, $"Lỗi server: {ex.Message}");
             }
         }
@@ -78,6 +79,33 @@ namespace WebDuLich.Controllers
                 .ToListAsync();
 
             return Ok(tours);
+        }
+
+        [HttpGet("random-tours")]
+        public async Task<IActionResult> GetRandomTours()
+        {
+            try
+            {
+                var baseUrl = $"{Request.Scheme}://{Request.Host}";
+
+                var randomTours = await _context.Tours
+                    .OrderBy(t => Guid.NewGuid())
+                    .Take(6)
+                    .Select(t => new
+                    {
+                        t.Tentour,
+                        HinhAnh = string.IsNullOrEmpty(t.HinhAnh) ? null : $"{baseUrl}{t.HinhAnh}"
+                    })
+                    .ToListAsync();
+
+                return Ok(randomTours);
+            }
+            catch (Exception ex)
+            {
+                // Ghi log lỗi
+                Console.WriteLine($"Lỗi trong GetRandomTours: {ex.Message}");
+                return StatusCode(500, "Lỗi server nội bộ.");
+            }
         }
 
     }
