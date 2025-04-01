@@ -1,4 +1,4 @@
-wwwroot\images\anh-gai-xinh-14.jpg
+wwwroot\images\anhmacdinh.jpg
 wwwroot\images\tours\0082fa20-866d-4e3a-954e-4a317834eb4a.jpg
 wwwroot\images\tours\12d6904c-dce9-4dd4-b663-8524bf375ac4.webp
 wwwroot\images\tours\27552c5a-1c80-49f8-87e4-89afb7d597ea.webp
