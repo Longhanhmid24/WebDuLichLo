@@ -19,6 +19,7 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
+// Cấu hình Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
@@ -30,12 +31,9 @@ builder.Services.AddAuthentication(options =>
     var googleAuthNSection = builder.Configuration.GetSection("Authentication:Google");
     options.ClientId = googleAuthNSection["ClientId"];
     options.ClientSecret = googleAuthNSection["ClientSecret"];
-    options.CallbackPath = "/signin-google"; // ✅ Đảm bảo đường dẫn này đúng!
+    options.CallbackPath = "/signin-google";
     options.SaveTokens = true;
-    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme; // ✅ Giúp lưu trạng thái OAuth
-
-    // Kiểm tra ClientId và ClientSecret có null không
-    Console.WriteLine($"Google Auth Config - ClientId: {options.ClientId}, CallbackPath: {options.CallbackPath}");
+    options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 });
 
 // Thêm dịch vụ Controller
@@ -43,36 +41,28 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.Configure<CookiePolicyOptions>(options =>
-{
-    options.MinimumSameSitePolicy = SameSiteMode.Lax;
-});
-
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
+// Cấu hình Cookie Policy
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Cookie.SameSite = SameSiteMode.Lax;
-    //options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
+    options.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
+        ? CookieSecurePolicy.None
+        : CookieSecurePolicy.Always;
+    options.LoginPath = "/login";  // Đảm bảo bạn có trang đăng nhập
 });
+
 // Cấu hình CORS
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAllOrigins",
-        policy =>
-        {
-            policy.AllowAnyOrigin()
-                  .AllowAnyMethod()
-                  .AllowAnyHeader();
-        });
+    options.AddPolicy("AllowAllOrigins", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
 });
 
-builder.Services.ConfigureApplicationCookie(options =>
-{
-    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Hoặc .None nếu dùng localhost
-});
-
+// Khởi tạo ứng dụng
 var app = builder.Build();
 
 app.UseCors("AllowAllOrigins");
@@ -83,22 +73,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// Cấu hình Cache cho file tĩnh
-app.UseStaticFiles(new StaticFileOptions
-{
-    OnPrepareResponse = ctx =>
-    {
-        ctx.Context.Response.Headers.Append("Cache-Control", "no-cache, no-store, must-revalidate");
-        ctx.Context.Response.Headers.Append("Pragma", "no-cache");
-        ctx.Context.Response.Headers.Append("Expires", "0");
-    }
-});
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseDefaultFiles();
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();

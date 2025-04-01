@@ -16,23 +16,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Khởi tạo Flickity cho carousel
-    var flkty = new Flickity('.js-flickity', {
-        wrapAround: true,
-        pageDots: false // Tắt các điểm trang
-    });
-
-    var isDragging = false;
-
-    flkty.on('dragStart', function () {
-        isDragging = true;
-    });
-
-    flkty.on('dragEnd', function () {
-        setTimeout(function () {
-            isDragging = false;
-        }, 50); // Độ trễ nhỏ để đảm bảo kết thúc kéo được đăng ký
-    });
 
     document.querySelectorAll('.carousel-cell').forEach(cell => {
         cell.addEventListener('click', function (event) {

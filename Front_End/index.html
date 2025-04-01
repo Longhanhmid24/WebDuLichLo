@@ -8,7 +8,7 @@
     <title>Trang Web Du Lịch</title>
     <link rel="stylesheet" href="resources/css/styles.css">
         <!-- Thư viện Flickity CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- Thư viện Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="resources/css/get_tour.css">
@@ -261,40 +261,14 @@
     
     
 
-    <!-- Phần Điểm du lịch phổ biến -->
-    <section id="popular_destinations" class="py-5 bg-white">
-        <h2 class="text-center">Các Điểm Du Lịch Phổ Biến</h2>
-        <div class="carousel js-flickity" data-flickity='{ "wrapAround": true, "autoPlay": true }'>
-            <div class="carousel-cell" data-href="html/tours/paris/paris.html">
-                <img src="resources/images/destinations/paris.jpg" alt="Paris" class="carousel-image">
-                <div class="carousel-caption">Paris</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/tokyo/tokyo.html">
-                <img src="resources/images/destinations/tokyo.jpg" alt="Tokyo" class="carousel-image">
-                <div class="carousel-caption">Tokyo</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/newyork/newyork.html">
-                <img src="resources/images/destinations/newyork.jpg" alt="New York" clas=s="carousel-image">
-                <div class="carousel-caption">New York</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/danang/danang.html">
-                <img src="resources/images/destinations/danang.jpg" alt="Đà Nẵng" class="carousel-image">
-                <div class="carousel-caption">Đà Nẵng</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/dalat/dalat.html">
-                <img src="resources/images/destinations/dalat.jpg" alt="Đà Lạt" class="carousel-image">
-                <div class="carousel-caption">Đà Lạt</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/vungtau/vungtau.html">
-                <img src="resources/images/destinations/vungtau.jpg" alt="Vũng Tàu" class="carousel-image">
-                <div class="carousel-caption">Vũng Tàu</div>
-            </div>
-            <div class="carousel-cell" data-href="html/tours/hanoi/hanoi.html">
-                <img src="resources/images/destinations/hanoi.jpg" alt="Hà Nội" class="carousel-image">
-                <div class="carousel-caption">Hà Nội</div>
-            </div>
+ <!-- Phần Điểm du lịch phổ biến -->
+ <section id="popular_destinations" class="py-5 bg-white">
+    <h2 class="text-center">Các Điểm Du Lịch Phổ Biến</h2>
+    <div id="tourCarousel" class="carousel js-flickity tour-carousel-style">
+        <div class="carousel-placeholder">Đang tải dữ liệu tour...</div>
         </div>
-    </section>
+</section>
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
     <!-- Phần giới thiệu -->
     <section id="about" class="py-5 bg-light">
@@ -319,6 +293,7 @@
     <!-- Thư viện Flickity JS -->
     <script src="resources/js/scripts.js"></script> <!-- Thêm tệp JS tùy chỉnh -->
     <script src="resources/js/get_tour.js"></script>
+    <script src="resources/js/random_tour.js"></script>
 
 </body>
 

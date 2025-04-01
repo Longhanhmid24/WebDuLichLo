@@ -225,6 +225,18 @@
           }
         }
       }
+    },
+    "/api/Tour/random-tours": {
+      "get": {
+        "tags": [
+          "Tour"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "components": { }
