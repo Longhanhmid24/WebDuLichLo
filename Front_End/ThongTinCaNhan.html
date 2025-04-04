@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="resources/css/Add_ProFile.css">
+    <title>Thông Tin Cá Nhân</title>
+
+   
+</head>
+<body>
+    <h2>Thông Tin Cá Nhân</h2>
+    <table>
+        <tr>
+            <td>Avatar</td>
+            <td>
+                <label for="avatarInput" id="avatarLabel" style="cursor: pointer;">
+                    <div style="width: 100px; height: 100px; background-color: #e0e0e0; border: 1px solid #ccc; position: relative; display: flex; justify-content: center; align-items: center; text-align: center;">
+                        <span id="uploadText" style="color: #555; font-size: 14px; position: absolute;">Tải avatar lên</span>
+                        <img id="avatarPreview" src="" alt="Avatar Preview" style="max-width: 100%; max-height: 100%; display: none; z-index: 1;">
+                    </div>
+                </label>
+                <input type="file" id="avatarInput" style="display: none;" onchange="previewAvatar(event)" accept="image/*">
+            </td>
+        </tr>
+        <tr>
+            <td>Tên</td>
+            <td>
+                <input type="text" id="nameInput" class="info-input" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>
+                <input type="email" id="emailInput" class="info-input" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>Địa chỉ</td>
+            <td>
+                <input type="text" id="addressInput" class="info-input" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>SDT</td>
+            <td>
+                <input type="text" id="phoneInput" class="info-input" disabled>
+            </td>
+        </tr>
+        <tr>
+            <td>Giới tính</td>
+            <td>
+                <div class="gender-options">
+                    <label><input type="radio" name="gender" value="Nam" disabled> Nam</label>
+                    <label><input type="radio" name="gender" value="Nữ" disabled> Nữ</label>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <button id="editBtn" onclick="toggleEditMode(true)">Chỉnh sửa</button>
+                <button id="saveBtn" onclick="saveProfile()" disabled>Lưu</button>
+                <button id="backBtn" onclick="goBack()">Quay lại</button>
+            </td>
+        </tr>
+    </table>
+
+    <script src="resources/js/Add_ProFile.js"></script>
+</body>
+</html>
