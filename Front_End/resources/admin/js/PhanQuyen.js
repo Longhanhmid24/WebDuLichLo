@@ -46,7 +46,7 @@ function formatDate(dateString) {
 }
 
 function formatGender(gender) {
-    if (!gender) return 'Chưa có';
+    if (!gender) return 'N/A';
     
     // Chuyển đổi các giá trị phổ biến
     gender = gender.toLowerCase().trim();
