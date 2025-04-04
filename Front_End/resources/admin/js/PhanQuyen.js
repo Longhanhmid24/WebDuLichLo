@@ -46,9 +46,29 @@ function formatDate(dateString) {
 }
 
 function formatGender(gender) {
-    if (gender === "1") return "Nam";
-    if (gender === "0") return "Nữ";
-    return "N/A";
+    if (!gender) return 'Chưa có';
+    
+    // Chuyển đổi các giá trị phổ biến
+    gender = gender.toLowerCase().trim();
+    
+    switch(gender) {
+        case 'nam':
+        case 'male':
+        case '1':
+            return 'Nam';
+        case 'nữ':
+        case 'nu':
+        case 'nữ':
+        case 'female':
+        case '0':
+            return 'Nữ';
+        case 'khác':
+        case 'other':
+        case '2':
+            return 'Khác';
+        default:
+            return gender; // Giữ nguyên nếu không khớp với các trường hợp trên
+    }
 }
 
 async function updateUserRole(email, role) {
