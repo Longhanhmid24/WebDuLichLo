@@ -17,16 +17,16 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    document.querySelectorAll('.carousel-cell').forEach(cell => {
-        cell.addEventListener('click', function (event) {
-            if (!isDragging) {
-                var href = this.getAttribute('data-href');
-                if (href) {
-                    location.href = href;
-                }
-            }
-        });
-    });
+    // document.querySelectorAll('.carousel-cell').forEach(cell => {
+    //     cell.addEventListener('click', function (event) {
+    //         if (!isDragging) {
+    //             var href = this.getAttribute('data-href');
+    //             if (href) {
+    //                 location.href = href;
+    //             }
+    //         }
+    //     });
+    // });
 
     // Chuyển đổi hiển thị dropdown tài khoản
     var accountIcon = document.querySelector('.account-icon');
@@ -42,23 +42,23 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    document.querySelectorAll('.account-dropdown a').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            location.href = this.getAttribute('href');
-        });
-    });
+    // document.querySelectorAll('.account-dropdown a').forEach(link => {
+    //     link.addEventListener('click', function (e) {
+    //         e.preventDefault();
+    //         location.href = this.getAttribute('href');
+    //     });
+    // });
 });
 
 // Cuộn mượt mà cho các liên kết điều hướng
-document.querySelectorAll('a.nav-link').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
+// document.querySelectorAll('a.nav-link').forEach(anchor => {
+//     anchor.addEventListener('click', function (e) {
+//         e.preventDefault();
+//         document.querySelector(this.getAttribute('href')).scrollIntoView({
+//             behavior: 'smooth'
+//         });
+//     });
+// });
 
 function toggleDropdown() {
     const dropdownMenu = document.querySelector('.summary .dropdown-menu');

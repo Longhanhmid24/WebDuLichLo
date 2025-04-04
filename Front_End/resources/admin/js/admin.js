@@ -1,41 +1,35 @@
-document.addEventListener("DOMContentLoaded", function () {
-    // Đặt trạng thái mặc định của sidebar là mở
+// UI Control Functions
+document.addEventListener("DOMContentLoaded", function() {
     const sidebar = document.getElementById("sidebar");
-    sidebar.classList.add("show");
-
-    // Hàm toggle Sidebar
-    function toggleSidebar() {
-        if (sidebar.classList.contains("show")) {
-            sidebar.classList.remove("show"); // Ẩn sidebar
-        } else {
-            sidebar.classList.add("show"); // Hiện sidebar
-        }
-    }
-
-    // Hàm ẩn Sidebar
-    function closeSidebar() {
-        sidebar.classList.remove("show");
-    }
-
-    // Hàm toggle Fullscreen
-    function toggleFullscreen() {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().catch(err => {
-                alert(`Lỗi kích hoạt fullscreen: ${err.message} (${err.name})`);
-            });
-        } else {
-            document.exitFullscreen();
-        }
-    }
-
-    // Hàm toggle Dark Mode
-    function toggleDarkMode() {
-        document.body.classList.toggle("dark-mode");
-    }
-
-    // Lắng nghe sự kiện click
-    document.querySelector(".menu-button").addEventListener("click", toggleSidebar);
-    document.querySelector(".close-btn").addEventListener("click", closeSidebar);
-    document.querySelector(".icon[onclick='toggleFullscreen()']").addEventListener("click", toggleFullscreen);
-    document.querySelector(".icon[onclick='toggleDarkMode()']").addEventListener("click", toggleDarkMode);
+    sidebar.classList.add("show"); // Default to open
+    
+    // Logo click handler
+    document.querySelector('.badge img').addEventListener('click', function() {
+        window.location.href = 'index.html';
+    });
 });
+
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    sidebar.classList.toggle("show");
+}
+
+function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            console.error("Fullscreen error:", err);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+}
+
+function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+    localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+}
+
+// Initialize dark mode if previously set
+if (localStorage.getItem("darkMode") === "true") {
+    document.body.classList.add("dark-mode");
+}

@@ -114,5 +114,59 @@ namespace WebDuLich.Controllers
 
             return Ok(new { Message = "Đăng nhập Google thành công!", Email = user.Emaildangki });
         }
+        // API lấy danh sách người dùng
+        [HttpGet]
+        [HttpGet]
+        public async Task<IActionResult> GetUsers()
+        {
+            var users = await _context.TaiKhoans.ToListAsync();
+            Console.WriteLine($"Tìm thấy {users.Count} tài khoản"); // In số lượng user vào console
+            return Ok(users);
+        }
+
+        // API cập nhật quyền người dùng
+        [HttpPut("{email}")]
+        public async Task<IActionResult> UpdateUserRole(string email, [FromForm] string phanquyen)
+        {
+            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+            if (user == null)
+                return NotFound(new { Message = "Người dùng không tồn tại!" });
+
+            user.Phanquyen = phanquyen;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Cập nhật quyền thành công!" });
+        }
+
+        // API xóa tài khoản người dùng
+        [HttpDelete("{email}")]
+        public async Task<IActionResult> DeleteUser(string email)
+        {
+            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+            if (user == null)
+                return NotFound(new { Message = "Người dùng không tồn tại!" });
+
+            _context.TaiKhoans.Remove(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Xóa tài khoản thành công!" });
+        }
+
+        // API cập nhật thông tin người dùng
+        [HttpPut("update/{email}")]
+        public async Task<IActionResult> UpdateUserInfo(string email, [FromForm] string? tendangnhap, [FromForm] string? sodienthoai, [FromForm] string? diachi)
+        {
+            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+            if (user == null)
+                return NotFound(new { Message = "Người dùng không tồn tại!" });
+
+            user.Tendangnhap = tendangnhap ?? user.Tendangnhap;
+            user.Sodienthoai = sodienthoai ?? user.Sodienthoai;
+            user.Diachi = diachi ?? user.Diachi;
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Cập nhật thông tin thành công!" });
+        }
     }
 }
+

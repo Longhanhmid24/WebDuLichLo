@@ -29,7 +29,7 @@ namespace WebDuLich.Models
 
         [Required]
         [StringLength(20)]
-        public string Phanquyen { get; set; } = "User"; // User, Manager, Admin
+        public string Phanquyen { get; set; } = "user"; // User, Manager, Admin
 
         [Required]
         public DateTime NgayTao { get; set; } = DateTime.UtcNow; // Ngày tạo tài khoản

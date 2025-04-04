@@ -57,8 +57,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Thêm nút đăng xuất vào dropdown
         userInfo.innerHTML = `
             <a href="#" id="logout">Đăng xuất</a>
+            <a href="admin.html" id="admin">Admin</a>
         `;
-
+        
         document.getElementById("logout").addEventListener("click", function () {
             localStorage.removeItem("user"); // Xóa user khỏi localStorage
             location.reload(); // Tải lại trang

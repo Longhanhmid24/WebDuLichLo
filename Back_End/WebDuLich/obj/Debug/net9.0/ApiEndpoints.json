@@ -1,6 +1,53 @@
 [
   {
     "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "GetUsers",
+    "RelativePath": "api/TaiKhoan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "UpdateUserRole",
+    "RelativePath": "api/TaiKhoan/{email}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "phanquyen",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/TaiKhoan/{email}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
     "Method": "GoogleCallback",
     "RelativePath": "api/TaiKhoan/google-callback",
     "HttpMethod": "GET",
@@ -60,6 +107,37 @@
       },
       {
         "Name": "matkhau",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "UpdateUserInfo",
+    "RelativePath": "api/TaiKhoan/update/{email}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "tendangnhap",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "sodienthoai",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "diachi",
         "Type": "System.String",
         "IsRequired": false
       }

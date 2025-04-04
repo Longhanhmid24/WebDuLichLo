@@ -1643,6 +1643,88 @@
       ]
     },
     {
+      "Route": "images/tours/b031f289-6e53-4579-9ca0-fa7f96716394.bqrdcde7zc.jpg",
+      "AssetFile": "images/tours/b031f289-6e53-4579-9ca0-fa7f96716394.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "169143"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"o01RrdWyBsRk1oGtX/MuFQ9ElOTk74+GQClEqToRAvI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 02 Apr 2025 03:16:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "bqrdcde7zc"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-o01RrdWyBsRk1oGtX/MuFQ9ElOTk74+GQClEqToRAvI="
+        },
+        {
+          "Name": "label",
+          "Value": "images/tours/b031f289-6e53-4579-9ca0-fa7f96716394.jpg"
+        }
+      ]
+    },
+    {
+      "Route": "images/tours/b031f289-6e53-4579-9ca0-fa7f96716394.jpg",
+      "AssetFile": "images/tours/b031f289-6e53-4579-9ca0-fa7f96716394.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "169143"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"o01RrdWyBsRk1oGtX/MuFQ9ElOTk74+GQClEqToRAvI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 02 Apr 2025 03:16:47 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-o01RrdWyBsRk1oGtX/MuFQ9ElOTk74+GQClEqToRAvI="
+        }
+      ]
+    },
+    {
       "Route": "images/tours/b2c38acb-0220-4869-9eb4-685e676c25a5.jpg",
       "AssetFile": "images/tours/b2c38acb-0220-4869-9eb4-685e676c25a5.jpg",
       "Selectors": [],

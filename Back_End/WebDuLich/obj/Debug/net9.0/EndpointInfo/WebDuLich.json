@@ -109,6 +109,132 @@
         }
       }
     },
+    "/api/TaiKhoan": {
+      "get": {
+        "tags": [
+          "TaiKhoan"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TaiKhoan/{email}": {
+      "put": {
+        "tags": [
+          "TaiKhoan"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phanquyen": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "phanquyen": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "TaiKhoan"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/TaiKhoan/update/{email}": {
+      "put": {
+        "tags": [
+          "TaiKhoan"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "tendangnhap": {
+                    "type": "string"
+                  },
+                  "sodienthoai": {
+                    "type": "string"
+                  },
+                  "diachi": {
+                    "type": "string"
+                  }
+                }
+              },
+              "encoding": {
+                "tendangnhap": {
+                  "style": "form"
+                },
+                "sodienthoai": {
+                  "style": "form"
+                },
+                "diachi": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Tour/add": {
       "post": {
         "tags": [

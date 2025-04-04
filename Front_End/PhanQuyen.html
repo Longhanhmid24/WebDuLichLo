@@ -5,84 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phân Quyền Người Dùng</title>
     <link rel="stylesheet" href="resources/admin/css/admin.css">
-    <style>
-        body {
-            background: url('/Front_End/resources/images/brand/hinh-nen-vu-tru-72.jpg') center/cover no-repeat;
-            font-family: Arial, sans-serif;
-            background-color: #f3f4f6;
-            margin: 0;
-        }
-
-        /* Thanh công cụ của Admin */
-        .toolbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background-color: #343a40;
-            color: white;
-        }
-
-        .menu-button {
-            cursor: pointer;
-        }
-
-        .toolbar-icons {
-            display: flex;
-            align-items: center;
-        }
-
-        .icon {
-            margin-left: 15px;
-            cursor: pointer;
-        }
-
-        .badge img {
-            height: 40px;
-        }
-
-        /* Định dạng container danh sách người dùng */
-        .user-list-container {
-            width: 400px; /* Chiều rộng của danh sách */
-            height: 300px; /* Chiều cao của danh sách */
-            border: 1px solid #ccc; /* Viền cho danh sách */
-            border-radius: 5px; /* Bo góc */
-            overflow-y: auto; /* Thêm thanh cuộn dọc */
-            padding: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
-            background-color: #ffffff; /* Màu nền trắng */
-            margin: 50px auto; /* Căn giữa */
-        }
-
-        /* Định dạng từng mục trong danh sách */
-        .user-item {
-            padding: 10px;
-            border-bottom: 1px solid #eee; /* Đường kẻ dưới mỗi mục */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .user-item:last-child {
-            border-bottom: none; /* Xóa đường kẻ dưới mục cuối cùng */
-        }
-
-        .user-item select {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            background-color: #f9f9f9;
-            cursor: pointer;
-        }
-
-        .user-item select:hover {
-            border-color: #007bff;
-        }
-    </style>
+    <link rel="stylesheet" href="resources/admin/css/phanquyen.css">
 </head>
 <body>
-
-    <!-- Thanh công cụ của Admin -->
+    <!-- Admin Toolbar -->
     <div class="toolbar">
         <div class="menu-button" onclick="toggleSidebar()">
             <img src="resources/admin/icons/menu_admin.png" alt="Menu Icon" class="menu">
@@ -103,14 +29,7 @@
         </div>
     </div>
 
-    <script>
-        // Thêm sự kiện onclick vào logo
-        document.querySelector('.badge img').addEventListener('click', function () {
-            window.location.href = 'index.html'; // Chuyển hướng đến trang index.html
-        });
-    </script>
-
-    <!-- Menu của Admin -->
+    <!-- Admin Sidebar -->
     <div id="sidebar" class="sidebar">
         <div class="sidebar-header">
             <h2>DU LỊCH - KHÁM PHÁ</h2>
@@ -118,68 +37,42 @@
         </div>
         <ul>
             <li><a href="admin.html">Trang chủ</a></li>
-            <li><a href="HoSo.html" id="HoSo-link">Hồ sơ người dùng</a></li>
-            <li><a href="add-tour.html" id="add-tour-link">Thêm Tour</a></li>
+            <li><a href="HoSo.html">Hồ sơ người dùng</a></li>
+            <li><a href="add-tour.html">Thêm Tour</a></li>
             <li><a href="#">Danh sách hóa đơn</a></li>
-            <li><a href="PhanQuyen.html" id="HoSo-link">Phân Quyền</a></li>
-            <li><a href="#">Đánh giá </a></li>
+            <li><a href="PhanQuyen.html">Phân Quyền</a></li>
+            <li><a href="#">Đánh giá</a></li>
             <li><a href="#">Quản lý Tour</a></li>
             <li><a href="#">Thống kê</a></li>
         </ul>
     </div>
 
-    <div class="user-list-container">
-        <h1>Phân Quyền Người Dùng</h1>
-        <div class="user-item">
-            <span>Người Dùng 1</span>
-            <select>
-                <option value="user">User </option>
-                <option value="admin">Admin</option>
-                <option value="manager">Manager</option>
-            </select>
-        </div>
-        <div class="user-item">
-            <span>Người Dùng 2</span>
-            <select>
-                <option value="user">User </option>
-                <option value="admin">Admin</option>
-                <option value="manager">Manager</option>
-            </select>
-        </div>
-        <div class="user-item">
-            <span>Người Dùng 3</span>
-            <select>
-                <option value="user">User </option>
-                <option value="admin">Admin</option>
-                <option value="manager">Manager</option>
-            </select>
-        </div>
-        <div class="user-item">
-            <span>Người Dùng 4</span>
-            <select>
-                <option value="user">User </option>
-                <option value="admin">Admin</option>
-                <option value="manager">Manager</option>
-            </select>
-        </div>
-        <div class="user-item">
-            <span>Người Dùng 5</span>
-            <select>
-                <option value="user">User </option>
-                <option value="admin">Admin</option>
-                <option value="manager">Manager</option>
-            </select>
-        </div>
-        <div class="user-item">
-            <span>Người Dùng 6</span>
-            <select>
-                <option value="user">User </option>
-                <option value="admin">Admin</option>
-                <option value="manager">Manager</option>
-            </select>
+    <!-- Main Content -->
+    <div class="container" style="background-color: white;">
+        <h2>Danh Sách Người Dùng</h2>
+        <div class="user-list-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ảnh Đại Diện</th>
+                        <th>Email</th>
+                        <th>Tên Đăng Nhập</th>
+                        <th>Quyền</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Giới Tính</th>
+                        <th>Ngày Tạo</th>
+                        <th>Hành Động</th>
+                    </tr>
+                </thead>
+                <tbody id="userList">
+                    <!-- User data will be loaded here -->
+                </tbody>
+            </table>
         </div>
     </div>
 
     <script src="resources/admin/js/admin.js"></script>
+    <script src="resources/admin/js/phanquyen.js"></script>
 </body>
 </html>

@@ -5,12 +5,17 @@
     height: 300px; /* Bạn có thể điều chỉnh chiều cao này sao cho phù hợp */
 }
 
-.tour-item {
-    flex: 0 0 25%; /* Mỗi item chiếm 25% chiều rộng của carousel */
-    box-sizing: border-box; /* Đảm bảo padding và border không làm thay đổi kích thước */
-    padding: 10px; /* Khoảng cách giữa các item */
-    transition: transform 0.3s ease-in-out;
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    text-align: center;
+    width: 100%;
+    /* Điều chỉnh chiều rộng để phù hợp với chiều rộng hình ảnh */
 }
-.tour-item:hover {
-    transform: scale(1.05); /* Tăng kích thước khi hover */
+.carousel-cell:hover .carousel-caption {
+    background: rgba(0, 0, 0, 0.7);
+  /* Thay đổi màu nền khi hover */
 }
