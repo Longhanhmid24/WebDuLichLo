@@ -171,56 +171,74 @@ namespace WebDuLich.Controllers
 
         // API cập nhật thông tin người dùng
         [HttpPut("update/{email}")]
-        public async Task<IActionResult> UpdateUserInfo(string email, [FromForm] string? tendangnhap, [FromForm] string? sodienthoai, [FromForm] string? diachi, [FromForm] IFormFile? imageFile, [FromForm] string? gioitinh)
+        public async Task<IActionResult> UpdateUserInfo(
+            string email,
+            [FromForm] string? tendangnhap,
+            [FromForm] string? matkhau,
+            [FromForm] string? sodienthoai,
+            [FromForm] string? diachi,
+            [FromForm] string? gioitinh,
+            [FromForm] IFormFile? hinhAnh)  // Sử dụng IFormFile để nhận ảnh
         {
-            try
+            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+            if (user == null)
+                return NotFound(new { Message = "Người dùng không tồn tại!" });
+
+            // Cập nhật các trường thông tin khác
+            user.Tendangnhap = tendangnhap ?? user.Tendangnhap;
+            user.Matkhau = matkhau ?? user.Matkhau;
+            user.Sodienthoai = sodienthoai ?? user.Sodienthoai;
+            user.Diachi = diachi ?? user.Diachi;
+            user.Gioitinh = gioitinh ?? user.Gioitinh;
+
+            // Xử lý ảnh đại diện
+            if (hinhAnh != null && hinhAnh.Length > 0)
             {
-                var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
-                if (user == null)
-                    return NotFound(new { Message = "Người dùng không tồn tại!" });
+                // Đường dẫn nơi lưu trữ ảnh trên server
+                var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "accounts");
 
-                string? imagePath = null; // Khởi tạo đường dẫn ảnh
-
-                // Xử lý hình ảnh
-                if (imageFile != null && imageFile.Length > 0)
+                // Kiểm tra và tạo thư mục nếu chưa tồn tại
+                if (!Directory.Exists(uploadsDirectory))
                 {
-                    // Tạo tên file duy nhất
-                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
-
-                    // Xác định đường dẫn lưu trữ (ví dụ: wwwroot/uploads)
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/accounts", fileName);
-
-                    // Lưu file vào hệ thống tệp
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await imageFile.CopyToAsync(stream);
-                    }
-
-                    // Lưu đường dẫn vào biến imagePath
-                    imagePath = "/accounts/" + fileName; // Đường dẫn tương đối
+                    Directory.CreateDirectory(uploadsDirectory);
                 }
 
-                // Cập nhật thông tin người dùng
-                user.Tendangnhap = tendangnhap ?? user.Tendangnhap;
-                user.Sodienthoai = sodienthoai ?? user.Sodienthoai;
-                user.Diachi = diachi ?? user.Diachi;
-                user.Gioitinh = gioitinh ?? user.Gioitinh;
-
-                // Cập nhật đường dẫn ảnh nếu có
-                if (imagePath != null)
+                // Lưu ảnh vào thư mục
+                var filePath = Path.Combine(uploadsDirectory, hinhAnh.FileName);
+                using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    user.HinhAnh = imagePath;
+                    await hinhAnh.CopyToAsync(stream);
                 }
 
-                await _context.SaveChangesAsync();
+                // Cập nhật đường dẫn ảnh vào cơ sở dữ liệu
+                user.HinhAnh = $"/uploads/{hinhAnh.FileName}";
+            }
 
-                return Ok(new { Message = "Cập nhật thông tin thành công!" });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { Message = "Lỗi cập nhật thông tin: " + ex.Message });
-            }
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Cập nhật thông tin thành công!" });
         }
+
+
+        [HttpGet("download/{fileName}")]
+        public IActionResult DownloadFile(string fileName)
+        {
+            // Đường dẫn tới tệp trong thư mục wwwroot
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", fileName);
+
+            // Kiểm tra xem tệp có tồn tại không
+            if (!System.IO.File.Exists(filePath))
+            {
+                return NotFound(new { Message = "Tệp không tồn tại!" });
+            }
+
+            // Đọc tệp vào byte array
+            var fileBytes = System.IO.File.ReadAllBytes(filePath);
+
+            // Trả về tệp cùng với Content-Type (Ví dụ cho hình ảnh là "image/png")
+            return File(fileBytes, "anhmacdinh/png", fileName);
+        }
+
 
     }
 }

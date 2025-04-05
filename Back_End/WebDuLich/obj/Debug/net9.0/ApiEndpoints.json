@@ -48,6 +48,22 @@
   },
   {
     "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "DownloadFile",
+    "RelativePath": "api/TaiKhoan/download/{fileName}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "fileName",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
     "Method": "GoogleCallback",
     "RelativePath": "api/TaiKhoan/google-callback",
     "HttpMethod": "GET",
@@ -148,12 +164,22 @@
         "IsRequired": false
       },
       {
+        "Name": "matkhau",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
         "Name": "sodienthoai",
         "Type": "System.String",
         "IsRequired": false
       },
       {
         "Name": "diachi",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "gioitinh",
         "Type": "System.String",
         "IsRequired": false
       },
@@ -184,11 +210,6 @@
       },
       {
         "Name": "FileName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "gioitinh",
         "Type": "System.String",
         "IsRequired": false
       }

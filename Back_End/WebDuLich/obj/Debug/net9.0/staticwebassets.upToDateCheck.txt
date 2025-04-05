@@ -1,3 +1,9 @@
+wwwroot\accounts\147908760739979-bao-my-16.jpg
+wwwroot\accounts\anh-gai-xinh-14.jpg
+wwwroot\accounts\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg
+wwwroot\accounts\d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.webp
+wwwroot\accounts\d4cd7c0b3ad748fb4d17fe422e4d932c.jpg
+wwwroot\accounts\download.jpg
 wwwroot\images\anhmacdinh.jpg
 wwwroot\images\tours\0082fa20-866d-4e3a-954e-4a317834eb4a.jpg
 wwwroot\images\tours\12d6904c-dce9-4dd4-b663-8524bf375ac4.webp
@@ -34,3 +40,5 @@ wwwroot\images\tours\e9592f69-0946-404b-b114-9c65fbce5caf.webp
 wwwroot\images\tours\f62e40ea-2cae-4b3e-8444-9eab26cf99d0.jpg
 wwwroot\images\tours\fc89af59-cc2b-4b1d-809b-ff4ce1a26d1c.jpg
 wwwroot\images\tours\febb2e31-a06a-448b-8a9f-647626e333f3.jpg
+wwwroot\uploads\147908760739979-bao-my-16.jpg
+wwwroot\uploads\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg

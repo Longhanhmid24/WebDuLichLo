@@ -1,6 +1,30 @@
 {
   "Files": [
     {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\147908760739979-bao-my-16.jpg",
+      "PackagePath": "staticwebassets\\accounts\\147908760739979-bao-my-16.jpg"
+    },
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\anh-gai-xinh-14.jpg",
+      "PackagePath": "staticwebassets\\accounts\\anh-gai-xinh-14.jpg"
+    },
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "PackagePath": "staticwebassets\\accounts\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg"
+    },
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.webp",
+      "PackagePath": "staticwebassets\\accounts\\d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.webp"
+    },
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\d4cd7c0b3ad748fb4d17fe422e4d932c.jpg",
+      "PackagePath": "staticwebassets\\accounts\\d4cd7c0b3ad748fb4d17fe422e4d932c.jpg"
+    },
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\download.jpg",
+      "PackagePath": "staticwebassets\\accounts\\download.jpg"
+    },
+    {
       "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\anhmacdinh.jpg",
       "PackagePath": "staticwebassets\\images\\anhmacdinh.jpg"
     },
@@ -143,6 +167,14 @@
     {
       "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\febb2e31-a06a-448b-8a9f-647626e333f3.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\febb2e31-a06a-448b-8a9f-647626e333f3.jpg"
+    },
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\uploads\\147908760739979-bao-my-16.jpg",
+      "PackagePath": "staticwebassets\\uploads\\147908760739979-bao-my-16.jpg"
+    },
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\uploads\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "PackagePath": "staticwebassets\\uploads\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg"
     },
     {
       "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.WebDuLich.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

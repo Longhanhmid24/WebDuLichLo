@@ -54,13 +54,13 @@ document.addEventListener("DOMContentLoaded", function () {
         // Nếu đã đăng nhập, hiển thị tên user
         userName.textContent = user.email;
 
-        // Thêm nút đăng xuất vào dropdown
+        // Thêm nút đăng xuất và liên kết đến hồ sơ cá nhân
         userInfo.innerHTML = `
             <a href="#" id="logout">Đăng xuất</a>
-            <a href="admin.html" id="admin">Admin</a>
-            <a href="ThongTinCaNhan.html" id="Profile">Profile</a>
+            <a href="admin.html" id="admin">Quản Lý Người Dùng</a>
+            <a href="ThongTinCaNhan.html?email=${user.email}" id="Profile">Hồ Sơ</a>
         `;
-        
+
         document.getElementById("logout").addEventListener("click", function () {
             localStorage.removeItem("user"); // Xóa user khỏi localStorage
             location.reload(); // Tải lại trang

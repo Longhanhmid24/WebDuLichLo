@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "0TZII/021rxv2bMs0vBsGn1em9rUEUXjHYHHN4zQ8T4=",
+  "Hash": "8MqaJskJa5L2AVgdVTCjjDYdUzNV7Sw4tVEwr2dhm7I=",
   "Source": "WebDuLich",
   "BasePath": "_content/WebDuLich",
   "Mode": "Default",
@@ -16,6 +16,132 @@
     }
   ],
   "Assets": [
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\147908760739979-bao-my-16.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "accounts/147908760739979-bao-my-16#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mixxa4oj1a",
+      "Integrity": "Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\accounts\\147908760739979-bao-my-16.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\anh-gai-xinh-14.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "accounts/anh-gai-xinh-14#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "rjciu4e5fj",
+      "Integrity": "B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\accounts\\anh-gai-xinh-14.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "accounts/anh-gai-xinh-cute-de-thuong-hot-girl-26#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qlvuuauj9c",
+      "Integrity": "fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\accounts\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.webp",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "accounts/d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621#[.{fingerprint}]?.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "3zefo6ogmi",
+      "Integrity": "cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\accounts\\d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.webp"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\d4cd7c0b3ad748fb4d17fe422e4d932c.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "accounts/d4cd7c0b3ad748fb4d17fe422e4d932c#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "6b42j3s3g0",
+      "Integrity": "UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\accounts\\d4cd7c0b3ad748fb4d17fe422e4d932c.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\download.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "accounts/download#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "l49xn9lask",
+      "Integrity": "i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\accounts\\download.jpg"
+    },
     {
       "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\anhmacdinh.jpg",
       "SourceId": "WebDuLich",
@@ -771,9 +897,543 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\tours\\febb2e31-a06a-448b-8a9f-647626e333f3.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\uploads\\147908760739979-bao-my-16.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "uploads/147908760739979-bao-my-16#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "mixxa4oj1a",
+      "Integrity": "Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\147908760739979-bao-my-16.jpg"
+    },
+    {
+      "Identity": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\uploads\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "SourceId": "WebDuLich",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\",
+      "BasePath": "_content/WebDuLich",
+      "RelativePath": "uploads/anh-gai-xinh-cute-de-thuong-hot-girl-26#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "qlvuuauj9c",
+      "Integrity": "fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg"
     }
   ],
   "Endpoints": [
+    {
+      "Route": "accounts/147908760739979-bao-my-16.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\147908760739979-bao-my-16.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 15:28:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/147908760739979-bao-my-16.mixxa4oj1a.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\147908760739979-bao-my-16.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 15:28:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mixxa4oj1a"
+        },
+        {
+          "Name": "label",
+          "Value": "accounts/147908760739979-bao-my-16.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/anh-gai-xinh-14.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\anh-gai-xinh-14.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "58723"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 15:26:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/anh-gai-xinh-14.rjciu4e5fj.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\anh-gai-xinh-14.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "58723"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 15:26:06 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "rjciu4e5fj"
+        },
+        {
+          "Name": "label",
+          "Value": "accounts/anh-gai-xinh-14.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252518"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:28:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/anh-gai-xinh-cute-de-thuong-hot-girl-26.qlvuuauj9c.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252518"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:28:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qlvuuauj9c"
+        },
+        {
+          "Name": "label",
+          "Value": "accounts/anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.3zefo6ogmi.webp",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "403728"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 15:26:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "3zefo6ogmi"
+        },
+        {
+          "Name": "label",
+          "Value": "accounts/d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.webp"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.webp",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\d-3-aa-153-e-2225-d-77-b-8-e-34-1620982028621.webp",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "403728"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/webp"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 15:26:10 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-cZYizAe/3JjHO/7Kjm4miKcYawHEzrie4Op7m4R1yio="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/d4cd7c0b3ad748fb4d17fe422e4d932c.6b42j3s3g0.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\d4cd7c0b3ad748fb4d17fe422e4d932c.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82783"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:23:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "6b42j3s3g0"
+        },
+        {
+          "Name": "label",
+          "Value": "accounts/d4cd7c0b3ad748fb4d17fe422e4d932c.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/d4cd7c0b3ad748fb4d17fe422e4d932c.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\d4cd7c0b3ad748fb4d17fe422e4d932c.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "82783"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:23:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-UuHYjK/otasPwD46v92aiPaX9Rz91Hf4dmXiD6GcG3E="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/download.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\download.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8103"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:29:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo="
+        }
+      ]
+    },
+    {
+      "Route": "accounts/download.l49xn9lask.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\accounts\\download.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "8103"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:29:32 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l49xn9lask"
+        },
+        {
+          "Name": "label",
+          "Value": "accounts/download.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-i0iE45DRsqjE6Axug4EoEeA4fcbulIB97VOsqCrfNOo="
+        }
+      ]
+    },
     {
       "Route": "images/anhmacdinh.jpg",
       "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\anhmacdinh.jpg",
@@ -3723,6 +4383,170 @@
         {
           "Name": "integrity",
           "Value": "sha256-TblNJqCbSMissAJRNFgK6UVqT79jPnGDmpFLG+bfqh0="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/147908760739979-bao-my-16.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\uploads\\147908760739979-bao-my-16.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:20:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/147908760739979-bao-my-16.mixxa4oj1a.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\uploads\\147908760739979-bao-my-16.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "95463"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:20:55 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "mixxa4oj1a"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/147908760739979-bao-my-16.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Er7r1q1MeJijYqMoewGEtIV22wORZlgLCaIeg0LRANg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\uploads\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252518"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:20:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/anh-gai-xinh-cute-de-thuong-hot-girl-26.qlvuuauj9c.jpg",
+      "AssetFile": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\uploads\\anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "252518"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 05 Apr 2025 14:20:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "qlvuuauj9c"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/anh-gai-xinh-cute-de-thuong-hot-girl-26.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-fuHM+uWE1GJ6QbYlgGAuwzMknNEdZX4vIXyF2LrZsDU="
         }
       ]
     }
