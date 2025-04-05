@@ -1,20 +1,32 @@
 /* Tổng thể container */
 .profile-container {
     width: 80%;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
+    padding: 40px;
+    font-family: 'Roboto', sans-serif; /* Sử dụng font đẹp hơn */
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif; /* Font chữ đẹp và hiện đại */
 }
 
 /* Avatar */
 .avatar-wrapper {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    position: relative;
 }
 
 #avatar {
@@ -22,24 +34,50 @@ h1 {
     width: 150px;
     height: 150px;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-input[type="file"] {
-    display: none;
+#avatar:hover {
+    transform: scale(1.1);
 }
 
+/* Button Đổi ảnh */
 button {
     background-color: #007bff;
     color: white;
     border: none;
-    padding: 8px 16px;
+    padding: 12px 25px;
     cursor: pointer;
     margin-top: 10px;
-    border-radius: 5px;
+    border-radius: 30px; /* Tạo nút tròn */
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
     background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:focus {
+    outline: none;
+}
+
+/* Nút lưu ảnh */
+#save-avatar {
+    background-color: green;
+}
+
+#save-avatar:hover {
+    background-color: darkgreen;
+}
+
+#save-avatar:active {
+    transform: scale(0.98); /* Hiệu ứng nhỏ đi khi nhấn */
 }
 
 /* Thông tin hồ sơ */
@@ -48,39 +86,69 @@ button:hover {
 }
 
 .profile-info p {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: #555;
+    line-height: 1.8;
+    font-weight: 500;
 }
 
 .profile-info p strong {
     font-weight: bold;
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
 }
 
 input[type="text"], select {
     width: 100%;
-    padding: 8px;
+    padding: 14px;
     margin-top: 5px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Tạo hiệu ứng sáng khi focus */
 }
 
 button.edit-btn {
     margin-left: 10px;
-    font-size: 18px;
+    font-size: 20px;
     cursor: pointer;
     background-color: transparent;
     border: none;
     color: #007bff;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+button.edit-btn:hover {
+    color: #0056b3;
+    transform: scale(1.1);
 }
 
 button.save-btn {
     margin-left: 10px;
     background-color: green;
     font-size: 16px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button.save-btn:hover {
     background-color: darkgreen;
+    transform: translateY(-2px);
+}
+
+button.save-btn[hidden] {
+    display: none;
 }
 
 button[hidden] {
@@ -89,9 +157,11 @@ button[hidden] {
 
 /* Sửa dropdown giới tính */
 select {
-    padding: 8px;
-    border-radius: 5px;
+    padding: 12px;
+    border-radius: 8px;
     border: 1px solid #ccc;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 select:disabled {
@@ -99,8 +169,21 @@ select:disabled {
     cursor: not-allowed;
 }
 
-/* Thêm không gian giữa các phần */
-.profile-info p {
-    margin-bottom: 20px;
+select:hover {
+    border-color: #007bff;
 }
 
+/* Thêm không gian giữa các phần */
+.profile-info p {
+    margin-bottom: 30px;
+}
+
+/* Hiệu ứng hover cho toàn bộ container */
+.profile-container {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+}
+
+.profile-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
