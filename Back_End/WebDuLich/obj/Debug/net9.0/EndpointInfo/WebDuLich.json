@@ -5,6 +5,37 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/Dondattour/create-order": {
+      "post": {
+        "tags": [
+          "Dondattour"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Dondattour"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Dondattour"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Dondattour"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/TaiKhoan/register": {
       "post": {
         "tags": [
@@ -204,14 +235,14 @@
         }
       }
     },
-    "/api/TaiKhoan/update/{email}": {
-      "put": {
+    "/api/TaiKhoan/download/{fileName}": {
+      "get": {
         "tags": [
           "TaiKhoan"
         ],
         "parameters": [
           {
-            "name": "email",
+            "name": "fileName",
             "in": "path",
             "required": true,
             "schema": {
@@ -219,55 +250,6 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "tendangnhap": {
-                    "type": "string"
-                  },
-                  "matkhau": {
-                    "type": "string"
-                  },
-                  "sodienthoai": {
-                    "type": "string"
-                  },
-                  "diachi": {
-                    "type": "string"
-                  },
-                  "gioitinh": {
-                    "type": "string"
-                  },
-                  "hinhAnh": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "tendangnhap": {
-                  "style": "form"
-                },
-                "matkhau": {
-                  "style": "form"
-                },
-                "sodienthoai": {
-                  "style": "form"
-                },
-                "diachi": {
-                  "style": "form"
-                },
-                "gioitinh": {
-                  "style": "form"
-                },
-                "hinhAnh": {
-                  "style": "form"
-                }
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
@@ -405,5 +387,102 @@
       }
     }
   },
-  "components": { }
+  "components": {
+    "schemas": {
+      "Dondattour": {
+        "required": [
+          "emaildangki",
+          "matour",
+          "ngaydat",
+          "songuoi",
+          "tongtien"
+        ],
+        "type": "object",
+        "properties": {
+          "madon": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "matour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ngaydat": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "tongtien": {
+            "type": "number",
+            "format": "double"
+          },
+          "songuoi": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "emaildangki": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "tour": {
+            "$ref": "#/components/schemas/Tour"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Tour": {
+        "required": [
+          "gia",
+          "loaiTour",
+          "ngayKetThuc",
+          "ngayKhoiHanh",
+          "sokhach",
+          "tentour"
+        ],
+        "type": "object",
+        "properties": {
+          "matour": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tentour": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "gia": {
+            "type": "number",
+            "format": "double"
+          },
+          "ngayKhoiHanh": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ngayKetThuc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "mota": {
+            "type": "string",
+            "nullable": true
+          },
+          "sokhach": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "loaiTour": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "hinhAnh": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }

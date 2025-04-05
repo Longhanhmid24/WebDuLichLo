@@ -1,5 +1,53 @@
 [
   {
+    "ContainingType": "WebDuLich.Controllers.DondattourController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Dondattour/create-order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "don",
+        "Type": "WebDuLich.Models.Dondattour",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.DondattourController",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/Dondattour/delete-order/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.DondattourController",
+    "Method": "GetOrders",
+    "RelativePath": "api/Dondattour/get-orders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
     "Method": "GetUsers",
     "RelativePath": "api/TaiKhoan",

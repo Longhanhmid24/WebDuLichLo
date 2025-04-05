@@ -169,7 +169,7 @@ namespace WebDuLich.Controllers
             }
         }
 
-        // API cập nhật thông tin người dùng
+        //API cập nhật thông tin người dùng(đang bị lỗi)
         [HttpPut("update/{email}")]
         public async Task<IActionResult> UpdateUserInfo(
             string email,

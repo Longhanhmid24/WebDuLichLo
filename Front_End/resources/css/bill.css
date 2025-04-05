@@ -1,0 +1,30 @@
+.invoice {
+    width: 70%;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+.invoice-header {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+.invoice-body {
+    margin-top: 20px;
+}
+.invoice-body table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.invoice-body th, .invoice-body td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    margin-top: 20px;
+}

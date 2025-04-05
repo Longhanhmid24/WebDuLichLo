@@ -85,10 +85,58 @@ function calculateTotal() {
     document.getElementById('totalPrice').textContent = total.toLocaleString();
 }
 
-function processPayment() {
-    alert(`Thanh toán thành công cho tour ${window.tour.tentour}!`);
-    displayTourDetailsAfterPayment(); // Gọi hàm hiển thị thông tin sau thanh toán
+async function processPayment() {
+    // Lấy thông tin người dùng từ localStorage
+    const user = JSON.parse(localStorage.getItem("user"));
+    
+    if (!user) {
+        alert("Bạn cần đăng nhập để đặt tour!");
+        return;
+    }
+
+    const email = user.email; // Lấy email từ thông tin người dùng đã lưu trong localStorage
+    const matour = window.tour.matour;
+    const songuoi = parseInt(document.getElementById('adult').value) +
+                    parseInt(document.getElementById('child').value) +
+                    parseInt(document.getElementById('baby').value);
+    const tongtien = parseFloat(document.getElementById('totalPrice').textContent.replace(/,/g, ''));
+
+    const order = {
+        matour: matour,
+        ngaydat: new Date().toISOString(),
+        tongtien: tongtien,
+        songuoi: songuoi,
+        emaildangki: email
+    };
+
+    try {
+        const response = await fetch("https://localhost:7265/api/Dondattour/create-order", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(order)
+        });
+
+        if (!response.ok) {
+            throw new Error("Đặt tour thất bại!");
+        }
+
+        const result = await response.json();
+
+        // Lưu thông tin đơn đặt và tour vào localStorage
+        localStorage.setItem('order', JSON.stringify(result));
+        localStorage.setItem('tour', JSON.stringify(window.tour));
+
+        // Chuyển sang trang hóa đơn, truyền matour và email
+        window.location.href = `bill.html?matour=${matour}&email=${email}`;
+
+    } catch (error) {
+        console.error("Lỗi khi gửi đơn đặt tour:", error);
+        alert("Đã có lỗi xảy ra khi đặt tour.");
+    }
 }
+
 
 function displayTourDetailsAfterPayment() {
     let hinhAnh = tour.hinhAnh && tour.hinhAnh.trim() !== "" ? tour.hinhAnh : "/images/default.jpg";
