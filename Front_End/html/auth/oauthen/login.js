@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
         userInfo.innerHTML = `
             <a href="#" id="logout">Đăng xuất</a>
             <a href="admin.html" id="admin">Admin</a>
+            <a href="ThongTinCaNhan.html" id="Profile">Profile</a>
         `;
         
         document.getElementById("logout").addEventListener("click", function () {

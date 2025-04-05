@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hóa Đơn Thanh Toán</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f7f9fb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 70%;
+            padding: 40px 60px;
+            background: linear-gradient(135deg, #00d2ff, #3a7bd5);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            transform-origin: center center;
+        }
+
+        .container:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 2px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .date {
+            font-size: 18px;
+            color: #f0f0f0;
+        }
+
+        .bill-details {
+            margin-top: 20px;
+        }
+
+        .bill-details table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .bill-details th, .bill-details td {
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            text-align: left;
+            font-size: 18px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .bill-details th {
+            background: #1f3a5f;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        .bill-details tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .bill-details tr:hover {
+            background-color: #e3f2fd;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .total {
+            text-align: right;
+            font-size: 28px;
+            font-weight: bold;
+            color: #1f3a5f;
+            margin-top: 20px;
+            padding-top: 10px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 16px;
+            color: #aaa;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            background-color: #4caf50;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .show-success {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 20px 30px;
+            }
+
+            h1 {
+                font-size: 36px;
+            }
+
+            .header .logo {
+                font-size: 24px;
+            }
+
+            .bill-details th, .bill-details td {
+                font-size: 16px;
+            }
+
+            .total {
+                font-size: 22px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo">WebDuLich</div>
+            <div class="date">Ngày thanh toán: 04/04/2025</div>
+        </div>
+
+        <h1>Hóa Đơn Thanh Toán</h1>
+
+        <div class="bill-details">
+            <table>
+                <tr>
+                    <th>Mã Đơn</th>
+                    <td>12345</td>
+                </tr>
+                <tr>
+                    <th>Tour</th>
+                    <td>Tour Du Lịch Hà Nội</td>
+                </tr>
+                <tr>
+                    <th>Ngày Đặt</th>
+                    <td>01/04/2025</td>
+                </tr>
+                <tr>
+                    <th>Số Người</th>
+                    <td>3</td>
+                </tr>
+                <tr>
+                    <th>Ngày Thanh Toán</th>
+                    <td>04/04/2025</td>
+                </tr>
+                <tr>
+                    <th>Phương Thức Thanh Toán</th>
+                    <td>Thẻ Tín Dụng</td>
+                </tr>
+                <tr>
+                    <th>Số Tiền Thanh Toán</th>
+                    <td>2,000,000 VNĐ</td>
+                </tr>
+            </table>
+
+            <div class="total">
+                Tổng Tiền: 2,000,000 VNĐ
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div class="success-message" id="successMessage">
+            Thành công! Thanh toán đã được xác nhận.
+        </div>
+
+        <div class="footer">
+            <p>Được cung cấp bởi <a href="#">WebDuLich</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Giả lập quá trình thanh toán thành công sau 3 giây
+        setTimeout(function() {
+            document.getElementById("successMessage").classList.add("show-success");
+        }, 3000); // Hiển thị thông báo sau 3 giây (giả lập thời gian thanh toán)
+    </script>
+
+</body>
+</html>

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebDuLich")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+343820689770c0710318a2342800f4af6ba24415")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f5b5a9525fc3510941f427ab2cedc413e9c315b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebDuLich")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebDuLich")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

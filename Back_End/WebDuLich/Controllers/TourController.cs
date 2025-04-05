@@ -4,6 +4,7 @@ using WebDuLich.Data;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Buffers.Text;
 
 namespace WebDuLich.Controllers
 {
@@ -70,16 +71,24 @@ namespace WebDuLich.Controllers
             var tours = await _context.Tours
                 .Select(t => new
                 {
+                    t.Matour, // Thêm Matour vào kết quả
                     t.Tentour,
                     t.Mota,
                     t.Gia,
-                    HinhAnh = string.IsNullOrEmpty(t.HinhAnh) ? null : $"{baseUrl}{t.HinhAnh}", // Tạo đường dẫn đầy đủ
+                    GiaNguoiLon = t.Gia,
+                    GiaTreEm = Math.Round(t.Gia * 2 / 3, 2),
+                    GiaTreNho = Math.Round(t.Gia / 2, 2),
+                    t.NgayKhoiHanh,
+                    t.NgayKetThuc,
+                    t.Sokhach,
+                    HinhAnh = string.IsNullOrEmpty(t.HinhAnh) ? null : $"{baseUrl}{t.HinhAnh}",
                     t.LoaiTour
                 })
                 .ToListAsync();
 
             return Ok(tours);
         }
+
 
         [HttpGet("random-tours")]
         public async Task<IActionResult> GetRandomTours()

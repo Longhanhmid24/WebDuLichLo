@@ -1,0 +1,103 @@
+.booking-container {
+    display: block;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 300px;
+    z-index: 1000;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
+
+.booking-title {
+    color: #007bff;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.booking-desc {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+}
+
+.ticket-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 0.9em;
+}
+
+.ticket-type:last-child {
+    border-bottom: none;
+}
+
+.ticket-label {
+    font-weight: 600;
+    flex: 1;
+}
+
+.price {
+    color: #28a745;
+    font-weight: bold;
+    font-size: 1em;
+    margin-left: 10px;
+}
+
+.counter {
+    display: flex;
+    align-items: center;
+}
+
+.counter button {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 6px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.counter button:hover {
+    background-color: #d0d0d0;
+}
+
+.counter input {
+    width: 30px;
+    text-align: center;
+    border: 1px solid #ced4da;
+    padding: 6px;
+    border-radius: 5px;
+}
+
+.total {
+    font-size: 1.1em;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: left;
+    color: #007bff;
+}
+
+.order-button {
+    background-color: #ffc107;
+    color: #333;
+    padding: 12px 15px;
+    text-align: center;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.order-button:hover {
+    background-color: #ffca2c;
+}

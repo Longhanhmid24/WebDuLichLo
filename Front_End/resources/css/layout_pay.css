@@ -1,0 +1,59 @@
+.content {
+    /* Khung tổng thể */
+    flex: 1;
+    background-color: #fff; /* Nền trắng tinh khôi */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-right: 320px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font chữ hiện đại */
+}
+
+.content h1 {
+    /* Tiêu đề */
+    font-size: 2.8em;
+    color: #333;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #007bff; /* Đường kẻ dưới tiêu đề màu xanh lam */
+    padding-bottom: 15px;
+    text-transform: uppercase; /* Chữ in hoa */
+    letter-spacing: 1px; /* Khoảng cách chữ */
+}
+
+.content img {
+    /* Hình ảnh */
+    width: 100%;
+    max-height: 400px; /* Điều chỉnh max-height */
+    max-width: 600px; /* Thêm max-width */
+    max-height: 500px;
+    object-fit: contain; /* Thay đổi thành contain */
+    border-radius: 15px;
+    margin-bottom: 40px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease-in-out;
+}
+
+.content img:hover {
+    /* Hiệu ứng hover hình ảnh */
+    transform: scale(1.03); /* Phóng to nhẹ khi hover */
+}
+
+.content p {
+    /* Đoạn văn */
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.content p span {
+    /* Thông tin quan trọng trong đoạn văn */
+    font-weight: bold;
+    color: #007bff; /* Màu xanh lam cho thông tin quan trọng */
+}
+
+.content p span[id$="-date"] {
+    /* Định dạng ngày giờ */
+    font-family: monospace; /* Font monospace cho ngày giờ */
+    color: #c00; /* Màu đỏ cho ngày giờ */
+}

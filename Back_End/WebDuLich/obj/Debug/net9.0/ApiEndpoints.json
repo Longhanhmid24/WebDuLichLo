@@ -68,6 +68,22 @@
   },
   {
     "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "GetUserInfo",
+    "RelativePath": "api/TaiKhoan/info/{email}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
     "Method": "Login",
     "RelativePath": "api/TaiKhoan/login",
     "HttpMethod": "POST",
@@ -138,6 +154,41 @@
       },
       {
         "Name": "diachi",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentType",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ContentDisposition",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Headers",
+        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
+        "IsRequired": false
+      },
+      {
+        "Name": "Length",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "FileName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "gioitinh",
         "Type": "System.String",
         "IsRequired": false
       }

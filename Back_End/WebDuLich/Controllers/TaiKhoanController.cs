@@ -56,7 +56,7 @@ namespace WebDuLich.Controllers
             });
         }
 
-
+        
 
         // API Đăng nhập tài khoản
 
@@ -115,7 +115,7 @@ namespace WebDuLich.Controllers
             return Ok(new { Message = "Đăng nhập Google thành công!", Email = user.Emaildangki });
         }
         // API lấy danh sách người dùng
-        [HttpGet]
+   
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -123,7 +123,7 @@ namespace WebDuLich.Controllers
             Console.WriteLine($"Tìm thấy {users.Count} tài khoản"); // In số lượng user vào console
             return Ok(users);
         }
-
+       
         // API cập nhật quyền người dùng
         [HttpPut("{email}")]
         public async Task<IActionResult> UpdateUserRole(string email, [FromForm] string phanquyen)
@@ -151,22 +151,77 @@ namespace WebDuLich.Controllers
 
             return Ok(new { Message = "Xóa tài khoản thành công!" });
         }
+        //API lấy thông tin 1 người dùng
+        [HttpGet("info/{email}")]
+        public async Task<IActionResult> GetUserInfo(string email)
+        {
+            try
+            {
+                var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+                if (user == null)
+                    return NotFound(new { Message = "Người dùng không tồn tại!" });
+
+                return Ok(user); // Trả về đối tượng người dùng dưới dạng JSON
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Lỗi lấy thông tin người dùng: " + ex.Message });
+            }
+        }
 
         // API cập nhật thông tin người dùng
         [HttpPut("update/{email}")]
-        public async Task<IActionResult> UpdateUserInfo(string email, [FromForm] string? tendangnhap, [FromForm] string? sodienthoai, [FromForm] string? diachi)
+        public async Task<IActionResult> UpdateUserInfo(string email, [FromForm] string? tendangnhap, [FromForm] string? sodienthoai, [FromForm] string? diachi, [FromForm] IFormFile? imageFile, [FromForm] string? gioitinh)
         {
-            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
-            if (user == null)
-                return NotFound(new { Message = "Người dùng không tồn tại!" });
+            try
+            {
+                var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+                if (user == null)
+                    return NotFound(new { Message = "Người dùng không tồn tại!" });
 
-            user.Tendangnhap = tendangnhap ?? user.Tendangnhap;
-            user.Sodienthoai = sodienthoai ?? user.Sodienthoai;
-            user.Diachi = diachi ?? user.Diachi;
-            await _context.SaveChangesAsync();
+                string? imagePath = null; // Khởi tạo đường dẫn ảnh
 
-            return Ok(new { Message = "Cập nhật thông tin thành công!" });
+                // Xử lý hình ảnh
+                if (imageFile != null && imageFile.Length > 0)
+                {
+                    // Tạo tên file duy nhất
+                    var fileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
+
+                    // Xác định đường dẫn lưu trữ (ví dụ: wwwroot/uploads)
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/accounts", fileName);
+
+                    // Lưu file vào hệ thống tệp
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await imageFile.CopyToAsync(stream);
+                    }
+
+                    // Lưu đường dẫn vào biến imagePath
+                    imagePath = "/accounts/" + fileName; // Đường dẫn tương đối
+                }
+
+                // Cập nhật thông tin người dùng
+                user.Tendangnhap = tendangnhap ?? user.Tendangnhap;
+                user.Sodienthoai = sodienthoai ?? user.Sodienthoai;
+                user.Diachi = diachi ?? user.Diachi;
+                user.Gioitinh = gioitinh ?? user.Gioitinh;
+
+                // Cập nhật đường dẫn ảnh nếu có
+                if (imagePath != null)
+                {
+                    user.HinhAnh = imagePath;
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Ok(new { Message = "Cập nhật thông tin thành công!" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Lỗi cập nhật thông tin: " + ex.Message });
+            }
         }
+
     }
 }
 

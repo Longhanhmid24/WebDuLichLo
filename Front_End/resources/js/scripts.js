@@ -36,29 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         accountDropdown.classList.toggle('show');
     });
 
-    document.addEventListener('click', function (event) {
-        if (!accountIcon.contains(event.target)) {
-            accountDropdown.classList.remove('show');
-        }
-    });
-
-    // document.querySelectorAll('.account-dropdown a').forEach(link => {
-    //     link.addEventListener('click', function (e) {
-    //         e.preventDefault();
-    //         location.href = this.getAttribute('href');
-    //     });
-    // });
 });
-
-// Cuộn mượt mà cho các liên kết điều hướng
-// document.querySelectorAll('a.nav-link').forEach(anchor => {
-//     anchor.addEventListener('click', function (e) {
-//         e.preventDefault();
-//         document.querySelector(this.getAttribute('href')).scrollIntoView({
-//             behavior: 'smooth'
-//         });
-//     });
-// });
 
 function toggleDropdown() {
     const dropdownMenu = document.querySelector('.summary .dropdown-menu');

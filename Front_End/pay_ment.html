@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- Thư viện Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="resources/css/get_tour.css">
-    <link rel="stylesheet" href="resources/css/ramdom_tour.css">
+    <link rel="stylesheet" href="resources/css/pay_ment.css">
+    <link rel="stylesheet" href="resources/css/layout_pay.css">
     <!-- Phong cách-->
     <style>
         /* Phong cách thanh ngang */
@@ -204,128 +204,74 @@
             </nav>
         </div>
     </header>
+ <!-- Phần thông tin chuyến đi -->
 
-    <!-- Phần quảng cáo -->
-    <section id="home" class="home-section">
-        <div class="container">
-            <h2 class="text-center" style="color: white; border: 2px solid cyan; padding: 10px; background-color: rgba(0, 0, 0, 0.5); border-radius: 5px; margin-top: 0; position: absolute; top: 0; left: 50%; transform: translateX(-50%); white-space: nowrap;">
-                Khám phá những điểm đến tuyệt vời trên khắp thế giới!
-            </h2>
-     <div class="search-box">
-        <input type="text" placeholder="Bạn muốn đi đâu?">
-        <div class="search-row">
-            <div class="calendar-icon">
-                <input type="date">
-            </div>
-            <div class="calendar-icon">
-                <input type="date">
-            </div>
-            
-            <div class="summary dropdown">
-                <p class="dropdown-toggle" onclick="toggleDropdown()">
-                    <strong><span id="adults-summary">2</span> Người lớn, 
-                    <span id="children-summary">0</span> Trẻ em, 
-                    <span id="rooms">1</span> Phòng</strong>
-                </p>
-                <div class="dropdown-menu">
-                    <div class="option">
-                        <span>Phòng</span>
-                        <div class="counter">
-                            <button onclick="updateCount('rooms', -1)">-</button>
-                            <span id="rooms">1</span>
-                            <button onclick="updateCount('rooms', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="option">
-                        <span>Người Lớn</span>
-                        <div class="counter">
-                            <button onclick="updateCount('adults', -1)">-</button>
-                            <span id="adults">2</span>
-                            <button onclick="updateCount('adults', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="option">
-                        <span>Trẻ em</span>
-                        <div class="counter">
-                            <button onclick="updateCount('children', -1)">-</button>
-                            <span id="children">0</span>
-                            <button onclick="updateCount('children', 1)">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button>Tìm</button>
+
+
+<body>
+<!-- Nút "Đăng Ký" cố định trên điện thoại -->
+
+
+
+<div class="content">
+    <h1 id="tour-name"></h1>
+    <img id="tour-image" src="/images/default.jpg" />
+    <p id="tour-description"></p>
+    <p>Số khách tối đa: <span id="tour-seats"></span></p>
+    <p>Ngày khởi hành: <span id="tour-start-date"></span></p>
+    <p>Ngày Kết Thúc: <span id="tour-end-date"></span></p>
+    <p>Hãy chọn số lượng vé phù hợp và hoàn tất đặt tour để có trải nghiệm tuyệt vời.</p>
+
+</div>
+
+<div class="booking-container">
+    <h2 style="color: #333;">Lịch Trình và Giá Tour</h2>
+    <p>Chọn Lịch Trình và Xem Giá:</p>
+
+    <div class="ticket-type">
+        <div>
+            <strong>Người lớn</strong> <br>
+        </div>
+        <div class="price">x <span id="tour-price-adult"></span></div>
+        <div class="counter">
+            <button onclick="updateTicket('adult', -1)">-</button>
+            <input type="text" id="adult" value="2" readonly>
+            <button onclick="updateTicket('adult', 1)">+</button>
         </div>
     </div>
-    </section>
-   
-    
-    <!-- Phần điểm đến -->
-    <div class="text-center">
-        <h2>Tour Ngoài Nước</h2>
-        <div id="tour-list-ngoai" class="tour-container">
-            <!-- Example tour item dynamically added -->
-            <div class="tour-item">
-                <h3>Tên Tour Ngoài Nước</h3>
-                <button class="btn btn-primary" onclick="bookTour('Tên Tour Ngoài Nước')">Đặt Vé Ngay</button>
-            </div>
-            
+
+    <div class="ticket-type">
+        <div>
+            <strong>Trẻ em</strong> <br>
+        </div>
+        <div class="price">x <span id="tour-price-child"></span></div>
+        <div class="counter">
+            <button onclick="updateTicket('child', -1)">-</button>
+            <input type="text" id="child" value="0" readonly>
+            <button onclick="updateTicket('child', 1)">+</button>
         </div>
     </div>
-    
-    <div class="text-center">
-        <h2>Tour Trong Nước</h2>
-        <div id="tour-list-trongnuoc" class="tour-container">
-            <!-- Example tour item dynamically added -->
-            <div class="tour-item">
-                <h3>Tên Tour Trong Nước</h3>
-                <button class="btn btn-primary" onclick="bookTour('Tên Tour Trong Nước')">Đặt Vé Ngay</button>
-            </div>
-            <!-- Repeat for other tours -->
+
+    <div class="ticket-type">
+        <div>
+            <strong>Trẻ nhỏ</strong> <br> 
+        </div>
+        <div class="price">x <span id="tour-price-baby"></span></div>
+        <div class="counter">
+            <button onclick="updateTicket('baby', -1)">-</button>
+            <input type="text" id="baby" value="0" readonly>
+            <button onclick="updateTicket('baby', 1)">+</button>
         </div>
     </div>
-    
-    
 
+    <p class="total">Tổng Giá Tour: <span id="totalPrice"></span> đ</p>
 
- <!-- Phần Điểm du lịch phổ biến -->
- <section id="popular_destinations" class="py-5 bg-white">
-    <h2 class="text-center">Các Điểm Du Lịch Phổ Biến</h2>
-    <div id="tourCarousel" class="carousel js-flickity tour-carousel-style">
-        <div class="carousel-placeholder">Đang tải dữ liệu tour...</div>
-
-
-        </div>
-</section>
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
-
-    <!-- Phần giới thiệu -->
-    <section id="about" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center">Giới Thiệu Về Chúng Tôi</h2>
-            <p class="text-center">Chúng tôi là một nhóm những người đam mê du lịch, muốn chia sẻ những trải nghiệm và
-                điểm đến tuyệt vời với bạn.</p>
-        </div>
-    </section>
-
-    
-
-    <!-- Phần chân trang -->
-    <footer class="bg-primary text-white text-center py-3">
-        <h2 class="text-center">Liên Hệ</h2>
-        <p class="text-center">Để biết thêm thông tin, vui lòng liên hệ với chúng tôi qua email:
-            longtravel@mail.com</p>
-        <p>&copy; 2023 Khám Phá Thế Giới. Bảo lưu mọi quyền.</p>
-    </footer>
+    <div class="order-button" onclick="processPayment()">Yêu cầu đặt</div>
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
+    <script src="resources/js/pay_ment.js"></script>
     <!-- Thư viện Flickity JS -->
-    <script src="resources/js/scripts.js"></script> <!-- Thêm tệp JS tùy chỉnh -->
-    <script src="resources/js/get_tour.js"></script>
-    <script src="html/auth/oauthen/login.js"></script>
-    <script src="resources/js/random_tour.js"></script>
-
-
 
 </body>
 
