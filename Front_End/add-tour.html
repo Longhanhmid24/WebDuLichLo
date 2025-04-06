@@ -143,10 +143,10 @@ button:hover {
             </div>
             
             <div class="form-group">
-                <label for="Ngay">Ngày Khởi Hành</label>
-                <input type="date" id="Ngay" name="Ngay" required>
+                <label for="NgayKhoiHanh">Ngày Khởi Hành</label>
+                <input type="date" id="NgayKhoiHanh" name="NgayKhoiHanh" required>
             </div>
-
+            
             <div class="form-group">
                 <label for="NgayKetThuc">Ngày Kết Thúc</label>
                 <input type="date" id="NgayKetThuc" name="NgayKetThuc" required>
@@ -237,7 +237,8 @@ document.getElementById("addTourForm").addEventListener("submit", function (e) {
     formData.append("Gia", document.getElementById("Gia").value);
     formData.append("Mota", document.getElementById("Mota").value);
     formData.append("Sokhach", document.getElementById("Sokhach").value);
-    formData.append("Ngay", document.getElementById("Ngay").value);
+    formData.append("NgayKhoiHanh", document.getElementById("NgayKhoiHanh").value);
+    formData.append("NgayKetThuc", document.getElementById("NgayKetThuc").value);
     
     // Lấy giá trị LoaiTour từ input radio
     const loaiTourValue = document.querySelector('input[name="LoaiTour"]:checked');
