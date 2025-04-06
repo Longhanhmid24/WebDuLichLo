@@ -82,8 +82,7 @@
               "RelativeToolTip": "Controllers\\DondattoutController.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAowDIAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T16:46:38.396Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T16:46:38.396Z"
             },
             {
               "$type": "Document",
@@ -95,8 +94,7 @@
               "RelativeToolTip": "Models\\Dondattour.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAAACUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T16:28:26.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T16:28:26.539Z"
             },
             {
               "$type": "Document",
@@ -108,8 +106,7 @@
               "RelativeToolTip": "Models\\TaiKhoan.cs",
               "ViewState": "AgIAABIAAAAAAAAAAAAowCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T10:29:52.059Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T10:29:52.059Z"
             },
             {
               "$type": "Document",
@@ -121,8 +118,7 @@
               "RelativeToolTip": "Models\\Tour.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T10:29:50.98Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T10:29:50.98Z"
             },
             {
               "$type": "Document",
@@ -132,7 +128,7 @@
               "RelativeDocumentMoniker": "Controllers\\TaiKhoanController.cs",
               "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TaiKhoanController.cs",
               "RelativeToolTip": "Controllers\\TaiKhoanController.cs",
-              "ViewState": "AgIAALUAAAAAAAAAAIAwwL4AAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAALIAAAAAAAAAAIAwwMsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T09:33:01.147Z",
               "EditorCaption": ""
@@ -145,7 +141,7 @@
               "RelativeDocumentMoniker": "Controllers\\TourController.cs",
               "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
               "RelativeToolTip": "Controllers\\TourController.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAMwIUAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAMwI0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T09:32:55.531Z",
               "EditorCaption": ""

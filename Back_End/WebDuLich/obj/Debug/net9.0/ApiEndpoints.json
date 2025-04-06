@@ -370,7 +370,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "searchTerm",
+        "Name": "keyword",
         "Type": "System.String",
         "IsRequired": false
       }

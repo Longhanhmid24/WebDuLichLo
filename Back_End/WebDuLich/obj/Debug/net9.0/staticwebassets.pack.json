@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\images\\tours\\0082fa20-866d-4e3a-954e-4a317834eb4a.jpg"
     },
     {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\0f5808fc-ef27-47cf-bdb3-a1b58ff986d6.png",
+      "PackagePath": "staticwebassets\\images\\tours\\0f5808fc-ef27-47cf-bdb3-a1b58ff986d6.png"
+    },
+    {
       "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\12d6904c-dce9-4dd4-b663-8524bf375ac4.webp",
       "PackagePath": "staticwebassets\\images\\tours\\12d6904c-dce9-4dd4-b663-8524bf375ac4.webp"
     },
@@ -75,6 +79,10 @@
     {
       "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\65f8bff8-fdff-42f7-8c69-1fb948fa1769.jpg"
+    },
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\686e5367-5804-4901-9e28-59aed6da8034.jpg",
+      "PackagePath": "staticwebassets\\images\\tours\\686e5367-5804-4901-9e28-59aed6da8034.jpg"
     },
     {
       "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\812d1e26-c733-4a1e-898b-d6c5a16bb01e.png",
@@ -153,12 +161,20 @@
       "PackagePath": "staticwebassets\\images\\tours\\e25f8b8f-7e98-42ff-ae24-0dd8e12f3b31.jpg"
     },
     {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\e343d76a-0a9e-49e0-8d2a-cfe97a98a642.png",
+      "PackagePath": "staticwebassets\\images\\tours\\e343d76a-0a9e-49e0-8d2a-cfe97a98a642.png"
+    },
+    {
       "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\e9592f69-0946-404b-b114-9c65fbce5caf.webp",
       "PackagePath": "staticwebassets\\images\\tours\\e9592f69-0946-404b-b114-9c65fbce5caf.webp"
     },
     {
       "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\f62e40ea-2cae-4b3e-8444-9eab26cf99d0.jpg",
       "PackagePath": "staticwebassets\\images\\tours\\f62e40ea-2cae-4b3e-8444-9eab26cf99d0.jpg"
+    },
+    {
+      "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\fb1b4b1a-347e-45ab-8376-347f870b6432.jpg",
+      "PackagePath": "staticwebassets\\images\\tours\\fb1b4b1a-347e-45ab-8376-347f870b6432.jpg"
     },
     {
       "Id": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\wwwroot\\images\\tours\\fc89af59-cc2b-4b1d-809b-ff4ce1a26d1c.jpg",
