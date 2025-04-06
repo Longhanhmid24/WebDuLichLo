@@ -26,7 +26,6 @@ function renderUserList(users) {
                 <select onchange="updateUserRole('${user.emaildangki}', this.value)">
                     <option value="admin" ${user.phanquyen === 'admin' ? 'selected' : ''}>Admin</option>
                     <option value="user" ${user.phanquyen === 'user' ? 'selected' : ''}>User</option>
-                    <option value="manager" ${user.phanquyen === 'manager' ? 'selected' : ''}>Manager</option>
                 </select>
             </td>
             <td>${user.sodienthoai || 'N/A'}</td>
@@ -110,3 +109,5 @@ async function deleteUser(email) {
         alert("Error deleting user");
     }
 }
+
+

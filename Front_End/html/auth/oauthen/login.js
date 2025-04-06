@@ -33,7 +33,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Lưu user vào localStorage
                 localStorage.setItem("user", JSON.stringify({
                     email: email,
-                    tendangnhap: result.tendangnhap // Đảm bảo rằng tên này đúng với phản hồi từ API
+                    tendangnhap: result.tendangnhap,
+                    phanquyen: result.phanquyen // ← THÊM DÒNG NÀY
                 }));
 
                 alert("Đăng nhập thành công!");
@@ -50,20 +51,24 @@ document.addEventListener("DOMContentLoaded", function () {
     const userInfo = document.getElementById("user-info");
     const user = JSON.parse(localStorage.getItem("user"));
 
-    if (user) {
-        // Nếu đã đăng nhập, hiển thị tên user
-        userName.textContent = user.email;
+if (user) {
+    userName.textContent = user.email;
 
-        // Thêm nút đăng xuất và liên kết đến hồ sơ cá nhân
-        userInfo.innerHTML = `
-            <a href="#" id="logout">Đăng xuất</a>
-            <a href="admin.html" id="admin">Quản Lý Người Dùng</a>
-            <a href="ThongTinCaNhan.html?email=${user.email}" id="Profile">Hồ Sơ</a>
-        `;
+    let html = `
+        <a href="#" id="logout">Đăng xuất</a>
+        <a href="ThongTinCaNhan.html?email=${user.email}" id="Profile">Hồ Sơ</a>
+    `;
 
-        document.getElementById("logout").addEventListener("click", function () {
-            localStorage.removeItem("user"); // Xóa user khỏi localStorage
-            location.reload(); // Tải lại trang
-        });
+    // Nếu quyền là Admin thì hiển thị quản lý người dùng
+    if (user.phanquyen === "admin") {
+        html += `<a href="admin.html" id="admin">Quản Lý Người Dùng</a>`;
     }
+
+    userInfo.innerHTML = html;
+
+    document.getElementById("logout").addEventListener("click", function () {
+        localStorage.removeItem("user");
+        location.reload();
+    });
+}
 });

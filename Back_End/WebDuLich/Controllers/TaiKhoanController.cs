@@ -70,7 +70,13 @@ namespace WebDuLich.Controllers
                 return Unauthorized(new { Message = "Email hoặc mật khẩu không đúng!" });
             }
 
-            return Ok(new { Message = "Đăng nhập thành công!", Email = user.Emaildangki });
+            return Ok(new
+            {
+                Message = "Đăng nhập thành công!",
+                Email = user.Emaildangki,
+                Tendangnhap = user.Tendangnhap,
+                Phanquyen = user.Phanquyen // ✅ THÊM DÒNG NÀY
+            });
         }
 
         // API Đăng nhập bằng Google

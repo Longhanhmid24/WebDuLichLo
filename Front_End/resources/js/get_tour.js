@@ -9,38 +9,8 @@ async function fetchTours() {
         let tours = await response.json();
         console.log("Danh sách tour nhận được:", tours);
 
-        let tourNgoai = "";
-        let tourTrongNuoc = "";
-
-        tours.forEach(tour => {
-            console.log(`Tour: ${tour.tentour}, Loại: ${tour.loaiTour}`);
-
-            let hinhAnh = tour.hinhAnh ? tour.hinhAnh : "/images/default.jpg";
-
-            // Thêm id cho mỗi tour để dễ dàng xóa
-            let tourHTML = `
-                <div class="tour-item" id="tour-${tour.matour}">
-                    <img src="${hinhAnh}" class="card-img-top" alt="${tour.tentour}" 
-                         onerror="this.onerror=null; this.src='/images/default.jpg';">
-                    <div class="card-body">
-                        <h5 class="card-title">${tour.tentour}</h5>
-                        <p class="card-text">${tour.mota || "Không có mô tả"}</p>
-                        <p class="tour-price">${tour.gia.toLocaleString()} VND</p>
-                        <button class="btn-delete" onclick="deleteTour('${tour.matour}')">Xóa Tour</button>
-                        <button class="btn-book" onclick="bookTour('${tour.matour}')">Đặt vé ngay</button>
-                    </div>
-                </div>
-            `;
-
-            if (tour.loaiTour && tour.loaiTour.toLowerCase().includes("ngoài")) {
-                tourNgoai += tourHTML;
-            } else {
-                tourTrongNuoc += tourHTML;
-            }
-        });
-
-        document.getElementById("tour-list-ngoai").innerHTML = tourNgoai;
-        document.getElementById("tour-list-trongnuoc").innerHTML = tourTrongNuoc;
+        // Gọi hàm render có phân quyền
+        renderTours(tours);
 
     } catch (error) {
         console.error("Lỗi khi lấy dữ liệu:", error);
@@ -107,13 +77,24 @@ async function searchTours() {
 }
 
 // Tách riêng hàm render cho dễ tái sử dụng
+// Hàm renderTours, phân quyền xóa chỉ admin mới thấy
 function renderTours(tours) {
     let tourNgoai = "";
     let tourTrongNuoc = "";
 
+    const user = JSON.parse(localStorage.getItem("user"));
+    const isAdmin = user && user.phanquyen === "admin";
+
     tours.forEach(tour => {
-        // Kiểm tra và chuẩn hóa lại đường dẫn hình ảnh
-        let hinhAnh = tour.hinhAnh ? `https://localhost:7265${tour.hinhAnh}` : "/images/default.jpg";
+        let hinhAnh = tour.hinhAnh && tour.hinhAnh.startsWith("http")
+            ? tour.hinhAnh
+            : tour.hinhAnh
+                ? `https://localhost:7265${tour.hinhAnh}`
+                : "/images/default.jpg";
+
+        let deleteButton = isAdmin
+            ? `<button class="btn-delete" onclick="deleteTour('${tour.matour}')">Xóa Tour</button>`
+            : "";
 
         let tourHTML = `
             <div class="tour-item" id="tour-${tour.matour}">
@@ -123,7 +104,7 @@ function renderTours(tours) {
                     <h5 class="card-title">${tour.tentour}</h5>
                     <p class="card-text">${tour.mota || "Không có mô tả"}</p>
                     <p class="tour-price">${tour.gia.toLocaleString()} VND</p>
-                    <button class="btn-delete" onclick="deleteTour('${tour.matour}')">Xóa Tour</button>
+                    ${deleteButton}
                     <button class="btn-book" onclick="bookTour('${tour.matour}')">Đặt vé ngay</button>
                 </div>
             </div>
