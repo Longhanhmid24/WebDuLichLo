@@ -1,4 +1,3 @@
-// Mã JavaScript cho các tính năng tương tác có thể được thêm vào đây
 
 document.addEventListener('DOMContentLoaded', function () {
     // Chuyển đổi menu điều hướng trên màn hình nhỏ
@@ -16,18 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
-    // document.querySelectorAll('.carousel-cell').forEach(cell => {
-    //     cell.addEventListener('click', function (event) {
-    //         if (!isDragging) {
-    //             var href = this.getAttribute('data-href');
-    //             if (href) {
-    //                 location.href = href;
-    //             }
-    //         }
-    //     });
-    // });
-
     // Chuyển đổi hiển thị dropdown tài khoản
     var accountIcon = document.querySelector('.account-icon');
     var accountDropdown = document.querySelector('.account-dropdown');
@@ -36,6 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
         accountDropdown.classList.toggle('show');
     });
 
+    // Thêm sự kiện xóa tour
+    document.querySelectorAll('.delete-tour-btn').forEach(button => {
+        button.addEventListener('click', function () {
+            const tourItem = this.closest('.tour-item');
+            const matour = tourItem.getAttribute('data-matour');
+            deleteTour(matour, tourItem);
+        });
+    });
 });
 
 function toggleDropdown() {
@@ -52,3 +47,21 @@ function updateCount(type, value) {
     // Update summary text
     document.getElementById(`${type}-summary`).innerText = count;
 }
+const user = JSON.parse(localStorage.getItem("user"));
+const userEmail = user?.email || null;
+
+document.querySelectorAll('.view-orders-btn').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault(); // Ngừng chuyển hướng mặc định của thẻ <a>
+
+        if (!userEmail) {
+            alert("Không có thông tin email người dùng. Vui lòng đăng nhập hoặc đặt tour trước.");
+            return;
+        }
+
+        // Chuyển hướng sang list_bill.html kèm theo email
+        window.location.href = `list_bill.html?email=${encodeURIComponent(userEmail)}`;
+    });
+});
+
+

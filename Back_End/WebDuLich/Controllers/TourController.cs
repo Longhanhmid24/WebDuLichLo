@@ -117,5 +117,64 @@ namespace WebDuLich.Controllers
             }
         }
 
+        // API để xóa tour theo Matour
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteTour(int id)
+        {
+            try
+            {
+                var tour = await _context.Tours.FindAsync(id);
+                if (tour == null)
+                {
+                    return NotFound("Tour không tồn tại.");
+                }
+
+                _context.Tours.Remove(tour);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Tour đã được xóa thành công!" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Lỗi server: {ex.Message}");
+            }
+        }
+
+        // API tìm kiếm tour theo tên
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchTours([FromQuery] string searchTerm)
+        {
+            try
+            {
+                var baseUrl = $"{Request.Scheme}://{Request.Host}";
+
+                var tours = await _context.Tours
+                    .Where(t => t.Tentour.Contains(searchTerm))
+                    .Select(t => new
+                    {
+                        t.Matour,
+                        t.Tentour,
+                        t.Mota,
+                        t.Gia,
+                        GiaNguoiLon = t.Gia,
+                        GiaTreEm = Math.Round(t.Gia * 2 / 3, 2),
+                        GiaTreNho = Math.Round(t.Gia / 2, 2),
+                        t.NgayKhoiHanh,
+                        t.NgayKetThuc,
+                        t.Sokhach,
+                        HinhAnh = string.IsNullOrEmpty(t.HinhAnh) ? null : $"{baseUrl}{t.HinhAnh}",
+                        t.LoaiTour
+                    })
+                    .ToListAsync();
+
+                return Ok(tours);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Lỗi server: {ex.Message}");
+            }
+        }
     }
+
 }
+

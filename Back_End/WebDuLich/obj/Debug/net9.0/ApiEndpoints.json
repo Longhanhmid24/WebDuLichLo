@@ -327,6 +327,22 @@
   },
   {
     "ContainingType": "WebDuLich.Controllers.TourController",
+    "Method": "DeleteTour",
+    "RelativePath": "api/Tour/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TourController",
     "Method": "GetAllTours",
     "RelativePath": "api/Tour/get-tour",
     "HttpMethod": "GET",
@@ -343,6 +359,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TourController",
+    "Method": "SearchTours",
+    "RelativePath": "api/Tour/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "searchTerm",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   }
 ]

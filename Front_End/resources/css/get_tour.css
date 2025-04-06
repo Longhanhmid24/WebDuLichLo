@@ -87,3 +87,19 @@
 .btn-book:hover {
     background-color: #0056b3;
 }
+/* Nút xóa tour */
+.btn-delete {
+    background-color: #dc3545; /* Màu đỏ */
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 15px;
+    width: 100%;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-delete:hover {
+    background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+}

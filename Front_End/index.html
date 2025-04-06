@@ -184,7 +184,9 @@
                                 <a href="#international">Du Lịch Nước Ngoài</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="#">bay</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link view-orders-btn" href="#">Lịch sử giao dịch</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="#">Tours</a></li>
                         <li class="nav-item"><a class="nav-link" href="#news">Tin Tức</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">Giới Thiệu</a></li>
@@ -214,48 +216,13 @@
      <div class="search-box">
         <input type="text" placeholder="Bạn muốn đi đâu?">
         <div class="search-row">
-            <div class="calendar-icon">
-                <input type="date">
-            </div>
-            <div class="calendar-icon">
-                <input type="date">
-            </div>
-            
-            <div class="summary dropdown">
-                <p class="dropdown-toggle" onclick="toggleDropdown()">
-                    <strong><span id="adults-summary">2</span> Người lớn, 
-                    <span id="children-summary">0</span> Trẻ em, 
-                    <span id="rooms">1</span> Phòng</strong>
-                </p>
-                <div class="dropdown-menu">
-                    <div class="option">
-                        <span>Phòng</span>
-                        <div class="counter">
-                            <button onclick="updateCount('rooms', -1)">-</button>
-                            <span id="rooms">1</span>
-                            <button onclick="updateCount('rooms', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="option">
-                        <span>Người Lớn</span>
-                        <div class="counter">
-                            <button onclick="updateCount('adults', -1)">-</button>
-                            <span id="adults">2</span>
-                            <button onclick="updateCount('adults', 1)">+</button>
-                        </div>
-                    </div>
-                    <div class="option">
-                        <span>Trẻ em</span>
-                        <div class="counter">
-                            <button onclick="updateCount('children', -1)">-</button>
-                            <span id="children">0</span>
-                            <button onclick="updateCount('children', 1)">+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+           
             <button>Tìm</button>
+            
         </div>
+        
+   
+
     </div>
     </section>
    
@@ -267,6 +234,7 @@
             <!-- Example tour item dynamically added -->
             <div class="tour-item">
                 <h3>Tên Tour Ngoài Nước</h3>
+                <button class="btn btn-danger delete-tour-btn">Xóa Tour</button>
                 <button class="btn btn-primary" onclick="bookTour('Tên Tour Ngoài Nước')">Đặt Vé Ngay</button>
             </div>
             
@@ -279,7 +247,9 @@
             <!-- Example tour item dynamically added -->
             <div class="tour-item">
                 <h3>Tên Tour Trong Nước</h3>
+                <button class="btn btn-danger delete-tour-btn">Xóa Tour</button>
                 <button class="btn btn-primary" onclick="bookTour('Tên Tour Trong Nước')">Đặt Vé Ngay</button>
+                
             </div>
             <!-- Repeat for other tours -->
         </div>
@@ -324,7 +294,7 @@
     <script src="resources/js/get_tour.js"></script>
     <script src="html/auth/oauthen/login.js"></script>
     <script src="resources/js/random_tour.js"></script>
-
+   
 
 
 </body>

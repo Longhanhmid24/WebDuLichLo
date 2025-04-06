@@ -36,6 +36,50 @@
         }
       }
     },
+    "/api/Dondattour/get-orders": {
+      "get": {
+        "tags": [
+          "Dondattour"
+        ],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Dondattour/delete-order/{id}": {
+      "delete": {
+        "tags": [
+          "Dondattour"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/TaiKhoan/register": {
       "post": {
         "tags": [
