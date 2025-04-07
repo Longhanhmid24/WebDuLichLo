@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:controllers\\taikhoancontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\controllers\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:controllers\\tourcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|solutionrelative:models\\taikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5CC4A0FA-B191-4759-BECA-E327C79F9436}|WebDuLich.csproj|d:\\laptrinhweb\\webdulichlo\\back_end\\webdulich\\models\\tour.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -98,7 +98,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "TaiKhoan.cs",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Models\\TaiKhoan.cs",
               "RelativeDocumentMoniker": "Models\\TaiKhoan.cs",
@@ -106,8 +106,7 @@
               "RelativeToolTip": "Models\\TaiKhoan.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAA9wCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T10:29:52.059Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T10:29:52.059Z"
             },
             {
               "$type": "Document",
@@ -119,8 +118,7 @@
               "RelativeToolTip": "Models\\Tour.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-05T10:29:50.98Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-05T10:29:50.98Z"
             },
             {
               "$type": "Document",
@@ -128,22 +126,22 @@
               "Title": "TaiKhoanController.cs",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TaiKhoanController.cs",
               "RelativeDocumentMoniker": "Controllers\\TaiKhoanController.cs",
-              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TaiKhoanController.cs",
-              "RelativeToolTip": "Controllers\\TaiKhoanController.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAkwE4AAAAPAAAAAAAAAA==",
+              "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TaiKhoanController.cs*",
+              "RelativeToolTip": "Controllers\\TaiKhoanController.cs*",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAAwF0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T09:33:01.147Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "TourController.cs",
               "DocumentMoniker": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
               "RelativeDocumentMoniker": "Controllers\\TourController.cs",
               "ToolTip": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\Controllers\\TourController.cs",
               "RelativeToolTip": "Controllers\\TourController.cs",
-              "ViewState": "AgIAAD4AAAAAAAAAAAAswEYAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAiwKAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-05T09:32:55.531Z",
               "EditorCaption": ""

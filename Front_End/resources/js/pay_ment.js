@@ -93,14 +93,24 @@ async function processPayment() {
         alert("Bạn cần đăng nhập để đặt tour!");
         return;
     }
+    // ✅ THÊM ĐIỀU KIỆN TẠI ĐÂY
+    const adultCount = parseInt(document.getElementById('adult').value);
+    const childCount = parseInt(document.getElementById('child').value);
+    const babyCount = parseInt(document.getElementById('baby').value);
 
+    if (adultCount + childCount + babyCount === 0) {
+        alert("Bạn phải chọn ít nhất một vé để đặt tour!");
+        return;
+    }
     const email = user.email; // Lấy email từ thông tin người dùng đã lưu trong localStorage
     const matour = window.tour.matour;
     const songuoi = parseInt(document.getElementById('adult').value) +
                     parseInt(document.getElementById('child').value) +
                     parseInt(document.getElementById('baby').value);
     const tongtien = parseFloat(document.getElementById('totalPrice').textContent.replace(/,/g, ''));
+    
 
+    
     const order = {
         matour: matour,
         ngaydat: new Date().toISOString(),

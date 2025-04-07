@@ -112,7 +112,8 @@ namespace WebDuLich.Controllers
                 {
                     Emaildangki = email,
                     Tendangnhap = name ?? "Người dùng Google",
-                    NgayTao = DateTime.UtcNow
+                    NgayTao = DateTime.UtcNow,
+                    Phanquyen = "user" // hoặc "khachhang"
                 };
                 _context.TaiKhoans.Add(user);
                 await _context.SaveChangesAsync();

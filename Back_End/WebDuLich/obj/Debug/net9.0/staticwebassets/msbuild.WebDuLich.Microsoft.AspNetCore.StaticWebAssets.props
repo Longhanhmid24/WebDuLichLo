@@ -120,8 +120,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>rjciu4e5fj</Fingerprint>
-      <Integrity>B579pnHqjBkpImunJT0+Cf/WpaQaFpMrtgd0OXTxHOI=</Integrity>
+      <Fingerprint>y1m69ady4n</Fingerprint>
+      <Integrity>2ukhiMAP2+frOK6QQPPML8YRA8wAkwrBl2ETO5mQq0U=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\anhmacdinh.jpg'))</OriginalItemSpec>
@@ -377,6 +377,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\tours\686e5367-5804-4901-9e28-59aed6da8034.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\tours\6e025278-88ed-4906-9c2b-fe29ecb5e43c.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>WebDuLich</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/WebDuLich</BasePath>
+      <RelativePath>images/tours/6e025278-88ed-4906-9c2b-fe29ecb5e43c.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>2og9805snz</Fingerprint>
+      <Integrity>XuuumYGZOYSuZjkY9JKKDxpVSlQ1v5//XX9X3UpP0cU=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\tours\6e025278-88ed-4906-9c2b-fe29ecb5e43c.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\tours\812d1e26-c733-4a1e-898b-d6c5a16bb01e.png'))">
       <SourceType>Package</SourceType>
