@@ -41,6 +41,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddMemoryCache();
 
 // Cấu hình Cookie Policy
 builder.Services.ConfigureApplicationCookie(options =>

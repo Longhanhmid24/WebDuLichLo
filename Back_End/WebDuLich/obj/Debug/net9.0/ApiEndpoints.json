@@ -112,6 +112,22 @@
   },
   {
     "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "ForgotPassword",
+    "RelativePath": "api/TaiKhoan/forgot-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
     "Method": "GoogleCallback",
     "RelativePath": "api/TaiKhoan/google-callback",
     "HttpMethod": "GET",
@@ -187,6 +203,32 @@
       },
       {
         "Name": "matkhau",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WebDuLich.Controllers.TaiKhoanController",
+    "Method": "ResetPassword",
+    "RelativePath": "api/TaiKhoan/reset-password",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "token",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "newPassword",
         "Type": "System.String",
         "IsRequired": false
       }

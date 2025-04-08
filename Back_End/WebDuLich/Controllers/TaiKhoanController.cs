@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System.Security.Claims;
 using WebDuLich.Data;
 using WebDuLich.Models;
@@ -14,11 +15,12 @@ namespace WebDuLich.Controllers
     public class TaiKhoanController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
-
+        private readonly IMemoryCache _cache;
         // Inject ApplicationDbContext để làm việc với database
-        public TaiKhoanController(ApplicationDbContext context)
+        public TaiKhoanController(ApplicationDbContext context, IMemoryCache memoryCache)
         {
             _context = context;
+            _cache = memoryCache;
         }
 
         // API Đăng ký tài khoản mới
@@ -119,10 +121,10 @@ namespace WebDuLich.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            return Ok(new { Message = "Đăng nhập Google thành công!", Email = user.Emaildangki });
+            return Redirect($"https://yourfrontend.com/html/auth/google-redirect.html?email={Uri.EscapeDataString(user.Emaildangki)}&name={Uri.EscapeDataString(user.Tendangnhap)}&role={Uri.EscapeDataString(user.Phanquyen)}");
         }
         // API lấy danh sách người dùng
-   
+
         [HttpGet]
         public async Task<IActionResult> GetUsers()
         {
@@ -245,8 +247,56 @@ namespace WebDuLich.Controllers
             // Trả về tệp cùng với Content-Type (Ví dụ cho hình ảnh là "image/png")
             return File(fileBytes, "anhmacdinh/png", fileName);
         }
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromForm] string email)
+        {
+            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+            if (user == null)
+                return NotFound(new { Message = "Không tìm thấy người dùng với email này!" });
 
+            var token = Guid.NewGuid().ToString(); // Tạo mã token ngẫu nhiên
+            var cacheKey = $"reset-token:{email}";
+            _cache.Set(cacheKey, token, TimeSpan.FromMinutes(15)); // Lưu token tạm trong cache (15 phút)
 
+            // Tạo đường dẫn chứa token để người dùng reset
+            var resetUrl = $"https://yourfrontend.com/reset-password.html?email={Uri.EscapeDataString(email)}&token={token}";
+
+            // Gửi mail (hoặc log ra console để test)
+            Console.WriteLine($"Reset URL: {resetUrl}");
+
+            // Có thể dùng hàm gửi mail tại đây nếu bạn đã có
+            return Ok(new
+            {
+                Message = "Liên kết đặt lại mật khẩu đã được gửi tới email (console)!",
+                Token = token
+            });
+
+        }
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromForm] string email, [FromForm] string token, [FromForm] string newPassword)
+        {
+            var cacheKey = $"reset-token:{email}";
+
+            // Kiểm tra token trong cache
+            if (!_cache.TryGetValue(cacheKey, out string? savedToken) || savedToken != token)
+                return BadRequest(new { Message = "Token không hợp lệ hoặc đã hết hạn!" });
+
+            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+            if (user == null)
+                return NotFound(new { Message = "Không tìm thấy người dùng!" });
+
+            if (string.IsNullOrWhiteSpace(newPassword))
+                return BadRequest(new { Message = "Mật khẩu mới không được để trống!" });
+
+            // Hash mật khẩu và cập nhật
+            user.Matkhau = BCrypt.Net.BCrypt.HashPassword(newPassword);
+            await _context.SaveChangesAsync();
+
+            // Xóa token sau khi sử dụng
+            _cache.Remove(cacheKey);
+
+            return Ok(new { Message = "Đặt lại mật khẩu thành công!" });
+        }
     }
 }
 

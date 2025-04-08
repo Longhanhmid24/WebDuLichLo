@@ -43,8 +43,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         const baseUrl = "https://localhost:7265";  // URL backend API
 
         avatarImg.src = user.hinhAnh && user.hinhAnh !== ""
-            ? `${baseUrl}${user.hinhAnh}`  // Thêm baseUrl vào đường dẫn
-            : `${baseUrl}/images/anhmacdinh.jpg`;   // Giả sử ảnh mặc định cũng nằm trong wwwroot
+        ? `${baseUrl}${user.hinhAnh.replace(/\\/g, "/")}?t=${Date.now()}`
+        : `${baseUrl}/images/anhmacdinh.jpg`;   // Giả sử ảnh mặc định cũng nằm trong wwwroot
 
 
             } catch (err) {
