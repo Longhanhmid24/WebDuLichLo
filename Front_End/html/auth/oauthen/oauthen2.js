@@ -43,9 +43,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Xử lý đăng nhập bằng Google
-    document.querySelector("a[href='/api/auth/google']").addEventListener("click", function (event) {
-        event.preventDefault();
-        window.location.href = "https://localhost:7265/api/TaiKhoan/google-login"; // Chuyển hướng tới API Google
-    });
 });
