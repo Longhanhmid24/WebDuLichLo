@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Mvc;
@@ -187,7 +187,7 @@ namespace WebDuLich.Controllers
             [FromForm] string? sodienthoai,
             [FromForm] string? diachi,
             [FromForm] string? gioitinh,
-            [FromForm] IFormFile? hinhAnh)  // Sử dụng IFormFile để nhận ảnh
+            IFormFile? hinhAnh)  // Sử dụng IFormFile để nhận ảnh
         {
             var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
             if (user == null)
