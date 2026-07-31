@@ -25,24 +25,24 @@ namespace WebDuLich.Controllers
 
         // API Đăng ký tài khoản mới
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromForm] string emaildangki, [FromForm] string tendangnhap, [FromForm] string? matkhau)
+        public async Task<IActionResult> Register([FromForm] RegisterRequest request)
         {
             // Kiểm tra email đã tồn tại chưa
-            if (await _context.TaiKhoans.AnyAsync(u => u.Emaildangki == emaildangki))
+            if (await _context.TaiKhoans.AnyAsync(u => u.Emaildangki == request.Emaildangki))
                 return BadRequest(new { Message = "Email đã được đăng ký!" });
 
             // Nếu đăng ký bằng tài khoản thường, mật khẩu không được để trống
-            if (string.IsNullOrWhiteSpace(matkhau) && !emaildangki.EndsWith("@oauth.com"))
+            if (string.IsNullOrWhiteSpace(request.Matkhau) && !request.Emaildangki.EndsWith("@oauth.com"))
                 return BadRequest(new { Message = "Mật khẩu không được để trống khi đăng ký bằng email!" });
 
             // Mã hóa mật khẩu nếu có
-            string? hashedPassword = matkhau != null ? BCrypt.Net.BCrypt.HashPassword(matkhau) : null;
+            string? hashedPassword = request.Matkhau != null ? BCrypt.Net.BCrypt.HashPassword(request.Matkhau) : null;
 
             // Tạo tài khoản mới
             var user = new TaiKhoan
             {
-                Emaildangki = emaildangki,
-                Tendangnhap = tendangnhap,
+                Emaildangki = request.Emaildangki,
+                Tendangnhap = request.Tendangnhap,
                 Matkhau = hashedPassword, // Nếu OAuth2 thì mật khẩu có thể null
                 NgayTao = DateTime.UtcNow,
                 Phanquyen = "User" // Mặc định là User
@@ -63,11 +63,11 @@ namespace WebDuLich.Controllers
         // API Đăng nhập tài khoản
 
         [HttpPost("login")]
-        public async Task<IActionResult> Login([FromForm] string emaildangki, [FromForm] string matkhau)
+        public async Task<IActionResult> Login([FromForm] LoginRequest request)
         {
             // Tìm tài khoản theo email
-            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == emaildangki);
-            if (user == null || !BCrypt.Net.BCrypt.Verify(matkhau, user.Matkhau)) // Kiểm tra mật khẩu
+            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == request.Emaildangki);
+            if (user == null || !BCrypt.Net.BCrypt.Verify(request.Matkhau, user.Matkhau)) // Kiểm tra mật khẩu
             {
                 return Unauthorized(new { Message = "Email hoặc mật khẩu không đúng!" });
             }
