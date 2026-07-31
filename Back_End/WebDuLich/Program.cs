@@ -56,7 +56,11 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins", policy =>
     {
-        policy.WithOrigins("https://longhanhmid24.github.io", "http://127.0.0.1:5500", "http://localhost:5500", "http://localhost:3000")
+        policy.SetIsOriginAllowed(origin => 
+                origin.EndsWith(".vercel.app") || 
+                origin == "https://longhanhmid24.github.io" || 
+                origin.StartsWith("http://localhost") || 
+                origin.StartsWith("http://127.0.0.1"))
               .AllowAnyMethod()
               .AllowAnyHeader()
               .AllowCredentials(); // Bắt buộc phải có để gửi cookie/token từ Frontend
