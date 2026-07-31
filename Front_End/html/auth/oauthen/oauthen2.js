@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         try {
             // Gửi yêu cầu đăng ký đến API
-            const response = await fetch("https://localhost:7265/api/TaiKhoan/register", {
+            const response = await fetch("https://webdulichlo.onrender.com/api/TaiKhoan/register", {
                 method: "POST",
                 body: formData
             });

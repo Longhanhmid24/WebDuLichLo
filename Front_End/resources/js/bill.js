@@ -10,7 +10,7 @@ async function fetchBillDetails() {
 
     try {
         // Lấy thông tin tour từ API
-        const response = await fetch("https://localhost:7265/api/Tour/get-tour");
+        const response = await fetch("https://webdulichlo.onrender.com/api/Tour/get-tour");
         if (!response.ok) {
             throw new Error("Lỗi khi lấy thông tin tour.");
         }

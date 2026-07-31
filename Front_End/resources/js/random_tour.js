@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const carousel = document.getElementById("tourCarousel");
     const placeholder = document.querySelector(".carousel-placeholder");
 
-    fetch("https://localhost:7265/api/Tour/random-tours")
+    fetch("https://webdulichlo.onrender.com/api/Tour/random-tours")
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
@@ -30,13 +30,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 let hinhAnh = tour.hinhAnh && tour.hinhAnh.trim() !== "" ? tour.hinhAnh : "/images/default.jpg";
 
                 if (!hinhAnh.startsWith("http")) {
-                    hinhAnh = `https://localhost:7265/${hinhAnh.replace(/^\/+/, '')}`;
+                    hinhAnh = `https://webdulichlo.onrender.com/${hinhAnh.replace(/^\/+/, '')}`;
                 }
 
                 // Tạo nội dung cho tour
                 tourElement.innerHTML = `
                     <img src="${hinhAnh}" class="carousel-image" alt="${tourName}" 
-                         onerror="this.src='https://localhost:7265/images/tours/images.jpg'">
+                         onerror="this.src='https://webdulichlo.onrender.com/images/tours/images.jpg'">
                     <div class="carousel-caption">${tourName}</div>
                 `;
 

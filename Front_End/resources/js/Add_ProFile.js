@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     try {
-        const response = await fetch(`https://localhost:7265/api/TaiKhoan/info/${encodeURIComponent(email)}`);
+        const response = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(email)}`);
         if (!response.ok) {
             const error = await response.json();
             throw new Error(error.Message || "Không thể tải thông tin người dùng!");
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Ảnh đại diện
         const avatarImg = document.getElementById("avatar");
-        const baseUrl = "https://localhost:7265";  // URL backend API
+        const baseUrl = "https://webdulichlo.onrender.com";  // URL backend API
 
         avatarImg.src = user.hinhAnh && user.hinhAnh !== ""
         ? `${baseUrl}${user.hinhAnh.replace(/\\/g, "/")}?t=${Date.now()}`
@@ -134,7 +134,7 @@ async function saveAvatar() {
 // Hàm gọi API cập nhật
 async function updateUser(formData) {
     try {
-        const res = await fetch(`https://localhost:7265/api/TaiKhoan/update/${encodeURIComponent(userEmail)}`, {
+        const res = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/update/${encodeURIComponent(userEmail)}`, {
             method: "PUT",
             body: formData
         });
@@ -155,5 +155,5 @@ async function updateUser(formData) {
 function downloadAvatar() {
     const avatarImg = document.getElementById("avatar");
     const fileName = avatarImg.src.split('/').pop();  // Lấy tên tệp từ URL
-    window.location.href = `https://localhost:7265/api/TaiKhoan/download/${fileName}`;
+    window.location.href = `https://webdulichlo.onrender.com/api/TaiKhoan/download/${fileName}`;
 }

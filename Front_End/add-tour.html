@@ -250,7 +250,7 @@ document.getElementById("addTourForm").addEventListener("submit", function (e) {
         formData.append("imageFile", imageFile);
     }
 
-    fetch("https://localhost:7265/api/Tour/add", {
+    fetch("https://webdulichlo.onrender.com/api/Tour/add", {
         method: "POST",
         body: formData
     })

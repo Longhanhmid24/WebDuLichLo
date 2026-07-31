@@ -9,7 +9,7 @@ async function fetchOrdersFromServer() {
     }
 
     try {
-        const response = await fetch(`https://localhost:7265/api/Dondattour/get-orders?email=${encodeURIComponent(email)}`);
+        const response = await fetch(`https://webdulichlo.onrender.com/api/Dondattour/get-orders?email=${encodeURIComponent(email)}`);
         if (!response.ok) {
             throw new Error("Lỗi khi lấy danh sách đơn đặt tour.");
         }
@@ -54,7 +54,7 @@ async function deleteOrder(madon, email) {
     if (!confirm("Bạn có chắc chắn muốn xóa đơn này?")) return;
 
     try {
-        const response = await fetch(`https://localhost:7265/api/Dondattour/delete-order/${madon}`, {
+        const response = await fetch(`https://webdulichlo.onrender.com/api/Dondattour/delete-order/${madon}`, {
             method: "DELETE",
         });
 

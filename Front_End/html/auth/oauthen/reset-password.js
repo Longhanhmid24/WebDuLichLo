@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("newPassword", newPassword);
 
         try {
-            const response = await fetch("https://localhost:7265/api/TaiKhoan/reset-password", {
+            const response = await fetch("https://webdulichlo.onrender.com/api/TaiKhoan/reset-password", {
                 method: "POST",
                 body: formData
             });

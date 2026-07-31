@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("email", email); // 👈 Tên key phải đúng y chang bên C#
 
         try {
-            const response = await fetch("https://localhost:7265/api/TaiKhoan/forgot-password", {
+            const response = await fetch("https://webdulichlo.onrender.com/api/TaiKhoan/forgot-password", {
                 method: "POST",
                 body: formData // 👈 Không cần headers, trình duyệt tự động xử lý
             });

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", fetchUsers);
 
 async function fetchUsers() {
     try {
-        const response = await fetch("https://localhost:7265/api/TaiKhoan");
+        const response = await fetch("https://webdulichlo.onrender.com/api/TaiKhoan");
         const users = await response.json();
         renderUserList(users);
     } catch (error) {
@@ -72,7 +72,7 @@ function formatGender(gender) {
 
 async function updateUserRole(email, role) {
     try {
-        const response = await fetch(`https://localhost:7265/api/TaiKhoan/${email}`, {
+        const response = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/${email}`, {
             method: "PUT",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `phanquyen=${role}`
@@ -94,7 +94,7 @@ async function deleteUser(email) {
     if (!confirm("Confirm deletion?")) return;
     
     try {
-        const response = await fetch(`https://localhost:7265/api/TaiKhoan/${email}`, {
+        const response = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/${email}`, {
             method: "DELETE"
         });
         

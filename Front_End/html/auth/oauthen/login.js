@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.append("matkhau", password);
 
             try {
-                const response = await fetch("https://localhost:7265/api/TaiKhoan/login", {
+                const response = await fetch("https://webdulichlo.onrender.com/api/TaiKhoan/login", {
                     method: "POST",
                     body: formData
                 });
@@ -75,6 +75,6 @@ if (user) {
     // Xử lý đăng nhập bằng Google
     document.querySelector("a[href='/api/auth/google']").addEventListener("click", function (event) {
         event.preventDefault();
-        window.location.href = "https://localhost:7265/api/TaiKhoan/google-login"; // Chuyển hướng tới API Google
+        window.location.href = "https://webdulichlo.onrender.com/api/TaiKhoan/google-login"; // Chuyển hướng tới API Google
     });
 });

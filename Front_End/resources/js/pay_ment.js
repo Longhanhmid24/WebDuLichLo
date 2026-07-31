@@ -25,7 +25,7 @@ async function fetchTourDetail() {
 
         console.log("matour trong pay_ment.html:", matour);
 
-        let response = await fetch("https://localhost:7265/api/Tour/get-tour");
+        let response = await fetch("https://webdulichlo.onrender.com/api/Tour/get-tour");
 
         if (!response.ok) {
             throw new Error(`Lỗi API: ${response.status} - ${response.statusText}`);
@@ -120,7 +120,7 @@ async function processPayment() {
     };
 
     try {
-        const response = await fetch("https://localhost:7265/api/Dondattour/create-order", {
+        const response = await fetch("https://webdulichlo.onrender.com/api/Dondattour/create-order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -152,7 +152,7 @@ function displayTourDetailsAfterPayment() {
     let hinhAnh = tour.hinhAnh && tour.hinhAnh.trim() !== "" ? tour.hinhAnh : "/images/default.jpg";
 
     if (!hinhAnh.startsWith("http")) {
-        hinhAnh = `https://localhost:7265/${hinhAnh.replace(/^\/+/, '')}`;
+        hinhAnh = `https://webdulichlo.onrender.com/${hinhAnh.replace(/^\/+/, '')}`;
     }
     let tourDetailsHTML = `
         <div class="tour-details">

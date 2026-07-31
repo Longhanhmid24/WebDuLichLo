@@ -1,6 +1,6 @@
 async function fetchTours() {
     try {
-        let response = await fetch("https://localhost:7265/api/Tour/get-tour");
+        let response = await fetch("https://webdulichlo.onrender.com/api/Tour/get-tour");
 
         if (!response.ok) {
             throw new Error(`Lỗi API: ${response.status} - ${response.statusText}`);
@@ -26,7 +26,7 @@ function bookTour(Matour) {
 }
 async function deleteTour(matour) {
     try {
-        let response = await fetch(`https://localhost:7265/api/Tour/delete/${matour}`, {
+        let response = await fetch(`https://webdulichlo.onrender.com/api/Tour/delete/${matour}`, {
             method: 'DELETE',
         });
 
@@ -60,7 +60,7 @@ async function searchTours() {
     }
 
     try {
-        let response = await fetch(`https://localhost:7265/api/Tour/search?keyword=${encodeURIComponent(keyword)}`);
+        let response = await fetch(`https://webdulichlo.onrender.com/api/Tour/search?keyword=${encodeURIComponent(keyword)}`);
 
         if (!response.ok) {
             throw new Error(`Lỗi API: ${response.status} - ${response.statusText}`);
@@ -89,7 +89,7 @@ function renderTours(tours) {
         let hinhAnh = tour.hinhAnh && tour.hinhAnh.startsWith("http")
             ? tour.hinhAnh
             : tour.hinhAnh
-                ? `https://localhost:7265${tour.hinhAnh}`
+                ? `https://webdulichlo.onrender.com${tour.hinhAnh}`
                 : "/images/default.jpg";
 
         let deleteButton = isAdmin
