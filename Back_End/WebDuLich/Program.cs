@@ -73,8 +73,15 @@ var app = builder.Build();
 // Tự động tạo các bảng trong Database Neon (nếu chưa có)
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    db.Database.Migrate();
+    try
+    {
+        var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        db.Database.EnsureCreated();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Lỗi khi tạo Database: " + ex.Message);
+    }
 }
 
 app.UseCors("AllowAllOrigins");
