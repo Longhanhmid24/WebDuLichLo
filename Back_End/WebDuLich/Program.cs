@@ -70,6 +70,13 @@ builder.Services.AddCors(options =>
 // Khởi tạo ứng dụng
 var app = builder.Build();
 
+// Tự động tạo các bảng trong Database Neon (nếu chưa có)
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    db.Database.Migrate();
+}
+
 app.UseCors("AllowAllOrigins");
 
 // Luôn bật Swagger (kể cả trên Render) để dễ test
