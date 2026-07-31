@@ -79,6 +79,9 @@ using (var scope = app.Services.CreateScope())
     }
 }
 
+// Bật hiển thị lỗi chi tiết để debug (tạm thời)
+app.UseDeveloperExceptionPage();
+
 app.UseCors("AllowAllOrigins");
 
 // Luôn bật Swagger (kể cả trên Render) để dễ test
