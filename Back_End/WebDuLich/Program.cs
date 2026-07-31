@@ -1,7 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using WebDuLich.Data;
-using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 
@@ -14,10 +12,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
 
-// Cấu hình Identity (Quản lý tài khoản)
-builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+// Cấu hình Authentication (Google OAuth + Cookie)
 
 // Cấu hình Authentication
 builder.Services.AddAuthentication(options =>
@@ -97,7 +92,7 @@ app.MapGet("/", context =>
     return Task.CompletedTask;
 });
 
-app.UseHttpsRedirection();
+// Render đã xử lý HTTPS ở tầng proxy, không cần HttpsRedirection
 app.UseStaticFiles();
 app.UseDefaultFiles();
 app.UseAuthentication();
