@@ -10,6 +10,16 @@ using WebDuLich.Models;
 
 namespace WebDuLich.Controllers
 {
+    public class UpdateUserRequest
+    {
+        public string? Tendangnhap { get; set; }
+        public string? Matkhau { get; set; }
+        public string? Sodienthoai { get; set; }
+        public string? Diachi { get; set; }
+        public string? Gioitinh { get; set; }
+        public IFormFile? HinhAnh { get; set; }
+    }
+
     [Route("api/[controller]")] // Route API sẽ là "api/TaiKhoan"
     [ApiController] // Đánh dấu đây là API Controller
     public class TaiKhoanController : ControllerBase
@@ -182,29 +192,24 @@ namespace WebDuLich.Controllers
         [HttpPut("update/{email}")]
         public async Task<IActionResult> UpdateUserInfo(
             string email,
-            [FromForm] string? tendangnhap,
-            [FromForm] string? matkhau,
-            [FromForm] string? sodienthoai,
-            [FromForm] string? diachi,
-            [FromForm] string? gioitinh,
-            IFormFile? hinhAnh)  // Sử dụng IFormFile để nhận ảnh
+            [FromForm] UpdateUserRequest request)
         {
             var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
             if (user == null)
                 return NotFound(new { Message = "Người dùng không tồn tại!" });
 
             // Cập nhật các trường thông tin khác
-            user.Tendangnhap = tendangnhap ?? user.Tendangnhap;
-            user.Matkhau = matkhau ?? user.Matkhau;
-            user.Sodienthoai = sodienthoai ?? user.Sodienthoai;
-            user.Diachi = diachi ?? user.Diachi;
-            user.Gioitinh = gioitinh ?? user.Gioitinh;
+            user.Tendangnhap = request.Tendangnhap ?? user.Tendangnhap;
+            user.Matkhau = request.Matkhau ?? user.Matkhau;
+            user.Sodienthoai = request.Sodienthoai ?? user.Sodienthoai;
+            user.Diachi = request.Diachi ?? user.Diachi;
+            user.Gioitinh = request.Gioitinh ?? user.Gioitinh;
 
             // Xử lý ảnh đại diện
-            if (hinhAnh != null && hinhAnh.Length > 0)
+            if (request.HinhAnh != null && request.HinhAnh.Length > 0)
             {
                 // Đường dẫn nơi lưu trữ ảnh trên server
-                var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "accounts");
+                var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
 
                 // Kiểm tra và tạo thư mục nếu chưa tồn tại
                 if (!Directory.Exists(uploadsDirectory))
@@ -212,15 +217,18 @@ namespace WebDuLich.Controllers
                     Directory.CreateDirectory(uploadsDirectory);
                 }
 
+                // Tạo tên file duy nhất tránh trùng lặp
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(request.HinhAnh.FileName);
+                var filePath = Path.Combine(uploadsDirectory, fileName);
+
                 // Lưu ảnh vào thư mục
-                var filePath = Path.Combine(uploadsDirectory, hinhAnh.FileName);
                 using (var stream = new FileStream(filePath, FileMode.Create))
                 {
-                    await hinhAnh.CopyToAsync(stream);
+                    await request.HinhAnh.CopyToAsync(stream);
                 }
 
                 // Cập nhật đường dẫn ảnh vào cơ sở dữ liệu
-                user.HinhAnh = $"/uploads/{hinhAnh.FileName}";
+                user.HinhAnh = $"/uploads/{fileName}";
             }
 
             await _context.SaveChangesAsync();
