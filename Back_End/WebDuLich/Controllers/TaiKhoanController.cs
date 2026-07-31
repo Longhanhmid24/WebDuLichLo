@@ -10,16 +10,6 @@ using WebDuLich.Models;
 
 namespace WebDuLich.Controllers
 {
-    public class UpdateUserRequest
-    {
-        public string? Tendangnhap { get; set; }
-        public string? Matkhau { get; set; }
-        public string? Sodienthoai { get; set; }
-        public string? Diachi { get; set; }
-        public string? Gioitinh { get; set; }
-        public IFormFile? HinhAnh { get; set; }
-    }
-
     [Route("api/[controller]")] // Route API sẽ là "api/TaiKhoan"
     [ApiController] // Đánh dấu đây là API Controller
     public class TaiKhoanController : ControllerBase
