@@ -46,10 +46,8 @@ builder.Services.AddMemoryCache();
 // Cấu hình Cookie Policy
 builder.Services.ConfigureApplicationCookie(options =>
 {
-    options.Cookie.SameSite = SameSiteMode.Lax;
-    options.Cookie.SecurePolicy = builder.Environment.IsDevelopment()
-        ? CookieSecurePolicy.None
-        : CookieSecurePolicy.Always;
+    options.Cookie.SameSite = SameSiteMode.None; // Bắt buộc None cho cross-domain
+    options.Cookie.SecurePolicy = CookieSecurePolicy.Always; // Bắt buộc Always cho SameSite=None
     options.LoginPath = "/login";  // Đảm bảo bạn có trang đăng nhập
 });
 
@@ -58,9 +56,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAllOrigins", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("https://longhanhmid24.github.io", "http://127.0.0.1:5500", "http://localhost:5500", "http://localhost:3000")
               .AllowAnyMethod()
-              .AllowAnyHeader();
+              .AllowAnyHeader()
+              .AllowCredentials(); // Bắt buộc phải có để gửi cookie/token từ Frontend
     });
 });
 

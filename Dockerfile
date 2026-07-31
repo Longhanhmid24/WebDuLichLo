@@ -20,6 +20,5 @@ RUN dotnet publish "WebDuLich.csproj" -c Release -o /app/publish /p:UseAppHost=f
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-# Gộp Frontend vào thư mục wwwroot để Backend phục vụ
-COPY Front_End /app/wwwroot
+
 ENTRYPOINT ["dotnet", "WebDuLich.dll"]
