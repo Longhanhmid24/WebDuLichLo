@@ -1,34 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj": {}
+    "/home/a/Documents/WebDuLichLo/Back_End/WebDuLich/WebDuLich.csproj": {}
   },
   "projects": {
-    "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj": {
+    "/home/a/Documents/WebDuLichLo/Back_End/WebDuLich/WebDuLich.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj",
+        "projectUniqueName": "/home/a/Documents/WebDuLichLo/Back_End/WebDuLich/WebDuLich.csproj",
         "projectName": "WebDuLich",
-        "projectPath": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\WebDuLich.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "D:\\LapTrinhWeb\\WebDuLichLo\\Back_End\\WebDuLich\\obj\\",
+        "projectPath": "/home/a/Documents/WebDuLichLo/Back_End/WebDuLich/WebDuLich.csproj",
+        "packagesPath": "/home/a/.nuget/packages/",
+        "outputPath": "/home/a/Documents/WebDuLichLo/Back_End/WebDuLich/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 24.2\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 24.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/home/a/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\DevExpress 24.2\\Components\\System\\Components\\Packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,9 +36,9 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
+          "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net9.0": {
@@ -83,13 +74,13 @@
               "target": "Package",
               "version": "[9.0.3, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[9.0.3, )"
-            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[9.0.3, )"
             },
@@ -129,7 +120,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/home/a/.dotnet/sdk/9.0.316/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

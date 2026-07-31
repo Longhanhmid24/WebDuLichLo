@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using WebDuLich.Data;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Identity;
@@ -12,7 +12,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // Đăng ký DbContext với Dependency Injection
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseNpgsql(connectionString));
 
 // Cấu hình Identity (Quản lý tài khoản)
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
