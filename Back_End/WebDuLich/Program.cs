@@ -72,11 +72,16 @@ var app = builder.Build();
 
 app.UseCors("AllowAllOrigins");
 
-if (app.Environment.IsDevelopment())
+// Luôn bật Swagger (kể cả trên Render) để dễ test
+app.UseSwagger();
+app.UseSwaggerUI();
+
+// Tự động chuyển hướng từ trang chủ sang trang Swagger
+app.MapGet("/", context =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    context.Response.Redirect("/swagger/index.html");
+    return Task.CompletedTask;
+});
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
