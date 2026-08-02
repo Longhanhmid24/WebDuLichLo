@@ -24,8 +24,8 @@ function renderUserList(users) {
             <td>${user.tendangnhap || 'N/A'}</td>
             <td>
                 <select onchange="updateUserRole('${user.emaildangki}', this.value)">
-                    <option value="admin" ${user.phanquyen?.toLowerCase() === 'admin' ? 'selected' : ''}>Admin</option>
-                    <option value="user" ${user.phanquyen?.toLowerCase() === 'user' ? 'selected' : ''}>User</option>
+                    <option value="admin" ${user.phanquyen === 'admin' ? 'selected' : ''}>Admin</option>
+                    <option value="user" ${user.phanquyen === 'user' ? 'selected' : ''}>User</option>
                 </select>
             </td>
             <td>${user.sodienthoai || 'N/A'}</td>
@@ -46,11 +46,11 @@ function formatDate(dateString) {
 
 function formatGender(gender) {
     if (!gender) return 'N/A';
-    
+
     // Chuyển đổi các giá trị phổ biến
     gender = gender.toLowerCase().trim();
-    
-    switch(gender) {
+
+    switch (gender) {
         case 'nam':
         case 'male':
         case '1':
@@ -77,7 +77,7 @@ async function updateUserRole(email, role) {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `phanquyen=${role}`
         });
-        
+
         if (response.ok) {
             alert("Cập nhật quyền thành công");
             fetchUsers();
@@ -92,12 +92,12 @@ async function updateUserRole(email, role) {
 
 async function deleteUser(email) {
     if (!confirm("Confirm deletion?")) return;
-    
+
     try {
         const response = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/${email}`, {
             method: "DELETE"
         });
-        
+
         if (response.ok) {
             alert("User deleted");
             fetchUsers();

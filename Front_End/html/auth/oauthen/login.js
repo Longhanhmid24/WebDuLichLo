@@ -51,26 +51,26 @@ document.addEventListener("DOMContentLoaded", function () {
     const userInfo = document.getElementById("user-info");
     const user = JSON.parse(localStorage.getItem("user"));
 
-if (user) {
-    userName.textContent = user.email;
+    if (user) {
+        userName.textContent = user.email;
 
-    let html = `
+        let html = `
         <a href="#" id="logout">Đăng xuất</a>
         <a href="ThongTinCaNhan.html?email=${user.email}" id="Profile">Hồ Sơ</a>
     `;
 
-    // Nếu quyền là Admin thì hiển thị quản lý người dùng
-    if (user.phanquyen && user.phanquyen.toLowerCase() === "admin") {
-        html += `<a href="admin.html" id="admin">Quản Lý Người Dùng</a>`;
+        // Nếu quyền là Admin thì hiển thị quản lý người dùng
+        if (user.phanquyen === "admin") {
+            html += `<a href="admin.html" id="admin">Quản Lý Người Dùng</a>`;
+        }
+
+        userInfo.innerHTML = html;
+
+        document.getElementById("logout").addEventListener("click", function () {
+            localStorage.removeItem("user");
+            location.reload();
+        });
     }
-
-    userInfo.innerHTML = html;
-
-    document.getElementById("logout").addEventListener("click", function () {
-        localStorage.removeItem("user");
-        location.reload();
-    });
-}
 
     // Xử lý đăng nhập bằng Google
     document.querySelector("a[href='/api/auth/google']").addEventListener("click", function (event) {

@@ -324,3 +324,5 @@ D:/LapTrinhWeb/WebDuLichLo/Back_End/WebDuLich/obj/Debug/net9.0/ref/WebDuLich.dll
 /home/a/Documents/WebDuLichLo/Back_End/WebDuLich/obj/Debug/net9.0/WebDuLich.pdb
 /home/a/Documents/WebDuLichLo/Back_End/WebDuLich/obj/Debug/net9.0/WebDuLich.genruntimeconfig.cache
 /home/a/Documents/WebDuLichLo/Back_End/WebDuLich/obj/Debug/net9.0/ref/WebDuLich.dll
+/home/a/Documents/WebDuLichLo/Back_End/WebDuLich/bin/Debug/net9.0/CloudinaryDotNet.dll
+/home/a/Documents/WebDuLichLo/Back_End/WebDuLich/bin/Debug/net9.0/Newtonsoft.Json.dll

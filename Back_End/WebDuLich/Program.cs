@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WebDuLich.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
+using CloudinaryDotNet;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,16 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 // Đăng ký DbContext với Dependency Injection
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(connectionString));
+
+// Cấu hình Cloudinary
+var cloudinarySection = builder.Configuration.GetSection("Cloudinary");
+var account = new Account(
+    cloudinarySection["CloudName"],
+    cloudinarySection["ApiKey"],
+    cloudinarySection["ApiSecret"]
+);
+var cloudinary = new Cloudinary(account);
+builder.Services.AddSingleton(cloudinary);
 
 // Cấu hình Authentication (Google OAuth + Cookie)
 

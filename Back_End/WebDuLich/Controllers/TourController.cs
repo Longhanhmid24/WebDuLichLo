@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using WebDuLich.Models;
 using WebDuLich.Data;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Buffers.Text;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 
 namespace WebDuLich.Controllers
 {
@@ -13,10 +15,12 @@ namespace WebDuLich.Controllers
     public class TourController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly Cloudinary _cloudinary;
 
-        public TourController(ApplicationDbContext context)
+        public TourController(ApplicationDbContext context, Cloudinary cloudinary)
         {
             _context = context;
+            _cloudinary = cloudinary;
         }
 
         // API để thêm tour
@@ -34,21 +38,19 @@ namespace WebDuLich.Controllers
 
                 if (imageFile != null)
                 {
-                    var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/tours");
-                    if (!Directory.Exists(uploadsFolder))
+                    using var stream = imageFile.OpenReadStream();
+                    var uploadParams = new ImageUploadParams()
                     {
-                        Directory.CreateDirectory(uploadsFolder);
+                        File = new FileDescription(imageFile.FileName, stream),
+                        Folder = "tours"
+                    };
+                    var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                    if (uploadResult.Error != null)
+                    {
+                        return StatusCode(500, $"Lỗi tải ảnh lên Cloudinary: {uploadResult.Error.Message}");
                     }
 
-                    var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(imageFile.FileName);
-                    var filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await imageFile.CopyToAsync(stream);
-                    }
-
-                    tour.HinhAnh = "/images/tours/" + uniqueFileName;
+                    tour.HinhAnh = uploadResult.SecureUrl.ToString();
                 }
 
                 _context.Tours.Add(tour);
@@ -58,7 +60,6 @@ namespace WebDuLich.Controllers
             }
             catch (Exception ex)
             {
-
                 return StatusCode(500, $"Lỗi server: {ex.Message}");
             }
         }
@@ -81,7 +82,7 @@ namespace WebDuLich.Controllers
                     t.NgayKhoiHanh,
                     t.NgayKetThuc,
                     t.Sokhach,
-                    HinhAnh = string.IsNullOrEmpty(t.HinhAnh) ? null : $"{baseUrl}{t.HinhAnh}",
+                    HinhAnh = string.IsNullOrEmpty(t.HinhAnh) ? null : (t.HinhAnh.StartsWith("http") ? t.HinhAnh : $"{baseUrl}{t.HinhAnh}"),
                     t.LoaiTour
                 })
                 .ToListAsync();
@@ -103,7 +104,7 @@ namespace WebDuLich.Controllers
                     .Select(t => new
                     {
                         t.Tentour,
-                        HinhAnh = string.IsNullOrEmpty(t.HinhAnh) ? null : $"{baseUrl}{t.HinhAnh}"
+                        HinhAnh = string.IsNullOrEmpty(t.HinhAnh) ? null : (t.HinhAnh.StartsWith("http") ? t.HinhAnh : $"{baseUrl}{t.HinhAnh}")
                     })
                     .ToListAsync();
 
