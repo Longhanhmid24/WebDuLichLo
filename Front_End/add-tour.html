@@ -254,7 +254,19 @@ document.getElementById("addTourForm").addEventListener("submit", function (e) {
         method: "POST",
         body: formData
     })
-    .then(response => response.json())
+    .then(async response => {
+        if (!response.ok) {
+            const contentType = response.headers.get("content-type");
+            if (contentType && contentType.includes("application/json")) {
+                const errData = await response.json();
+                throw new Error(errData.message || "Đã xảy ra lỗi");
+            } else {
+                const errText = await response.text();
+                throw new Error(errText || "Đã xảy ra lỗi");
+            }
+        }
+        return response.json();
+    })
     .then(data => {
         alert("Tour đã được thêm thành công!");
         console.log("Dữ liệu trả về:", data);
@@ -265,7 +277,7 @@ document.getElementById("addTourForm").addEventListener("submit", function (e) {
     })
     .catch(error => {
         console.error("Lỗi khi gửi yêu cầu:", error);
-        alert("Đã xảy ra lỗi: " + error.message);
+        alert(error.message);
     });
 });
 
