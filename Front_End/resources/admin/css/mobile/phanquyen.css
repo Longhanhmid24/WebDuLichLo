@@ -1,0 +1,84 @@
+/* Mobile Specific Styles for User Permissions (Phân Quyền) */
+
+.container {
+    margin-left: 0 !important;
+    margin-top: 70px !important;
+    padding: 10px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.sidebar.show ~ .container,
+.sidebar:not(.show) ~ .container {
+    margin-left: 0 !important;
+}
+
+.user-list-container {
+    padding: 10px !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+/* Chuyển bảng thành dạng danh sách thẻ (Card Layout) */
+table, thead, tbody, th, td, tr {
+    display: block !important;
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Ẩn tiêu đề cột của bảng nhưng giữ lại trong thẻ */
+thead tr {
+    position: absolute !important;
+    top: -9999px !important;
+    left: -9999px !important;
+}
+
+tr {
+    background-color: #ffffff !important;
+    border: 1px solid #e0e0e0 !important;
+    border-radius: 8px !important;
+    margin-bottom: 20px !important;
+    padding: 15px !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
+}
+
+body.dark-mode tr {
+    background-color: #333333 !important;
+    border-color: #444444 !important;
+}
+
+td {
+    border-bottom: 1px solid #f0f0f0 !important;
+    padding: 10px 5px !important;
+    text-align: right !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-size: 14px !important;
+}
+
+body.dark-mode td {
+    border-bottom-color: #444444 !important;
+}
+
+td:last-child {
+    border-bottom: none !important;
+}
+
+/* Thêm nhãn cột bằng thuộc tính data-label */
+td::before {
+    content: attr(data-label) ": " !important;
+    font-weight: bold !important;
+    color: #555555 !important;
+    text-align: left !important;
+}
+
+body.dark-mode td::before {
+    color: #cccccc !important;
+}
+
+/* Tùy chỉnh hiển thị các nút/select trong ô trên di động */
+td select, td button {
+    width: auto !important;
+    margin-left: auto !important;
+}

@@ -111,31 +111,3 @@ input[type="radio"] {
     width: auto !important;
     margin: 0 !important;
 }
-
-/* Đảm bảo hiển thị đẹp trên điện thoại */
-@media (max-width: 768px) {
-    .container {
-        width: calc(100% - 20px) !important;
-        max-width: none;
-        margin: 15px 10px !important;
-        padding: 15px;
-        box-sizing: border-box !important;
-    }
-    .toolbar-icons {
-        gap: 10px !important;
-    }
-    .menu {
-        width: 35px !important;
-        height: 35px !important;
-    }
-    .menu-button {
-        padding: 2px !important;
-    }
-    .badge img {
-        width: 30px !important;
-        height: 30px !important;
-    }
-    h2 {
-        font-size: 18px !important;
-    }
-}

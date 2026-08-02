@@ -1,0 +1,23 @@
+/* Mobile Specific Styles for Admin Toolbar & Sidebar */
+
+.toolbar {
+    padding: 8px !important;
+}
+
+.toolbar-icons {
+    gap: 12px !important;
+}
+
+.menu {
+    width: 35px !important;
+    height: 35px !important;
+}
+
+.menu-button {
+    padding: 3px !important;
+}
+
+.badge img {
+    width: 30px !important;
+    height: 30px !important;
+}
