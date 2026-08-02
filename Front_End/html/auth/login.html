@@ -1,39 +1,16 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Nhập</title>
+    <!-- CSS Tách Biệt -->
     <link rel="stylesheet" href="../../resources/css/styles.css">
+    <link rel="stylesheet" href="../../resources/css/computer/styles.css" media="screen and (min-width: 769px)">
+    <link rel="stylesheet" href="../../resources/css/mobile/styles.css" media="screen and (max-width: 768px)">
+    <!-- Thư viện Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            background-color: #152db8;
-            min-width: 160px;
-            z-index: 1;
-        }
-
-        .dropdown-menu a {
-            color: white;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #1a3db8;
-        }
-
-        .nav-item:hover .dropdown-menu {
-            display: block;
-        }
-    </style>
 </head>
-
 <body>
     <!-- Phần tiêu đề -->
     <header class="bg-primary text-white py-3">
@@ -55,16 +32,21 @@
                                 <a href="../../index.html#international">Du Lịch Nước Ngoài</a>
                             </div>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="../../index.html#flights">Vé Máy Bay</a></li>
+                        <li class="nav-item">
+                            <a class="nav-link view-orders-btn" href="#">Lịch sử giao dịch</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="#">Tours</a></li>
                         <li class="nav-item"><a class="nav-link" href="../../index.html#news">Tin Tức</a></li>
                         <li class="nav-item"><a class="nav-link" href="../../index.html#about">Giới Thiệu</a></li>
                         <li class="nav-item account-icon dropdown">
                             <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Account Icon">
                             <div class="dropdown-menu">
-                                <a href="login.html">Đăng Nhập</a>
-                                <a href="register.html">Đăng Ký</a>
+                                <div id="user-info">
+                                    <a href="login.html" id="login-link">Đăng nhập</a>
+                                    <a href="register.html" id="register-link">Đăng ký</a>
+                                </div>
                             </div>
+                            <span id="user-name"></span>
                         </li>
                     </ul>
                 </div>
@@ -76,7 +58,7 @@
     <section class="py-5">
         <div class="container">
             <h2 class="text-center">Đăng Nhập</h2>
-            <form id="loginForm">  <!-- THÊM ID Ở ĐÂY -->
+            <form id="loginForm">
                 <div class="form-group">
                     <label for="Emaildangki">Email:</label>
                     <input type="email" class="form-control" id="Emaildangki" placeholder="Nhập email">
@@ -110,7 +92,5 @@
         <p>&copy; 2023 Khám Phá Thế Giới. Bảo lưu mọi quyền.</p>
     </footer>
     <script src="../../resources/js/scripts.js"></script>
-   
 </body>
-
 </html>
