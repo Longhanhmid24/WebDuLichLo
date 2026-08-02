@@ -377,13 +377,13 @@ hr {
 .search-box {
     max-width: 600px;
     width: 90%;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.6) !important;
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     padding: 8px;
     border-radius: 50px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     display: flex;
     align-items: center;
     gap: 8px;
@@ -403,7 +403,7 @@ hr {
 }
 
 .search-box input::placeholder {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.7) !important;
 }
 
 .search-row {
