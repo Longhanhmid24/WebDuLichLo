@@ -1,10 +1,10 @@
-let userEmail = "";
+let profileUserEmail = "";
 let selectedAvatarFile = null;
 
 document.addEventListener("DOMContentLoaded", async function () {
     const params = new URLSearchParams(window.location.search);
     const email = params.get("email");
-    userEmail = email;
+    profileUserEmail = email;
 
     if (!email) {
         alert("Không tìm thấy email trong URL!");
@@ -138,14 +138,14 @@ async function saveAvatar() {
 // Hàm gọi API cập nhật
 async function updateUser(formData) {
     try {
-        const res = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/update/${encodeURIComponent(userEmail)}`, {
+        const res = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/update/${encodeURIComponent(profileUserEmail)}`, {
             method: "PUT",
             body: formData
         });
 
         if (!res.ok) {
-            const error = await res.json();
-            throw new Error(error.Message || "Cập nhật thất bại!");
+            const error = await res.json().catch(() => ({}));
+            throw new Error(error.Message || error.message || `Cập nhật thất bại (${res.status})!`);
         }
 
         alert("Cập nhật thành công!");

@@ -183,44 +183,52 @@ namespace WebDuLich.Controllers
             }
         }
 
-        //API cập nhật thông tin người dùng(đang bị lỗi)
+        //API cập nhật thông tin người dùng
         [HttpPut("update/{email}")]
         public async Task<IActionResult> UpdateUserInfo(
             string email,
             [FromForm] UpdateUserRequest request)
         {
-            var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
-            if (user == null)
-                return NotFound(new { Message = "Người dùng không tồn tại!" });
-
-            // Cập nhật các trường thông tin khác
-            user.Tendangnhap = request.Tendangnhap ?? user.Tendangnhap;
-            user.Matkhau = request.Matkhau ?? user.Matkhau;
-            user.Sodienthoai = request.Sodienthoai ?? user.Sodienthoai;
-            user.Diachi = request.Diachi ?? user.Diachi;
-            user.Gioitinh = request.Gioitinh ?? user.Gioitinh;
-
-            // Xử lý ảnh đại diện bằng Cloudinary
-            if (request.HinhAnh != null && request.HinhAnh.Length > 0)
+            try
             {
-                using var stream = request.HinhAnh.OpenReadStream();
-                var uploadParams = new ImageUploadParams()
+                var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+                if (user == null)
+                    return NotFound(new { Message = "Người dùng không tồn tại!" });
+
+                // Cập nhật các trường thông tin khác
+                user.Tendangnhap = request.Tendangnhap ?? user.Tendangnhap;
+                user.Matkhau = request.Matkhau ?? user.Matkhau;
+                user.Sodienthoai = request.Sodienthoai ?? user.Sodienthoai;
+                user.Diachi = request.Diachi ?? user.Diachi;
+                user.Gioitinh = request.Gioitinh ?? user.Gioitinh;
+
+                // Xử lý ảnh đại diện bằng Cloudinary
+                if (request.HinhAnh != null && request.HinhAnh.Length > 0)
                 {
-                    File = new FileDescription(request.HinhAnh.FileName, stream),
-                    Folder = "avatars"
-                };
-                var uploadResult = await _cloudinary.UploadAsync(uploadParams);
-                if (uploadResult.Error != null)
-                {
-                    return StatusCode(500, new { Message = $"Lỗi tải ảnh đại diện lên Cloudinary: {uploadResult.Error.Message}" });
+                    using var stream = request.HinhAnh.OpenReadStream();
+                    var uploadParams = new ImageUploadParams()
+                    {
+                        File = new FileDescription(request.HinhAnh.FileName, stream),
+                        Folder = "avatars"
+                    };
+                    var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                    if (uploadResult.Error != null)
+                    {
+                        return StatusCode(500, new { Message = $"Lỗi tải ảnh đại diện lên Cloudinary: {uploadResult.Error.Message}" });
+                    }
+
+                    user.HinhAnh = uploadResult.SecureUrl.ToString();
                 }
 
-                user.HinhAnh = uploadResult.SecureUrl.ToString();
+                await _context.SaveChangesAsync();
+
+                return Ok(new { Message = "Cập nhật thông tin thành công!" });
             }
-
-            await _context.SaveChangesAsync();
-
-            return Ok(new { Message = "Cập nhật thông tin thành công!" });
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi cập nhật người dùng: {ex.Message}");
+                return StatusCode(500, new { Message = $"Lỗi hệ thống khi cập nhật: {ex.Message}" });
+            }
         }
 
 
