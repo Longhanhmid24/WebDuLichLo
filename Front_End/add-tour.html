@@ -139,7 +139,7 @@ button:hover {
             
             <div class="form-group">
                 <label for="Gia">Giá (VND)</label>
-                <input type="number" id="Gia" name="Gia" placeholder="Nhập giá" required min="0" step="1000">
+                <input type="text" id="Gia" name="Gia" placeholder="Nhập giá (ví dụ: 10.000.000)" required>
             </div>
             
             <div class="form-group">
@@ -233,7 +233,9 @@ document.getElementById("addTourForm").addEventListener("submit", function (e) {
     
     const formData = new FormData();
     formData.append("Tentour", document.getElementById("Tentour").value);
-    formData.append("Gia", document.getElementById("Gia").value);
+    // Loại bỏ dấu chấm phân tách hàng nghìn trước khi gửi lên API
+    const giaCleaned = document.getElementById("Gia").value.replace(/\./g, "");
+    formData.append("Gia", giaCleaned);
     formData.append("Mota", document.getElementById("Mota").value);
     formData.append("Sokhach", document.getElementById("Sokhach").value);
     formData.append("NgayKhoiHanh", document.getElementById("NgayKhoiHanh").value);
@@ -279,6 +281,16 @@ document.getElementById("addTourForm").addEventListener("submit", function (e) {
         console.error("Lỗi khi gửi yêu cầu:", error);
         alert(error.message);
     });
+});
+
+// Tự động định dạng số tiền VND (ví dụ: 100.000.000) khi người dùng gõ
+document.getElementById("Gia").addEventListener("input", function (e) {
+    let value = this.value.replace(/\D/g, ""); // Xóa toàn bộ ký tự không phải là số
+    if (value) {
+        this.value = Number(value).toLocaleString("vi-VN");
+    } else {
+        this.value = "";
+    }
 });
 
     </script>
