@@ -17,6 +17,7 @@ header .container {
     display: flex !important;
     justify-content: space-between !important;
     align-items: center !important;
+    position: relative !important; /* Định vị làm gốc cho menu thả xuống */
 }
 
 .navbar-brand {
@@ -38,12 +39,17 @@ header .container {
 }
 
 .navbar-collapse {
+    position: absolute !important; /* Hiển thị dạng đè lớp (overlay) */
+    top: 100% !important; /* Ngay bên dưới header */
+    left: 0 !important;
+    right: 0 !important;
     background: #0f2294 !important; /* Nền xanh đậm hơn màu header để tạo chiều sâu */
     border-radius: 8px;
     margin-top: 12px;
     padding: 10px 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-    width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
+    width: 100% !important;
+    z-index: 9999 !important; /* Luôn nổi lên trên cùng banner/slider */
 }
 
 nav ul {
