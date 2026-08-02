@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebDuLich")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f423e5bd352b183e443efc925f223862b0f19c20")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb529e1dbf2fea2cf75f6752a52249a640897f88")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebDuLich")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebDuLich")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

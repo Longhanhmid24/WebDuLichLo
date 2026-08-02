@@ -13,6 +13,29 @@
     height: 100%;
 }
 
+/* Responsive cho lưới hiển thị Tour */
+@media (max-width: 992px) {
+    .tour-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .tour-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+        gap: 20px;
+    }
+    .tour-item {
+        max-width: 100%;
+        margin: 0 auto;
+        width: 100%;
+    }
+    .card-img-top {
+        height: 220px !important; /* Thu nhỏ ảnh trên di động để cân đối */
+    }
+}
+
 /* Mỗi tour */
 .tour-item {
     border: 1px solid #ddd;

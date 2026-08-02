@@ -409,3 +409,228 @@ footer {
     }
 
 }
+
+/* --- PHẦN STYLE CHO TRANG CHỦ (INDEX) --- */
+
+/* Phong cách thanh ngang */
+hr {
+    border: 1.35px solid gray;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.home section {
+    background: url('../images/brand/banner.jpg') center/cover no-repeat;
+    padding: 20px;
+    margin: 10px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.home-section {
+    background: url('../images/brand/banner.jpg') center/cover no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 38vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+/* Tiêu đề Banner (Đã bỏ inline styles) */
+.banner-title {
+    color: white;
+    border: 2px solid cyan;
+    padding: 10px 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    margin-top: 0;
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 22px;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.2);
+}
+
+/* User Name trong header (Đã bỏ inline styles) */
+#user-name {
+    color: white;
+    margin-left: 10px;
+    font-weight: 500;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: #152db8;
+    min-width: 160px;
+    z-index: 1;
+}
+
+.dropdown-menu a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-menu a:hover {
+    background-color: #1a3db8;
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+/* Thanh tìm kiếm Glassmorphism Cao Cấp */
+.search-box {
+    max-width: 600px;
+    width: 90%;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 8px;
+    border-radius: 50px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.search-box input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    color: white;
+    padding: 10px 18px;
+    font-size: 15px;
+    outline: none;
+    width: 100%;
+}
+
+.search-box input::placeholder {
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.search-row {
+    display: flex;
+}
+
+.search-row button {
+    background-color: #ff8000;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-size: 15px;
+    transition: background 0.3s, transform 0.2s;
+    width: auto;
+}
+
+.search-row button:hover {
+    background-color: #e67300;
+    transform: scale(1.03);
+}
+
+.calendar-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.calendar-icon::after {
+    content: "📅";
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+    font-size: 16px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    text-align: center;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Đảm bảo hiển thị đẹp và cân đối trên Điện thoại */
+@media (max-width: 768px) {
+    .home-section {
+        height: auto !important;
+        min-height: 250px;
+        padding: 55px 15px 30px !important;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .banner-title {
+        position: relative !important;
+        top: 0 !important;
+        left: 0 !important;
+        transform: none !important;
+        white-space: normal !important;
+        font-size: 16px !important;
+        width: 100% !important;
+        margin-bottom: 20px !important;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 1.4;
+        padding: 8px 12px;
+    }
+    
+    .search-box {
+        width: 100% !important;
+        border-radius: 30px !important;
+        padding: 6px !important;
+        margin-top: 10px !important;
+    }
+    
+    .search-box input {
+        padding: 8px 12px !important;
+        font-size: 14px !important;
+    }
+    
+    .search-row button {
+        padding: 8px 18px !important;
+        font-size: 14px !important;
+    }
+}
