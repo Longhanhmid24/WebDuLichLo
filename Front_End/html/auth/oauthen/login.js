@@ -39,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("user", JSON.stringify({
                     email: email,
                     tendangnhap: result.tendangnhap,
-                    phanquyen: result.phanquyen
+                    phanquyen: result.phanquyen,
+                    hinhAnh: result.hinhAnh || ""
                 }));
 
                 alert("Đăng nhập thành công!");
@@ -61,6 +62,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (user) {
         userName.textContent = user.email;
+
+        // Cập nhật Avatar trên Header nếu có
+        const headerAvatar = document.querySelector(".account-icon img");
+        if (headerAvatar) {
+            const baseUrl = "https://webdulichlo.onrender.com";
+            if (user.hinhAnh && user.hinhAnh.trim() !== "") {
+                headerAvatar.src = user.hinhAnh.startsWith("http")
+                    ? user.hinhAnh
+                    : `${baseUrl}${user.hinhAnh.startsWith("/") ? "" : "/"}${user.hinhAnh}`;
+            } else {
+                fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(user.email)}`)
+                    .then(res => res.ok ? res.json() : null)
+                    .then(userData => {
+                        if (userData && userData.hinhAnh && userData.hinhAnh.trim() !== "") {
+                            user.hinhAnh = userData.hinhAnh;
+                            localStorage.setItem("user", JSON.stringify(user));
+                            headerAvatar.src = userData.hinhAnh.startsWith("http")
+                                ? userData.hinhAnh
+                                : `${baseUrl}${userData.hinhAnh.startsWith("/") ? "" : "/"}${userData.hinhAnh}`;
+                        }
+                    })
+                    .catch(err => console.error("Lỗi tải avatar header:", err));
+            }
+        }
 
         let html = `
         <a href="#" id="logout">Đăng xuất</a>

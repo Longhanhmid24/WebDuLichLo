@@ -48,12 +48,18 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         // Ảnh đại diện
         const avatarImg = document.getElementById("avatar");
+        const headerAvatar = document.querySelector(".account-icon img");
         const baseUrl = "https://webdulichlo.onrender.com";  // URL backend API
 
         if (user.hinhAnh && user.hinhAnh.trim() !== "") {
-            avatarImg.src = user.hinhAnh.startsWith("http")
+            const avatarSrc = user.hinhAnh.startsWith("http")
                 ? user.hinhAnh
                 : `${baseUrl}${user.hinhAnh.startsWith("/") ? "" : "/"}${user.hinhAnh}`;
+            avatarImg.src = avatarSrc;
+            if (headerAvatar) headerAvatar.src = avatarSrc;
+
+            userStored.hinhAnh = user.hinhAnh;
+            localStorage.setItem("user", JSON.stringify(userStored));
         } else {
             avatarImg.src = `${baseUrl}/images/anhmacdinh.jpg`;
         }
@@ -146,6 +152,16 @@ async function saveAvatar() {
         await updateUser(formData, "Đang tải ảnh đại diện lên Cloudinary...");
         document.getElementById("save-avatar").hidden = true;
         selectedAvatarFile = null;
+
+        // Cập nhật lại Avatar trên Header ngay lập tức
+        const headerAvatar = document.querySelector(".account-icon img");
+        const profileAvatar = document.getElementById("avatar");
+        if (headerAvatar && profileAvatar) {
+            headerAvatar.src = profileAvatar.src;
+        }
+        const userStored = JSON.parse(localStorage.getItem("user")) || {};
+        if (profileAvatar) userStored.hinhAnh = profileAvatar.src;
+        localStorage.setItem("user", JSON.stringify(userStored));
     } finally {
         if (typeof window.setButtonLoading === "function") window.setButtonLoading(saveBtn, false);
     }

@@ -82,7 +82,8 @@ namespace WebDuLich.Controllers
                 Message = "Đăng nhập thành công!",
                 Email = user.Emaildangki,
                 Tendangnhap = user.Tendangnhap,
-                Phanquyen = user.Phanquyen // ✅ THÊM DÒNG NÀY
+                Phanquyen = user.Phanquyen,
+                HinhAnh = user.HinhAnh
             });
         }
 
