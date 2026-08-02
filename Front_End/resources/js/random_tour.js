@@ -17,8 +17,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            // Giới hạn tối đa 7 địa điểm
-            const limitedData = data.slice(0, 7);
+            // Giới hạn tối đa 11 địa điểm
+            const limitedData = data.slice(0, 11);
 
             carousel.innerHTML = ""; // Xóa nội dung cũ
 
@@ -49,14 +49,11 @@ document.addEventListener("DOMContentLoaded", function () {
             // Khởi tạo Flickity sau khi thêm phần tử
             new Flickity(carousel, {
                 wrapAround: true,
-                autoPlay: 4000,
+                autoPlay: 3500,
                 pauseAutoPlayOnHover: true,
                 cellAlign: 'center',
-                contain: true,
-                setGallerySize: false,
                 pageDots: true,
                 prevNextButtons: true,
-                freeScroll: false,
                 draggable: true,
                 friction: 0.28,
                 selectedAttraction: 0.025,

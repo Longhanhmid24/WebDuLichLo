@@ -152,14 +152,16 @@ main .container,
 
 /* Carousel Mobile Overrides */
 .carousel-cell {
-    width: 220px !important;
-    height: 160px !important;
-    margin-right: 10px !important;
+    width: 280px !important;
+    height: 190px !important;
+    margin-right: 12px !important;
+    border-radius: 14px !important;
 }
 
 .carousel-caption {
-    font-size: 11px !important;
-    padding: 8px 6px 6px !important;
+    font-size: 13px !important;
+    padding: 20px 10px 8px !important;
+    border-radius: 0 0 14px 14px !important;
 }
 
 .flickity-prev-next-button {

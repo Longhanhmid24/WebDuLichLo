@@ -105,7 +105,7 @@ namespace WebDuLich.Controllers
 
                 var randomTours = await _context.Tours
                     .OrderBy(t => Guid.NewGuid())
-                    .Take(7)
+                    .Take(11)
                     .Select(t => new
                     {
                         t.Tentour,
