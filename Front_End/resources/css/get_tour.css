@@ -4,68 +4,148 @@
 }
 
 /* Grid layout cho danh sách tour */
+/* Grid layout cho danh sách tour */
 .tour-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    padding: 20px;
-    align-items: stretch; /* Đảm bảo tất cả item có cùng chiều cao */
+    gap: 20px;
+    padding: 20px 0;
+    align-items: stretch;
     height: 100%;
 }
 
-/* Responsive cho lưới hiển thị Tour */
+/* Responsive cho màn hình vừa */
 @media (max-width: 992px) {
     .tour-container {
         grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
     }
 }
 
-@media (max-width: 576px) {
+/* Responsive đặc biệt cho di động: Vuốt ngang dạng App (Swiper / Horizontal Scroll) */
+@media (max-width: 768px) {
     .tour-container {
-        grid-template-columns: 1fr;
-        padding: 10px;
-        gap: 20px;
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 14px !important;
+        padding: 10px 5px 20px 5px !important;
+        scroll-padding-left: 5px;
     }
+
+    /* Ẩn thanh cuộn xấu trên trình duyệt di động */
+    .tour-container::-webkit-scrollbar {
+        display: none;
+    }
+    .tour-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
     .tour-item {
-        max-width: 100%;
-        margin: 0 auto;
-        width: 100%;
+        flex: 0 0 230px !important;
+        width: 230px !important;
+        max-width: 230px !important;
+        scroll-snap-align: start;
+        border-radius: 14px !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08) !important;
+        background: #ffffff !important;
+        display: flex !important;
+        flex-direction: column !important;
     }
+
     .card-img-top {
-        height: 220px !important; /* Thu nhỏ ảnh trên di động để cân đối */
+        height: 135px !important;
+        border-radius: 14px 14px 0 0 !important;
+    }
+
+    .card-body {
+        padding: 10px 12px 12px 12px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        flex-grow: 1 !important;
+    }
+
+    .card-title {
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        margin-bottom: 4px !important;
+        line-height: 1.3 !important;
+        color: #1e293b !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.6em;
+    }
+
+    .card-text {
+        font-size: 11px !important;
+        color: #64748b !important;
+        margin-bottom: 8px !important;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.4em;
+    }
+
+    .tour-price {
+        font-size: 14px !important;
+        color: #f97316 !important;
+        font-weight: 800 !important;
+        margin-bottom: 8px !important;
+    }
+
+    .btn-book, .btn-edit, .btn-delete {
+        font-size: 12px !important;
+        padding: 7px 10px !important;
+        border-radius: 8px !important;
+        font-weight: 600 !important;
     }
 }
 
-/* Mỗi tour */
+/* Mỗi tour trên Desktop */
 .tour-item {
-    border: 1px solid #ddd;
-    padding: 15px;
-    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    padding: 0;
+    border-radius: 14px;
     background-color: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease-in-out;
-
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    max-width: 400px;
+    overflow: hidden;
 }
 
 .tour-item:hover {
     transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Ảnh tour */
 .card-img-top {
     width: 100%;
-    height: 300px;
+    height: 200px;
     object-fit: cover;
-    border-radius: 8px;
+    border-radius: 14px 14px 0 0;
+    transition: transform 0.4s ease;
+}
+
+.tour-item:hover .card-img-top {
+    transform: scale(1.04);
 }
 
 /* Nội dung trong card */
 .card-body {
-    padding: 15px;
-    text-align: center;
+    padding: 16px;
+    text-align: left;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
@@ -74,74 +154,78 @@
 
 /* Tiêu đề */
 .card-title {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 8px;
+    color: #1e293b;
+    margin-bottom: 6px;
+    line-height: 1.3;
 }
 
 /* Mô tả */
 .card-text {
-    font-size: 14px;
-    color: #444;
+    font-size: 13px;
+    color: #64748b;
     margin-bottom: 10px;
 }
 
 /* Giá tour */
 .tour-price {
-    font-size: 18px;
-    color: #f7931e;
+    font-size: 17px;
+    color: #f97316;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 /* Nút đặt tour */
 .btn-book {
-    background-color: #007bff;
+    background-color: #152db8;
     color: white;
     padding: 10px;
     border: none;
     cursor: pointer;
-    border-radius: 6px;
-    font-size: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
     width: 100%;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.25s ease;
 }
 
 .btn-book:hover {
-    background-color: #0056b3;
+    background-color: #0d1e8c;
 }
+
 /* Nút xóa tour */
 .btn-delete {
-    background-color: #dc3545; /* Màu đỏ */
+    background-color: #ef4444;
     color: white;
-    padding: 10px;
+    padding: 8px;
     border: none;
     cursor: pointer;
-    border-radius: 6px;
-    font-size: 15px;
+    border-radius: 8px;
+    font-size: 14px;
     width: 100%;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.25s ease;
 }
 
 .btn-delete:hover {
-    background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
+    background-color: #dc2626;
 }
 
 /* Nút sửa tour */
 .btn-edit {
-    background-color: #ffc107; /* Màu vàng */
-    color: black;
-    padding: 10px;
+    background-color: #f59e0b;
+    color: white;
+    padding: 8px;
     border: none;
     cursor: pointer;
-    border-radius: 6px;
-    font-size: 15px;
+    border-radius: 8px;
+    font-size: 14px;
     width: 100%;
-    margin-bottom: 5px;
-    font-weight: 500;
-    transition: background-color 0.3s ease-in-out;
+    margin-bottom: 6px;
+    font-weight: 600;
+    transition: background-color 0.25s ease;
 }
 
 .btn-edit:hover {
-    background-color: #e0a800; /* Vàng đậm hơn khi hover */
+    background-color: #d97706;
 }
