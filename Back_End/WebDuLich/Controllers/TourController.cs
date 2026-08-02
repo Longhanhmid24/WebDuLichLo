@@ -104,7 +104,7 @@ namespace WebDuLich.Controllers
                 var baseUrl = $"{Request.Scheme}://{Request.Host}";
 
                 var randomTours = await _context.Tours
-                    .OrderBy(t => Guid.NewGuid())
+                    .OrderBy(t => EF.Functions.Random())
                     .Take(11)
                     .Select(t => new
                     {

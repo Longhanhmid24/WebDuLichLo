@@ -3,6 +3,7 @@ WORKDIR /app
 # Cloud Run expects the container to listen on port 8080 by default
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
