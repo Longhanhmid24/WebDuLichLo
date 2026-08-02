@@ -24,6 +24,10 @@ function bookTour(Matour) {
     console.log("matour trong bookTour:", Matour);
     window.location.href = `pay_ment.html?id=${Matour}`;
 }
+function editTour(matour) {
+    if (!matour) return;
+    window.location.href = `add-tour.html?id=${matour}`;
+}
 async function deleteTour(matour) {
     try {
         let response = await fetch(`https://webdulichlo.onrender.com/api/Tour/delete/${matour}`, {
@@ -92,8 +96,11 @@ function renderTours(tours) {
                 ? `https://webdulichlo.onrender.com${tour.hinhAnh}`
                 : "/images/default.jpg";
 
-        let deleteButton = isAdmin
-            ? `<button class="btn-delete" onclick="deleteTour('${tour.matour}')">Xóa Tour</button>`
+        let adminButtons = isAdmin
+            ? `
+                <button class="btn-edit" onclick="editTour('${tour.matour}')">Sửa Tour</button>
+                <button class="btn-delete" style="margin-bottom: 5px;" onclick="deleteTour('${tour.matour}')">Xóa Tour</button>
+              `
             : "";
 
         let tourHTML = `
@@ -104,7 +111,7 @@ function renderTours(tours) {
                     <h5 class="card-title">${tour.tentour}</h5>
                     <p class="card-text">${tour.mota || "Không có mô tả"}</p>
                     <p class="tour-price">${tour.gia.toLocaleString()} VND</p>
-                    ${deleteButton}
+                    ${adminButtons}
                     <button class="btn-book" onclick="bookTour('${tour.matour}')">Đặt vé ngay</button>
                 </div>
             </div>

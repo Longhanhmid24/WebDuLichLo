@@ -97,6 +97,11 @@
             background-color: #0e1e78;
         }
 
+        button:disabled {
+            background-color: #8fa0e3;
+            cursor: not-allowed;
+        }
+
         /* Đảm bảo hiển thị đẹp trên các thiết bị nhỏ hơn */
         @media (max-width: 768px) {
             .container {
@@ -219,6 +224,69 @@
 
 
 <script>
+    // Kiểm tra chế độ Thêm hay Sửa bằng cách đọc query parameter "id"
+    const urlParams = new URLSearchParams(window.location.search);
+    const tourId = urlParams.get("id");
+    const isEditMode = !!tourId;
+
+    const pageTitle = document.querySelector("h2");
+    const submitBtn = document.querySelector("button[type='submit']");
+    const form = document.getElementById("addTourForm");
+
+    // Nếu ở chế độ chỉnh sửa, tải dữ liệu cũ lên form
+    if (isEditMode) {
+        pageTitle.textContent = "Chỉnh Sửa Tour Du Lịch";
+        submitBtn.textContent = "Cập Nhật Tour";
+
+        // Tải chi tiết tour từ API
+        fetch(`https://webdulichlo.onrender.com/api/Tour/${tourId}`)
+            .then(async response => {
+                if (!response.ok) {
+                    throw new Error("Không thể tải thông tin tour");
+                }
+                return response.json();
+            })
+            .then(tour => {
+                document.getElementById("Tentour").value = tour.tentour;
+                // Định dạng giá trị hiển thị cho Gia
+                document.getElementById("Gia").value = Number(tour.gia).toLocaleString("vi-VN");
+                document.getElementById("Mota").value = tour.mota || "";
+                document.getElementById("Sokhach").value = tour.sokhach;
+                
+                // Định dạng Date YYYY-MM-DD để hiển thị lên thẻ input date
+                if (tour.ngayKhoiHanh) {
+                    document.getElementById("NgayKhoiHanh").value = tour.ngayKhoiHanh.split("T")[0];
+                }
+                if (tour.ngayKetThuc) {
+                    document.getElementById("NgayKetThuc").value = tour.ngayKetThuc.split("T")[0];
+                }
+
+                // Chọn loại tour tương ứng
+                if (tour.loaiTour) {
+                    const cleanLoaiTour = tour.loaiTour.trim();
+                    if (cleanLoaiTour.toLowerCase().includes("trong nước") || cleanLoaiTour.toLowerCase() === "trong nước") {
+                        document.getElementById("trongnuoc").checked = true;
+                    } else {
+                        document.getElementById("ngoainuoc").checked = true;
+                    }
+                }
+
+                // Hiển thị ảnh cũ
+                if (tour.hinhAnh) {
+                    const preview = document.getElementById("preview");
+                    const uploadText = document.getElementById("upload-text");
+                    const baseUrl = "https://webdulichlo.onrender.com";
+                    preview.src = tour.hinhAnh.startsWith("http") ? tour.hinhAnh : `${baseUrl}${tour.hinhAnh}`;
+                    preview.style.display = "block";
+                    uploadText.style.display = "none";
+                }
+            })
+            .catch(error => {
+                console.error("Lỗi khi tải thông tin tour:", error);
+                alert("Lỗi: " + error.message);
+            });
+    }
+
     function previewImage(event) {
         const preview = document.getElementById("preview");
         const uploadText = document.getElementById("upload-text");
@@ -235,8 +303,13 @@
         }
     }
 
-    document.getElementById("addTourForm").addEventListener("submit", function (e) {
+    form.addEventListener("submit", function (e) {
         e.preventDefault();
+
+        // 1. Trạng thái Loading và khóa nút bấm
+        submitBtn.disabled = true;
+        const originalBtnText = submitBtn.textContent;
+        submitBtn.textContent = "Đang xử lý...";
 
         const formData = new FormData();
         formData.append("Tentour", document.getElementById("Tentour").value);
@@ -259,8 +332,14 @@
             formData.append("imageFile", imageFile);
         }
 
-        fetch("https://webdulichlo.onrender.com/api/Tour/add", {
-            method: "POST",
+        // Quyết định URL và Method của API tùy theo chế độ Thêm hay Sửa
+        const apiUrl = isEditMode 
+            ? `https://webdulichlo.onrender.com/api/Tour/update/${tourId}`
+            : "https://webdulichlo.onrender.com/api/Tour/add";
+        const apiMethod = isEditMode ? "PUT" : "POST";
+
+        fetch(apiUrl, {
+            method: apiMethod,
             body: formData
         })
             .then(async response => {
@@ -277,16 +356,27 @@
                 return response.json();
             })
             .then(data => {
-                alert("Tour đã được thêm thành công!");
+                alert(isEditMode ? "Cập nhật tour thành công!" : "Tour đã được thêm thành công!");
                 console.log("Dữ liệu trả về:", data);
-                document.getElementById("addTourForm").reset();
-                document.getElementById("preview").src = "";
-                document.getElementById("preview").style.display = "none";
-                document.getElementById("upload-text").style.display = "block";
+                
+                if (isEditMode) {
+                    // Nếu sửa thành công, điều hướng về trang chủ
+                    window.location.href = "../../index.html";
+                } else {
+                    form.reset();
+                    document.getElementById("preview").src = "";
+                    document.getElementById("preview").style.display = "none";
+                    document.getElementById("upload-text").style.display = "block";
+                }
             })
             .catch(error => {
                 console.error("Lỗi khi gửi yêu cầu:", error);
                 alert(error.message);
+            })
+            .finally(() => {
+                // Khôi phục nút bấm sau khi xử lý xong
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
             });
     });
 

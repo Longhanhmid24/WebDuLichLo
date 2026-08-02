@@ -160,7 +160,73 @@ namespace WebDuLich.Controllers
 
             return Ok(tours);
         }
-    }
 
+        // API lấy chi tiết 1 tour theo Matour
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetTourById(int id)
+        {
+            var tour = await _context.Tours.FindAsync(id);
+            if (tour == null)
+            {
+                return NotFound("Tour không tồn tại.");
+            }
+            return Ok(tour);
+        }
+
+        // API cập nhật thông tin tour
+        [HttpPut("update/{id}")]
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> UpdateTour(int id, [FromForm] Tour updatedTour, IFormFile? imageFile)
+        {
+            try
+            {
+                var tour = await _context.Tours.FindAsync(id);
+                if (tour == null)
+                {
+                    return NotFound("Tour không tồn tại.");
+                }
+
+                tour.Tentour = updatedTour.Tentour;
+                tour.Gia = updatedTour.Gia;
+                
+                // Đảm bảo múi giờ UTC cho PostgreSQL
+                tour.NgayKhoiHanh = DateTime.SpecifyKind(updatedTour.NgayKhoiHanh, DateTimeKind.Utc);
+                tour.NgayKetThuc = DateTime.SpecifyKind(updatedTour.NgayKetThuc, DateTimeKind.Utc);
+                
+                if (tour.NgayKetThuc < tour.NgayKhoiHanh)
+                {
+                    return BadRequest(new { message = "Ngày kết thúc phải sau ngày khởi hành" });
+                }
+
+                tour.Mota = updatedTour.Mota;
+                tour.Sokhach = updatedTour.Sokhach;
+                tour.LoaiTour = updatedTour.LoaiTour;
+
+                if (imageFile != null)
+                {
+                    using var stream = imageFile.OpenReadStream();
+                    var uploadParams = new ImageUploadParams()
+                    {
+                        File = new FileDescription(imageFile.FileName, stream),
+                        Folder = "tours"
+                    };
+                    var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                    if (uploadResult.Error != null)
+                    {
+                        return StatusCode(500, $"Lỗi tải ảnh lên Cloudinary: {uploadResult.Error.Message}");
+                    }
+                    tour.HinhAnh = uploadResult.SecureUrl.ToString();
+                }
+
+                await _context.SaveChangesAsync();
+                return Ok(new { message = "Cập nhật tour thành công!", tour });
+            }
+            catch (Exception ex)
+            {
+                var errMsg = ex.InnerException != null ? $"{ex.Message} -> {ex.InnerException.Message}" : ex.Message;
+                return StatusCode(500, $"Lỗi server: {errMsg}");
+            }
+        }
+    }
 }
 
