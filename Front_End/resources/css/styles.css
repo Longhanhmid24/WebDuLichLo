@@ -285,130 +285,7 @@ footer {
     font-size: 16px;
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-        /* Căn giữa các mục */
-    }
 
-    nav ul li {
-        display: block;
-        margin: 10px 0;
-        width: auto;
-        /* Đảm bảo các mục có chiều rộng tự động */
-    }
-
-    nav ul li a {
-        display: block;
-        /* Biến liên kết thành phần khối */
-        width: auto;
-        /* Đảm bảo liên kết có chiều rộng tự động */
-    }
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* Căn giữa các mục trong container */
-    }
-
-    .gallery {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .gallery img {
-        margin: 10px 0;
-    }
-
-    .col-md-4 {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-}
-
-@media (min-width: 769px) {
-    nav ul {
-        text-align: center;
-        display: flex;
-        justify-content: center;
-        /* Căn giữa các mục theo chiều ngang */
-    }
-
-    nav ul li {
-        display: inline;
-        margin: 0 15px;
-    }
-
-    nav ul li a {
-        text-align: center;
-        /* Căn giữa văn bản */
-        display: inline;
-        /* Biến liên kết thành phần inline */
-    }
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* Căn giữa các mục trong container */
-    }
-}
-
-@media (max-width: 576px) {
-    header {
-        padding: 5px 0;
-    }
-
-    section {
-        padding: 10px;
-        margin: 5px;
-    }
-
-
-
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        /* Căn giữa các mục trong container */
-    }
-    .booking-container {
-        display: none;
-        width: 250px;
-        border: 1px solid #ddd;
-        border-radius: 8px;
-        padding: 15px;
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        display: none;
-    }
-
-
-    .option {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin: 10px 0;
-    }
-    .counter {
-        display: flex;
-        align-items: center;
-    }
-    .counter button {
-        width: 25px;
-        height: 25px;
-        font-size: 18px;
-        border: 1px solid #ccc;
-        background: white;
-        cursor: pointer;
-    }
-    .counter span {
-        margin: 0 10px;
-        font-size: 16px;
-    }
-
-}
 
 /* --- PHẦN STYLE CHO TRANG CHỦ (INDEX) --- */
 
@@ -471,13 +348,16 @@ hr {
 .dropdown-menu {
     display: none;
     position: absolute;
-    background-color: #152db8;
+    background-color: #152db8 !important;
     min-width: 160px;
-    z-index: 1;
+    z-index: 1000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 .dropdown-menu a {
-    color: white;
+    color: white !important;
+    background-color: transparent !important;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
@@ -485,11 +365,12 @@ hr {
 }
 
 .dropdown-menu a:hover {
-    background-color: #1a3db8;
+    background-color: #1a3db8 !important;
+    color: white !important;
 }
 
 .nav-item:hover .dropdown-menu {
-    display: block;
+    display: block !important;
 }
 
 /* Thanh tìm kiếm Glassmorphism Cao Cấp */
@@ -589,48 +470,4 @@ hr {
     font-size: 20px;
     cursor: pointer;
 }
-
-/* Đảm bảo hiển thị đẹp và cân đối trên Điện thoại */
-@media (max-width: 768px) {
-    .home-section {
-        height: auto !important;
-        min-height: 250px;
-        padding: 55px 15px 30px !important;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .banner-title {
-        position: relative !important;
-        top: 0 !important;
-        left: 0 !important;
-        transform: none !important;
-        white-space: normal !important;
-        font-size: 16px !important;
-        width: 100% !important;
-        margin-bottom: 20px !important;
-        box-sizing: border-box;
-        text-align: center;
-        line-height: 1.4;
-        padding: 8px 12px;
-    }
-    
-    .search-box {
-        width: 100% !important;
-        border-radius: 30px !important;
-        padding: 6px !important;
-        margin-top: 10px !important;
-    }
-    
-    .search-box input {
-        padding: 8px 12px !important;
-        font-size: 14px !important;
-    }
-    
-    .search-row button {
-        padding: 8px 18px !important;
-        font-size: 14px !important;
-    }
-}
+
