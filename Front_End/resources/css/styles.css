@@ -143,51 +143,100 @@ footer {
     background: #f4f4f4;
     width: 100%;
     overflow: hidden;
+    padding: 20px 0;
+    position: relative;
 }
 
 .carousel-cell {
-    width: 300px; 
-    /* Chiều rộng của mỗi ô trừ đi khoảng cách */
-    margin-right: 10px;
-    /* Khoảng cách giữa các ô */
-    display: block;
-    height: 225px;
-    /* Chiều cao cố định cho ô */
+    width: 280px;
+    margin-right: 15px;
+    height: 200px;
     display: flex;
-    /* Để căn giữa hình ảnh */
     justify-content: center;
-    /* Căn giữa hình ảnh theo chiều ngang */
     align-items: center;
-    /* Căn giữa hình ảnh theo chiều dọc */
-    border-radius: 10px;
-    /* Bo tròn góc cho ô */
+    border-radius: 12px;
     overflow: hidden;
-    /* Ẩn phần hình ảnh vượt ra ngoài ô */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    /* Thêm hiệu ứng chuyển đổi */
+    position: relative;
+    cursor: grab;
 }
 
 .carousel-cell:hover {
     transform: scale(1.05);
-    /* Phóng to nhẹ khi hover */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    /* Thêm bóng đổ */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
 }
 
 .carousel-cell:last-child {
-    margin-right: 10px;
-    /* Không có khoảng cách bên phải cho ô cuối cùng */
+    margin-right: 15px;
 }
 
 .carousel-image {
     width: 100%;
-    /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng của ô */
     height: 100%;
-    /* Đảm bảo hình ảnh chiếm toàn bộ chiều cao của ô */
     object-fit: cover;
-    /* Đảm bảo hình ảnh không bị méo */
-    border-radius: 10px;
-    /* Bo tròn góc cho hình ảnh */
+    border-radius: 12px;
+}
+
+/* Caption overlay trên ảnh */
+.carousel-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: #fff;
+    padding: 12px 10px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    border-radius: 0 0 12px 12px;
+    pointer-events: none;
+}
+
+/* Flickity Navigation Arrows */
+.flickity-prev-next-button {
+    width: 40px !important;
+    height: 40px !important;
+    background: rgba(21, 45, 184, 0.85) !important;
+    border-radius: 50% !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+    transition: all 0.25s ease !important;
+}
+
+.flickity-prev-next-button:hover {
+    background: rgba(21, 45, 184, 1) !important;
+    transform: scale(1.1);
+}
+
+.flickity-prev-next-button .flickity-button-icon {
+    fill: #ffffff !important;
+}
+
+.flickity-prev-next-button.previous {
+    left: 10px !important;
+}
+
+.flickity-prev-next-button.next {
+    right: 10px !important;
+}
+
+/* Flickity Page Dots */
+.flickity-page-dots {
+    bottom: -5px !important;
+}
+
+.flickity-page-dots .dot {
+    width: 10px !important;
+    height: 10px !important;
+    background: #b0b0b0 !important;
+    opacity: 1 !important;
+    transition: all 0.3s ease !important;
+}
+
+.flickity-page-dots .dot.is-selected {
+    background: #152db8 !important;
+    transform: scale(1.3);
 }
 
 .navbar-nav .account-icon {

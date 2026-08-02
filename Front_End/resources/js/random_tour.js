@@ -17,9 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+            // Giới hạn tối đa 7 địa điểm
+            const limitedData = data.slice(0, 7);
+
             carousel.innerHTML = ""; // Xóa nội dung cũ
 
-            data.forEach(tour => {
+            limitedData.forEach(tour => {
                 const tourElement = document.createElement("div");
                 tourElement.classList.add("carousel-cell");
 
@@ -46,10 +49,17 @@ document.addEventListener("DOMContentLoaded", function () {
             // Khởi tạo Flickity sau khi thêm phần tử
             new Flickity(carousel, {
                 wrapAround: true,
-                autoPlay: 3000,
-                cellAlign: 'left', // Đảm bảo các phần tử căn trái
+                autoPlay: 4000,
+                pauseAutoPlayOnHover: true,
+                cellAlign: 'center',
                 contain: true,
-                setGallerySize: false, // Tắt kích thước gallery tự động
+                setGallerySize: false,
+                pageDots: true,
+                prevNextButtons: true,
+                freeScroll: false,
+                draggable: true,
+                friction: 0.28,
+                selectedAttraction: 0.025,
             });
 
             if (placeholder) placeholder.remove();
