@@ -1,6 +1,15 @@
 document.addEventListener("DOMContentLoaded", function () {
     const carousel = document.getElementById("tourCarousel");
-    const placeholder = document.querySelector(".carousel-placeholder");
+
+    // Hiển thị ngay từ Cache nếu có
+    const cachedRandom = localStorage.getItem("cached_random_tours");
+    if (cachedRandom && carousel) {
+        try {
+            renderCarousel(JSON.parse(cachedRandom));
+        } catch (e) {
+            console.warn("Lỗi đọc cache carousel:", e);
+        }
+    }
 
     fetch("https://webdulichlo.onrender.com/api/Tour/random-tours")
         .then(response => {
@@ -13,35 +22,41 @@ document.addEventListener("DOMContentLoaded", function () {
             console.log("Dữ liệu nhận từ API:", data);
 
             if (!Array.isArray(data) || data.length === 0) {
-                carousel.innerHTML = "<p>Không có tour nào để hiển thị.</p>";
+                if (!cachedRandom) carousel.innerHTML = "<p>Không có tour nào để hiển thị.</p>";
                 return;
             }
 
-            // Giới hạn tối đa 11 địa điểm
-            const limitedData = data.slice(0, 11);
+            localStorage.setItem("cached_random_tours", JSON.stringify(data));
+            renderCarousel(data);
+        })
+        .catch(error => {
+            console.error("Lỗi khi tải tour phổ biến:", error);
+        });
 
-            carousel.innerHTML = ""; // Xóa nội dung cũ
+    function renderCarousel(data) {
+        if (!carousel) return;
+        const limitedData = data.slice(0, 11);
 
-            limitedData.forEach(tour => {
-                const tourElement = document.createElement("div");
-                tourElement.classList.add("carousel-cell");
+        carousel.innerHTML = ""; // Xóa nội dung cũ
 
-                // Kiểm tra tên tour
-                const tourName = tour.tentour || "Tên tour không xác định";  // sửa từ Tentour thành tentour
+        limitedData.forEach(tour => {
+            const tourElement = document.createElement("div");
+            tourElement.classList.add("carousel-cell");
 
-                // Xử lý ảnh
-                let hinhAnh = tour.hinhAnh && tour.hinhAnh.trim() !== "" ? tour.hinhAnh : "/images/default.jpg";
+            const tourName = tour.tentour || "Tên tour không xác định";
+            let hinhAnh = tour.hinhAnh && tour.hinhAnh.trim() !== "" ? tour.hinhAnh : "/images/default.jpg";
 
-                if (!hinhAnh.startsWith("http")) {
-                    hinhAnh = `https://webdulichlo.onrender.com/${hinhAnh.replace(/^\/+/, '')}`;
-                }
+            if (hinhAnh.includes("res.cloudinary.com") && !hinhAnh.includes("f_auto")) {
+                hinhAnh = hinhAnh.replace("/upload/", "/upload/f_auto,q_auto,w_600/");
+            } else if (!hinhAnh.startsWith("http")) {
+                hinhAnh = `https://webdulichlo.onrender.com/${hinhAnh.replace(/^\/+/, '')}`;
+            }
 
-                // Tạo nội dung cho tour
-                tourElement.innerHTML = `
-                    <img src="${hinhAnh}" class="carousel-image" alt="${tourName}" 
-                         onerror="this.src='https://webdulichlo.onrender.com/images/tours/images.jpg'">
-                    <div class="carousel-caption">${tourName}</div>
-                `;
+            tourElement.innerHTML = `
+                <img src="${hinhAnh}" class="carousel-image" alt="${tourName}" loading="lazy" decoding="async"
+                     onerror="this.src='https://webdulichlo.onrender.com/images/tours/images.jpg'">
+                <div class="carousel-caption">${tourName}</div>
+            `;
 
                 carousel.appendChild(tourElement);
             });

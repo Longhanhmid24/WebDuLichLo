@@ -1,3 +1,17 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // ⚡ BƯỚC TỐI ƯU CỰC NHANH: Hiển thị ngay tour từ Cache trong bộ nhớ trình duyệt nếu có
+    const cachedTours = localStorage.getItem("cached_tours");
+    if (cachedTours) {
+        try {
+            renderTours(JSON.parse(cachedTours));
+        } catch (e) {
+            console.warn("Lỗi đọc cache tour:", e);
+        }
+    }
+    // Tải dữ liệu mới nhất ngầm từ Server
+    fetchTours();
+});
+
 async function fetchTours() {
     try {
         let response = await fetch("https://webdulichlo.onrender.com/api/Tour/get-tour");
@@ -8,6 +22,9 @@ async function fetchTours() {
 
         let tours = await response.json();
         console.log("Danh sách tour nhận được:", tours);
+
+        // Lưu vào cache để lần sau load siêu tốc 0.01 giây
+        localStorage.setItem("cached_tours", JSON.stringify(tours));
 
         // Gọi hàm render có phân quyền
         renderTours(tours);
@@ -48,13 +65,24 @@ async function deleteTour(matour) {
         }
 
         alert("Tour đã được xóa thành công!");
-
     } catch (error) {
         console.error("Lỗi khi xóa tour:", error);
-        alert("Có lỗi xảy ra khi xóa tour.");
+        alert("Xóa tour thất bại!");
     }
 }
-fetchTours();
+
+// Tối ưu ảnh Cloudinary & Đường dẫn
+function optimizeImageUrl(url) {
+    if (!url || url.trim() === "") return "/images/default.jpg";
+    if (url.includes("res.cloudinary.com") && !url.includes("f_auto")) {
+        return url.replace("/upload/", "/upload/f_auto,q_auto,w_600/");
+    }
+    if (!url.startsWith("http")) {
+        return `https://webdulichlo.onrender.com${url.startsWith('/') ? '' : '/'}${url}`;
+    }
+    return url;
+}
+
 async function searchTours() {
     const keyword = document.getElementById('search-input').value.trim();
 
@@ -90,11 +118,7 @@ function renderTours(tours) {
     const isAdmin = user && user.phanquyen === "admin";
 
     tours.forEach(tour => {
-        let hinhAnh = tour.hinhAnh && tour.hinhAnh.startsWith("http")
-            ? tour.hinhAnh
-            : tour.hinhAnh
-                ? `https://webdulichlo.onrender.com${tour.hinhAnh}`
-                : "/images/default.jpg";
+        let hinhAnh = optimizeImageUrl(tour.hinhAnh);
 
         let adminButtons = isAdmin
             ? `
@@ -105,12 +129,12 @@ function renderTours(tours) {
 
         let tourHTML = `
             <div class="tour-item" id="tour-${tour.matour}">
-                <img src="${hinhAnh}" class="card-img-top" alt="${tour.tentour}" 
+                <img src="${hinhAnh}" class="card-img-top" alt="${tour.tentour}" loading="lazy" decoding="async"
                      onerror="this.onerror=null; this.src='/images/default.jpg';">
                 <div class="card-body">
                     <h5 class="card-title">${tour.tentour}</h5>
                     <p class="card-text">${tour.mota || "Không có mô tả"}</p>
-                    <p class="tour-price">${tour.gia.toLocaleString()} VND</p>
+                    <p class="tour-price">${tour.gia ? tour.gia.toLocaleString() : 0} VND</p>
                     ${adminButtons}
                     <button class="btn-book" onclick="bookTour('${tour.matour}')">Đặt vé ngay</button>
                 </div>
@@ -124,6 +148,9 @@ function renderTours(tours) {
         }
     });
 
-    document.getElementById("tour-list-ngoai").innerHTML = tourNgoai;
-    document.getElementById("tour-list-trongnuoc").innerHTML = tourTrongNuoc;
+    const elemNgoai = document.getElementById("tour-list-ngoai");
+    const elemTrong = document.getElementById("tour-list-trongnuoc");
+
+    if (elemNgoai) elemNgoai.innerHTML = tourNgoai;
+    if (elemTrong) elemTrong.innerHTML = tourTrongNuoc;
 }
