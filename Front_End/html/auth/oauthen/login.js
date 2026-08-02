@@ -13,9 +13,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
+            const submitBtn = loginForm.querySelector("button[type='submit']") || loginForm.querySelector("button");
+
             const formData = new FormData();
             formData.append("emaildangki", email);
             formData.append("matkhau", password);
+
+            if (typeof window.showLoading === "function") window.showLoading("Đang đăng nhập, vui lòng chờ...");
+            if (typeof window.setButtonLoading === "function") window.setButtonLoading(submitBtn, true, "Đang đăng nhập...");
 
             try {
                 const response = await fetch("https://webdulichlo.onrender.com/api/TaiKhoan/login", {
@@ -34,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 localStorage.setItem("user", JSON.stringify({
                     email: email,
                     tendangnhap: result.tendangnhap,
-                    phanquyen: result.phanquyen // ← THÊM DÒNG NÀY
+                    phanquyen: result.phanquyen
                 }));
 
                 alert("Đăng nhập thành công!");
@@ -42,6 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
             } catch (error) {
                 console.error("Lỗi đăng nhập:", error);
                 alert(error.message || "Có lỗi xảy ra. Vui lòng thử lại!");
+            } finally {
+                if (typeof window.hideLoading === "function") window.hideLoading();
+                if (typeof window.setButtonLoading === "function") window.setButtonLoading(submitBtn, false);
             }
         });
     }

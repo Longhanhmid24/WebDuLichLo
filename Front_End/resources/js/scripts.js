@@ -64,4 +64,51 @@ document.querySelectorAll('.view-orders-btn').forEach(link => {
     });
 });
 
+// ===== Global Loading Helper Functions =====
+window.showLoading = function (message = "Đang xử lý, vui lòng chờ...") {
+    let overlay = document.getElementById("global-loading-overlay");
+    if (!overlay) {
+        overlay = document.createElement("div");
+        overlay.id = "global-loading-overlay";
+        overlay.innerHTML = `
+            <div class="loading-spinner-box">
+                <div class="global-spinner"></div>
+                <div class="loading-text" id="global-loading-text">${message}</div>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+    } else {
+        const textElem = document.getElementById("global-loading-text");
+        if (textElem) textElem.textContent = message;
+    }
+    overlay.offsetHeight; // Force DOM reflow
+    overlay.classList.add("show");
+};
+
+window.hideLoading = function () {
+    const overlay = document.getElementById("global-loading-overlay");
+    if (overlay) {
+        overlay.classList.remove("show");
+    }
+};
+
+window.setButtonLoading = function (btn, isLoading, loadingText = "Đang xử lý...") {
+    if (!btn) return;
+    if (isLoading) {
+        if (!btn.dataset.originalHtml) {
+            btn.dataset.originalHtml = btn.innerHTML;
+        }
+        btn.disabled = true;
+        btn.classList.add("btn-loading");
+        btn.innerHTML = `<span class="btn-spinner"></span>${loadingText}`;
+    } else {
+        if (btn.dataset.originalHtml) {
+            btn.innerHTML = btn.dataset.originalHtml;
+            delete btn.dataset.originalHtml;
+        }
+        btn.disabled = false;
+        btn.classList.remove("btn-loading");
+    }
+};
+
 

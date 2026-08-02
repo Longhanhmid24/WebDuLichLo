@@ -100,6 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
             : "https://webdulichlo.onrender.com/api/Tour/add";
         const apiMethod = isEditMode ? "PUT" : "POST";
 
+        if (typeof window.showLoading === "function") window.showLoading(isEditMode ? "Đang cập nhật thông tin tour..." : "Đang tải ảnh lên Cloudinary & tạo tour...");
+        if (typeof window.setButtonLoading === "function") window.setButtonLoading(submitBtn, true, isEditMode ? "Đang cập nhật..." : "Đang thêm tour...");
+
         fetch(apiUrl, {
             method: apiMethod,
             body: formData
@@ -136,6 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 alert(error.message);
             })
             .finally(() => {
+                if (typeof window.hideLoading === "function") window.hideLoading();
+                if (typeof window.setButtonLoading === "function") window.setButtonLoading(submitBtn, false);
                 // Khôi phục nút bấm sau khi xử lý xong
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;

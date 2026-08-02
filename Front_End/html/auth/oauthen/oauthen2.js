@@ -17,11 +17,16 @@ document.addEventListener("DOMContentLoaded", function () {
             return; // Ngăn chặn gửi form nếu mật khẩu không khớp
         }
 
+        const submitBtn = registerForm.querySelector("button[type='submit']") || registerForm.querySelector("button");
+
         // Tạo đối tượng FormData để gửi dữ liệu
         const formData = new FormData();
         formData.append("emaildangki", email);
         formData.append("tendangnhap", tendangnhap);
         formData.append("matkhau", matkhau);
+
+        if (typeof window.showLoading === "function") window.showLoading("Đang đăng ký tài khoản, vui lòng chờ...");
+        if (typeof window.setButtonLoading === "function") window.setButtonLoading(submitBtn, true, "Đang đăng ký...");
 
         try {
             // Gửi yêu cầu đăng ký đến API
@@ -40,6 +45,9 @@ document.addEventListener("DOMContentLoaded", function () {
         } catch (error) {
             console.error("Lỗi đăng ký:", error);
             alert("Có lỗi xảy ra. Vui lòng thử lại!");
+        } finally {
+            if (typeof window.hideLoading === "function") window.hideLoading();
+            if (typeof window.setButtonLoading === "function") window.setButtonLoading(submitBtn, false);
         }
     });
 

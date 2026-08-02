@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     try {
+        if (typeof window.showLoading === "function") window.showLoading("Đang tải thông tin hồ sơ...");
         const response = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(email)}`);
         if (!response.ok) {
             const error = await response.json();
@@ -57,11 +58,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             avatarImg.src = `${baseUrl}/images/anhmacdinh.jpg`;
         }
 
-
-            } catch (err) {
-                console.error("Lỗi khi tải hồ sơ:", err);
-                alert(err.message || "Đã xảy ra lỗi khi tải hồ sơ.");
-            }
+    } catch (err) {
+        console.error("Lỗi khi tải hồ sơ:", err);
+        alert(err.message || "Đã xảy ra lỗi khi tải hồ sơ.");
+    } finally {
+        if (typeof window.hideLoading === "function") window.hideLoading();
+    }
 });
 
 function editField(fieldId) {
@@ -134,16 +136,24 @@ document.getElementById("avatarInput").addEventListener("change", function (even
 async function saveAvatar() {
     if (!selectedAvatarFile) return;
 
+    const saveBtn = document.getElementById("save-avatar");
+    if (typeof window.setButtonLoading === "function") window.setButtonLoading(saveBtn, true, "Đang lưu ảnh...");
+
     const formData = new FormData();
     formData.append("hinhAnh", selectedAvatarFile);
 
-    await updateUser(formData);
-    document.getElementById("save-avatar").hidden = true;
-    selectedAvatarFile = null;
+    try {
+        await updateUser(formData, "Đang tải ảnh đại diện lên Cloudinary...");
+        document.getElementById("save-avatar").hidden = true;
+        selectedAvatarFile = null;
+    } finally {
+        if (typeof window.setButtonLoading === "function") window.setButtonLoading(saveBtn, false);
+    }
 }
 
 // Hàm gọi API cập nhật
-async function updateUser(formData) {
+async function updateUser(formData, customLoadingMsg = "Đang cập nhật thông tin...") {
+    if (typeof window.showLoading === "function") window.showLoading(customLoadingMsg);
     try {
         const res = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/update/${encodeURIComponent(profileUserEmail)}`, {
             method: "PUT",
@@ -159,6 +169,9 @@ async function updateUser(formData) {
     } catch (err) {
         console.error("Lỗi cập nhật:", err);
         alert(err.message || "Có lỗi xảy ra.");
+        throw err;
+    } finally {
+        if (typeof window.hideLoading === "function") window.hideLoading();
     }
 }
 
