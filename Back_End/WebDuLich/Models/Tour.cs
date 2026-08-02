@@ -23,7 +23,7 @@ namespace WebDuLich.Models
 
         [Required]
         public DateTime NgayKetThuc { get; set; } // Ngày kết thúc
-
+ 
         public string? Mota { get; set; }
 
         [Required]
