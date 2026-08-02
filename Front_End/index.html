@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="resources/css/styles.css">
     <link rel="stylesheet" href="resources/css/computer/styles.css" media="screen and (min-width: 769px)">
     <link rel="stylesheet" href="resources/css/mobile/styles.css" media="screen and (max-width: 768px)">
-        <!-- Thư viện Flickity CSS -->
+    <!-- Thư viện Flickity CSS -->
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <!-- Thư viện Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -17,49 +17,49 @@
     <link rel="stylesheet" href="resources/css/ramdom_tour.css">
 </head>
 
-    <body>
-        <!-- Phần tiêu đề -->
-        <header class="bg-primary text-white py-3">
-            <div class="container d-flex justify-content-start align-items-center">
-                <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                    <a href="index.html" class="navbar-brand">
-                        <img src="resources/images/brand/brandlogo.png" alt="Logo">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link" href="index.html">Du Lịch</a>
-                                <div class="dropdown-menu">
-                                    <a href="#domestic">Du Lịch Trong Nước</a>
-                                    <a href="#international">Du Lịch Nước Ngoài</a>
+<body>
+    <!-- Phần tiêu đề -->
+    <header class="bg-primary text-white py-3">
+        <div class="container d-flex justify-content-start align-items-center">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a href="index.html" class="navbar-brand">
+                    <img src="resources/images/brand/brandlogo.png" alt="Logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="index.html">Du Lịch</a>
+                            <div class="dropdown-menu">
+                                <a href="#domestic">Du Lịch Trong Nước</a>
+                                <a href="#international">Du Lịch Nước Ngoài</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link view-orders-btn" href="#">Lịch sử giao dịch</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#">Tours</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#news">Tin Tức</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#about">Giới Thiệu</a></li>
+                        <li class="nav-item account-icon dropdown">
+                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Account Icon">
+                            <div class="dropdown-menu">
+                                <div id="user-info">
+                                    <a href="html/auth/login.html" id="login-link">Đăng nhập</a>
+                                    <a href="html/auth/register.html" id="register-link">Đăng ký</a>
                                 </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link view-orders-btn" href="#">Lịch sử giao dịch</a>
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="#">Tours</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#news">Tin Tức</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#about">Giới Thiệu</a></li>
-                            <li class="nav-item account-icon dropdown">
-                                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Account Icon">
-                                <div class="dropdown-menu">
-                                    <div id="user-info">
-                                        <a href="html/auth/login.html" id="login-link">Đăng nhập</a>
-                                        <a href="html/auth/register.html" id="register-link">Đăng ký</a>
-                                    </div>
-                                </div>
-                                <span id="user-name"></span>
-                            </li>
-                            
-                        </ul>
-                    </div>
-                </nav>
-            </div>
-        </header>
+                            </div>
+                            <span id="user-name"></span>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
 
     <!-- Phần quảng cáo -->
     <section id="home" class="home-section">
@@ -73,49 +73,49 @@
                     <button onclick="searchTours()">Tìm</button>
                 </div>
             </div>
-        
-   
 
-    </div>
+
+
+        </div>
     </section>
-   
-    
+
+
     <!-- Phần điểm đến -->
     <div class="text-center">
-        <h2>Tour Ngoài Nước</h2>
+        <h2>Du Lịch Ngoài Nước</h2>
         <div id="tour-list-ngoai" class="tour-container">
             <!-- Example tour item dynamically added -->
             <div class="tour-item">
                 <h3>Tên Tour Ngoài Nước</h3>
-               
+
             </div>
-            
+
         </div>
     </div>
-    
+
     <div class="text-center">
-        <h2>Tour Trong Nước</h2>
+        <h2>Du Lịch Trong Nước</h2>
         <div id="tour-list-trongnuoc" class="tour-container">
             <!-- Example tour item dynamically added -->
             <div class="tour-item">
                 <h3>Tên Tour Trong Nước</h3>
-                
+
             </div>
             <!-- Repeat for other tours -->
         </div>
     </div>
-    
-    
 
 
- <!-- Phần Điểm du lịch phổ biến -->
- <section id="popular_destinations" class="py-5 bg-white">
-    <h2 class="text-center">Các Điểm Du Lịch Phổ Biến</h2>
-    <div id="tourCarousel" class="carousel tour-carousel-style">
-        <div class="carousel-placeholder">Đang tải dữ liệu tour...</div>
-    </div>
-</section>
-<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+
+    <!-- Phần Điểm du lịch phổ biến -->
+    <section id="popular_destinations" class="py-5 bg-white">
+        <h2 class="text-center">Các Điểm Du Lịch Phổ Biến</h2>
+        <div id="tourCarousel" class="carousel tour-carousel-style">
+            <div class="carousel-placeholder">Đang tải dữ liệu tour...</div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
 
     <!-- Phần giới thiệu -->
     <section id="about" class="py-5 bg-light">
@@ -126,7 +126,7 @@
         </div>
     </section>
 
-    
+
 
     <!-- Phần chân trang -->
     <footer class="bg-primary text-white text-center py-3">
@@ -142,7 +142,7 @@
     <script src="resources/js/get_tour.js"></script>
     <script src="html/auth/oauthen/login.js"></script>
     <script src="resources/js/random_tour.js"></script>
-   
+
 
 
 </body>
