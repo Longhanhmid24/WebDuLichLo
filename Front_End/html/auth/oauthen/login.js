@@ -60,7 +60,7 @@ if (user) {
     `;
 
     // Nếu quyền là Admin thì hiển thị quản lý người dùng
-    if (user.phanquyen === "admin") {
+    if (user.phanquyen && user.phanquyen.toLowerCase() === "admin") {
         html += `<a href="admin.html" id="admin">Quản Lý Người Dùng</a>`;
     }
 

@@ -24,8 +24,8 @@ function renderUserList(users) {
             <td>${user.tendangnhap || 'N/A'}</td>
             <td>
                 <select onchange="updateUserRole('${user.emaildangki}', this.value)">
-                    <option value="admin" ${user.phanquyen === 'admin' ? 'selected' : ''}>Admin</option>
-                    <option value="user" ${user.phanquyen === 'user' ? 'selected' : ''}>User</option>
+                    <option value="admin" ${user.phanquyen?.toLowerCase() === 'admin' ? 'selected' : ''}>Admin</option>
+                    <option value="user" ${user.phanquyen?.toLowerCase() === 'user' ? 'selected' : ''}>User</option>
                 </select>
             </td>
             <td>${user.sodienthoai || 'N/A'}</td>
