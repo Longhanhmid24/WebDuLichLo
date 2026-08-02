@@ -33,6 +33,10 @@ namespace WebDuLich.Controllers
                 if (tour == null)
                     return BadRequest("Dữ liệu không hợp lệ");
 
+                // Đảm bảo DateTime có Kind là Utc để tương thích với PostgreSQL timestamptz
+                tour.NgayKhoiHanh = DateTime.SpecifyKind(tour.NgayKhoiHanh, DateTimeKind.Utc);
+                tour.NgayKetThuc = DateTime.SpecifyKind(tour.NgayKetThuc, DateTimeKind.Utc);
+
                 if (tour.NgayKetThuc < tour.NgayKhoiHanh)
                     return BadRequest("Ngày kết thúc phải sau ngày khởi hành");
 
@@ -60,7 +64,8 @@ namespace WebDuLich.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, $"Lỗi server: {ex.Message}");
+                var errMsg = ex.InnerException != null ? $"{ex.Message} -> {ex.InnerException.Message}" : ex.Message;
+                return StatusCode(500, $"Lỗi server: {errMsg}");
             }
         }
 
