@@ -143,7 +143,7 @@ footer {
     background: #f4f4f4;
     width: 100%;
     overflow: hidden;
-    padding: 20px 0;
+    padding: 20px 0 50px 0;
     position: relative;
 }
 
@@ -223,20 +223,37 @@ footer {
 
 /* Flickity Page Dots */
 .flickity-page-dots {
-    bottom: -5px !important;
+    bottom: 12px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
 }
 
 .flickity-page-dots .dot {
-    width: 10px !important;
-    height: 10px !important;
-    background: #b0b0b0 !important;
+    width: 12px !important;
+    height: 12px !important;
+    margin: 0 !important;
+    background: #cbd5e1 !important;
+    opacity: 0.85 !important;
+    border-radius: 50% !important;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    cursor: pointer !important;
+}
+
+.flickity-page-dots .dot:hover {
+    background: #94a3b8 !important;
     opacity: 1 !important;
-    transition: all 0.3s ease !important;
+    transform: scale(1.2) !important;
 }
 
 .flickity-page-dots .dot.is-selected {
+    width: 30px !important;
+    height: 12px !important;
+    border-radius: 8px !important;
     background: #152db8 !important;
-    transform: scale(1.3);
+    opacity: 1 !important;
+    box-shadow: 0 2px 8px rgba(21, 45, 184, 0.45) !important;
 }
 
 .navbar-nav .account-icon {
