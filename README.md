@@ -1,6 +1,6 @@
 # WebDuLichLo
 
-WebDuLichLo là dự án website du lịch, bao gồm giao diện frontend tĩnh và backend API ASP.NET Core.
+WebDuLichLo là dự án website du lịch, bao gồm giao diện frontend động và backend API ASP.NET Core. Bạn vó thể đăng nhập vào https://web-du-lich-lo.vercel.app để xem trang web 
 
 ## Mô tả
 Dự án cho phép:
