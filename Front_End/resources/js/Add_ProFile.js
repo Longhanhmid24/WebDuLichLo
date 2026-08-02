@@ -42,9 +42,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         const avatarImg = document.getElementById("avatar");
         const baseUrl = "https://webdulichlo.onrender.com";  // URL backend API
 
-        avatarImg.src = user.hinhAnh && user.hinhAnh !== ""
-        ? `${baseUrl}${user.hinhAnh.replace(/\\/g, "/")}?t=${Date.now()}`
-        : `${baseUrl}/images/anhmacdinh.jpg`;   // Giả sử ảnh mặc định cũng nằm trong wwwroot
+        if (user.hinhAnh && user.hinhAnh.trim() !== "") {
+            avatarImg.src = user.hinhAnh.startsWith("http")
+                ? user.hinhAnh
+                : `${baseUrl}${user.hinhAnh.startsWith("/") ? "" : "/"}${user.hinhAnh}`;
+        } else {
+            avatarImg.src = `${baseUrl}/images/anhmacdinh.jpg`;
+        }
 
 
             } catch (err) {

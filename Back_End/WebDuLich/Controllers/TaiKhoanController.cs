@@ -7,6 +7,8 @@ using Microsoft.Extensions.Caching.Memory;
 using System.Security.Claims;
 using WebDuLich.Data;
 using WebDuLich.Models;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
 
 namespace WebDuLich.Controllers
 {
@@ -16,11 +18,14 @@ namespace WebDuLich.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IMemoryCache _cache;
-        // Inject ApplicationDbContext để làm việc với database
-        public TaiKhoanController(ApplicationDbContext context, IMemoryCache memoryCache)
+        private readonly Cloudinary _cloudinary;
+
+        // Inject ApplicationDbContext, IMemoryCache và Cloudinary
+        public TaiKhoanController(ApplicationDbContext context, IMemoryCache memoryCache, Cloudinary cloudinary)
         {
             _context = context;
             _cache = memoryCache;
+            _cloudinary = cloudinary;
         }
 
         // API Đăng ký tài khoản mới
@@ -195,30 +200,22 @@ namespace WebDuLich.Controllers
             user.Diachi = request.Diachi ?? user.Diachi;
             user.Gioitinh = request.Gioitinh ?? user.Gioitinh;
 
-            // Xử lý ảnh đại diện
+            // Xử lý ảnh đại diện bằng Cloudinary
             if (request.HinhAnh != null && request.HinhAnh.Length > 0)
             {
-                // Đường dẫn nơi lưu trữ ảnh trên server
-                var uploadsDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads");
-
-                // Kiểm tra và tạo thư mục nếu chưa tồn tại
-                if (!Directory.Exists(uploadsDirectory))
+                using var stream = request.HinhAnh.OpenReadStream();
+                var uploadParams = new ImageUploadParams()
                 {
-                    Directory.CreateDirectory(uploadsDirectory);
+                    File = new FileDescription(request.HinhAnh.FileName, stream),
+                    Folder = "avatars"
+                };
+                var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+                if (uploadResult.Error != null)
+                {
+                    return StatusCode(500, new { Message = $"Lỗi tải ảnh đại diện lên Cloudinary: {uploadResult.Error.Message}" });
                 }
 
-                // Tạo tên file duy nhất tránh trùng lặp
-                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(request.HinhAnh.FileName);
-                var filePath = Path.Combine(uploadsDirectory, fileName);
-
-                // Lưu ảnh vào thư mục
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await request.HinhAnh.CopyToAsync(stream);
-                }
-
-                // Cập nhật đường dẫn ảnh vào cơ sở dữ liệu
-                user.HinhAnh = $"/uploads/{fileName}";
+                user.HinhAnh = uploadResult.SecureUrl.ToString();
             }
 
             await _context.SaveChangesAsync();
