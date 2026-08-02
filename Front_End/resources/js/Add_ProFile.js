@@ -51,6 +51,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         const headerAvatar = document.querySelector(".account-icon img");
         const baseUrl = "https://webdulichlo.onrender.com";  // URL backend API
 
+        if (user.tendangnhap) {
+            userStored.tendangnhap = user.tendangnhap;
+            const headerUserName = document.getElementById("user-name");
+            if (headerUserName) headerUserName.textContent = user.tendangnhap;
+            localStorage.setItem("user", JSON.stringify(userStored));
+        }
+
         if (user.hinhAnh && user.hinhAnh.trim() !== "") {
             const avatarSrc = user.hinhAnh.startsWith("http")
                 ? user.hinhAnh

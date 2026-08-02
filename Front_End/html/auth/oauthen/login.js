@@ -61,30 +61,42 @@ document.addEventListener("DOMContentLoaded", function () {
     const user = JSON.parse(localStorage.getItem("user"));
 
     if (user) {
-        userName.textContent = user.email;
+        userName.textContent = user.tendangnhap || user.email;
 
-        // Cập nhật Avatar trên Header nếu có
+        // Cập nhật Avatar và Tên đăng nhập trên Header từ API nếu chưa đủ
         const headerAvatar = document.querySelector(".account-icon img");
-        if (headerAvatar) {
-            const baseUrl = "https://webdulichlo.onrender.com";
-            if (user.hinhAnh && user.hinhAnh.trim() !== "") {
+        const baseUrl = "https://webdulichlo.onrender.com";
+
+        if (user.hinhAnh && user.hinhAnh.trim() !== "") {
+            if (headerAvatar) {
                 headerAvatar.src = user.hinhAnh.startsWith("http")
                     ? user.hinhAnh
                     : `${baseUrl}${user.hinhAnh.startsWith("/") ? "" : "/"}${user.hinhAnh}`;
-            } else {
-                fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(user.email)}`)
-                    .then(res => res.ok ? res.json() : null)
-                    .then(userData => {
-                        if (userData && userData.hinhAnh && userData.hinhAnh.trim() !== "") {
-                            user.hinhAnh = userData.hinhAnh;
-                            localStorage.setItem("user", JSON.stringify(user));
-                            headerAvatar.src = userData.hinhAnh.startsWith("http")
-                                ? userData.hinhAnh
-                                : `${baseUrl}${userData.hinhAnh.startsWith("/") ? "" : "/"}${userData.hinhAnh}`;
-                        }
-                    })
-                    .catch(err => console.error("Lỗi tải avatar header:", err));
             }
+        }
+
+        // Nếu thiếu tendangnhap hoặc hinhAnh thì gọi API bù
+        if (!user.tendangnhap || !user.hinhAnh) {
+            fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(user.email)}`)
+                .then(res => res.ok ? res.json() : null)
+                .then(userData => {
+                    if (userData) {
+                        if (userData.tendangnhap) {
+                            user.tendangnhap = userData.tendangnhap;
+                            userName.textContent = userData.tendangnhap;
+                        }
+                        if (userData.hinhAnh && userData.hinhAnh.trim() !== "") {
+                            user.hinhAnh = userData.hinhAnh;
+                            if (headerAvatar) {
+                                headerAvatar.src = userData.hinhAnh.startsWith("http")
+                                    ? userData.hinhAnh
+                                    : `${baseUrl}${userData.hinhAnh.startsWith("/") ? "" : "/"}${userData.hinhAnh}`;
+                            }
+                        }
+                        localStorage.setItem("user", JSON.stringify(user));
+                    }
+                })
+                .catch(err => console.error("Lỗi tải thông tin user header:", err));
         }
 
         let html = `
