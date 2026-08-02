@@ -66,9 +66,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         userInfo.innerHTML = html;
 
-        document.getElementById("logout").addEventListener("click", function () {
+        document.getElementById("logout").addEventListener("click", function (e) {
+            e.preventDefault();
             localStorage.removeItem("user");
-            location.reload();
+            window.location.href = "/index.html";
         });
     }
 

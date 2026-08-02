@@ -2,12 +2,19 @@ let profileUserEmail = "";
 let selectedAvatarFile = null;
 
 document.addEventListener("DOMContentLoaded", async function () {
+    const userStored = JSON.parse(localStorage.getItem("user"));
+    if (!userStored) {
+        window.location.href = "/index.html";
+        return;
+    }
+
     const params = new URLSearchParams(window.location.search);
-    const email = params.get("email");
+    const email = params.get("email") || userStored.email;
     profileUserEmail = email;
 
     if (!email) {
-        alert("Không tìm thấy email trong URL!");
+        alert("Không tìm thấy thông tin tài khoản!");
+        window.location.href = "/index.html";
         return;
     }
 
