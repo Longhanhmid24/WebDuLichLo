@@ -19,20 +19,20 @@ function renderUserList(users) {
     users.forEach(user => {
         const row = document.createElement("tr");
         row.innerHTML = `
-            <td>${user.hinhAnh || 'N/A'}</td>
-            <td>${user.emaildangki}</td>
-            <td>${user.tendangnhap || 'N/A'}</td>
-            <td>
+            <td data-label="Ảnh Đại Diện">${user.hinhAnh || 'N/A'}</td>
+            <td data-label="Email">${user.emaildangki}</td>
+            <td data-label="Tên Đăng Nhập">${user.tendangnhap || 'N/A'}</td>
+            <td data-label="Quyền">
                 <select onchange="updateUserRole('${user.emaildangki}', this.value)">
                     <option value="admin" ${user.phanquyen === 'admin' ? 'selected' : ''}>Admin</option>
                     <option value="user" ${user.phanquyen === 'user' ? 'selected' : ''}>User</option>
                 </select>
             </td>
-            <td>${user.sodienthoai || 'N/A'}</td>
-            <td>${user.diachi || 'N/A'}</td>
-            <td>${formatGender(user.gioitinh)}</td>
-            <td>${formatDate(user.ngayTao)}</td>
-            <td><button onclick="deleteUser('${user.emaildangki}')">Xóa</button></td>
+            <td data-label="Số điện thoại">${user.sodienthoai || 'N/A'}</td>
+            <td data-label="Địa chỉ">${user.diachi || 'N/A'}</td>
+            <td data-label="Giới Tính">${formatGender(user.gioitinh)}</td>
+            <td data-label="Ngày Tạo">${formatDate(user.ngayTao)}</td>
+            <td data-label="Hành Động"><button onclick="deleteUser('${user.emaildangki}')">Xóa</button></td>
         `;
         userList.appendChild(row);
     });

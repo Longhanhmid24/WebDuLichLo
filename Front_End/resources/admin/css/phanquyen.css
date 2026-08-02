@@ -1,0 +1,169 @@
+/* Main Container */
+.container {
+    transition: margin-left 0.3s ease;
+    margin-left: 250px;
+    padding: 20px;
+    margin-top: 60px;
+}
+
+/* Sidebar States */
+.sidebar.show ~ .container {
+    margin-left: 250px;
+}
+
+.sidebar:not(.show) ~ .container {
+    margin-left: 60px;
+}
+.tr{
+    color: #ddd;
+}
+
+/* User List Container */
+.user-list-container {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+
+}
+
+th {
+    background-color: yellowgreen;
+    font-weight: bold;
+}
+
+/* Dark Mode Styles */
+body.dark-mode .user-list-container {
+    background-color: #333;
+    color: #fff;
+}
+
+body.dark-mode th {
+    background-color: #444;
+    color: #fff;
+}
+
+body.dark-mode td {
+    border-bottom: 1px solid #555;
+}
+
+/* Form Elements */
+select, button {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+}
+
+body.dark-mode select,
+body.dark-mode button {
+    background-color: #444;
+    color: #fff;
+    border-color: #555;
+}
+
+button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin-left: 0 !important;
+        margin-top: 70px !important;
+        padding: 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .sidebar.show ~ .container,
+    .sidebar:not(.show) ~ .container {
+        margin-left: 0 !important;
+    }
+
+    .user-list-container {
+        padding: 10px !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    /* Chuyển bảng thành dạng danh sách thẻ (Card Layout) */
+    table, thead, tbody, th, td, tr {
+        display: block !important;
+        width: 100% !important;
+        box-sizing: border-box;
+    }
+
+    /* Ẩn tiêu đề cột của bảng nhưng giữ lại trong thẻ */
+    thead tr {
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    tr {
+        background-color: #ffffff !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 8px !important;
+        margin-bottom: 20px !important;
+        padding: 15px !important;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    body.dark-mode tr {
+        background-color: #333333 !important;
+        border-color: #444444 !important;
+    }
+
+    td {
+        border-bottom: 1px solid #f0f0f0 !important;
+        padding: 10px 5px !important;
+        text-align: right !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        font-size: 14px !important;
+    }
+
+    body.dark-mode td {
+        border-bottom-color: #444444 !important;
+    }
+
+    td:last-child {
+        border-bottom: none !important;
+    }
+
+    /* Thêm nhãn cột bằng thuộc tính data-label */
+    td::before {
+        content: attr(data-label) ": " !important;
+        font-weight: bold !important;
+        color: #555555 !important;
+        text-align: left !important;
+    }
+
+    body.dark-mode td::before {
+        color: #cccccc !important;
+    }
+
+    /* Tùy chỉnh hiển thị các nút/select trong ô trên di động */
+    td select, td button {
+        width: auto !important;
+        margin-left: auto !important;
+    }
+}

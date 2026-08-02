@@ -157,3 +157,28 @@ body.dark-mode .toolbar {
     color: white; /* Hoặc chọn một màu tương phản với nền */
     text-align: left; /* Căn trái tiêu đề */
 }
+
+/* Responsive Toolbar for Mobile */
+@media (max-width: 768px) {
+    .toolbar {
+        padding: 8px !important;
+    }
+
+    .toolbar-icons {
+        gap: 12px !important; /* Thu hẹp khoảng cách giữa các icon trên di động */
+    }
+
+    .menu {
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    .menu-button {
+        padding: 3px !important;
+    }
+
+    .badge img {
+        width: 30px !important;
+        height: 30px !important;
+    }
+}
