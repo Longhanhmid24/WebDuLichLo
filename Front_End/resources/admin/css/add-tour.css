@@ -1,43 +1,60 @@
 .container {
     background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     width: 100%;
-    max-width: 500px;
-    margin: auto;
-    border: 1px solid #ccc;
+    max-width: 550px;
+    margin: 40px auto;
+    border: 1px solid #e2e8f0;
+    box-sizing: border-box;
 }
 
 h2 {
     text-align: center;
     color: #152db8;
-    font-size: 22px;
+    font-size: 24px;
+    margin-bottom: 25px;
+    font-weight: bold;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     font-weight: bold;
+    color: #333;
+    font-size: 14px;
 }
 
 input,
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+textarea,
+select {
+    box-sizing: border-box !important;
+    width: 100% !important;
+    padding: 12px 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
     font-size: 14px;
-    background-color: #f9f9f9;
+    background-color: #fafafa;
+    transition: all 0.25s ease-in-out;
+    outline: none;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color: #152db8;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(21, 45, 184, 0.15);
 }
 
 textarea {
     resize: vertical;
-    min-height: 80px;
+    min-height: 100px;
 }
 
 .file-upload {

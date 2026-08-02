@@ -1,10 +1,10 @@
 /* Mobile Specific Styles for Add Tour Form */
 
 .container {
-    width: calc(100% - 20px) !important;
-    max-width: none;
-    margin: 15px 10px !important;
-    padding: 15px;
+    width: calc(100% - 24px) !important;
+    max-width: none !important;
+    margin: 20px 12px !important;
+    padding: 25px 20px !important;
     box-sizing: border-box !important;
 }
 
