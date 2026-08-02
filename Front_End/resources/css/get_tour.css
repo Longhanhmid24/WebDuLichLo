@@ -3,26 +3,24 @@
     margin-top: 20px;
 }
 
-/* Grid layout cho danh sách tour */
-/* Grid layout cho danh sách tour */
+/* Grid layout cho danh sách tour trên Desktop */
 .tour-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 20px 0;
-    align-items: stretch;
+    gap: 15px;
+    padding: 20px;
+    align-items: stretch; /* Đảm bảo tất cả item có cùng chiều cao */
     height: 100%;
 }
 
-/* Responsive cho màn hình vừa */
+/* Responsive cho lưới hiển thị Tour màn hình vừa */
 @media (max-width: 992px) {
     .tour-container {
         grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
     }
 }
 
-/* Responsive đặc biệt cho di động: Vuốt ngang dạng App (Swiper / Horizontal Scroll) */
+/* Responsive ĐẶC BIỆT CHỈ DÀNH CHO ĐIỆN THOẠI (max-width: 768px): Vuốt ngang dạng App */
 @media (max-width: 768px) {
     .tour-container {
         display: flex !important;
@@ -34,7 +32,7 @@
         scroll-padding-left: 5px;
     }
 
-    /* Ẩn thanh cuộn xấu trên trình duyệt di động */
+    /* Ẩn thanh cuộn trên điện thoại */
     .tour-container::-webkit-scrollbar {
         display: none;
     }
@@ -69,6 +67,7 @@
         flex-direction: column !important;
         justify-content: space-between !important;
         flex-grow: 1 !important;
+        text-align: left !important;
     }
 
     .card-title {
@@ -110,122 +109,112 @@
     }
 }
 
-/* Mỗi tour trên Desktop */
+/* GIỮ NGUYÊN HOÀN TOÀN CẤU TRÚC GỐC CHO PHIÊN BẢN MÁY TÍNH (DESKTOP) */
 .tour-item {
-    border: 1px solid #e2e8f0;
-    padding: 0;
-    border-radius: 14px;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 10px;
     background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease-in-out;
     flex-direction: column;
     justify-content: space-between;
-    overflow: hidden;
+    max-width: 400px;
 }
 
 .tour-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-/* Ảnh tour */
+/* Ảnh tour trên Desktop */
 .card-img-top {
     width: 100%;
-    height: 200px;
+    height: 300px;
     object-fit: cover;
-    border-radius: 14px 14px 0 0;
-    transition: transform 0.4s ease;
+    border-radius: 8px;
 }
 
-.tour-item:hover .card-img-top {
-    transform: scale(1.04);
-}
-
-/* Nội dung trong card */
+/* Nội dung trong card trên Desktop */
 .card-body {
-    padding: 16px;
-    text-align: left;
+    padding: 15px;
+    text-align: center;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
-/* Tiêu đề */
+/* Tiêu đề trên Desktop */
 .card-title {
-    font-size: 16px;
+    font-size: 18px;
     font-weight: bold;
-    color: #1e293b;
-    margin-bottom: 6px;
-    line-height: 1.3;
+    margin-bottom: 8px;
 }
 
-/* Mô tả */
+/* Mô tả trên Desktop */
 .card-text {
-    font-size: 13px;
-    color: #64748b;
+    font-size: 14px;
+    color: #444;
     margin-bottom: 10px;
 }
 
-/* Giá tour */
+/* Giá tour trên Desktop */
 .tour-price {
-    font-size: 17px;
-    color: #f97316;
+    font-size: 18px;
+    color: #f7931e;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-/* Nút đặt tour */
+/* Nút đặt tour trên Desktop */
 .btn-book {
-    background-color: #152db8;
+    background-color: #007bff;
     color: white;
     padding: 10px;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
+    border-radius: 6px;
+    font-size: 15px;
     width: 100%;
-    transition: background-color 0.25s ease;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .btn-book:hover {
-    background-color: #0d1e8c;
+    background-color: #0056b3;
 }
 
-/* Nút xóa tour */
+/* Nút xóa tour trên Desktop */
 .btn-delete {
-    background-color: #ef4444;
+    background-color: #dc3545; /* Màu đỏ */
     color: white;
-    padding: 8px;
+    padding: 10px;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 6px;
+    font-size: 15px;
     width: 100%;
-    transition: background-color 0.25s ease;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .btn-delete:hover {
-    background-color: #dc2626;
+    background-color: #c82333; /* Màu đỏ đậm hơn khi hover */
 }
 
-/* Nút sửa tour */
+/* Nút sửa tour trên Desktop */
 .btn-edit {
-    background-color: #f59e0b;
-    color: white;
-    padding: 8px;
+    background-color: #ffc107; /* Màu vàng */
+    color: black;
+    padding: 10px;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
-    font-size: 14px;
+    border-radius: 6px;
+    font-size: 15px;
     width: 100%;
-    margin-bottom: 6px;
-    font-weight: 600;
-    transition: background-color 0.25s ease;
+    margin-bottom: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s ease-in-out;
 }
 
 .btn-edit:hover {
-    background-color: #d97706;
+    background-color: #e0a800; /* Vàng đậm hơn khi hover */
 }
