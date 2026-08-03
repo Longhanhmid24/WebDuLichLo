@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xác nhận Đăng nhập Google</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="d-flex align-items-center justify-content-center" style="height: 100vh; background-color: #f8f9fa;">
+    <div class="text-center p-4 bg-white rounded shadow" style="max-width: 400px; width: 100%;">
+        <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <h4 class="text-primary font-weight-bold">Đang xác thực Google...</h4>
+        <p class="text-muted" id="status-text">Vui lòng chờ trong giây lát.</p>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get("token");
+            const email = urlParams.get("email");
+            const name = urlParams.get("name");
+            const role = urlParams.get("role");
+
+            if (email) {
+                // Lưu thông tin người dùng vào localStorage
+                localStorage.setItem("user", JSON.stringify({
+                    email: email,
+                    tendangnhap: name || email,
+                    phanquyen: role || "User"
+                }));
+
+                if (token) {
+                    localStorage.setItem("jwtToken", token);
+                }
+
+                document.getElementById("status-text").textContent = "Đăng nhập Google thành công! Đang chuyển hướng...";
+                setTimeout(() => {
+                    window.location.href = "../../index.html";
+                }, 1000);
+            } else {
+                document.getElementById("status-text").textContent = "Xác thực thất bại. Đang quay lại trang đăng nhập...";
+                setTimeout(() => {
+                    window.location.href = "login.html";
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

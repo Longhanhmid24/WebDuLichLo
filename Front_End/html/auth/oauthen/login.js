@@ -43,6 +43,10 @@ document.addEventListener("DOMContentLoaded", function () {
                     hinhAnh: result.hinhAnh || ""
                 }));
 
+                if (result.token) {
+                    localStorage.setItem("jwtToken", result.token);
+                }
+
                 alert("Đăng nhập thành công!");
                 window.location.href = "../../index.html"; // Điều hướng về trang chủ
             } catch (error) {
@@ -114,12 +118,13 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("logout").addEventListener("click", function (e) {
             e.preventDefault();
             localStorage.removeItem("user");
-            window.location.href = "/index.html";
+            localStorage.removeItem("jwtToken");
+            window.location.href = "../../index.html";
         });
     }
 
     // Xử lý đăng nhập bằng Google
-    const googleBtn = document.querySelector("a[href='/api/auth/google']");
+    const googleBtn = document.getElementById("google-login-btn") || document.querySelector("a[href*='google-login']");
     if (googleBtn) {
         googleBtn.addEventListener("click", function (event) {
             event.preventDefault();

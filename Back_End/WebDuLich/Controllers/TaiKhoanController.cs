@@ -134,7 +134,10 @@ namespace WebDuLich.Controllers
                 await _context.SaveChangesAsync();
             }
 
-            return Redirect($"https://yourfrontend.com/html/auth/google-redirect.html?email={Uri.EscapeDataString(user.Emaildangki)}&name={Uri.EscapeDataString(user.Tendangnhap)}&role={Uri.EscapeDataString(user.Phanquyen)}");
+            // Sinh JWT Token cho tài khoản đăng nhập bằng Google
+            var token = _jwtService.GenerateToken(user);
+
+            return Redirect($"https://web-du-lich-lo.vercel.app/html/auth/google-redirect.html?token={Uri.EscapeDataString(token)}&email={Uri.EscapeDataString(user.Emaildangki)}&name={Uri.EscapeDataString(user.Tendangnhap)}&role={Uri.EscapeDataString(user.Phanquyen)}");
         }
         // API lấy danh sách người dùng
 
