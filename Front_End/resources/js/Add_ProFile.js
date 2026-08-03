@@ -65,10 +65,12 @@ document.addEventListener("DOMContentLoaded", async function () {
             avatarImg.src = avatarSrc;
             if (headerAvatar) headerAvatar.src = avatarSrc;
 
-            userStored.hinhAnh = user.hinhAnh;
-            localStorage.setItem("user", JSON.stringify(userStored));
+            if (user.hinhAnh.startsWith("http")) {
+                userStored.hinhAnh = user.hinhAnh;
+                localStorage.setItem("user", JSON.stringify(userStored));
+            }
         } else {
-            avatarImg.src = `${baseUrl}/images/anhmacdinh.jpg`;
+            avatarImg.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
         }
 
     } catch (err) {
@@ -156,19 +158,21 @@ async function saveAvatar() {
     formData.append("hinhAnh", selectedAvatarFile);
 
     try {
-        await updateUser(formData, "Đang tải ảnh đại diện lên Cloudinary...");
+        const result = await updateUser(formData, "Đang tải ảnh đại diện lên Cloudinary...");
         document.getElementById("save-avatar").hidden = true;
         selectedAvatarFile = null;
 
-        // Cập nhật lại Avatar trên Header ngay lập tức
+        // Cập nhật lại Avatar từ Cloudinary URL trả về
+        const newHinhAnh = result?.hinhAnh || result?.HinhAnh;
         const headerAvatar = document.querySelector(".account-icon img");
         const profileAvatar = document.getElementById("avatar");
-        if (headerAvatar && profileAvatar) {
-            headerAvatar.src = profileAvatar.src;
+        if (newHinhAnh) {
+            if (profileAvatar) profileAvatar.src = newHinhAnh;
+            if (headerAvatar) headerAvatar.src = newHinhAnh;
+            const userStored = JSON.parse(localStorage.getItem("user")) || {};
+            userStored.hinhAnh = newHinhAnh;
+            localStorage.setItem("user", JSON.stringify(userStored));
         }
-        const userStored = JSON.parse(localStorage.getItem("user")) || {};
-        if (profileAvatar) userStored.hinhAnh = profileAvatar.src;
-        localStorage.setItem("user", JSON.stringify(userStored));
     } finally {
         if (typeof window.setButtonLoading === "function") window.setButtonLoading(saveBtn, false);
     }
@@ -188,7 +192,9 @@ async function updateUser(formData, customLoadingMsg = "Đang cập nhật thôn
             throw new Error(error.Message || error.message || `Cập nhật thất bại (${res.status})!`);
         }
 
+        const data = await res.json();
         alert("Cập nhật thành công!");
+        return data;
     } catch (err) {
         console.error("Lỗi cập nhật:", err);
         alert(err.message || "Có lỗi xảy ra.");

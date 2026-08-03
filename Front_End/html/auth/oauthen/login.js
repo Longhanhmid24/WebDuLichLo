@@ -71,16 +71,20 @@ document.addEventListener("DOMContentLoaded", function () {
         const headerAvatar = document.querySelector(".account-icon img");
         const baseUrl = "https://webdulichlo.onrender.com";
 
-        if (user.hinhAnh && user.hinhAnh.trim() !== "") {
+        // Xóa sạch base64 hỏng nếu lỡ lưu trước đó trong localStorage
+        if (user.hinhAnh && user.hinhAnh.startsWith("data:")) {
+            delete user.hinhAnh;
+            localStorage.setItem("user", JSON.stringify(user));
+        }
+
+        if (user.hinhAnh && user.hinhAnh.startsWith("http")) {
             if (headerAvatar) {
-                headerAvatar.src = user.hinhAnh.startsWith("http")
-                    ? user.hinhAnh
-                    : `${baseUrl}${user.hinhAnh.startsWith("/") ? "" : "/"}${user.hinhAnh}`;
+                headerAvatar.src = user.hinhAnh;
             }
         }
 
-        // Nếu thiếu tendangnhap hoặc hinhAnh thì gọi API bù
-        if (!user.tendangnhap || !user.hinhAnh) {
+        // Tự động đồng bộ với Backend API để lấy URL Cloudinary mới nhất
+        if (!user.tendangnhap || !user.hinhAnh || !user.hinhAnh.startsWith("http")) {
             fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(user.email)}`)
                 .then(res => res.ok ? res.json() : null)
                 .then(userData => {
@@ -89,13 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
                             user.tendangnhap = userData.tendangnhap;
                             userName.textContent = userData.tendangnhap;
                         }
-                        if (userData.hinhAnh && userData.hinhAnh.trim() !== "") {
+                        if (userData.hinhAnh && userData.hinhAnh.startsWith("http")) {
                             user.hinhAnh = userData.hinhAnh;
-                            if (headerAvatar) {
-                                headerAvatar.src = userData.hinhAnh.startsWith("http")
-                                    ? userData.hinhAnh
-                                    : `${baseUrl}${userData.hinhAnh.startsWith("/") ? "" : "/"}${userData.hinhAnh}`;
-                            }
+                            if (headerAvatar) headerAvatar.src = userData.hinhAnh;
+                        } else if (headerAvatar) {
+                            headerAvatar.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
                         }
                         localStorage.setItem("user", JSON.stringify(user));
                     }

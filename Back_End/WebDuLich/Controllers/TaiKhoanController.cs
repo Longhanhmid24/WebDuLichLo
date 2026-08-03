@@ -233,7 +233,7 @@ namespace WebDuLich.Controllers
 
                 await _context.SaveChangesAsync();
 
-                return Ok(new { Message = "Cập nhật thông tin thành công!" });
+                return Ok(new { Message = "Cập nhật thông tin thành công!", HinhAnh = user.HinhAnh });
             }
             catch (Exception ex)
             {
