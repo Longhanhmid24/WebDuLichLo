@@ -1,11 +1,12 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WebDuLich.Models;
-using WebDuLich.Data;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Net;
+using System.Threading.Tasks;
+using WebDuLich.Data;
+using WebDuLich.Models;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 
@@ -17,11 +18,13 @@ namespace WebDuLich.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly Cloudinary _cloudinary;
+        private readonly IMemoryCache _cache;
 
-        public TourController(ApplicationDbContext context, Cloudinary cloudinary)
+        public TourController(ApplicationDbContext context, Cloudinary cloudinary, IMemoryCache cache)
         {
             _context = context;
             _cloudinary = cloudinary;
+            _cache = cache;
         }
 
         // API để thêm tour (Chỉ dành cho Admin)
@@ -67,6 +70,7 @@ namespace WebDuLich.Controllers
                 _context.Tours.Add(tour);
                 await _context.SaveChangesAsync();
 
+                _cache.Remove("RandomToursCache"); // Xóa cache để làm mới danh sách
                 return Ok(new { message = "Tour đã được thêm thành công!", tour });
             }
             catch (Exception ex)
@@ -82,6 +86,7 @@ namespace WebDuLich.Controllers
             var baseUrl = $"{Request.Scheme}://{Request.Host}"; // Lấy URL gốc của server
 
             var tours = await _context.Tours
+                .AsNoTracking()
                 .Select(t => new
                 {
                     t.Matour, // Thêm Matour vào kết quả
@@ -108,9 +113,16 @@ namespace WebDuLich.Controllers
         {
             try
             {
+                const string cacheKey = "RandomToursCache";
+                if (_cache.TryGetValue(cacheKey, out var cachedTours))
+                {
+                    return Ok(cachedTours);
+                }
+
                 var baseUrl = $"{Request.Scheme}://{Request.Host}";
 
                 var randomTours = await _context.Tours
+                    .AsNoTracking()
                     .OrderBy(t => EF.Functions.Random())
                     .Take(11)
                     .Select(t => new
@@ -120,11 +132,12 @@ namespace WebDuLich.Controllers
                     })
                     .ToListAsync();
 
+                _cache.Set(cacheKey, randomTours, TimeSpan.FromMinutes(5));
+
                 return Ok(randomTours);
             }
             catch (Exception ex)
             {
-                // Ghi log lỗi
                 Console.WriteLine($"Lỗi trong GetRandomTours: {ex.Message}");
                 return StatusCode(500, "Lỗi server nội bộ.");
             }
@@ -146,6 +159,7 @@ namespace WebDuLich.Controllers
                 _context.Tours.Remove(tour);
                 await _context.SaveChangesAsync();
 
+                _cache.Remove("RandomToursCache");
                 return Ok(new { message = "Tour đã được xóa thành công!" });
             }
             catch (Exception ex)
@@ -163,6 +177,7 @@ namespace WebDuLich.Controllers
             }
 
             var tours = await _context.Tours
+                .AsNoTracking()
                 .Where(t => t.Tentour.Contains(keyword))  // Tìm tour chứa từ khóa
                 .ToListAsync();
 
@@ -173,7 +188,7 @@ namespace WebDuLich.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetTourById(int id)
         {
-            var tour = await _context.Tours.FindAsync(id);
+            var tour = await _context.Tours.AsNoTracking().FirstOrDefaultAsync(t => t.Matour == id);
             if (tour == null)
             {
                 return NotFound("Tour không tồn tại.");

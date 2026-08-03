@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 
@@ -15,6 +15,7 @@ namespace WebDuLich.Models
         public string? Tendangnhap { get; set; } // Có thể null (OAuth2)
 
         [StringLength(255)]
+        [JsonIgnore]
         public string? Matkhau { get; set; } // Có thể null nếu đăng nhập OAuth2
 
         public string? Sodienthoai { get; set; } // Có thể null

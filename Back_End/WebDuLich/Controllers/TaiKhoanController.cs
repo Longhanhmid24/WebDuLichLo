@@ -147,8 +147,7 @@ namespace WebDuLich.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await _context.TaiKhoans.ToListAsync();
-            Console.WriteLine($"Tìm thấy {users.Count} tài khoản"); // In số lượng user vào console
+            var users = await _context.TaiKhoans.AsNoTracking().ToListAsync();
             return Ok(users);
         }
        
@@ -197,7 +196,7 @@ namespace WebDuLich.Controllers
                     return Forbid();
                 }
 
-                var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+                var user = await _context.TaiKhoans.AsNoTracking().FirstOrDefaultAsync(u => u.Emaildangki == email);
                 if (user == null)
                     return NotFound(new { Message = "Người dùng không tồn tại!" });
 
@@ -270,20 +269,14 @@ namespace WebDuLich.Controllers
         [HttpGet("download/{fileName}")]
         public IActionResult DownloadFile(string fileName)
         {
-            // Đường dẫn tới tệp trong thư mục wwwroot
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", fileName);
 
-            // Kiểm tra xem tệp có tồn tại không
             if (!System.IO.File.Exists(filePath))
             {
                 return NotFound(new { Message = "Tệp không tồn tại!" });
             }
 
-            // Đọc tệp vào byte array
-            var fileBytes = System.IO.File.ReadAllBytes(filePath);
-
-            // Trả về tệp cùng với Content-Type (Ví dụ cho hình ảnh là "image/png")
-            return File(fileBytes, "anhmacdinh/png", fileName);
+            return PhysicalFile(filePath, "image/png", fileName);
         }
         [HttpPost("forgot-password")]
         public async Task<IActionResult> ForgotPassword([FromForm] string email)

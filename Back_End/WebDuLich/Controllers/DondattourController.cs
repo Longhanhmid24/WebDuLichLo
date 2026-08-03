@@ -56,6 +56,7 @@ namespace WebDuLich.Controllers
             }
 
             var orders = await _context.Dondattours
+                .AsNoTracking()
                 .Include(d => d.Tour)
                 .Include(d => d.TaiKhoan)
                 .Where(d => d.Emaildangki == targetEmail)
