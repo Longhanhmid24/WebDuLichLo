@@ -3,12 +3,16 @@ document.addEventListener("DOMContentLoaded", fetchUsers);
 
 async function fetchUsers() {
     try {
-        const response = await fetch("https://webdulichlo.onrender.com/api/TaiKhoan");
+        const fetchFunc = window.fetchWithAuth || fetch;
+        const response = await fetchFunc("https://webdulichlo.onrender.com/api/TaiKhoan");
+        if (!response.ok) {
+            throw new Error("Không thể tải danh sách tài khoản hoặc bạn không có quyền Admin!");
+        }
         const users = await response.json();
         renderUserList(users);
     } catch (error) {
         console.error("Error fetching users:", error);
-        alert("Error loading user data");
+        alert(error.message || "Error loading user data");
     }
 }
 
@@ -16,23 +20,30 @@ function renderUserList(users) {
     const userList = document.getElementById("userList");
     userList.innerHTML = "";
 
+    const safeStr = window.escapeHtml || (s => s);
+
     users.forEach(user => {
         const row = document.createElement("tr");
+        const emailSafe = safeStr(user.emaildangki);
+        const nameSafe = safeStr(user.tendangnhap || 'N/A');
+        const phoneSafe = safeStr(user.sodienthoai || 'N/A');
+        const addressSafe = safeStr(user.diachi || 'N/A');
+
         row.innerHTML = `
-            <td data-label="Ảnh Đại Diện">${user.hinhAnh || 'N/A'}</td>
-            <td data-label="Email">${user.emaildangki}</td>
-            <td data-label="Tên Đăng Nhập">${user.tendangnhap || 'N/A'}</td>
+            <td data-label="Ảnh Đại Diện">${user.hinhAnh ? `<img src="${safeStr(user.hinhAnh)}" width="40" height="40" style="border-radius: 50%;">` : 'N/A'}</td>
+            <td data-label="Email">${emailSafe}</td>
+            <td data-label="Tên Đăng Nhập">${nameSafe}</td>
             <td data-label="Quyền">
-                <select onchange="updateUserRole('${user.emaildangki}', this.value)">
-                    <option value="admin" ${user.phanquyen === 'admin' ? 'selected' : ''}>Admin</option>
-                    <option value="user" ${user.phanquyen === 'user' ? 'selected' : ''}>User</option>
+                <select onchange="updateUserRole('${emailSafe}', this.value)">
+                    <option value="Admin" ${user.phanquyen === 'Admin' || user.phanquyen === 'admin' ? 'selected' : ''}>Admin</option>
+                    <option value="User" ${user.phanquyen === 'User' || user.phanquyen === 'user' ? 'selected' : ''}>User</option>
                 </select>
             </td>
-            <td data-label="Số điện thoại">${user.sodienthoai || 'N/A'}</td>
-            <td data-label="Địa chỉ">${user.diachi || 'N/A'}</td>
-            <td data-label="Giới Tính">${formatGender(user.gioitinh)}</td>
+            <td data-label="Số điện thoại">${phoneSafe}</td>
+            <td data-label="Địa chỉ">${addressSafe}</td>
+            <td data-label="Giới Tính">${safeStr(formatGender(user.gioitinh))}</td>
             <td data-label="Ngày Tạo">${formatDate(user.ngayTao)}</td>
-            <td data-label="Hành Động"><button onclick="deleteUser('${user.emaildangki}')">Xóa</button></td>
+            <td data-label="Hành Động"><button class="btn btn-danger btn-sm" onclick="deleteUser('${emailSafe}')">Xóa</button></td>
         `;
         userList.appendChild(row);
     });
@@ -57,7 +68,6 @@ function formatGender(gender) {
             return 'Nam';
         case 'nữ':
         case 'nu':
-        case 'nữ':
         case 'female':
         case '0':
             return 'Nữ';
@@ -66,27 +76,28 @@ function formatGender(gender) {
         case '2':
             return 'Khác';
         default:
-            return gender; // Giữ nguyên nếu không khớp với các trường hợp trên
+            return gender;
     }
 }
 
 async function updateUserRole(email, role) {
     try {
-        const response = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/${email}`, {
+        const fetchFunc = window.fetchWithAuth || fetch;
+        const response = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/${encodeURIComponent(email)}`, {
             method: "PUT",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `phanquyen=${role}`
+            body: `phanquyen=${encodeURIComponent(role)}`
         });
 
         if (response.ok) {
             alert("Cập nhật quyền thành công");
             fetchUsers();
         } else {
-            throw new Error("Cập nhật quyền thất bại");
+            throw new Error("Cập nhật quyền thất bại (Bạn cần có quyền Admin!)");
         }
     } catch (error) {
         console.error("Error updating role:", error);
-        alert("Error updating user role");
+        alert(error.message || "Error updating user role");
     }
 }
 
@@ -94,7 +105,8 @@ async function deleteUser(email) {
     if (!confirm("Confirm deletion?")) return;
 
     try {
-        const response = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/${email}`, {
+        const fetchFunc = window.fetchWithAuth || fetch;
+        const response = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/${encodeURIComponent(email)}`, {
             method: "DELETE"
         });
 

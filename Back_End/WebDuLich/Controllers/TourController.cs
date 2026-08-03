@@ -1,10 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebDuLich.Models;
 using WebDuLich.Data;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Buffers.Text;
+using System.Net;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 
@@ -23,8 +24,9 @@ namespace WebDuLich.Controllers
             _cloudinary = cloudinary;
         }
 
-        // API để thêm tour
+        // API để thêm tour (Chỉ dành cho Admin)
         [HttpPost("add")]
+        [Authorize(Roles = "Admin")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> AddTour([FromForm] Tour tour, IFormFile? imageFile)
         {
@@ -32,6 +34,11 @@ namespace WebDuLich.Controllers
             {
                 if (tour == null)
                     return BadRequest("Dữ liệu không hợp lệ");
+
+                // Làm sạch dữ liệu chống XSS
+                tour.Tentour = WebUtility.HtmlEncode(tour.Tentour ?? string.Empty);
+                if (!string.IsNullOrEmpty(tour.Mota)) tour.Mota = WebUtility.HtmlEncode(tour.Mota);
+                if (!string.IsNullOrEmpty(tour.LoaiTour)) tour.LoaiTour = WebUtility.HtmlEncode(tour.LoaiTour);
 
                 // Đảm bảo DateTime có Kind là Utc để tương thích với PostgreSQL timestamptz
                 tour.NgayKhoiHanh = DateTime.SpecifyKind(tour.NgayKhoiHanh, DateTimeKind.Utc);
@@ -123,8 +130,9 @@ namespace WebDuLich.Controllers
             }
         }
 
-        // API để xóa tour theo Matour
+        // API để xóa tour theo Matour (Chỉ dành cho Admin)
         [HttpDelete("delete/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteTour(int id)
         {
             try
@@ -173,8 +181,9 @@ namespace WebDuLich.Controllers
             return Ok(tour);
         }
 
-        // API cập nhật thông tin tour
+        // API cập nhật thông tin tour (Chỉ dành cho Admin)
         [HttpPut("update/{id}")]
+        [Authorize(Roles = "Admin")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> UpdateTour(int id, [FromForm] Tour updatedTour, IFormFile? imageFile)
         {
@@ -186,7 +195,7 @@ namespace WebDuLich.Controllers
                     return NotFound("Tour không tồn tại.");
                 }
 
-                tour.Tentour = updatedTour.Tentour;
+                tour.Tentour = WebUtility.HtmlEncode(updatedTour.Tentour ?? string.Empty);
                 tour.Gia = updatedTour.Gia;
                 
                 // Đảm bảo múi giờ UTC cho PostgreSQL
@@ -198,9 +207,9 @@ namespace WebDuLich.Controllers
                     return BadRequest(new { message = "Ngày kết thúc phải sau ngày khởi hành" });
                 }
 
-                tour.Mota = updatedTour.Mota;
+                tour.Mota = !string.IsNullOrEmpty(updatedTour.Mota) ? WebUtility.HtmlEncode(updatedTour.Mota) : null;
                 tour.Sokhach = updatedTour.Sokhach;
-                tour.LoaiTour = updatedTour.LoaiTour;
+                tour.LoaiTour = !string.IsNullOrEmpty(updatedTour.LoaiTour) ? WebUtility.HtmlEncode(updatedTour.LoaiTour) : null;
 
                 if (imageFile != null)
                 {

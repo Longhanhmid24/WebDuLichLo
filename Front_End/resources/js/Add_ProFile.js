@@ -20,7 +20,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     try {
         if (typeof window.showLoading === "function") window.showLoading("Đang tải thông tin hồ sơ...");
-        const response = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(email)}`);
+        const fetchFunc = window.fetchWithAuth || fetch;
+        const response = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(email)}`);
         if (!response.ok) {
             const error = await response.json();
             throw new Error(error.Message || "Không thể tải thông tin người dùng!");
@@ -182,7 +183,8 @@ async function saveAvatar() {
 async function updateUser(formData, customLoadingMsg = "Đang cập nhật thông tin...") {
     if (typeof window.showLoading === "function") window.showLoading(customLoadingMsg);
     try {
-        const res = await fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/update/${encodeURIComponent(profileUserEmail)}`, {
+        const fetchFunc = window.fetchWithAuth || fetch;
+        const res = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/update/${encodeURIComponent(profileUserEmail)}`, {
             method: "PUT",
             body: formData
         });

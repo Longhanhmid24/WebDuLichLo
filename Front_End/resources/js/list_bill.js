@@ -3,15 +3,11 @@ async function fetchOrdersFromServer() {
     const urlParams = new URLSearchParams(window.location.search);
     const email = urlParams.get('email');
 
-    if (!email) {
-        alert("Không tìm thấy email người dùng.");
-        return;
-    }
-
     try {
-        const response = await fetch(`https://webdulichlo.onrender.com/api/Dondattour/get-orders?email=${encodeURIComponent(email)}`);
+        const fetchFunc = window.fetchWithAuth || fetch;
+        const response = await fetchFunc(`https://webdulichlo.onrender.com/api/Dondattour/get-orders?email=${encodeURIComponent(email || "")}`);
         if (!response.ok) {
-            throw new Error("Lỗi khi lấy danh sách đơn đặt tour.");
+            throw new Error("Vui lòng đăng nhập để xem danh sách đơn đặt tour.");
         }
 
         const orders = await response.json();
@@ -20,6 +16,7 @@ async function fetchOrdersFromServer() {
         displayOrders(orders, email);
     } catch (error) {
         console.error("Lỗi khi lấy danh sách đơn đặt tour:", error);
+        alert(error.message);
     }
 }
 
@@ -32,18 +29,23 @@ function displayOrders(orders, email) {
     }
 
     ordersContainer.innerHTML = ""; // Xóa nội dung cũ
+    const safeStr = window.escapeHtml || (s => s);
 
     orders.forEach(order => {
         const orderElement = document.createElement('div');
         orderElement.classList.add('order-item');
+        const tourNameSafe = safeStr(order.tour ? order.tour.tentour : "Tour");
+        const maDonSafe = safeStr(order.madon);
+        const emailSafe = safeStr(email || "");
+
         orderElement.innerHTML = `
-            <h4>Đơn đặt tour #${order.madon}</h4>
-            <p><strong>Tên tour:</strong> ${order.tour.tentour}</p>
+            <h4>Đơn đặt tour #${maDonSafe}</h4>
+            <p><strong>Tên tour:</strong> ${tourNameSafe}</p>
             <p><strong>Số người:</strong> ${order.songuoi}</p>
-            <p><strong>Tổng tiền:</strong> ${order.tongtien.toLocaleString()} VND</p>
-            <p><strong>Ngày đặt:</strong> ${new Date(order.ngaydat).toLocaleDateString()}</p>
-            <button onclick="viewBill(${order.tour.matour}, '${email}', ${order.songuoi}, ${order.tongtien})">Xem hóa đơn</button>
-            <button onclick="deleteOrder(${order.madon}, '${email}')">Xóa</button>
+            <p><strong>Tổng tiền:</strong> ${order.tongtien ? order.tongtien.toLocaleString() : 0} VND</p>
+            <p><strong>Ngày đặt:</strong> ${order.ngaydat ? new Date(order.ngaydat).toLocaleDateString() : 'N/A'}</p>
+            <button onclick="viewBill(${order.tour ? order.tour.matour : 0}, '${emailSafe}', ${order.songuoi}, ${order.tongtien})">Xem hóa đơn</button>
+            <button onclick="deleteOrder(${order.madon}, '${emailSafe}')">Xóa</button>
         `;
         ordersContainer.appendChild(orderElement);
     });
@@ -54,7 +56,8 @@ async function deleteOrder(madon, email) {
     if (!confirm("Bạn có chắc chắn muốn xóa đơn này?")) return;
 
     try {
-        const response = await fetch(`https://webdulichlo.onrender.com/api/Dondattour/delete-order/${madon}`, {
+        const fetchFunc = window.fetchWithAuth || fetch;
+        const response = await fetchFunc(`https://webdulichlo.onrender.com/api/Dondattour/delete-order/${madon}`, {
             method: "DELETE",
         });
 

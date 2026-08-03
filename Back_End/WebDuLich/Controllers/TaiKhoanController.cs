@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
+using System.Net;
 using System.Security.Claims;
 using WebDuLich.Data;
 using WebDuLich.Models;
@@ -46,11 +48,11 @@ namespace WebDuLich.Controllers
             // Mã hóa mật khẩu nếu có
             string? hashedPassword = request.Matkhau != null ? BCrypt.Net.BCrypt.HashPassword(request.Matkhau) : null;
 
-            // Tạo tài khoản mới
+            // Tạo tài khoản mới (Làm sạch XSS cho Tên đăng nhập)
             var user = new TaiKhoan
             {
                 Emaildangki = request.Emaildangki,
-                Tendangnhap = request.Tendangnhap,
+                Tendangnhap = WebUtility.HtmlEncode(request.Tendangnhap ?? string.Empty),
                 Matkhau = hashedPassword, // Nếu OAuth2 thì mật khẩu có thể null
                 NgayTao = DateTime.UtcNow,
                 Phanquyen = "User" // Mặc định là User
@@ -75,7 +77,7 @@ namespace WebDuLich.Controllers
         {
             // Tìm tài khoản theo email
             var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == request.Emaildangki);
-            if (user == null || !BCrypt.Net.BCrypt.Verify(request.Matkhau, user.Matkhau)) // Kiểm tra mật khẩu
+            if (user == null || string.IsNullOrEmpty(user.Matkhau) || !BCrypt.Net.BCrypt.Verify(request.Matkhau, user.Matkhau)) // Kiểm tra mật khẩu
             {
                 return Unauthorized(new { Message = "Email hoặc mật khẩu không đúng!" });
             }
@@ -126,7 +128,7 @@ namespace WebDuLich.Controllers
                 user = new TaiKhoan
                 {
                     Emaildangki = email,
-                    Tendangnhap = name ?? "Người dùng Google",
+                    Tendangnhap = WebUtility.HtmlEncode(name ?? "Người dùng Google"),
                     NgayTao = DateTime.UtcNow,
                     Phanquyen = "user" // hoặc "khachhang"
                 };
@@ -139,9 +141,10 @@ namespace WebDuLich.Controllers
 
             return Redirect($"https://web-du-lich-lo.vercel.app/html/auth/google-redirect.html?token={Uri.EscapeDataString(token)}&email={Uri.EscapeDataString(user.Emaildangki)}&name={Uri.EscapeDataString(user.Tendangnhap)}&role={Uri.EscapeDataString(user.Phanquyen)}");
         }
-        // API lấy danh sách người dùng
+        // API lấy danh sách người dùng (Chỉ dành cho Admin)
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetUsers()
         {
             var users = await _context.TaiKhoans.ToListAsync();
@@ -149,22 +152,24 @@ namespace WebDuLich.Controllers
             return Ok(users);
         }
        
-        // API cập nhật quyền người dùng
+        // API cập nhật quyền người dùng (Chỉ dành cho Admin)
         [HttpPut("{email}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> UpdateUserRole(string email, [FromForm] string phanquyen)
         {
             var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
             if (user == null)
                 return NotFound(new { Message = "Người dùng không tồn tại!" });
 
-            user.Phanquyen = phanquyen;
+            user.Phanquyen = WebUtility.HtmlEncode(phanquyen);
             await _context.SaveChangesAsync();
 
             return Ok(new { Message = "Cập nhật quyền thành công!" });
         }
 
-        // API xóa tài khoản người dùng
+        // API xóa tài khoản người dùng (Chỉ dành cho Admin)
         [HttpDelete("{email}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(string email)
         {
             var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
@@ -176,12 +181,22 @@ namespace WebDuLich.Controllers
 
             return Ok(new { Message = "Xóa tài khoản thành công!" });
         }
-        //API lấy thông tin 1 người dùng
+
+        //API lấy thông tin 1 người dùng (Yêu cầu đăng nhập, chỉ xem thông tin chính mình hoặc là Admin)
         [HttpGet("info/{email}")]
+        [Authorize]
         public async Task<IActionResult> GetUserInfo(string email)
         {
             try
             {
+                var currentUserEmail = User.FindFirst(ClaimTypes.Email)?.Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var isUserAdmin = User.IsInRole("Admin");
+
+                if (!isUserAdmin && !string.Equals(currentUserEmail, email, StringComparison.OrdinalIgnoreCase))
+                {
+                    return Forbid();
+                }
+
                 var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
                 if (user == null)
                     return NotFound(new { Message = "Người dùng không tồn tại!" });
@@ -194,24 +209,33 @@ namespace WebDuLich.Controllers
             }
         }
 
-        //API cập nhật thông tin người dùng
+        //API cập nhật thông tin người dùng (Yêu cầu đăng nhập, chỉ sửa thông tin chính mình hoặc là Admin)
         [HttpPut("update/{email}")]
+        [Authorize]
         public async Task<IActionResult> UpdateUserInfo(
             string email,
             [FromForm] UpdateUserRequest request)
         {
             try
             {
+                var currentUserEmail = User.FindFirst(ClaimTypes.Email)?.Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                var isUserAdmin = User.IsInRole("Admin");
+
+                if (!isUserAdmin && !string.Equals(currentUserEmail, email, StringComparison.OrdinalIgnoreCase))
+                {
+                    return Forbid();
+                }
+
                 var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
                 if (user == null)
                     return NotFound(new { Message = "Người dùng không tồn tại!" });
 
-                // Cập nhật các trường thông tin khác
-                user.Tendangnhap = request.Tendangnhap ?? user.Tendangnhap;
-                user.Matkhau = request.Matkhau ?? user.Matkhau;
-                user.Sodienthoai = request.Sodienthoai ?? user.Sodienthoai;
-                user.Diachi = request.Diachi ?? user.Diachi;
-                user.Gioitinh = request.Gioitinh ?? user.Gioitinh;
+                // Cập nhật các trường thông tin khác & Làm sạch XSS
+                if (request.Tendangnhap != null) user.Tendangnhap = WebUtility.HtmlEncode(request.Tendangnhap);
+                if (request.Matkhau != null) user.Matkhau = BCrypt.Net.BCrypt.HashPassword(request.Matkhau);
+                if (request.Sodienthoai != null) user.Sodienthoai = WebUtility.HtmlEncode(request.Sodienthoai);
+                if (request.Diachi != null) user.Diachi = WebUtility.HtmlEncode(request.Diachi);
+                if (request.Gioitinh != null) user.Gioitinh = WebUtility.HtmlEncode(request.Gioitinh);
 
                 // Xử lý ảnh đại diện bằng Cloudinary
                 if (request.HinhAnh != null && request.HinhAnh.Length > 0)

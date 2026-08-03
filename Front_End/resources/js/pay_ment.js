@@ -120,7 +120,8 @@ async function processPayment() {
     };
 
     try {
-        const response = await fetch("https://webdulichlo.onrender.com/api/Dondattour/create-order", {
+        const fetchFunc = window.fetchWithAuth || fetch;
+        const response = await fetchFunc("https://webdulichlo.onrender.com/api/Dondattour/create-order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

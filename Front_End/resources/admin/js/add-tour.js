@@ -103,7 +103,8 @@ document.addEventListener("DOMContentLoaded", function () {
         if (typeof window.showLoading === "function") window.showLoading(isEditMode ? "Đang cập nhật thông tin tour..." : "Đang tải ảnh lên Cloudinary & tạo tour...");
         if (typeof window.setButtonLoading === "function") window.setButtonLoading(submitBtn, true, isEditMode ? "Đang cập nhật..." : "Đang thêm tour...");
 
-        fetch(apiUrl, {
+        const fetchFunc = window.fetchWithAuth || fetch;
+        fetchFunc(apiUrl, {
             method: apiMethod,
             body: formData
         })

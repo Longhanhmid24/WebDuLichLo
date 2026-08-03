@@ -110,5 +110,37 @@ window.setButtonLoading = function (btn, isLoading, loadingText = "Đang xử l�
         btn.classList.remove("btn-loading");
     }
 };
+window.escapeHtml = function (str) {
+    if (str === null || str === undefined) return "";
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+};
+
+window.fetchWithAuth = async function (url, options = {}) {
+    const token = localStorage.getItem("jwtToken");
+    options.headers = options.headers || {};
+
+    if (token) {
+        if (options.headers instanceof Headers) {
+            options.headers.set("Authorization", `Bearer ${token}`);
+        } else {
+            options.headers["Authorization"] = `Bearer ${token}`;
+        }
+    }
+
+    const response = await fetch(url, options);
+
+    if (response.status === 401) {
+        console.warn("Phiên đăng nhập hết hạn hoặc chưa xác thực!");
+    } else if (response.status === 403) {
+        alert("Bạn không có quyền truy cập tính năng này!");
+    }
+
+    return response;
+};
 
 
