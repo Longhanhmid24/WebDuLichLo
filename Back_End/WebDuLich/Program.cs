@@ -3,6 +3,7 @@ using WebDuLich.Data;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -10,6 +11,14 @@ using CloudinaryDotNet;
 using WebDuLich.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Cấu hình Forwarded Headers để Render proxy truyền đúng HTTPS scheme sang .NET
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
 
 // Đọc chuỗi kết nối từ appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -122,6 +131,8 @@ builder.Services.AddCors(options =>
 
 // Khởi tạo ứng dụng
 var app = builder.Build();
+
+app.UseForwardedHeaders();
 
 // Tự động tạo các bảng trong Database Neon (nếu chưa có)
 using (var scope = app.Services.CreateScope())
