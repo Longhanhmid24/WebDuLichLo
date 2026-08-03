@@ -7,6 +7,7 @@ using Microsoft.Extensions.Caching.Memory;
 using System.Security.Claims;
 using WebDuLich.Data;
 using WebDuLich.Models;
+using WebDuLich.Services;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 
@@ -19,13 +20,15 @@ namespace WebDuLich.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IMemoryCache _cache;
         private readonly Cloudinary _cloudinary;
+        private readonly IJwtService _jwtService;
 
-        // Inject ApplicationDbContext, IMemoryCache và Cloudinary
-        public TaiKhoanController(ApplicationDbContext context, IMemoryCache memoryCache, Cloudinary cloudinary)
+        // Inject ApplicationDbContext, IMemoryCache, Cloudinary và IJwtService
+        public TaiKhoanController(ApplicationDbContext context, IMemoryCache memoryCache, Cloudinary cloudinary, IJwtService jwtService)
         {
             _context = context;
             _cache = memoryCache;
             _cloudinary = cloudinary;
+            _jwtService = jwtService;
         }
 
         // API Đăng ký tài khoản mới
@@ -77,13 +80,17 @@ namespace WebDuLich.Controllers
                 return Unauthorized(new { Message = "Email hoặc mật khẩu không đúng!" });
             }
 
+            // Sinh JWT Token
+            var token = _jwtService.GenerateToken(user);
+
             return Ok(new
             {
                 Message = "Đăng nhập thành công!",
                 Email = user.Emaildangki,
                 Tendangnhap = user.Tendangnhap,
                 Phanquyen = user.Phanquyen,
-                HinhAnh = user.HinhAnh
+                HinhAnh = user.HinhAnh,
+                Token = token
             });
         }
 
