@@ -1,96 +1,51 @@
-let profileUserEmail = "";
-let selectedAvatarFile = null;
+/* =============================================================
+   ADD_PROFILE.JS — Trang Hồ Sơ Cá Nhân
+   Yêu cầu: config.js + scripts.js đã nạp trước.
+   ============================================================= */
 
-function getAuthFetch() {
-    if (typeof window.fetchWithAuth === "function") {
-        return window.fetchWithAuth;
-    }
-    return async function (url, options = {}) {
-        const token = localStorage.getItem("jwtToken");
-        options.headers = options.headers || {};
-        if (token) {
-            if (options.headers instanceof Headers) {
-                options.headers.set("Authorization", `Bearer ${token}`);
-            } else {
-                options.headers["Authorization"] = `Bearer ${token}`;
-            }
-        }
-        return fetch(url, options);
-    };
-}
+var profileUserEmail = "";
+var selectedAvatarFile = null;
 
+// ── Khởi tạo trang Hồ Sơ ──
 document.addEventListener("DOMContentLoaded", async function () {
-    const userStored = JSON.parse(localStorage.getItem("user"));
+    var userStored = JSON.parse(localStorage.getItem("user"));
     if (!userStored) {
         window.location.href = "index.html";
         return;
     }
 
-    const params = new URLSearchParams(window.location.search);
-    const email = params.get("email") || userStored.email;
-    profileUserEmail = email;
+    var params = new URLSearchParams(window.location.search);
+    profileUserEmail = params.get("email") || userStored.email;
 
-    if (!email) {
+    if (!profileUserEmail) {
         alert("Không tìm thấy thông tin tài khoản!");
         window.location.href = "index.html";
         return;
     }
 
-    try {
-        const token = localStorage.getItem("jwtToken");
-        if (!token) {
-            alert("Không tìm thấy mã xác thực (JWT Token). Vui lòng ĐĂNG XUẤT và ĐĂNG NHẬP lại!");
-            return;
-        }
+    var token = localStorage.getItem("jwtToken");
+    if (!token) {
+        alert("Không tìm thấy mã xác thực (JWT Token). Vui lòng ĐĂNG XUẤT và ĐĂNG NHẬP lại!");
+        return;
+    }
 
+    try {
         if (typeof window.showLoading === "function") window.showLoading("Đang tải thông tin hồ sơ...");
-        const fetchFunc = getAuthFetch();
-        const response = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(email)}`);
-        
+
+        var fetchFunc = window.getAuthFetch();
+        var response = await fetchFunc(window.API_BASE_URL + "/api/TaiKhoan/info/" + encodeURIComponent(profileUserEmail));
+
         if (!response.ok) {
             if (response.status === 401 || response.status === 403) {
-                throw new Error("Phiên làm việc đã hết hạn hoặc bạn không có quyền xem hồ sơ này. Vui lòng đăng nhập lại!");
+                throw new Error("Phiên làm việc đã hết hạn. Vui lòng đăng nhập lại!");
             }
-            const error = await response.json().catch(() => ({}));
-            throw new Error(error.Message || error.message || "Không thể tải thông tin người dùng!");
+            var errBody = await response.json().catch(function () { return {}; });
+            throw new Error(errBody.Message || errBody.message || "Không thể tải thông tin người dùng!");
         }
 
-        const user = await response.json();
-
-        // Hiển thị thông tin người dùng lên UI
-        document.getElementById("email").textContent = user.emaildangki || "";
-        document.getElementById("profile-display-name").textContent = user.tendangnhap || user.emaildangki;
-        document.getElementById("tendangnhap").value = user.tendangnhap || "";
-        document.getElementById("sodienthoai").value = user.sodienthoai || "";
-        document.getElementById("diachi").value = user.diachi || "";
-        
-        if (user.gioitinh === "Nam") {
-            document.getElementById("gioitinhNam").checked = true;
-        } else if (user.gioitinh === "Nữ") {
-            document.getElementById("gioitinhNu").checked = true;
-        } else {
-            document.getElementById("gioitinhKhac").checked = true;
-        }
-
-        document.getElementById("phanquyen").textContent = "👑 Quyền: " + (user.phanquyen || "User");
-        document.getElementById("ngaytao").textContent = user.ngayTao ? new Date(user.ngayTao).toLocaleDateString("vi-VN") : "N/A";
-
-        // Ảnh đại diện
-        const avatarImg = document.getElementById("avatar");
-        const headerAvatar = document.querySelector(".account-icon img");
-
-        if (user.hinhAnh && user.hinhAnh.trim() !== "") {
-            const avatarSrc = user.hinhAnh.startsWith("http")
-                ? user.hinhAnh
-                : `https://webdulichlo.onrender.com/${user.hinhAnh.replace(/^\/+/, '')}`;
-            avatarImg.src = avatarSrc;
-            if (headerAvatar) headerAvatar.src = avatarSrc;
-        } else {
-            avatarImg.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-        }
-
-        // Tải số lượng đơn đặt tour
-        fetchUserOrderStats(email);
+        var user = await response.json();
+        renderUserProfile(user);
+        fetchUserOrderStats(profileUserEmail);
 
     } catch (err) {
         console.error("Lỗi khi tải hồ sơ:", err);
@@ -100,77 +55,95 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+// ── Hiển thị thông tin người dùng lên UI ──
+function renderUserProfile(user) {
+    document.getElementById("email").textContent = user.emaildangki || "";
+    document.getElementById("profile-display-name").textContent = user.tendangnhap || user.emaildangki;
+    document.getElementById("tendangnhap").value = user.tendangnhap || "";
+    document.getElementById("sodienthoai").value = user.sodienthoai || "";
+    document.getElementById("diachi").value = user.diachi || "";
+
+    var genderMap = { "Nam": "gioitinhNam", "Nữ": "gioitinhNu" };
+    var genderId = genderMap[user.gioitinh] || "gioitinhKhac";
+    var genderElem = document.getElementById(genderId);
+    if (genderElem) genderElem.checked = true;
+
+    document.getElementById("phanquyen").textContent = "👑 Quyền: " + (user.phanquyen || "User");
+    document.getElementById("ngaytao").textContent = window.formatDateVN(user.ngayTao);
+
+    var avatarImg = document.getElementById("avatar");
+    var headerAvatar = document.querySelector(".account-icon img");
+    var avatarSrc = window.resolveImageUrl(user.hinhAnh, window.DEFAULT_AVATAR);
+    avatarImg.src = avatarSrc;
+    if (headerAvatar) headerAvatar.src = avatarSrc;
+}
+
+// ── Thống kê tài khoản (số đơn, số yêu thích) ──
 async function fetchUserOrderStats(email) {
+    var fetchFunc = window.getAuthFetch();
+
     try {
-        const fetchFunc = getAuthFetch();
-        const res = await fetchFunc(`https://webdulichlo.onrender.com/api/Dondattour/get-orders?email=${encodeURIComponent(email)}`);
+        var res = await fetchFunc(window.API_BASE_URL + "/api/Dondattour/get-orders?email=" + encodeURIComponent(email));
         if (res.ok) {
-            const orders = await res.json();
+            var orders = await res.json();
             document.getElementById("stat-orders-count").textContent = (orders ? orders.length : 0) + " đơn";
         } else {
             document.getElementById("stat-orders-count").textContent = "0 đơn";
         }
-    } catch {
+    } catch (e) {
         document.getElementById("stat-orders-count").textContent = "0 đơn";
     }
 
     try {
-        const fetchFunc = getAuthFetch();
-        const resFav = await fetchFunc(`https://webdulichlo.onrender.com/api/YeuThich`);
+        var resFav = await fetchFunc(window.API_BASE_URL + "/api/YeuThich");
         if (resFav.ok) {
-            const favs = await resFav.json();
+            var favs = await resFav.json();
             document.getElementById("stat-wishlist-count").textContent = (favs ? favs.length : 0) + " tour";
         } else {
             document.getElementById("stat-wishlist-count").textContent = "0 tour";
         }
-    } catch {
+    } catch (e) {
         document.getElementById("stat-wishlist-count").textContent = "0 tour";
     }
 }
 
+// ── Chỉnh sửa / Lưu trường thông tin ──
 function editField(fieldId) {
-    const input = document.getElementById(fieldId);
+    var input = document.getElementById(fieldId);
     if (!input) return;
     input.removeAttribute("readonly");
     input.focus();
 
-    const wrapper = input.closest(".input-with-action");
+    var wrapper = input.closest(".input-with-action");
     if (wrapper) {
-        const editBtn = wrapper.querySelector(".btn-icon-edit");
-        const saveBtn = wrapper.querySelector(".btn-save-inline");
+        var editBtn = wrapper.querySelector(".btn-icon-edit");
+        var saveBtn = wrapper.querySelector(".btn-save-inline");
         if (editBtn) editBtn.hidden = true;
         if (saveBtn) saveBtn.hidden = false;
     }
 }
 
 async function saveField(fieldId) {
-    const input = document.getElementById(fieldId);
+    var input = document.getElementById(fieldId);
     if (!input) return;
 
-    const value = input.value.trim();
+    var value = input.value.trim();
     if (!value) return alert("Vui lòng nhập giá trị, không được để trống!");
 
-    if (!profileUserEmail) {
-        const userStored = JSON.parse(localStorage.getItem("user"));
-        profileUserEmail = userStored?.email;
-    }
+    ensureProfileEmail();
+    if (!profileUserEmail) return;
 
-    if (!profileUserEmail) {
-        alert("Không tìm thấy thông tin email. Vui lòng đăng nhập lại!");
-        return;
-    }
-
-    const formData = new FormData();
+    var formData = new FormData();
     formData.append(fieldId, value);
 
     try {
         await updateUser(formData);
         input.setAttribute("readonly", true);
 
-        const wrapper = input.closest(".input-with-action");
+        var wrapper = input.closest(".input-with-action");
         if (wrapper) {
-            const editBtn = wrapper.querySelector(".btn-icon-edit");
-            const saveBtn = wrapper.querySelector(".btn-save-inline");
+            var editBtn = wrapper.querySelector(".btn-icon-edit");
+            var saveBtn = wrapper.querySelector(".btn-save-inline");
             if (editBtn) editBtn.hidden = false;
             if (saveBtn) saveBtn.hidden = true;
         }
@@ -179,39 +152,35 @@ async function saveField(fieldId) {
     }
 }
 
+// ── Chỉnh sửa / Lưu giới tính ──
 function editGender() {
-    const genderRadios = document.querySelectorAll('input[name="gioitinh"]');
-    genderRadios.forEach(radio => {
+    document.querySelectorAll('input[name="gioitinh"]').forEach(function (radio) {
         radio.disabled = false;
     });
-    const editBtn = document.getElementById("edit-gender-btn");
-    const saveBtn = document.getElementById("save-gender-btn");
+    var editBtn = document.getElementById("edit-gender-btn");
+    var saveBtn = document.getElementById("save-gender-btn");
     if (editBtn) editBtn.hidden = true;
     if (saveBtn) saveBtn.hidden = false;
 }
 
 async function saveGender() {
-    const genderRadios = document.querySelectorAll('input[name="gioitinh"]:checked');
-    const gioitinh = genderRadios.length > 0 ? genderRadios[0].value : null;
-
-    if (!gioitinh) {
+    var checked = document.querySelector('input[name="gioitinh"]:checked');
+    if (!checked) {
         alert("Vui lòng chọn giới tính!");
         return;
     }
 
-    if (!profileUserEmail) {
-        const userStored = JSON.parse(localStorage.getItem("user"));
-        profileUserEmail = userStored?.email;
-    }
+    ensureProfileEmail();
+    if (!profileUserEmail) return;
 
-    const formData = new FormData();
-    formData.append("gioitinh", gioitinh);
+    var formData = new FormData();
+    formData.append("gioitinh", checked.value);
 
     try {
         await updateUser(formData);
-        document.querySelectorAll('input[name="gioitinh"]').forEach(radio => radio.disabled = true);
-        const editBtn = document.getElementById("edit-gender-btn");
-        const saveBtn = document.getElementById("save-gender-btn");
+        document.querySelectorAll('input[name="gioitinh"]').forEach(function (r) { r.disabled = true; });
+        var editBtn = document.getElementById("edit-gender-btn");
+        var saveBtn = document.getElementById("save-gender-btn");
         if (editBtn) editBtn.hidden = false;
         if (saveBtn) saveBtn.hidden = true;
     } catch (err) {
@@ -219,14 +188,14 @@ async function saveGender() {
     }
 }
 
-// Đổi avatar
+// ── Đổi Avatar ──
 document.getElementById("avatarInput").addEventListener("change", function (event) {
-    const file = event.target.files[0];
+    var file = event.target.files[0];
     if (!file) return;
 
     selectedAvatarFile = file;
 
-    const reader = new FileReader();
+    var reader = new FileReader();
     reader.onload = function (e) {
         document.getElementById("avatar").src = e.target.result;
     };
@@ -238,24 +207,24 @@ document.getElementById("avatarInput").addEventListener("change", function (even
 async function saveAvatar() {
     if (!selectedAvatarFile) return;
 
-    const saveBtn = document.getElementById("save-avatar");
+    var saveBtn = document.getElementById("save-avatar");
     if (typeof window.setButtonLoading === "function") window.setButtonLoading(saveBtn, true, "Đang lưu ảnh...");
 
-    const formData = new FormData();
+    var formData = new FormData();
     formData.append("hinhAnh", selectedAvatarFile);
 
     try {
-        const result = await updateUser(formData, "Đang tải ảnh đại diện lên Cloudinary...");
+        var result = await updateUser(formData, "Đang tải ảnh đại diện lên Cloudinary...");
         document.getElementById("save-avatar").hidden = true;
         selectedAvatarFile = null;
 
-        const newHinhAnh = result?.hinhAnh || result?.HinhAnh;
-        const headerAvatar = document.querySelector(".account-icon img");
-        const profileAvatar = document.getElementById("avatar");
+        var newHinhAnh = result ? (result.hinhAnh || result.HinhAnh) : null;
         if (newHinhAnh) {
+            var profileAvatar = document.getElementById("avatar");
+            var headerAvatar = document.querySelector(".account-icon img");
             if (profileAvatar) profileAvatar.src = newHinhAnh;
             if (headerAvatar) headerAvatar.src = newHinhAnh;
-            const userStored = JSON.parse(localStorage.getItem("user")) || {};
+            var userStored = JSON.parse(localStorage.getItem("user")) || {};
             userStored.hinhAnh = newHinhAnh;
             localStorage.setItem("user", JSON.stringify(userStored));
         }
@@ -264,22 +233,24 @@ async function saveAvatar() {
     }
 }
 
-// Hàm gọi API cập nhật
-async function updateUser(formData, customLoadingMsg = "Đang cập nhật thông tin...") {
+// ── Hàm gọi API cập nhật (dùng chung) ──
+async function updateUser(formData, customLoadingMsg) {
+    customLoadingMsg = customLoadingMsg || "Đang cập nhật thông tin...";
     if (typeof window.showLoading === "function") window.showLoading(customLoadingMsg);
+
     try {
-        const fetchFunc = getAuthFetch();
-        const res = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/update/${encodeURIComponent(profileUserEmail)}`, {
+        var fetchFunc = window.getAuthFetch();
+        var res = await fetchFunc(window.API_BASE_URL + "/api/TaiKhoan/update/" + encodeURIComponent(profileUserEmail), {
             method: "PUT",
             body: formData
         });
 
         if (!res.ok) {
-            const error = await res.json().catch(() => ({}));
-            throw new Error(error.Message || error.message || `Cập nhật thất bại (${res.status})!`);
+            var error = await res.json().catch(function () { return {}; });
+            throw new Error(error.Message || error.message || "Cập nhật thất bại (" + res.status + ")!");
         }
 
-        const data = await res.json();
+        var data = await res.json();
         alert("Cập nhật thành công!");
         return data;
     } catch (err) {
@@ -288,5 +259,16 @@ async function updateUser(formData, customLoadingMsg = "Đang cập nhật thôn
         throw err;
     } finally {
         if (typeof window.hideLoading === "function") window.hideLoading();
+    }
+}
+
+// ── Helper: Đảm bảo profileUserEmail luôn có giá trị ──
+function ensureProfileEmail() {
+    if (!profileUserEmail) {
+        var userStored = JSON.parse(localStorage.getItem("user"));
+        profileUserEmail = userStored ? userStored.email : null;
+    }
+    if (!profileUserEmail) {
+        alert("Không tìm thấy thông tin email. Vui lòng đăng nhập lại!");
     }
 }

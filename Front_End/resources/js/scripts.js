@@ -1,90 +1,59 @@
+/* =============================================================
+   SCRIPTS.JS — Tiện ích dùng chung cho toàn bộ Frontend
+   Yêu cầu: Nạp config.js TRƯỚC file này.
+   ============================================================= */
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Chuyển đổi menu điều hướng trên màn hình nhỏ
-    var navbarToggler = document.querySelector('.navbar-toggler');
-    var navbarMenu = document.querySelector('#navbarNav');
+// ── Navbar Toggle (Mobile) ──
+document.addEventListener("DOMContentLoaded", function () {
+    var navbarToggler = document.querySelector(".navbar-toggler");
+    var navbarMenu = document.querySelector("#navbarNav");
 
-    navbarToggler.addEventListener('click', function () {
-        navbarMenu.classList.toggle('collapse');
-    });
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            location.href = this.getAttribute('href');
+    if (navbarToggler && navbarMenu) {
+        navbarToggler.addEventListener("click", function () {
+            navbarMenu.classList.toggle("collapse");
         });
-    });
-
-    // Chuyển đổi hiển thị dropdown tài khoản
-    var accountIcon = document.querySelector('.account-icon');
-    var accountDropdown = document.querySelector('.account-dropdown');
-
-    accountIcon.addEventListener('click', function () {
-        accountDropdown.classList.toggle('show');
-    });
-
-    // Thêm sự kiện xóa tour
-    document.querySelectorAll('.delete-tour-btn').forEach(button => {
-        button.addEventListener('click', function () {
-            const tourItem = this.closest('.tour-item');
-            const matour = tourItem.getAttribute('data-matour');
-            deleteTour(matour, tourItem);
-        });
-    });
+    }
 });
 
-function toggleDropdown() {
-    const dropdownMenu = document.querySelector('.summary .dropdown-menu');
-    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-}
-
-function updateCount(type, value) {
-    const countElement = document.getElementById(type);
-    let count = parseInt(countElement.innerText);
-    count = Math.max(0, count + value);
-    countElement.innerText = count;
-
-    // Update summary text
-    document.getElementById(`${type}-summary`).innerText = count;
-}
+// ── Lịch sử giao dịch — Chuyển hướng (Event Delegation) ──
 window.goToOrderHistory = function (e) {
     if (e) e.preventDefault();
-    const currentUser = JSON.parse(localStorage.getItem("user"));
-    const email = currentUser?.email;
+    var currentUser = JSON.parse(localStorage.getItem("user"));
+    var email = currentUser ? currentUser.email : null;
 
     if (!currentUser || !email) {
         alert("Vui lòng đăng nhập để xem Lịch sử giao dịch!");
-        const R = window.SITE_ROOT || "";
-        window.location.href = `${R}html/auth/login.html`;
+        var R = window.SITE_ROOT || "";
+        window.location.href = R + "html/auth/login.html";
         return;
     }
 
-    const R = window.SITE_ROOT || "";
-    window.location.href = `${R}list_bill.html?email=${encodeURIComponent(email)}`;
+    var R2 = window.SITE_ROOT || "";
+    window.location.href = R2 + "list_bill.html?email=" + encodeURIComponent(email);
 };
 
 document.addEventListener("click", function (e) {
-    const btn = e.target.closest(".view-orders-btn");
+    var btn = e.target.closest(".view-orders-btn");
     if (btn) {
         window.goToOrderHistory(e);
     }
 });
 
-// ===== Global Loading Helper Functions =====
-window.showLoading = function (message = "Đang xử lý, vui lòng chờ...") {
-    let overlay = document.getElementById("global-loading-overlay");
+// ── Loading Overlay Helpers ──
+window.showLoading = function (message) {
+    message = message || "Đang xử lý, vui lòng chờ...";
+    var overlay = document.getElementById("global-loading-overlay");
     if (!overlay) {
         overlay = document.createElement("div");
         overlay.id = "global-loading-overlay";
-        overlay.innerHTML = `
-            <div class="loading-spinner-box">
-                <div class="global-spinner"></div>
-                <div class="loading-text" id="global-loading-text">${message}</div>
-            </div>
-        `;
+        overlay.innerHTML =
+            '<div class="loading-spinner-box">' +
+            '  <div class="global-spinner"></div>' +
+            '  <div class="loading-text" id="global-loading-text">' + message + "</div>" +
+            "</div>";
         document.body.appendChild(overlay);
     } else {
-        const textElem = document.getElementById("global-loading-text");
+        var textElem = document.getElementById("global-loading-text");
         if (textElem) textElem.textContent = message;
     }
     overlay.offsetHeight; // Force DOM reflow
@@ -92,21 +61,23 @@ window.showLoading = function (message = "Đang xử lý, vui lòng chờ...") {
 };
 
 window.hideLoading = function () {
-    const overlay = document.getElementById("global-loading-overlay");
+    var overlay = document.getElementById("global-loading-overlay");
     if (overlay) {
         overlay.classList.remove("show");
     }
 };
 
-window.setButtonLoading = function (btn, isLoading, loadingText = "Đang xử lý...") {
+// ── Button Loading State Helper ──
+window.setButtonLoading = function (btn, isLoading, loadingText) {
     if (!btn) return;
+    loadingText = loadingText || "Đang xử lý...";
     if (isLoading) {
         if (!btn.dataset.originalHtml) {
             btn.dataset.originalHtml = btn.innerHTML;
         }
         btn.disabled = true;
         btn.classList.add("btn-loading");
-        btn.innerHTML = `<span class="btn-spinner"></span>${loadingText}`;
+        btn.innerHTML = '<span class="btn-spinner"></span>' + loadingText;
     } else {
         if (btn.dataset.originalHtml) {
             btn.innerHTML = btn.dataset.originalHtml;
@@ -116,6 +87,8 @@ window.setButtonLoading = function (btn, isLoading, loadingText = "Đang xử l�
         btn.classList.remove("btn-loading");
     }
 };
+
+// ── HTML Escape (XSS Prevention) ──
 window.escapeHtml = function (str) {
     if (str === null || str === undefined) return "";
     return String(str)
@@ -126,19 +99,21 @@ window.escapeHtml = function (str) {
         .replace(/'/g, "&#039;");
 };
 
-window.fetchWithAuth = async function (url, options = {}) {
-    const token = localStorage.getItem("jwtToken");
+// ── Authenticated Fetch (global) ──
+window.fetchWithAuth = async function (url, options) {
+    options = options || {};
+    var token = localStorage.getItem("jwtToken");
     options.headers = options.headers || {};
 
     if (token) {
         if (options.headers instanceof Headers) {
-            options.headers.set("Authorization", `Bearer ${token}`);
+            options.headers.set("Authorization", "Bearer " + token);
         } else {
-            options.headers["Authorization"] = `Bearer ${token}`;
+            options.headers["Authorization"] = "Bearer " + token;
         }
     }
 
-    const response = await fetch(url, options);
+    var response = await fetch(url, options);
 
     if (response.status === 401) {
         console.warn("Phiên đăng nhập hết hạn hoặc chưa xác thực!");
@@ -148,5 +123,3 @@ window.fetchWithAuth = async function (url, options = {}) {
 
     return response;
 };
-
-
