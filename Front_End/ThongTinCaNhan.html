@@ -1,86 +1,144 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <!-- Thông tin meta và tiêu đề -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Web Du Lịch</title>
+    <title>Hồ Sơ Cá Nhân Premium</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- CSS Tách Biệt -->
     <link rel="stylesheet" href="resources/css/styles.css">
-    <link rel="stylesheet" href="resources/css/computer/styles.css" media="screen and (min-width: 769px)">
-    <link rel="stylesheet" href="resources/css/mobile/styles.css" media="screen and (max-width: 768px)">
     <link rel="stylesheet" href="resources/css/theme.css">
-    <!-- Thư viện Flickity CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <!-- Thư viện Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="resources/css/Add_ProFile.css">
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <!-- Header dùng chung (layout.js tự chèn) -->
     <div id="site-header"></div>
 
-    <main class="site-main">
+    <!-- Cover Hero -->
+    <div class="profile-cover-hero"></div>
 
-    <!-- Main Content -->
-    <div class="profile-container">
-        <div class="avatar-wrapper">
-            <!-- Hiển thị ảnh đại diện -->
-            <img id="avatar" src="anhmacdinh.png" alt="Ảnh đại diện người dùng" width="150">
-            
-            <!-- Input để người dùng chọn ảnh -->
-            <input type="file" id="avatarInput" accept="image/*" hidden>
-            
-            <!-- Nút để người dùng chọn ảnh -->
-            <button onclick="document.getElementById('avatarInput').click()">🖼️ Đổi ảnh</button>
-            
-            <!-- Nút để lưu ảnh đã thay đổi -->
-            <button id="save-avatar" onclick="saveAvatar()" hidden>Lưu ảnh</button>
-        </div>
-        <h1>Hồ sơ cá nhân</h1>
-        <div class="profile-info">
-            <p><strong>Email:</strong> <span id="email"></span></p>
+    <!-- Profile Header Card -->
+    <div class="profile-header-card">
+        <div class="profile-user-bar">
+            <div class="user-identity-group">
+                <div class="avatar-container">
+                    <img id="avatar" src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Ảnh đại diện" class="profile-avatar-img">
+                    <input type="file" id="avatarInput" accept="image/*" hidden>
+                    <button class="avatar-change-btn" onclick="document.getElementById('avatarInput').click()" title="Đổi ảnh đại diện">📷</button>
+                </div>
+                <div class="user-text-info">
+                    <h2 id="profile-display-name">Người dùng</h2>
+                    <p id="email">user@mail.com</p>
+                    <span class="user-role-tag" id="phanquyen">👑 Quyền: User</span>
+                </div>
+            </div>
 
-            <p>
-                <strong>Tên đăng nhập:</strong>
-                <input type="text" id="tendangnhap" readonly>
-                <button onclick="editField('tendangnhap')">✏️</button>
-                <button onclick="saveField('tendangnhap')" hidden>Lưu</button>
-            </p>
-
-            <p>
-                <strong>Số điện thoại:</strong>
-                <input type="text" id="sodienthoai" readonly>
-                <button onclick="editField('sodienthoai')">✏️</button>
-                <button onclick="saveField('sodienthoai')" hidden>Lưu</button>
-            </p>
-
-            <p>
-                <strong>Địa chỉ:</strong>
-                <input type="text" id="diachi" readonly>
-                <button onclick="editField('diachi')">✏️</button>
-                <button onclick="saveField('diachi')" hidden>Lưu</button>
-            </p>
-
-            <p>
-                <strong>Giới tính:</strong>
-                <label>
-                    <input type="radio" name="gioitinh" value="Nam" id="gioitinhNam"> Nam
-                </label>
-                <label>
-                    <input type="radio" name="gioitinh" value="Nữ" id="gioitinhNu"> Nữ
-                </label>
-                <label>
-                    <input type="radio" name="gioitinh" value="Khác" id="gioitinhKhac"> Khác
-                </label>
-                <button onclick="editGender()">✏️</button>
-                <button id="save-gender-btn" onclick="saveGender()" hidden>Lưu</button>
-            </p>
-            <p><strong>Phân quyền:</strong> <span id="phanquyen"></span></p>
-            <p><strong>Ngày tạo:</strong> <span id="ngaytao"></span></p>
+            <div>
+                <button id="save-avatar" class="btn btn-success font-weight-bold" onclick="saveAvatar()" hidden>💾 Lưu Ảnh Mới</button>
+            </div>
         </div>
     </div>
+
+    <!-- Stats Grid -->
+    <div class="profile-stats-grid">
+        <div class="stat-box">
+            <div class="stat-icon-wrapper">🎫</div>
+            <div class="stat-content">
+                <label>Tour Đã Đặt</label>
+                <span id="stat-orders-count">---</span>
+            </div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-icon-wrapper">❤️</div>
+            <div class="stat-content">
+                <label>Tour Yêu Thích</label>
+                <span id="stat-wishlist-count">---</span>
+            </div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-icon-wrapper">⚡</div>
+            <div class="stat-content">
+                <label>Trạng Thái</label>
+                <span id="stat-status" style="color: var(--success-color);">Hoạt động</span>
+            </div>
+        </div>
+        <div class="stat-box">
+            <div class="stat-icon-wrapper">📅</div>
+            <div class="stat-content">
+                <label>Ngày Tham Gia</label>
+                <span id="ngaytao">---</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <main class="profile-main-container">
+        <!-- Card 1: Thông tin cá nhân -->
+        <div class="profile-card">
+            <div class="card-title-head">
+                <span>👤 Thông Tin Cá Nhân</span>
+                <span style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">Bấm nút ✏️ để chỉnh sửa từng trường</span>
+            </div>
+
+            <div class="profile-form-grid">
+                <!-- Tên đăng nhập -->
+                <div class="form-field-group">
+                    <label>Tên Đăng Nhập:</label>
+                    <div class="input-with-action">
+                        <input type="text" id="tendangnhap" readonly class="form-control-custom">
+                        <button class="btn-icon-edit" onclick="editField('tendangnhap')">✏️ Sửa</button>
+                        <button class="btn-save-inline" onclick="saveField('tendangnhap')" hidden>Lưu</button>
+                    </div>
+                </div>
+
+                <!-- Số điện thoại -->
+                <div class="form-field-group">
+                    <label>Số Điện Thoại:</label>
+                    <div class="input-with-action">
+                        <input type="text" id="sodienthoai" readonly class="form-control-custom" placeholder="Chưa cập nhật SĐT">
+                        <button class="btn-icon-edit" onclick="editField('sodienthoai')">✏️ Sửa</button>
+                        <button class="btn-save-inline" onclick="saveField('sodienthoai')" hidden>Lưu</button>
+                    </div>
+                </div>
+
+                <!-- Địa chỉ -->
+                <div class="form-field-group" style="grid-column: span 2;">
+                    <label>Địa Chỉ Khách Hàng:</label>
+                    <div class="input-with-action">
+                        <input type="text" id="diachi" readonly class="form-control-custom" placeholder="Chưa cập nhật địa chỉ">
+                        <button class="btn-icon-edit" onclick="editField('diachi')">✏️ Sửa</button>
+                        <button class="btn-save-inline" onclick="saveField('diachi')" hidden>Lưu</button>
+                    </div>
+                </div>
+
+                <!-- Giới tính -->
+                <div class="form-field-group" style="grid-column: span 2;">
+                    <label>Giới Tính:</label>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="radio-gender-group">
+                            <label class="radio-gender-label">
+                                <input type="radio" name="gioitinh" value="Nam" id="gioitinhNam" disabled> Nam
+                            </label>
+                            <label class="radio-gender-label">
+                                <input type="radio" name="gioitinh" value="Nữ" id="gioitinhNu" disabled> Nữ
+                            </label>
+                            <label class="radio-gender-label">
+                                <input type="radio" name="gioitinh" value="Khác" id="gioitinhKhac" disabled> Khác
+                            </label>
+                        </div>
+                        <div>
+                            <button class="btn-icon-edit" onclick="editGender()">✏️ Sửa</button>
+                            <button id="save-gender-btn" class="btn-save-inline" onclick="saveGender()" hidden>Lưu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
+
     <!-- Footer dùng chung (layout.js tự chèn) -->
     <div id="site-footer"></div>
 

@@ -1,70 +1,88 @@
+let appliedDiscountAmount = 0;
+let appliedVoucherCode = "";
+
+function formatDateVN(dateString) {
+    if (!dateString) return "---";
+    try {
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) return dateString;
+        return date.toLocaleDateString("vi-VN", {
+            day: "2-digit",
+            month: "2-digit",
+            year: "numeric"
+        });
+    } catch {
+        return dateString;
+    }
+}
+
 function updateTicket(type, change) {
     let input = document.getElementById(type);
     if (input) {
-        let value = parseInt(input.value);
+        let value = parseInt(input.value) || 0;
         if (value + change >= 0) {
             input.value = value + change;
             calculateTotal();
         }
-    } else {
-        console.error("Không tìm thấy phần tử có id:", type);
     }
 }
 
 async function fetchTourDetail() {
     try {
         const urlParams = new URLSearchParams(window.location.search);
-        const matour = urlParams.get('id'); // Lấy 'id' từ URL
+        const matour = urlParams.get('id');
 
-        if (matour) {
-            console.log("Matour nhận được:", matour);
-            // Thực hiện các hành động tiếp theo
-        } else {
-            console.error("Không tìm thấy Matour trong URL");
-        }
-
-        console.log("matour trong pay_ment.html:", matour);
-
-        let response = await fetch("https://webdulichlo.onrender.com/api/Tour/get-tour");
-
-        if (!response.ok) {
-            throw new Error(`Lỗi API: ${response.status} - ${response.statusText}`);
-        }
-
-        let tours = await response.json();
-        console.log("Danh sách tour từ API:", tours);
-
-        const tour = tours.find(t => t.matour == matour);
-
-        if (!tour) {
-            console.error("Không tìm thấy tour với matour:", matour);
-            document.getElementById('tour-name').textContent = "Không tìm thấy tour";
+        if (!matour) {
+            document.getElementById('tour-name').textContent = "Không tìm thấy thông tin tour";
             return;
         }
 
-        console.log("Thông tin tour chi tiết:", tour);
+        let response = await fetch("https://webdulichlo.onrender.com/api/Tour/get-tour");
+        if (!response.ok) {
+            throw new Error(`Lỗi API: ${response.status}`);
+        }
+
+        let tours = await response.json();
+        const tour = tours.find(t => t.matour == matour);
+
+        if (!tour) {
+            document.getElementById('tour-name').textContent = "Tour không tồn tại";
+            return;
+        }
 
         document.getElementById('tour-name').textContent = tour.tentour;
-        document.getElementById('tour-description').textContent = tour.mota;
-        document.getElementById('tour-price-adult').textContent = tour.giaNguoiLon.toLocaleString() + " VND";
-        document.getElementById('tour-price-child').textContent = tour.giaTreEm.toLocaleString() + " VND";
-        document.getElementById('tour-price-baby').textContent = tour.giaTreNho.toLocaleString() + " VND";
-        document.getElementById('tour-start-date').textContent = tour.ngayKhoiHanh;
-        document.getElementById('tour-end-date').textContent = tour.ngayKetThuc;
-        document.getElementById('tour-seats').textContent = tour.sokhach;
-        if (tour.hinhAnh) {
-            document.getElementById('tour-image').src = tour.hinhAnh;
-        } else {
-            document.getElementById('tour-image').src = "/images/default.jpg";
-        }
-        document.getElementById('tour-image').alt = tour.tentour;
+        document.getElementById('tour-description').textContent = tour.mota || "Chưa có mô tả chi tiết cho tour này. Vui lòng liên hệ bộ phận hỗ trợ để biết thêm chi tiết.";
+        
+        const adultGia = tour.giaNguoiLon || tour.gia || 0;
+        const childGia = tour.giaTreEm || Math.round(adultGia * 2 / 3);
+        const babyGia = tour.giaTreNho || Math.round(adultGia / 2);
 
-        document.getElementById('tour-image').onerror = function () {
-            this.onerror = null;
-            this.src = "/images/default.jpg";
+        document.getElementById('tour-price-adult-header').textContent = adultGia.toLocaleString("vi-VN") + " VNĐ";
+        document.getElementById('tour-price-adult').textContent = adultGia.toLocaleString("vi-VN") + " VNĐ";
+        document.getElementById('tour-price-child').textContent = childGia.toLocaleString("vi-VN") + " VNĐ";
+        document.getElementById('tour-price-baby').textContent = babyGia.toLocaleString("vi-VN") + " VNĐ";
+        
+        document.getElementById('tour-start-date').textContent = formatDateVN(tour.ngayKhoiHanh);
+        document.getElementById('tour-end-date').textContent = formatDateVN(tour.ngayKetThuc);
+        document.getElementById('tour-seats').textContent = (tour.sokhach || 30) + " khách";
+        document.getElementById('tour-loai').textContent = tour.loaiTour || "Trong nước";
+
+        const imgElem = document.getElementById('tour-image');
+        if (tour.hinhAnh) {
+            imgElem.src = tour.hinhAnh.startsWith("http") ? tour.hinhAnh : `https://webdulichlo.onrender.com${tour.hinhAnh}`;
+        } else {
+            imgElem.src = "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1200&q=80";
+        }
+        imgElem.alt = tour.tentour;
+
+        window.tour = {
+            ...tour,
+            adultGia,
+            childGia,
+            babyGia
         };
 
-        window.tour = tour; // Lưu thông tin tour vào biến toàn cục
+        fetchItinerary(matour);
         calculateTotal();
 
     } catch (error) {
@@ -72,52 +90,125 @@ async function fetchTourDetail() {
     }
 }
 
+async function fetchItinerary(matour) {
+    try {
+        const res = await fetch(`https://webdulichlo.onrender.com/api/LichTrinh/tour/${matour}`);
+        if (!res.ok) return;
+        const items = await res.json();
+        if (items && items.length > 0) {
+            const listElem = document.getElementById("itinerary-list");
+            listElem.innerHTML = items.map(it => `
+                <div class="mb-3 p-3 bg-light rounded border-left border-primary" style="border-left-width: 4px !important;">
+                    <strong>Ngày ${it.ngayThu}: ${it.tieuDe}</strong>
+                    ${it.buaAn ? `<span class="badge badge-info ml-2">🍽️ Bữa ăn: ${it.buaAn}</span>` : ""}
+                    <p class="mb-0 text-muted mt-1" style="font-size: 0.92rem;">${it.chiTiet || ""}</p>
+                </div>
+            `).join("");
+        }
+    } catch (err) {
+        console.warn("Lỗi nạp lịch trình:", err);
+    }
+}
+
 function calculateTotal() {
-    let adultPrice = parseFloat(document.getElementById('tour-price-adult').textContent.replace(' VND', '').replace(/,/g, ''));
-    let childPrice = parseFloat(document.getElementById('tour-price-child').textContent.replace(' VND', '').replace(/,/g, ''));
-    let babyPrice = parseFloat(document.getElementById('tour-price-baby').textContent.replace(' VND', '').replace(/,/g, ''));
+    if (!window.tour) return;
 
-    let adultCount = parseInt(document.getElementById('adult').value);
-    let childCount = parseInt(document.getElementById('child').value);
-    let babyCount = parseInt(document.getElementById('baby').value);
+    const adultCount = parseInt(document.getElementById('adult').value) || 0;
+    const childCount = parseInt(document.getElementById('child').value) || 0;
+    const babyCount = parseInt(document.getElementById('baby').value) || 0;
 
-    let total = (adultPrice * adultCount) + (childPrice * childCount) + (babyPrice * babyCount);
-    document.getElementById('totalPrice').textContent = total.toLocaleString();
+    const subtotal = (window.tour.adultGia * adultCount) + (window.tour.childGia * childCount) + (window.tour.babyGia * babyCount);
+    
+    let finalTotal = Math.max(0, subtotal - appliedDiscountAmount);
+
+    document.getElementById('subtotalPrice').textContent = subtotal.toLocaleString("vi-VN") + " VNĐ";
+    document.getElementById('totalPrice').textContent = finalTotal.toLocaleString("vi-VN") + " VNĐ";
+
+    const discountRow = document.getElementById("discount-row");
+    if (appliedDiscountAmount > 0) {
+        discountRow.style.display = "flex";
+        document.getElementById("discountAmount").textContent = "-" + appliedDiscountAmount.toLocaleString("vi-VN") + " VNĐ";
+    } else {
+        discountRow.style.display = "none";
+    }
+
+    return { subtotal, finalTotal };
+}
+
+async function applyVoucherCode() {
+    const code = document.getElementById("voucherCode").value.trim();
+    const msgElem = document.getElementById("promo-msg");
+    if (!code) {
+        msgElem.style.color = "#dc2626";
+        msgElem.textContent = "Vui lòng nhập mã giảm giá!";
+        return;
+    }
+
+    const { subtotal } = calculateTotal();
+    const formData = new URLSearchParams();
+    formData.append("code", code);
+    formData.append("tongTien", subtotal);
+
+    try {
+        const res = await fetch("https://webdulichlo.onrender.com/api/KhuyenMai/validate", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData.toString()
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+            appliedDiscountAmount = data.SotienGiam || 0;
+            appliedVoucherCode = data.MaGiamGia || code;
+            msgElem.style.color = "#16a34a";
+            msgElem.textContent = `🎉 ${data.Message} (Giảm ${appliedDiscountAmount.toLocaleString("vi-VN")} VNĐ)`;
+            calculateTotal();
+        } else {
+            appliedDiscountAmount = 0;
+            appliedVoucherCode = "";
+            msgElem.style.color = "#dc2626";
+            msgElem.textContent = data.Message || "Mã không hợp lệ!";
+            calculateTotal();
+        }
+    } catch (err) {
+        console.error("Lỗi áp dụng mã:", err);
+        msgElem.style.color = "#dc2626";
+        msgElem.textContent = "Lỗi khi kiểm tra mã voucher!";
+    }
 }
 
 async function processPayment() {
-    // Lấy thông tin người dùng từ localStorage
     const user = JSON.parse(localStorage.getItem("user"));
-    
     if (!user) {
         alert("Bạn cần đăng nhập để đặt tour!");
+        window.location.href = "html/auth/login.html";
         return;
     }
-    // ✅ THÊM ĐIỀU KIỆN TẠI ĐÂY
-    const adultCount = parseInt(document.getElementById('adult').value);
-    const childCount = parseInt(document.getElementById('child').value);
-    const babyCount = parseInt(document.getElementById('baby').value);
+
+    const adultCount = parseInt(document.getElementById('adult').value) || 0;
+    const childCount = parseInt(document.getElementById('child').value) || 0;
+    const babyCount = parseInt(document.getElementById('baby').value) || 0;
 
     if (adultCount + childCount + babyCount === 0) {
-        alert("Bạn phải chọn ít nhất một vé để đặt tour!");
+        alert("Vui lòng chọn ít nhất 1 vé để thực hiện đặt tour!");
         return;
     }
-    const email = user.email; // Lấy email từ thông tin người dùng đã lưu trong localStorage
-    const matour = window.tour.matour;
-    const songuoi = parseInt(document.getElementById('adult').value) +
-                    parseInt(document.getElementById('child').value) +
-                    parseInt(document.getElementById('baby').value);
-    const tongtien = parseFloat(document.getElementById('totalPrice').textContent.replace(/,/g, ''));
-    
 
-    
+    const { finalTotal } = calculateTotal();
+    const email = user.email;
+    const matour = window.tour.matour;
+
     const order = {
         matour: matour,
         ngaydat: new Date().toISOString(),
-        tongtien: tongtien,
-        songuoi: songuoi,
-        emaildangki: email
+        tongtien: finalTotal,
+        songuoi: adultCount + childCount + babyCount,
+        emaildangki: email,
+        maGiamGia: appliedVoucherCode || null,
+        sotienGiam: appliedDiscountAmount
     };
+
+    if (typeof window.showLoading === "function") window.showLoading("Đang khởi tạo đơn đặt tour...");
 
     try {
         const fetchFunc = window.fetchWithAuth || fetch;
@@ -130,47 +221,22 @@ async function processPayment() {
         });
 
         if (!response.ok) {
-            throw new Error("Đặt tour thất bại!");
+            throw new Error("Đặt tour thất bại! Vui lòng thử lại.");
         }
 
         const result = await response.json();
-
-        // Lưu thông tin đơn đặt và tour vào localStorage
         localStorage.setItem('order', JSON.stringify(result));
         localStorage.setItem('tour', JSON.stringify(window.tour));
 
-        // Chuyển sang trang hóa đơn, truyền matour và email
-        window.location.href = `bill.html?matour=${matour}&email=${email}`;
+        alert("🎉 Đặt tour thành công! Đang chuyển hướng đến hóa đơn...");
+        window.location.href = `bill.html?matour=${matour}&email=${encodeURIComponent(email)}`;
 
     } catch (error) {
         console.error("Lỗi khi gửi đơn đặt tour:", error);
-        alert("Đã có lỗi xảy ra khi đặt tour.");
+        alert(error.message || "Đã có lỗi xảy ra khi đặt tour.");
+    } finally {
+        if (typeof window.hideLoading === "function") window.hideLoading();
     }
-}
-
-
-function displayTourDetailsAfterPayment() {
-    let hinhAnh = tour.hinhAnh && tour.hinhAnh.trim() !== "" ? tour.hinhAnh : "/images/default.jpg";
-
-    if (!hinhAnh.startsWith("http")) {
-        hinhAnh = `https://webdulichlo.onrender.com/${hinhAnh.replace(/^\/+/, '')}`;
-    }
-    let tourDetailsHTML = `
-        <div class="tour-details">
-                    <img src="${hinhAnh}" class="card-img-top" alt="${window.tour.hinhAnh}" 
-                 onerror="this.onerror=null; this.src='/images/default.jpg';">
-            <h2>Thông tin tour đã đặt</h2>
-            <h3>${window.tour.tentour}</h3>
-            <p>Mô tả: ${window.tour.mota || "Không có mô tả"}</p>
-            <p>Giá: ${window.tour.gia.toLocaleString()} VND</p>
-
-            <p>Ngày khởi hành: ${window.tour.ngayKhoiHanh}</p>
-            <p>Ngày kết thúc: ${window.tour.ngayKetThuc}</p>
-            <p>Số khách: ${window.tour.sokhach}</p>
-        </div>
-    `;
-    document.getElementById('tour-details-container').innerHTML = tourDetailsHTML;
 }
 
 fetchTourDetail();
-

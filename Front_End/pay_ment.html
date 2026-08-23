@@ -1,87 +1,195 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <!-- Thông tin meta và tiêu đề -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trang Web Du Lịch</title>
+    <title>Đặt Tour Du Lịch Premium</title>
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- CSS Tách Biệt -->
     <link rel="stylesheet" href="resources/css/styles.css">
-    <link rel="stylesheet" href="resources/css/computer/styles.css" media="screen and (min-width: 769px)">
-    <link rel="stylesheet" href="resources/css/mobile/styles.css" media="screen and (max-width: 768px)">
     <link rel="stylesheet" href="resources/css/theme.css">
-    <!-- Thư viện Flickity CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
-    <!-- Thư viện Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="resources/css/pay_ment.css">
-    <link rel="stylesheet" href="resources/css/layout_pay.css">
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
     <!-- Header dùng chung (layout.js tự chèn) -->
     <div id="site-header"></div>
 
+    <!-- Hero Banner -->
+    <div class="tour-hero-section">
+        <div class="tour-hero-container">
+            <div class="tour-badge-group">
+                <span class="tour-badge badge-primary" id="tour-type-badge">Tour Du Lịch</span>
+                <span class="tour-badge" id="tour-status-badge">🟢 Đang mở bán</span>
+            </div>
+            <h1 class="tour-title" id="tour-name">Đang tải thông tin tour...</h1>
+            <div class="tour-rating-summary">
+                <span class="star-rating">★ 4.9 / 5</span>
+                <span>• (128 Đánh giá từ khách hàng)</span>
+                <span>• 🛡️ Cam kết hoàn tiền 100% nếu hủy trước 7 ngày</span>
+            </div>
+        </div>
+    </div>
+
     <main class="site-main">
+        <div class="booking-page-layout">
+            <!-- Left Column: Tour Detail -->
+            <div class="tour-main-content">
+                <!-- Gallery Card -->
+                <div class="tour-gallery-card">
+                    <img id="tour-image" src="/images/default.jpg" alt="Ảnh Tour" class="tour-main-image">
+                </div>
 
-    <!-- Main Content -->
-    <div class="content">
-        <h1 id="tour-name"></h1>
-        <img id="tour-image" src="/images/default.jpg" />
-        <p id="tour-description"></p>
-        <p>Số khách tối đa: <span id="tour-seats"></span></p>
-        <p>Ngày khởi hành: <span id="tour-start-date"></span></p>
-        <p>Ngày Kết Thúc: <span id="tour-end-date"></span></p>
-        <p>Hãy chọn số lượng vé phù hợp và hoàn tất đặt tour để có trải nghiệm tuyệt vời.</p>
-    </div>
+                <!-- Quick Specs Grid -->
+                <div class="tour-quick-specs">
+                    <div class="spec-card">
+                        <div class="spec-icon">🛫</div>
+                        <div class="spec-info">
+                            <label>Khởi Hành</label>
+                            <span id="tour-start-date">---</span>
+                        </div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">🛬</div>
+                        <div class="spec-info">
+                            <label>Kết Thúc</label>
+                            <span id="tour-end-date">---</span>
+                        </div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">👥</div>
+                        <div class="spec-info">
+                            <label>Chỗ Tối Đa</label>
+                            <span id="tour-seats">---</span>
+                        </div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="spec-icon">🗺️</div>
+                        <div class="spec-info">
+                            <label>Phân Loại</label>
+                            <span id="tour-loai">Trong nước</span>
+                        </div>
+                    </div>
+                </div>
 
-    <div class="booking-container">
-        <h2 style="color: #333;">Lịch Trình và Giá Tour</h2>
-        <p>Chọn Lịch Trình và Xem Giá:</p>
+                <!-- Detail Content -->
+                <div class="tour-detail-card">
+                    <h3 class="section-heading">Mô Tả & Trải Nghiệm Tour</h3>
+                    <div class="tour-description-text" id="tour-description">
+                        Đang tải mô tả chi tiết tour...
+                    </div>
 
-        <div class="ticket-type">
-            <div>
-                <strong>Người lớn</strong> <br>
+                    <div class="tour-features-grid">
+                        <div class="feature-item"><span>✔️</span> Khách sạn tiêu chuẩn 4-5 sao cao cấp</div>
+                        <div class="feature-item"><span>✔️</span> Xe đưa đón du lịch đời mới suốt tuyến</div>
+                        <div class="feature-item"><span>✔️</span> Hướng dẫn viên nhiệt tình, giàu kinh nghiệm</div>
+                        <div class="feature-item"><span>✔️</span> Bao gồm vé tham quan toàn bộ danh thắng</div>
+                        <div class="feature-item"><span>✔️</span> Thưởng thức đặc sản ẩm thực địa phương</div>
+                        <div class="feature-item"><span>✔️</span> Bảo hiểm du lịch tối đa 100.000.000 VNĐ</div>
+                    </div>
+                </div>
+
+                <!-- Daily Itinerary -->
+                <div class="tour-detail-card" id="itinerary-section">
+                    <h3 class="section-heading">Lịch Trình Chi Tiết</h3>
+                    <div id="itinerary-list">
+                        <div class="p-3 bg-light rounded">
+                            <strong>Ngày 1: Khởi Hành & Trải Nghiệm Khám Phá</strong>
+                            <p class="mb-0 text-muted mt-1">Xe và Hướng dẫn viên đón Quý khách tại điểm hẹn, khởi hành đi tham quan các địa danh nổi tiếng. Thưởng thức bữa tối và tự do khám phá về đêm.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="price">x <span id="tour-price-adult"></span></div>
-            <div class="counter">
-                <button onclick="updateTicket('adult', -1)">-</button>
-                <input type="text" id="adult" value="2" readonly>
-                <button onclick="updateTicket('adult', 1)">+</button>
+
+            <!-- Right Column: Sticky Booking Box -->
+            <div class="booking-sidebar-box">
+                <div class="booking-header">
+                    <label style="font-size: 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase;">Giá Vé Từ</label>
+                    <div class="booking-price-tag">
+                        <span id="tour-price-adult-header">0 VNĐ</span>
+                        <span>/ Người lớn</span>
+                    </div>
+                </div>
+
+                <div class="ticket-type-group">
+                    <!-- Adult -->
+                    <div class="ticket-row">
+                        <div class="ticket-info">
+                            <span class="ticket-title">Người lớn</span>
+                            <span class="ticket-price-single" id="tour-price-adult">0 VNĐ</span>
+                        </div>
+                        <div class="counter-controls">
+                            <button class="btn-counter" onclick="updateTicket('adult', -1)">-</button>
+                            <input type="text" id="adult" value="1" class="counter-input" readonly>
+                            <button class="btn-counter" onclick="updateTicket('adult', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Child -->
+                    <div class="ticket-row">
+                        <div class="ticket-info">
+                            <span class="ticket-title">Trẻ em (5-11t)</span>
+                            <span class="ticket-price-single" id="tour-price-child">0 VNĐ</span>
+                        </div>
+                        <div class="counter-controls">
+                            <button class="btn-counter" onclick="updateTicket('child', -1)">-</button>
+                            <input type="text" id="child" value="0" class="counter-input" readonly>
+                            <button class="btn-counter" onclick="updateTicket('child', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <!-- Baby -->
+                    <div class="ticket-row">
+                        <div class="ticket-info">
+                            <span class="ticket-title">Trẻ nhỏ (< 5t)</span>
+                            <span class="ticket-price-single" id="tour-price-baby">0 VNĐ</span>
+                        </div>
+                        <div class="counter-controls">
+                            <button class="btn-counter" onclick="updateTicket('baby', -1)">-</button>
+                            <input type="text" id="baby" value="0" class="counter-input" readonly>
+                            <button class="btn-counter" onclick="updateTicket('baby', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Voucher promo -->
+                <div class="promo-box">
+                    <label style="font-size: 0.82rem; font-weight: 700; color: #166534; margin: 0;">🎟️ Ưu Đãi / Mã Giảm Giá</label>
+                    <div class="promo-input-group">
+                        <input type="text" id="voucherCode" placeholder="Nhập mã voucher..." class="promo-input">
+                        <button class="btn-promo" type="button" onclick="applyVoucherCode()">Áp Dụng</button>
+                    </div>
+                    <div id="promo-msg" class="promo-result-msg"></div>
+                </div>
+
+                <!-- Price Breakdown -->
+                <div class="price-breakdown">
+                    <div class="breakdown-row">
+                        <span>Tạm tính vé:</span>
+                        <span id="subtotalPrice">0 VNĐ</span>
+                    </div>
+                    <div class="breakdown-row" id="discount-row" style="display: none;">
+                        <span>Giảm giá Voucher:</span>
+                        <span id="discountAmount" style="color: var(--success-color); font-weight: 700;">-0 VNĐ</span>
+                    </div>
+                    <div class="breakdown-row total-row">
+                        <span>Tổng Thanh Toán:</span>
+                        <span id="totalPrice">0 VNĐ</span>
+                    </div>
+                </div>
+
+                <button class="btn-submit-booking" onclick="processPayment()">
+                    ✨ XÁC NHẬN ĐẶT TOUR
+                </button>
             </div>
         </div>
-
-        <div class="ticket-type">
-            <div>
-                <strong>Trẻ em</strong> <br>
-            </div>
-            <div class="price">x <span id="tour-price-child"></span></div>
-            <div class="counter">
-                <button onclick="updateTicket('child', -1)">-</button>
-                <input type="text" id="child" value="0" readonly>
-                <button onclick="updateTicket('child', 1)">+</button>
-            </div>
-        </div>
-
-        <div class="ticket-type">
-            <div>
-                <strong>Trẻ nhỏ</strong> <br> 
-            </div>
-            <div class="price">x <span id="tour-price-baby"></span></div>
-            <div class="counter">
-                <button onclick="updateTicket('baby', -1)">-</button>
-                <input type="text" id="baby" value="0" readonly>
-                <button onclick="updateTicket('baby', 1)">+</button>
-            </div>
-        </div>
-
-        <p class="total">Tổng Giá Tour: <span id="totalPrice"></span> đ</p>
-        <div class="order-button" onclick="processPayment()">Yêu cầu đặt</div>
-    </div>
     </main>
+
     <!-- Footer dùng chung (layout.js tự chèn) -->
     <div id="site-footer"></div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flickity/2.2.2/flickity.pkgd.min.js"></script>
     <script src="resources/js/scripts.js"></script>
     <script src="resources/js/layout.js"></script>
     <script src="resources/js/pay_ment.js"></script>

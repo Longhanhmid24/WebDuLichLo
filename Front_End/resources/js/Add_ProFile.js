@@ -57,13 +57,13 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         const user = await response.json();
 
-        // Hiển thị thông tin
+        // Hiển thị thông tin người dùng lên UI
         document.getElementById("email").textContent = user.emaildangki || "";
+        document.getElementById("profile-display-name").textContent = user.tendangnhap || user.emaildangki;
         document.getElementById("tendangnhap").value = user.tendangnhap || "";
         document.getElementById("sodienthoai").value = user.sodienthoai || "";
         document.getElementById("diachi").value = user.diachi || "";
         
-        // Chọn giới tính tương ứng với dữ liệu
         if (user.gioitinh === "Nam") {
             document.getElementById("gioitinhNam").checked = true;
         } else if (user.gioitinh === "Nữ") {
@@ -72,35 +72,25 @@ document.addEventListener("DOMContentLoaded", async function () {
             document.getElementById("gioitinhKhac").checked = true;
         }
 
-        document.getElementById("phanquyen").textContent = user.phanquyen || "";
-        document.getElementById("ngaytao").textContent = user.ngayTao ? new Date(user.ngayTao).toLocaleString("vi-VN") : "";
+        document.getElementById("phanquyen").textContent = "👑 Quyền: " + (user.phanquyen || "User");
+        document.getElementById("ngaytao").textContent = user.ngayTao ? new Date(user.ngayTao).toLocaleDateString("vi-VN") : "N/A";
 
         // Ảnh đại diện
         const avatarImg = document.getElementById("avatar");
         const headerAvatar = document.querySelector(".account-icon img");
-        const baseUrl = "https://webdulichlo.onrender.com";  // URL backend API
-
-        if (user.tendangnhap) {
-            userStored.tendangnhap = user.tendangnhap;
-            const headerUserName = document.getElementById("user-name");
-            if (headerUserName) headerUserName.textContent = user.tendangnhap;
-            localStorage.setItem("user", JSON.stringify(userStored));
-        }
 
         if (user.hinhAnh && user.hinhAnh.trim() !== "") {
             const avatarSrc = user.hinhAnh.startsWith("http")
                 ? user.hinhAnh
-                : `${baseUrl}${user.hinhAnh.startsWith("/") ? "" : "/"}${user.hinhAnh}`;
+                : `https://webdulichlo.onrender.com/${user.hinhAnh.replace(/^\/+/, '')}`;
             avatarImg.src = avatarSrc;
             if (headerAvatar) headerAvatar.src = avatarSrc;
-
-            if (user.hinhAnh.startsWith("http")) {
-                userStored.hinhAnh = user.hinhAnh;
-                localStorage.setItem("user", JSON.stringify(userStored));
-            }
         } else {
             avatarImg.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
         }
+
+        // Tải số lượng đơn đặt tour
+        fetchUserOrderStats(email);
 
     } catch (err) {
         console.error("Lỗi khi tải hồ sơ:", err);
@@ -110,9 +100,39 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
+async function fetchUserOrderStats(email) {
+    try {
+        const fetchFunc = getAuthFetch();
+        const res = await fetchFunc(`https://webdulichlo.onrender.com/api/Dondattour/get-orders?email=${encodeURIComponent(email)}`);
+        if (res.ok) {
+            const orders = await res.json();
+            document.getElementById("stat-orders-count").textContent = (orders ? orders.length : 0) + " đơn";
+        } else {
+            document.getElementById("stat-orders-count").textContent = "0 đơn";
+        }
+    } catch {
+        document.getElementById("stat-orders-count").textContent = "0 đơn";
+    }
+
+    try {
+        const fetchFunc = getAuthFetch();
+        const resFav = await fetchFunc(`https://webdulichlo.onrender.com/api/YeuThich`);
+        if (resFav.ok) {
+            const favs = await resFav.json();
+            document.getElementById("stat-wishlist-count").textContent = (favs ? favs.length : 0) + " tour";
+        } else {
+            document.getElementById("stat-wishlist-count").textContent = "0 tour";
+        }
+    } catch {
+        document.getElementById("stat-wishlist-count").textContent = "0 tour";
+    }
+}
+
 function editField(fieldId) {
     const input = document.getElementById(fieldId);
     input.removeAttribute("readonly");
+    input.focus();
+    input.nextElementSibling.hidden = true;
     input.nextElementSibling.nextElementSibling.hidden = false;
 }
 
@@ -126,16 +146,15 @@ async function saveField(fieldId) {
 
     await updateUser(formData);
     input.setAttribute("readonly", true);
+    input.nextElementSibling.hidden = false;
     input.nextElementSibling.nextElementSibling.hidden = true;
 }
 
 function editGender() {
     const genderRadios = document.querySelectorAll('input[name="gioitinh"]');
-    
     genderRadios.forEach(radio => {
         radio.disabled = false;
     });
-
     document.getElementById("save-gender-btn").hidden = false;
 }
 
@@ -191,7 +210,6 @@ async function saveAvatar() {
         document.getElementById("save-avatar").hidden = true;
         selectedAvatarFile = null;
 
-        // Cập nhật lại Avatar từ Cloudinary URL trả về
         const newHinhAnh = result?.hinhAnh || result?.HinhAnh;
         const headerAvatar = document.querySelector(".account-icon img");
         const profileAvatar = document.getElementById("avatar");
@@ -232,11 +250,4 @@ async function updateUser(formData, customLoadingMsg = "Đang cập nhật thôn
     } finally {
         if (typeof window.hideLoading === "function") window.hideLoading();
     }
-}
-
-// Tải avatar
-function downloadAvatar() {
-    const avatarImg = document.getElementById("avatar");
-    const fileName = avatarImg.src.split('/').pop();  // Lấy tên tệp từ URL
-    window.location.href = `https://webdulichlo.onrender.com/api/TaiKhoan/download/${fileName}`;
 }

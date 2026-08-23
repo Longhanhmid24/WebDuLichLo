@@ -1,189 +1,308 @@
-/* Tổng thể container */
-.profile-container {
-    width: 80%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px;
-    font-family: 'Roboto', sans-serif; /* Sử dụng font đẹp hơn */
-    background-color: #f9f9f9;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
+/* Luxury Profile Experience Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #0f172a;
+    --accent-color: #f59e0b;
+    --bg-light: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.05);
+    --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.12);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    color: #333;
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    font-family: 'Poppins', sans-serif; /* Font chữ đẹp và hiện đại */
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
 }
 
-/* Avatar */
-.avatar-wrapper {
-    text-align: center;
-    margin-bottom: 30px;
+/* Hero Cover Header */
+.profile-cover-hero {
+    height: 220px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #0f172a 100%);
     position: relative;
+    border-radius: 0 0 24px 24px;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.2);
 }
 
-#avatar {
+.profile-header-card {
+    max-width: 1140px;
+    margin: -70px auto 30px;
+    padding: 0 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.profile-user-bar {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 24px 30px;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+}
+
+.user-identity-group {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    flex-shrink: 0;
+}
+
+.profile-avatar-img {
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    width: 150px;
-    height: 150px;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    border: 4px solid #ffffff;
+    box-shadow: var(--shadow-md);
 }
 
-#avatar:hover {
+.avatar-change-btn {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+}
+
+.avatar-change-btn:hover {
+    background: var(--primary-hover);
     transform: scale(1.1);
 }
 
-/* Button Đổi ảnh */
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    cursor: pointer;
-    margin-top: 10px;
-    border-radius: 30px; /* Tạo nút tròn */
-    font-size: 16px;
+.user-text-info h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin: 0 0 4px;
+    color: var(--secondary-color);
+}
+
+.user-text-info p {
+    margin: 0 0 8px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.user-role-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #eff6ff;
+    color: var(--primary-color);
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+}
+
+/* Stats Counter Row */
+.profile-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1140px;
+    margin: 0 auto 30px;
+    padding: 0 20px;
+}
+
+@media (max-width: 768px) {
+    .profile-stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.stat-box {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.stat-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #f1f5f9;
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.stat-content label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-muted);
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-bottom: 2px;
 }
 
-button:hover {
-    background-color: #0056b3;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+.stat-content span {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--secondary-color);
 }
 
-button:focus {
-    outline: none;
+/* Main Content Area & Cards */
+.profile-main-container {
+    max-width: 1140px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
 }
 
-/* Nút lưu ảnh */
-#save-avatar {
-    background-color: green;
+.profile-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-md);
+    margin-bottom: 24px;
 }
 
-#save-avatar:hover {
-    background-color: darkgreen;
+.card-title-head {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--secondary-color);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-#save-avatar:active {
-    transform: scale(0.98); /* Hiệu ứng nhỏ đi khi nhấn */
+/* Form Fields */
+.profile-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
-/* Thông tin hồ sơ */
-.profile-info {
-    margin-top: 20px;
+@media (max-width: 768px) {
+    .profile-form-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-.profile-info p {
-    margin-bottom: 20px;
-    font-size: 18px;
-    color: #555;
-    line-height: 1.8;
-    font-weight: 500;
+.form-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
-.profile-info p strong {
-    font-weight: bold;
-    color: #333;
-    font-family: 'Poppins', sans-serif;
-    font-size: 20px;
+.form-field-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0;
 }
 
-input[type="text"], select {
+.input-with-action {
+    display: flex;
+    gap: 8px;
+}
+
+.form-control-custom {
     width: 100%;
-    padding: 14px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    padding: 10px 14px;
+    border: 1.5px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    color: var(--text-main);
+    background: #ffffff;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-input[type="text"]:focus, select:focus {
-    border-color: #007bff;
+.form-control-custom:read-only {
+    background: #f8fafc;
+    color: var(--text-muted);
+}
+
+.form-control-custom:focus:not(:read-only) {
+    border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5); /* Tạo hiệu ứng sáng khi focus */
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-button.edit-btn {
-    margin-left: 10px;
-    font-size: 20px;
+.btn-icon-edit {
+    padding: 8px 14px;
+    background: #f1f5f9;
+    color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
     cursor: pointer;
-    background-color: transparent;
-    border: none;
-    color: #007bff;
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
-button.edit-btn:hover {
-    color: #0056b3;
-    transform: scale(1.1);
+.btn-icon-edit:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
 }
 
-button.save-btn {
-    margin-left: 10px;
-    background-color: green;
-    font-size: 16px;
+.btn-save-inline {
     padding: 8px 16px;
-    border-radius: 5px;
-    color: white;
+    background: var(--success-color);
+    color: #ffffff;
     border: none;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: var(--radius-sm);
+    font-weight: 700;
+    cursor: pointer;
 }
 
-button.save-btn:hover {
-    background-color: darkgreen;
-    transform: translateY(-2px);
+.radio-gender-group {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    padding: 8px 0;
 }
 
-button.save-btn[hidden] {
-    display: none;
-}
-
-button[hidden] {
-    display: none;
-}
-
-/* Sửa dropdown giới tính */
-select {
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-select:disabled {
-    background-color: #f1f1f1;
-    cursor: not-allowed;
-}
-
-select:hover {
-    border-color: #007bff;
-}
-
-/* Thêm không gian giữa các phần */
-.profile-info p {
-    margin-bottom: 30px;
-}
-
-/* Hiệu ứng hover cho toàn bộ container */
-.profile-container {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-}
-
-.profile-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+.radio-gender-label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
 }

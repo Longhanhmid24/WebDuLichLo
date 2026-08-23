@@ -1,103 +1,452 @@
-.booking-container {
+/* Luxury & Modern Travel Booking Design System */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --secondary-color: #0f172a;
+    --accent-color: #f59e0b;
+    --success-color: #10b981;
+    --bg-light: #f8fafc;
+    --card-bg: #ffffff;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+    --shadow-lg: 0 16px 32px rgba(15, 23, 42, 0.12);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero Section */
+.tour-hero-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #ffffff;
+    padding: 40px 0 30px;
+    margin-bottom: 30px;
+    position: relative;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.15);
+}
+
+.tour-hero-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tour-badge-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.tour-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tour-badge.badge-primary {
+    background: var(--primary-color);
+}
+
+.tour-title {
+    font-size: 2.4rem;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 16px;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+
+.tour-rating-summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: #cbd5e1;
+}
+
+.star-rating {
+    color: #fbbf24;
+    font-weight: 700;
+}
+
+/* Page Container Layout */
+.booking-page-layout {
+    max-width: 1240px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 32px;
+    align-items: start;
+}
+
+@media (max-width: 992px) {
+    .booking-page-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Left Column: Tour Detail */
+.tour-main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Image Card */
+.tour-gallery-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.tour-main-image {
+    width: 100%;
+    height: 440px;
+    object-fit: cover;
     display: block;
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    width: 300px;
-    z-index: 1000;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+    transition: transform 0.4s ease;
 }
 
-.booking-title {
-    color: #007bff;
-    font-size: 1.8em;
+.tour-gallery-card:hover .tour-main-image {
+    transform: scale(1.02);
+}
+
+/* Quick Spec Cards Grid */
+.tour-quick-specs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 768px) {
+    .tour-quick-specs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.spec-card {
+    background: var(--card-bg);
+    padding: 16px 20px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.spec-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.spec-info label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.spec-info span {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+}
+
+/* Detail Content Tabs & Body */
+.tour-detail-card {
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.section-heading {
+    font-size: 1.35rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-heading::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 20px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+.tour-description-text {
+    line-height: 1.8;
+    color: #475569;
+    font-size: 1.02rem;
+    white-space: pre-line;
+}
+
+.tour-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-color);
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.92rem;
+    color: var(--text-main);
+}
+
+.feature-item check {
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+/* Right Column: Sticky Booking Box */
+.booking-sidebar-box {
+    position: sticky;
+    top: 90px;
+    background: var(--card-bg);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    padding: 24px;
+    z-index: 100;
+}
+
+.booking-header {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 16px;
     margin-bottom: 20px;
+}
+
+.booking-price-tag {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.booking-price-tag span {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* Ticket Counter Rows */
+.ticket-type-group {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.ticket-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    background: #f8fafc;
+    border-radius: var(--radius-md);
+    border: 1px solid #f1f5f9;
+}
+
+.ticket-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-title {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--secondary-color);
+}
+
+.ticket-price-single {
+    font-size: 0.8rem;
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+.counter-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ffffff;
+    padding: 4px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.btn-counter {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    border: none;
+    background: #f1f5f9;
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-counter:hover {
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+.counter-input {
+    width: 32px;
     text-align: center;
+    border: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    background: transparent;
+    color: var(--secondary-color);
 }
 
-.booking-desc {
-    text-align: left;
-    margin-bottom: 15px;
-    font-size: 0.9em;
+/* Promo Voucher Code Box */
+.promo-box {
+    margin-bottom: 20px;
+    padding: 14px;
+    background: #f0fdf4;
+    border: 1px dashed #86efac;
+    border-radius: var(--radius-md);
 }
 
-.ticket-type {
+.promo-input-group {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.promo-input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btn-promo {
+    background: var(--secondary-color);
+    color: #ffffff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-promo:hover {
+    background: #334155;
+}
+
+.promo-result-msg {
+    font-size: 0.8rem;
+    margin-top: 6px;
+    font-weight: 600;
+}
+
+/* Pricing Summary Box */
+.price-breakdown {
+    border-top: 1px solid var(--border-color);
+    padding-top: 16px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.breakdown-row {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    border-bottom: 1px solid #dee2e6;
-    font-size: 0.9em;
+    font-size: 0.9rem;
+    color: var(--text-muted);
 }
 
-.ticket-type:last-child {
-    border-bottom: none;
+.breakdown-row.total-row {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--primary-color);
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color);
 }
 
-.ticket-label {
-    font-weight: 600;
-    flex: 1;
-}
-
-.price {
-    color: #28a745;
-    font-weight: bold;
-    font-size: 1em;
-    margin-left: 10px;
-}
-
-.counter {
+/* Submit Action Button */
+.btn-submit-booking {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    transition: all 0.3s ease;
     display: flex;
     align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
-.counter button {
-    background-color: #e0e0e0;
-    border: none;
-    padding: 6px 10px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-.counter button:hover {
-    background-color: #d0d0d0;
-}
-
-.counter input {
-    width: 30px;
-    text-align: center;
-    border: 1px solid #ced4da;
-    padding: 6px;
-    border-radius: 5px;
-}
-
-.total {
-    font-size: 1.1em;
-    font-weight: bold;
-    margin-top: 20px;
-    text-align: left;
-    color: #007bff;
-}
-
-.order-button {
-    background-color: #ffc107;
-    color: #333;
-    padding: 12px 15px;
-    text-align: center;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 15px;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-}
-
-.order-button:hover {
-    background-color: #ffca2c;
+.btn-submit-booking:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
 }
