@@ -6,6 +6,10 @@
     --primary-hover: #1d4ed8;
     --secondary-color: #0f172a;
     --accent-color: #f59e0b;
+    --success-color: #16a34a;
+    --success-hover: #15803d;
+    --danger-color: #dc2626;
+    --danger-hover: #b91c1c;
     --bg-light: #f8fafc;
     --card-bg: #ffffff;
     --text-main: #1e293b;
@@ -283,12 +287,37 @@ body {
 
 .btn-save-inline {
     padding: 8px 16px;
-    background: var(--success-color);
-    color: #ffffff;
+    background: #16a34a !important;
+    color: #ffffff !important;
     border: none;
     border-radius: var(--radius-sm);
     font-weight: 700;
     cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 6px rgba(22, 163, 74, 0.2);
+}
+
+.btn-save-inline:hover {
+    background: #15803d !important;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+}
+
+.btn-cancel-inline {
+    padding: 8px 12px;
+    background: #f1f5f9;
+    color: #64748b;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel-inline:hover {
+    background: #e2e8f0;
+    color: #1e293b;
 }
 
 .radio-gender-group {

@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 // ── Hiển thị thông tin người dùng lên UI ──
 function renderUserProfile(user) {
+    window.currentUserData = user;
     document.getElementById("email").textContent = user.emaildangki || "";
     document.getElementById("profile-display-name").textContent = user.tendangnhap || user.emaildangki;
     document.getElementById("tendangnhap").value = user.tendangnhap || "";
@@ -107,7 +108,7 @@ async function fetchUserOrderStats(email) {
     }
 }
 
-// ── Chỉnh sửa / Lưu trường thông tin ──
+// ── Chỉnh sửa / Lưu / Hủy trường thông tin ──
 function editField(fieldId) {
     var input = document.getElementById(fieldId);
     if (!input) return;
@@ -118,8 +119,30 @@ function editField(fieldId) {
     if (wrapper) {
         var editBtn = wrapper.querySelector(".btn-icon-edit");
         var saveBtn = wrapper.querySelector(".btn-save-inline");
+        var cancelBtn = wrapper.querySelector(".btn-cancel-inline");
         if (editBtn) editBtn.hidden = true;
         if (saveBtn) saveBtn.hidden = false;
+        if (cancelBtn) cancelBtn.hidden = false;
+    }
+}
+
+function cancelField(fieldId) {
+    var input = document.getElementById(fieldId);
+    if (!input) return;
+    input.setAttribute("readonly", true);
+
+    if (window.currentUserData && window.currentUserData[fieldId] !== undefined) {
+        input.value = window.currentUserData[fieldId] || "";
+    }
+
+    var wrapper = input.closest(".input-with-action");
+    if (wrapper) {
+        var editBtn = wrapper.querySelector(".btn-icon-edit");
+        var saveBtn = wrapper.querySelector(".btn-save-inline");
+        var cancelBtn = wrapper.querySelector(".btn-cancel-inline");
+        if (editBtn) editBtn.hidden = false;
+        if (saveBtn) saveBtn.hidden = true;
+        if (cancelBtn) cancelBtn.hidden = true;
     }
 }
 
@@ -140,27 +163,51 @@ async function saveField(fieldId) {
         await updateUser(formData);
         input.setAttribute("readonly", true);
 
+        if (window.currentUserData) {
+            window.currentUserData[fieldId] = value;
+        }
+
         var wrapper = input.closest(".input-with-action");
         if (wrapper) {
             var editBtn = wrapper.querySelector(".btn-icon-edit");
             var saveBtn = wrapper.querySelector(".btn-save-inline");
+            var cancelBtn = wrapper.querySelector(".btn-cancel-inline");
             if (editBtn) editBtn.hidden = false;
             if (saveBtn) saveBtn.hidden = true;
+            if (cancelBtn) cancelBtn.hidden = true;
         }
     } catch (err) {
         console.error("Lỗi khi lưu thông tin:", err);
     }
 }
 
-// ── Chỉnh sửa / Lưu giới tính ──
+// ── Chỉnh sửa / Lưu / Hủy giới tính ──
 function editGender() {
     document.querySelectorAll('input[name="gioitinh"]').forEach(function (radio) {
         radio.disabled = false;
     });
     var editBtn = document.getElementById("edit-gender-btn");
     var saveBtn = document.getElementById("save-gender-btn");
+    var cancelBtn = document.getElementById("cancel-gender-btn");
     if (editBtn) editBtn.hidden = true;
     if (saveBtn) saveBtn.hidden = false;
+    if (cancelBtn) cancelBtn.hidden = false;
+}
+
+function cancelGender() {
+    document.querySelectorAll('input[name="gioitinh"]').forEach(function (r) { r.disabled = true; });
+    if (window.currentUserData && window.currentUserData.gioitinh) {
+        var genderMap = { "Nam": "gioitinhNam", "Nữ": "gioitinhNu" };
+        var genderId = genderMap[window.currentUserData.gioitinh] || "gioitinhKhac";
+        var genderElem = document.getElementById(genderId);
+        if (genderElem) genderElem.checked = true;
+    }
+    var editBtn = document.getElementById("edit-gender-btn");
+    var saveBtn = document.getElementById("save-gender-btn");
+    var cancelBtn = document.getElementById("cancel-gender-btn");
+    if (editBtn) editBtn.hidden = false;
+    if (saveBtn) saveBtn.hidden = true;
+    if (cancelBtn) cancelBtn.hidden = true;
 }
 
 async function saveGender() {
@@ -179,10 +226,15 @@ async function saveGender() {
     try {
         await updateUser(formData);
         document.querySelectorAll('input[name="gioitinh"]').forEach(function (r) { r.disabled = true; });
+        if (window.currentUserData) {
+            window.currentUserData.gioitinh = checked.value;
+        }
         var editBtn = document.getElementById("edit-gender-btn");
         var saveBtn = document.getElementById("save-gender-btn");
+        var cancelBtn = document.getElementById("cancel-gender-btn");
         if (editBtn) editBtn.hidden = false;
         if (saveBtn) saveBtn.hidden = true;
+        if (cancelBtn) cancelBtn.hidden = true;
     } catch (err) {
         console.error("Lỗi khi cập nhật giới tính:", err);
     }

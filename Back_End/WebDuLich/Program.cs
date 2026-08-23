@@ -148,6 +148,8 @@ using (var scope = app.Services.CreateScope())
         // Bổ sung tự động các cột mới vào các bảng đã tồn tại trong DB PostgreSQL
         db.Database.ExecuteSqlRaw(@"
             ALTER TABLE ""TaiKhoan"" ADD COLUMN IF NOT EXISTS ""TrangThai"" text DEFAULT 'HoatDong';
+            ALTER TABLE ""TaiKhoan"" ALTER COLUMN ""Phanquyen"" SET DEFAULT 'User';
+            UPDATE ""TaiKhoan"" SET ""Phanquyen"" = 'User' WHERE ""Phanquyen"" IS NULL OR ""Phanquyen"" = '';
             ALTER TABLE ""Tour"" ADD COLUMN IF NOT EXISTS ""MaDiaDiem"" integer NULL;
             ALTER TABLE ""Tour"" ADD COLUMN IF NOT EXISTS ""TrangThai"" text DEFAULT 'DangMo';
             ALTER TABLE ""Tour"" ADD COLUMN IF NOT EXISTS ""GiaKhuyenMai"" numeric(18,2) NULL;

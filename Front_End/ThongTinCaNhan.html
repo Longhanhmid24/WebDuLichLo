@@ -90,7 +90,8 @@
                     <div class="input-with-action">
                         <input type="text" id="tendangnhap" readonly class="form-control-custom">
                         <button class="btn-icon-edit" onclick="editField('tendangnhap')">✏️ Sửa</button>
-                        <button class="btn-save-inline" onclick="saveField('tendangnhap')" hidden>Lưu</button>
+                        <button class="btn-save-inline" onclick="saveField('tendangnhap')" hidden>💾 Lưu</button>
+                        <button class="btn-cancel-inline" onclick="cancelField('tendangnhap')" hidden>❌ Hủy</button>
                     </div>
                 </div>
 
@@ -100,7 +101,8 @@
                     <div class="input-with-action">
                         <input type="text" id="sodienthoai" readonly class="form-control-custom" placeholder="Chưa cập nhật SĐT">
                         <button class="btn-icon-edit" onclick="editField('sodienthoai')">✏️ Sửa</button>
-                        <button class="btn-save-inline" onclick="saveField('sodienthoai')" hidden>Lưu</button>
+                        <button class="btn-save-inline" onclick="saveField('sodienthoai')" hidden>💾 Lưu</button>
+                        <button class="btn-cancel-inline" onclick="cancelField('sodienthoai')" hidden>❌ Hủy</button>
                     </div>
                 </div>
 
@@ -110,7 +112,8 @@
                     <div class="input-with-action">
                         <input type="text" id="diachi" readonly class="form-control-custom" placeholder="Chưa cập nhật địa chỉ">
                         <button class="btn-icon-edit" onclick="editField('diachi')">✏️ Sửa</button>
-                        <button class="btn-save-inline" onclick="saveField('diachi')" hidden>Lưu</button>
+                        <button class="btn-save-inline" onclick="saveField('diachi')" hidden>💾 Lưu</button>
+                        <button class="btn-cancel-inline" onclick="cancelField('diachi')" hidden>❌ Hủy</button>
                     </div>
                 </div>
 
@@ -129,9 +132,10 @@
                                 <input type="radio" name="gioitinh" value="Khác" id="gioitinhKhac" disabled> Khác
                             </label>
                         </div>
-                        <div>
+                        <div style="display: flex; gap: 6px;">
                             <button id="edit-gender-btn" class="btn-icon-edit" onclick="editGender()">✏️ Sửa</button>
-                            <button id="save-gender-btn" class="btn-save-inline" onclick="saveGender()" hidden>Lưu</button>
+                            <button id="save-gender-btn" class="btn-save-inline" onclick="saveGender()" hidden>💾 Lưu</button>
+                            <button id="cancel-gender-btn" class="btn-cancel-inline" onclick="cancelGender()" hidden>❌ Hủy</button>
                         </div>
                     </div>
                 </div>
