@@ -130,24 +130,53 @@ async function fetchUserOrderStats(email) {
 
 function editField(fieldId) {
     const input = document.getElementById(fieldId);
+    if (!input) return;
     input.removeAttribute("readonly");
     input.focus();
-    input.nextElementSibling.hidden = true;
-    input.nextElementSibling.nextElementSibling.hidden = false;
+
+    const wrapper = input.closest(".input-with-action");
+    if (wrapper) {
+        const editBtn = wrapper.querySelector(".btn-icon-edit");
+        const saveBtn = wrapper.querySelector(".btn-save-inline");
+        if (editBtn) editBtn.hidden = true;
+        if (saveBtn) saveBtn.hidden = false;
+    }
 }
 
 async function saveField(fieldId) {
     const input = document.getElementById(fieldId);
+    if (!input) return;
+
     const value = input.value.trim();
-    if (!value) return alert("Không được để trống!");
+    if (!value) return alert("Vui lòng nhập giá trị, không được để trống!");
+
+    if (!profileUserEmail) {
+        const userStored = JSON.parse(localStorage.getItem("user"));
+        profileUserEmail = userStored?.email;
+    }
+
+    if (!profileUserEmail) {
+        alert("Không tìm thấy thông tin email. Vui lòng đăng nhập lại!");
+        return;
+    }
 
     const formData = new FormData();
     formData.append(fieldId, value);
 
-    await updateUser(formData);
-    input.setAttribute("readonly", true);
-    input.nextElementSibling.hidden = false;
-    input.nextElementSibling.nextElementSibling.hidden = true;
+    try {
+        await updateUser(formData);
+        input.setAttribute("readonly", true);
+
+        const wrapper = input.closest(".input-with-action");
+        if (wrapper) {
+            const editBtn = wrapper.querySelector(".btn-icon-edit");
+            const saveBtn = wrapper.querySelector(".btn-save-inline");
+            if (editBtn) editBtn.hidden = false;
+            if (saveBtn) saveBtn.hidden = true;
+        }
+    } catch (err) {
+        console.error("Lỗi khi lưu thông tin:", err);
+    }
 }
 
 function editGender() {
@@ -155,7 +184,10 @@ function editGender() {
     genderRadios.forEach(radio => {
         radio.disabled = false;
     });
-    document.getElementById("save-gender-btn").hidden = false;
+    const editBtn = document.getElementById("edit-gender-btn");
+    const saveBtn = document.getElementById("save-gender-btn");
+    if (editBtn) editBtn.hidden = true;
+    if (saveBtn) saveBtn.hidden = false;
 }
 
 async function saveGender() {
@@ -167,16 +199,23 @@ async function saveGender() {
         return;
     }
 
+    if (!profileUserEmail) {
+        const userStored = JSON.parse(localStorage.getItem("user"));
+        profileUserEmail = userStored?.email;
+    }
+
     const formData = new FormData();
     formData.append("gioitinh", gioitinh);
 
     try {
         await updateUser(formData);
-        genderRadios.forEach(radio => radio.disabled = true);
-        document.getElementById("save-gender-btn").hidden = true;
+        document.querySelectorAll('input[name="gioitinh"]').forEach(radio => radio.disabled = true);
+        const editBtn = document.getElementById("edit-gender-btn");
+        const saveBtn = document.getElementById("save-gender-btn");
+        if (editBtn) editBtn.hidden = false;
+        if (saveBtn) saveBtn.hidden = true;
     } catch (err) {
         console.error("Lỗi khi cập nhật giới tính:", err);
-        alert("Cập nhật giới tính không thành công!");
     }
 }
 
