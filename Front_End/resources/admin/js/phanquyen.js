@@ -1,13 +1,43 @@
 // User Management Functions
 document.addEventListener("DOMContentLoaded", fetchUsers);
 
+function getAuthFetch() {
+    if (typeof window.fetchWithAuth === "function") {
+        return window.fetchWithAuth;
+    }
+    return async function (url, options = {}) {
+        const token = localStorage.getItem("jwtToken");
+        options.headers = options.headers || {};
+        if (token) {
+            if (options.headers instanceof Headers) {
+                options.headers.set("Authorization", `Bearer ${token}`);
+            } else {
+                options.headers["Authorization"] = `Bearer ${token}`;
+            }
+        }
+        return fetch(url, options);
+    };
+}
+
 async function fetchUsers() {
     try {
-        const fetchFunc = window.fetchWithAuth || fetch;
-        const response = await fetchFunc("https://webdulichlo.onrender.com/api/TaiKhoan");
-        if (!response.ok) {
-            throw new Error("Không thể tải danh sách tài khoản hoặc bạn không có quyền Admin!");
+        const token = localStorage.getItem("jwtToken");
+        if (!token) {
+            alert("Không tìm thấy mã xác thực (JWT Token). Vui lòng ĐĂNG XUẤT và ĐĂNG NHẬP lại bằng tài khoản Admin!");
+            return;
         }
+
+        const fetchFunc = getAuthFetch();
+        const response = await fetchFunc("https://webdulichlo.onrender.com/api/TaiKhoan");
+
+        if (!response.ok) {
+            if (response.status === 401 || response.status === 403) {
+                throw new Error("Không thể tải danh sách tài khoản. Phiên đăng nhập hết hạn hoặc tài khoản không có quyền Admin. Vui lòng đăng nhập lại!");
+            }
+            const err = await response.json().catch(() => ({}));
+            throw new Error(err.Message || `Lỗi tải danh sách người dùng (${response.status})`);
+        }
+
         const users = await response.json();
         renderUserList(users);
     } catch (error) {
@@ -86,7 +116,7 @@ function formatGender(gender) {
 
 async function updateUserRole(email, role) {
     try {
-        const fetchFunc = window.fetchWithAuth || fetch;
+        const fetchFunc = getAuthFetch();
         const response = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/${encodeURIComponent(email)}`, {
             method: "PUT",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -140,7 +170,7 @@ async function saveUserChanges(event) {
     formData.append("phanquyen", document.getElementById("editPhanquyen").value);
 
     try {
-        const fetchFunc = window.fetchWithAuth || fetch;
+        const fetchFunc = getAuthFetch();
         const response = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/admin-update/${encodeURIComponent(email)}`, {
             method: "PUT",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -152,7 +182,7 @@ async function saveUserChanges(event) {
             closeEditModal();
             fetchUsers();
         } else {
-            const err = await response.json();
+            const err = await response.json().catch(() => ({}));
             throw new Error(err.Message || "Cập nhật thất bại!");
         }
     } catch (error) {
@@ -165,7 +195,7 @@ async function deleteUser(email) {
     if (!confirm("Confirm deletion?")) return;
 
     try {
-        const fetchFunc = window.fetchWithAuth || fetch;
+        const fetchFunc = getAuthFetch();
         const response = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/${encodeURIComponent(email)}`, {
             method: "DELETE"
         });
