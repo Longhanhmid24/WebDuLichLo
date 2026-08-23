@@ -47,21 +47,27 @@ function updateCount(type, value) {
     // Update summary text
     document.getElementById(`${type}-summary`).innerText = count;
 }
-const user = JSON.parse(localStorage.getItem("user"));
-const userEmail = user?.email || null;
+window.goToOrderHistory = function (e) {
+    if (e) e.preventDefault();
+    const currentUser = JSON.parse(localStorage.getItem("user"));
+    const email = currentUser?.email;
 
-document.querySelectorAll('.view-orders-btn').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault(); // Ngừng chuyển hướng mặc định của thẻ <a>
+    if (!currentUser || !email) {
+        alert("Vui lòng đăng nhập để xem Lịch sử giao dịch!");
+        const R = window.SITE_ROOT || "";
+        window.location.href = `${R}html/auth/login.html`;
+        return;
+    }
 
-        if (!userEmail) {
-            alert("Không có thông tin email người dùng. Vui lòng đăng nhập hoặc đặt tour trước.");
-            return;
-        }
+    const R = window.SITE_ROOT || "";
+    window.location.href = `${R}list_bill.html?email=${encodeURIComponent(email)}`;
+};
 
-        // Chuyển hướng sang list_bill.html kèm theo email
-        window.location.href = `${window.SITE_ROOT || ""}list_bill.html?email=${encodeURIComponent(userEmail)}`;
-    });
+document.addEventListener("click", function (e) {
+    const btn = e.target.closest(".view-orders-btn");
+    if (btn) {
+        window.goToOrderHistory(e);
+    }
 });
 
 // ===== Global Loading Helper Functions =====

@@ -39,7 +39,7 @@
         "            </div>" +
         "          </li>" +
         '          <li class="nav-item">' +
-        '            <a class="nav-link view-orders-btn" href="#">Lịch sử giao dịch</a>' +
+        '            <a class="nav-link view-orders-btn" href="#" onclick="window.goToOrderHistory && window.goToOrderHistory(event)">Lịch sử giao dịch</a>' +
         "          </li>" +
         '          <li class="nav-item"><a class="nav-link" href="' + R + 'index.html">Tours</a></li>' +
         '          <li class="nav-item"><a class="nav-link" href="' + R + 'index.html#news">Tin Tức</a></li>' +
@@ -85,7 +85,7 @@
         "      <ul>" +
         '        <li><a href="' + R + 'html/auth/login.html">Đăng nhập</a></li>' +
         '        <li><a href="' + R + 'html/auth/register.html">Đăng ký</a></li>' +
-        '        <li><a href="#" class="view-orders-btn">Lịch sử giao dịch</a></li>' +
+        '        <li><a href="#" class="view-orders-btn" onclick="window.goToOrderHistory && window.goToOrderHistory(event)">Lịch sử giao dịch</a></li>' +
         '        <li><a href="' + R + 'ThongTinCaNhan.html">Hồ sơ cá nhân</a></li>' +
         "      </ul>" +
         "    </div>" +
