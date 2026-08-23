@@ -1,13 +1,31 @@
+function getAuthFetch() {
+    if (typeof window.fetchWithAuth === "function") {
+        return window.fetchWithAuth;
+    }
+    return async function (url, options = {}) {
+        const token = localStorage.getItem("jwtToken");
+        options.headers = options.headers || {};
+        if (token) {
+            if (options.headers instanceof Headers) {
+                options.headers.set("Authorization", `Bearer ${token}`);
+            } else {
+                options.headers["Authorization"] = `Bearer ${token}`;
+            }
+        }
+        return fetch(url, options);
+    };
+}
+
 // Hàm lấy danh sách đơn đặt tour từ server dựa trên email người dùng
 async function fetchOrdersFromServer() {
     const urlParams = new URLSearchParams(window.location.search);
     const email = urlParams.get('email');
 
     try {
-        const fetchFunc = window.fetchWithAuth || fetch;
+        const fetchFunc = getAuthFetch();
         const response = await fetchFunc(`https://webdulichlo.onrender.com/api/Dondattour/get-orders?email=${encodeURIComponent(email || "")}`);
         if (!response.ok) {
-            throw new Error("Vui lòng đăng nhập để xem danh sách đơn đặt tour.");
+            throw new Error("Vui lòng đăng nhập lại để xem danh sách đơn đặt tour.");
         }
 
         const orders = await response.json();

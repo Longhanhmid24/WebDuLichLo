@@ -1,10 +1,28 @@
 let profileUserEmail = "";
 let selectedAvatarFile = null;
 
+function getAuthFetch() {
+    if (typeof window.fetchWithAuth === "function") {
+        return window.fetchWithAuth;
+    }
+    return async function (url, options = {}) {
+        const token = localStorage.getItem("jwtToken");
+        options.headers = options.headers || {};
+        if (token) {
+            if (options.headers instanceof Headers) {
+                options.headers.set("Authorization", `Bearer ${token}`);
+            } else {
+                options.headers["Authorization"] = `Bearer ${token}`;
+            }
+        }
+        return fetch(url, options);
+    };
+}
+
 document.addEventListener("DOMContentLoaded", async function () {
     const userStored = JSON.parse(localStorage.getItem("user"));
     if (!userStored) {
-        window.location.href = "/index.html";
+        window.location.href = "index.html";
         return;
     }
 
@@ -14,17 +32,27 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     if (!email) {
         alert("Không tìm thấy thông tin tài khoản!");
-        window.location.href = "/index.html";
+        window.location.href = "index.html";
         return;
     }
 
     try {
+        const token = localStorage.getItem("jwtToken");
+        if (!token) {
+            alert("Không tìm thấy mã xác thực (JWT Token). Vui lòng ĐĂNG XUẤT và ĐĂNG NHẬP lại!");
+            return;
+        }
+
         if (typeof window.showLoading === "function") window.showLoading("Đang tải thông tin hồ sơ...");
-        const fetchFunc = window.fetchWithAuth || fetch;
+        const fetchFunc = getAuthFetch();
         const response = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(email)}`);
+        
         if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.Message || "Không thể tải thông tin người dùng!");
+            if (response.status === 401 || response.status === 403) {
+                throw new Error("Phiên làm việc đã hết hạn hoặc bạn không có quyền xem hồ sơ này. Vui lòng đăng nhập lại!");
+            }
+            const error = await response.json().catch(() => ({}));
+            throw new Error(error.Message || error.message || "Không thể tải thông tin người dùng!");
         }
 
         const user = await response.json();
@@ -183,7 +211,7 @@ async function saveAvatar() {
 async function updateUser(formData, customLoadingMsg = "Đang cập nhật thông tin...") {
     if (typeof window.showLoading === "function") window.showLoading(customLoadingMsg);
     try {
-        const fetchFunc = window.fetchWithAuth || fetch;
+        const fetchFunc = getAuthFetch();
         const res = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/update/${encodeURIComponent(profileUserEmail)}`, {
             method: "PUT",
             body: formData
