@@ -137,17 +137,30 @@ var app = builder.Build();
 
 app.UseForwardedHeaders();
 
-// Tự động tạo các bảng trong Database Neon (nếu chưa có)
+// Tự động tạo các bảng và bổ sung cột mới vào Database Neon (nếu chưa có)
 using (var scope = app.Services.CreateScope())
 {
     try
     {
         var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
         db.Database.EnsureCreated();
+
+        // Bổ sung tự động các cột mới vào các bảng đã tồn tại trong DB PostgreSQL
+        db.Database.ExecuteSqlRaw(@"
+            ALTER TABLE ""TaiKhoan"" ADD COLUMN IF NOT EXISTS ""TrangThai"" text DEFAULT 'HoatDong';
+            ALTER TABLE ""Tour"" ADD COLUMN IF NOT EXISTS ""MaDiaDiem"" integer NULL;
+            ALTER TABLE ""Tour"" ADD COLUMN IF NOT EXISTS ""TrangThai"" text DEFAULT 'DangMo';
+            ALTER TABLE ""Tour"" ADD COLUMN IF NOT EXISTS ""GiaKhuyenMai"" numeric(18,2) NULL;
+            ALTER TABLE ""Dondattour"" ADD COLUMN IF NOT EXISTS ""TrangThai"" text DEFAULT 'ChoXacNhan';
+            ALTER TABLE ""Dondattour"" ADD COLUMN IF NOT EXISTS ""MaGiamGia"" text NULL;
+            ALTER TABLE ""Dondattour"" ADD COLUMN IF NOT EXISTS ""SotienGiam"" numeric(18,2) DEFAULT 0;
+            ALTER TABLE ""Dondattour"" ADD COLUMN IF NOT EXISTS ""HoTenNguoiLienHe"" text NULL;
+            ALTER TABLE ""Dondattour"" ADD COLUMN IF NOT EXISTS ""SdtLienHe"" text NULL;
+        ");
     }
     catch (Exception ex)
     {
-        Console.WriteLine("Lỗi khi tạo Database: " + ex.Message);
+        Console.WriteLine("Lỗi khi cập nhật Database Schema: " + ex.Message);
     }
 }
 

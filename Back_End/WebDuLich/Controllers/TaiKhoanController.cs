@@ -146,8 +146,17 @@ namespace WebDuLich.Controllers
         [Authorize(Roles = "Admin,admin")]
         public async Task<IActionResult> GetUsers()
         {
-            var users = await _context.TaiKhoans.AsNoTracking().ToListAsync();
-            return Ok(users);
+            try
+            {
+                var users = await _context.TaiKhoans.AsNoTracking().ToListAsync();
+                return Ok(users);
+            }
+            catch (Exception ex)
+            {
+                var errMsg = ex.InnerException != null ? $"{ex.Message} -> {ex.InnerException.Message}" : ex.Message;
+                Console.WriteLine($"Lỗi GetUsers: {errMsg}");
+                return StatusCode(500, new { Message = $"Lỗi cơ sở dữ liệu: {errMsg}" });
+            }
         }
        
         // API cập nhật quyền người dùng (Chỉ dành cho Admin)
