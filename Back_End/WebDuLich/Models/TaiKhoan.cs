@@ -35,9 +35,17 @@ namespace WebDuLich.Models
         [Required]
         public DateTime NgayTao { get; set; } = DateTime.UtcNow; // Ngày tạo tài khoản
 
+        [StringLength(20)]
+        public string TrangThai { get; set; } = "HoatDong"; // HoatDong, Khoa
+
         // Danh sách đơn đặt tour của tài khoản này
         [JsonIgnore]
         public virtual ICollection<Dondattour> Dondattours { get; set; } = new List<Dondattour>();
 
+        [JsonIgnore]
+        public virtual ICollection<DanhGia> DanhGias { get; set; } = new List<DanhGia>();
+
+        [JsonIgnore]
+        public virtual ICollection<YeuThich> YeuThichs { get; set; } = new List<YeuThich>();
     }
 }

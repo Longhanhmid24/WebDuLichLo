@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace WebDuLich.Models
 {
@@ -35,5 +36,21 @@ namespace WebDuLich.Models
 
         [StringLength(500)]
         public string? HinhAnh { get; set; } // Lưu đường dẫn ảnh
+
+        public int? MaDiaDiem { get; set; } // FK đến DiaDiem
+
+        [StringLength(30)]
+        public string TrangThai { get; set; } = "DangMo"; // DangMo, HetCho, TamDung
+
+        [Column(TypeName = "decimal(18,2)")]
+        public decimal? GiaKhuyenMai { get; set; }
+
+        public virtual DiaDiem? DiaDiem { get; set; }
+
+        [JsonIgnore]
+        public virtual ICollection<LichTrinhTour> LichTrinhs { get; set; } = new List<LichTrinhTour>();
+
+        [JsonIgnore]
+        public virtual ICollection<DanhGia> DanhGias { get; set; } = new List<DanhGia>();
     }
 }

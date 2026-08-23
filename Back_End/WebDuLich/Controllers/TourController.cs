@@ -29,7 +29,7 @@ namespace WebDuLich.Controllers
 
         // API để thêm tour (Chỉ dành cho Admin)
         [HttpPost("add")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,admin")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> AddTour([FromForm] Tour tour, IFormFile? imageFile)
         {
@@ -145,7 +145,7 @@ namespace WebDuLich.Controllers
 
         // API để xóa tour theo Matour (Chỉ dành cho Admin)
         [HttpDelete("delete/{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,admin")]
         public async Task<IActionResult> DeleteTour(int id)
         {
             try
@@ -198,7 +198,7 @@ namespace WebDuLich.Controllers
 
         // API cập nhật thông tin tour (Chỉ dành cho Admin)
         [HttpPut("update/{id}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,admin")]
         [Consumes("multipart/form-data")]
         public async Task<IActionResult> UpdateTour(int id, [FromForm] Tour updatedTour, IFormFile? imageFile)
         {

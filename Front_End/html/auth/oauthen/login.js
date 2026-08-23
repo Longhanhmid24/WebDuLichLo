@@ -112,7 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
 
         // Nếu quyền là Admin thì hiển thị quản lý người dùng
-        if (user.phanquyen === "admin") {
+        const userRole = (user.phanquyen || "").toLowerCase();
+        if (userRole === "admin") {
             html += `<a href="${R}admin.html" id="admin">Quản Lý Người Dùng</a>`;
         }
 

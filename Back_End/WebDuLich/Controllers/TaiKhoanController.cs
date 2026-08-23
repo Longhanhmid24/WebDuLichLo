@@ -142,9 +142,8 @@ namespace WebDuLich.Controllers
             return Redirect($"https://web-du-lich-lo.vercel.app/html/auth/google-redirect.html?token={Uri.EscapeDataString(token)}&email={Uri.EscapeDataString(user.Emaildangki)}&name={Uri.EscapeDataString(user.Tendangnhap)}&role={Uri.EscapeDataString(user.Phanquyen)}");
         }
         // API lấy danh sách người dùng (Chỉ dành cho Admin)
-
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,admin")]
         public async Task<IActionResult> GetUsers()
         {
             var users = await _context.TaiKhoans.AsNoTracking().ToListAsync();
@@ -153,7 +152,7 @@ namespace WebDuLich.Controllers
        
         // API cập nhật quyền người dùng (Chỉ dành cho Admin)
         [HttpPut("{email}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,admin")]
         public async Task<IActionResult> UpdateUserRole(string email, [FromForm] string phanquyen)
         {
             var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
@@ -166,9 +165,51 @@ namespace WebDuLich.Controllers
             return Ok(new { Message = "Cập nhật quyền thành công!" });
         }
 
+        // API Admin chỉnh sửa toàn bộ thông tin người dùng
+        [HttpPut("admin-update/{email}")]
+        [Authorize(Roles = "Admin,admin")]
+        public async Task<IActionResult> AdminUpdateUser(string email, [FromForm] AdminUpdateUserRequest request)
+        {
+            try
+            {
+                var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
+                if (user == null)
+                    return NotFound(new { Message = "Người dùng không tồn tại!" });
+
+                if (!string.IsNullOrWhiteSpace(request.Tendangnhap))
+                    user.Tendangnhap = WebUtility.HtmlEncode(request.Tendangnhap);
+
+                if (!string.IsNullOrWhiteSpace(request.Matkhau))
+                    user.Matkhau = BCrypt.Net.BCrypt.HashPassword(request.Matkhau);
+
+                if (request.Sodienthoai != null)
+                    user.Sodienthoai = WebUtility.HtmlEncode(request.Sodienthoai);
+
+                if (request.Diachi != null)
+                    user.Diachi = WebUtility.HtmlEncode(request.Diachi);
+
+                if (request.Gioitinh != null)
+                    user.Gioitinh = WebUtility.HtmlEncode(request.Gioitinh);
+
+                if (!string.IsNullOrWhiteSpace(request.Phanquyen))
+                    user.Phanquyen = WebUtility.HtmlEncode(request.Phanquyen);
+
+                if (!string.IsNullOrWhiteSpace(request.TrangThai))
+                    user.TrangThai = WebUtility.HtmlEncode(request.TrangThai);
+
+                await _context.SaveChangesAsync();
+
+                return Ok(new { Message = "Cập nhật thông tin người dùng thành công!", User = user });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Lỗi khi cập nhật người dùng: " + ex.Message });
+            }
+        }
+
         // API xóa tài khoản người dùng (Chỉ dành cho Admin)
         [HttpDelete("{email}")]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin,admin")]
         public async Task<IActionResult> DeleteUser(string email)
         {
             var user = await _context.TaiKhoans.FirstOrDefaultAsync(u => u.Emaildangki == email);
@@ -189,7 +230,7 @@ namespace WebDuLich.Controllers
             try
             {
                 var currentUserEmail = User.FindFirst(ClaimTypes.Email)?.Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                var isUserAdmin = User.IsInRole("Admin");
+                var isUserAdmin = User.IsInRole("Admin") || User.IsInRole("admin");
 
                 if (!isUserAdmin && !string.Equals(currentUserEmail, email, StringComparison.OrdinalIgnoreCase))
                 {
@@ -218,7 +259,7 @@ namespace WebDuLich.Controllers
             try
             {
                 var currentUserEmail = User.FindFirst(ClaimTypes.Email)?.Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                var isUserAdmin = User.IsInRole("Admin");
+                var isUserAdmin = User.IsInRole("Admin") || User.IsInRole("admin");
 
                 if (!isUserAdmin && !string.Equals(currentUserEmail, email, StringComparison.OrdinalIgnoreCase))
                 {

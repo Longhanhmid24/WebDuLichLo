@@ -45,7 +45,7 @@ namespace WebDuLich.Controllers
         public async Task<IActionResult> GetOrders([FromQuery] string? email)
         {
             var currentUserEmail = User.FindFirst(ClaimTypes.Email)?.Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var isUserAdmin = User.IsInRole("Admin");
+            var isUserAdmin = User.IsInRole("Admin") || User.IsInRole("admin");
 
             // Nếu không phải Admin, chỉ cho xem đơn hàng của chính mình
             var targetEmail = isUserAdmin && !string.IsNullOrEmpty(email) ? email : currentUserEmail;
@@ -70,7 +70,7 @@ namespace WebDuLich.Controllers
         public async Task<IActionResult> DeleteOrder(int id)
         {
             var currentUserEmail = User.FindFirst(ClaimTypes.Email)?.Value ?? User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            var isUserAdmin = User.IsInRole("Admin");
+            var isUserAdmin = User.IsInRole("Admin") || User.IsInRole("admin");
 
             var order = await _context.Dondattours.FindAsync(id);
             if (order == null)

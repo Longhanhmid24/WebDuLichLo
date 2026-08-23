@@ -16,7 +16,10 @@ async function fetchUsers() {
     }
 }
 
+let globalUsersList = [];
+
 function renderUserList(users) {
+    globalUsersList = users;
     const userList = document.getElementById("userList");
     userList.innerHTML = "";
 
@@ -35,15 +38,18 @@ function renderUserList(users) {
             <td data-label="Tên Đăng Nhập">${nameSafe}</td>
             <td data-label="Quyền">
                 <select onchange="updateUserRole('${emailSafe}', this.value)">
-                    <option value="Admin" ${user.phanquyen === 'Admin' || user.phanquyen === 'admin' ? 'selected' : ''}>Admin</option>
-                    <option value="User" ${user.phanquyen === 'User' || user.phanquyen === 'user' ? 'selected' : ''}>User</option>
+                    <option value="Admin" ${(user.phanquyen || '').toLowerCase() === 'admin' ? 'selected' : ''}>Admin</option>
+                    <option value="User" ${(user.phanquyen || '').toLowerCase() === 'user' ? 'selected' : ''}>User</option>
                 </select>
             </td>
             <td data-label="Số điện thoại">${phoneSafe}</td>
             <td data-label="Địa chỉ">${addressSafe}</td>
             <td data-label="Giới Tính">${safeStr(formatGender(user.gioitinh))}</td>
             <td data-label="Ngày Tạo">${formatDate(user.ngayTao)}</td>
-            <td data-label="Hành Động"><button class="btn btn-danger btn-sm" onclick="deleteUser('${emailSafe}')">Xóa</button></td>
+            <td data-label="Hành Động">
+                <button class="btn btn-warning btn-sm" style="margin-right: 5px;" onclick="openEditModal('${emailSafe}')">Sửa</button>
+                <button class="btn btn-danger btn-sm" onclick="deleteUser('${emailSafe}')">Xóa</button>
+            </td>
         `;
         userList.appendChild(row);
     });
@@ -57,8 +63,6 @@ function formatDate(dateString) {
 
 function formatGender(gender) {
     if (!gender) return 'N/A';
-
-    // Chuyển đổi các giá trị phổ biến
     gender = gender.toLowerCase().trim();
 
     switch (gender) {
@@ -90,7 +94,7 @@ async function updateUserRole(email, role) {
         });
 
         if (response.ok) {
-            alert("Cập nhật quyền thành công");
+            alert("Cập nhật quyền thành công!");
             fetchUsers();
         } else {
             throw new Error("Cập nhật quyền thất bại (Bạn cần có quyền Admin!)");
@@ -98,6 +102,62 @@ async function updateUserRole(email, role) {
     } catch (error) {
         console.error("Error updating role:", error);
         alert(error.message || "Error updating user role");
+    }
+}
+
+function openEditModal(email) {
+    const user = globalUsersList.find(u => u.emaildangki === email);
+    if (!user) return;
+
+    document.getElementById("editEmail").value = user.emaildangki || "";
+    document.getElementById("editTendangnhap").value = user.tendangnhap || "";
+    document.getElementById("editMatkhau").value = "";
+    document.getElementById("editSodienthoai").value = user.sodienthoai || "";
+    document.getElementById("editDiachi").value = user.diachi || "";
+    document.getElementById("editGioitinh").value = user.gioitinh || "Nam";
+    document.getElementById("editPhanquyen").value = (user.phanquyen || "").toLowerCase() === "admin" ? "Admin" : "User";
+
+    document.getElementById("editUserModal").style.display = "flex";
+}
+
+function closeEditModal() {
+    document.getElementById("editUserModal").style.display = "none";
+}
+
+async function saveUserChanges(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("editEmail").value;
+    const formData = new URLSearchParams();
+    formData.append("tendangnhap", document.getElementById("editTendangnhap").value);
+    
+    const pass = document.getElementById("editMatkhau").value;
+    if (pass) formData.append("matkhau", pass);
+
+    formData.append("sodienthoai", document.getElementById("editSodienthoai").value);
+    formData.append("diachi", document.getElementById("editDiachi").value);
+    formData.append("gioitinh", document.getElementById("editGioitinh").value);
+    formData.append("phanquyen", document.getElementById("editPhanquyen").value);
+
+    try {
+        const fetchFunc = window.fetchWithAuth || fetch;
+        const response = await fetchFunc(`https://webdulichlo.onrender.com/api/TaiKhoan/admin-update/${encodeURIComponent(email)}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: formData.toString()
+        });
+
+        if (response.ok) {
+            alert("Cập nhật thông tin người dùng thành công!");
+            closeEditModal();
+            fetchUsers();
+        } else {
+            const err = await response.json();
+            throw new Error(err.Message || "Cập nhật thất bại!");
+        }
+    } catch (error) {
+        console.error("Lỗi cập nhật người dùng:", error);
+        alert(error.message || "Lỗi khi cập nhật người dùng");
     }
 }
 
