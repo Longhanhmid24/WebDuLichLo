@@ -279,6 +279,9 @@ async function saveAvatar() {
             var userStored = JSON.parse(localStorage.getItem("user")) || {};
             userStored.hinhAnh = newHinhAnh;
             localStorage.setItem("user", JSON.stringify(userStored));
+            if (typeof window.updateHeaderUserUI === "function") {
+                window.updateHeaderUserUI();
+            }
         }
     } finally {
         if (typeof window.setButtonLoading === "function") window.setButtonLoading(saveBtn, false);

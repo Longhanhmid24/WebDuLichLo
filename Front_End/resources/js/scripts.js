@@ -32,10 +32,98 @@ window.goToOrderHistory = function (e) {
     window.location.href = R2 + "list_bill.html?email=" + encodeURIComponent(email);
 };
 
-document.addEventListener("click", function (e) {
-    var btn = e.target.closest(".view-orders-btn");
-    if (btn) {
-        window.goToOrderHistory(e);
+// ── Cập nhật Giao diện Header User (Avatar & Menu) ──
+window.updateHeaderUserUI = async function () {
+    var user = JSON.parse(localStorage.getItem("user"));
+    var headerAvatar = document.querySelector(".account-icon img");
+    var userNameElem = document.getElementById("user-name");
+    var userInfoElem = document.getElementById("user-info");
+
+    if (!user) {
+        if (headerAvatar) headerAvatar.src = window.DEFAULT_AVATAR || "https://cdn-icons-png.flaticon.com/512/149/149071.png";
+        if (userNameElem) userNameElem.textContent = "";
+        if (userInfoElem) {
+            var R = window.SITE_ROOT || "";
+            userInfoElem.innerHTML =
+                '<a href="' + R + 'html/auth/login.html" id="login-link">Đăng nhập</a>' +
+                '<a href="' + R + 'html/auth/register.html" id="register-link">Đăng ký</a>';
+        }
+        return;
+    }
+
+    // 1. Cập nhật ngay lập tức từ localStorage
+    var hinhAnh = user.hinhAnh || user.HinhAnh;
+    var avatarSrc = window.resolveImageUrl ? window.resolveImageUrl(hinhAnh, window.DEFAULT_AVATAR) : (hinhAnh || window.DEFAULT_AVATAR);
+    if (headerAvatar) headerAvatar.src = avatarSrc;
+    if (userNameElem) userNameElem.textContent = user.tendangnhap || user.email;
+
+    // 2. Render Menu Dropdown
+    if (userInfoElem) {
+        var R2 = window.SITE_ROOT || "";
+        var html = '<a href="#" id="logout-btn-global">Đăng xuất</a>' +
+                   '<a href="' + R2 + 'ThongTinCaNhan.html?email=' + encodeURIComponent(user.email) + '" id="Profile">Hồ Sơ</a>';
+
+        var role = (user.phanquyen || "").toLowerCase();
+        if (role === "admin") {
+            html += '<a href="' + R2 + 'PhanQuyen.html" id="admin">Quản Lý Người Dùng</a>';
+        }
+
+        userInfoElem.innerHTML = html;
+
+        var logoutBtn = document.getElementById("logout-btn-global");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                localStorage.removeItem("user");
+                localStorage.removeItem("jwtToken");
+                window.location.href = R2 + "index.html";
+            });
+        }
+    }
+
+    // 3. Tự động đồng bộ ngầm với Backend API (Dùng getAuthFetch có chứa JWT Token)
+    try {
+        var fetchFunc = window.getAuthFetch ? window.getAuthFetch() : fetch;
+        var apiBase = window.API_BASE_URL || "https://webdulichlo.onrender.com";
+        var res = await fetchFunc(apiBase + "/api/TaiKhoan/info/" + encodeURIComponent(user.email));
+
+        if (res.ok) {
+            var userData = await res.json();
+            var updated = false;
+
+            if (userData.tendangnhap && userData.tendangnhap !== user.tendangnhap) {
+                user.tendangnhap = userData.tendangnhap;
+                if (userNameElem) userNameElem.textContent = userData.tendangnhap;
+                updated = true;
+            }
+
+            var freshHinhAnh = userData.hinhAnh || userData.HinhAnh;
+            if (freshHinhAnh) {
+                if (freshHinhAnh !== user.hinhAnh) {
+                    user.hinhAnh = freshHinhAnh;
+                    updated = true;
+                }
+                var freshAvatarSrc = window.resolveImageUrl ? window.resolveImageUrl(freshHinhAnh, window.DEFAULT_AVATAR) : freshHinhAnh;
+                if (headerAvatar) headerAvatar.src = freshAvatarSrc;
+            }
+
+            if (userData.phanquyen && userData.phanquyen !== user.phanquyen) {
+                user.phanquyen = userData.phanquyen;
+                updated = true;
+            }
+
+            if (updated) {
+                localStorage.setItem("user", JSON.stringify(user));
+            }
+        }
+    } catch (err) {
+        console.warn("Lỗi đồng bộ header user:", err);
+    }
+};
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (typeof window.updateHeaderUserUI === "function") {
+        window.updateHeaderUserUI();
     }
 });
 

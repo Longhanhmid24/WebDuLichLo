@@ -108,6 +108,9 @@
         if (h) h.innerHTML = headerHtml;
         var f = document.getElementById("site-footer");
         if (f) f.innerHTML = footerHtml;
+        if (typeof window.updateHeaderUserUI === "function") {
+            window.updateHeaderUserUI();
+        }
     }
 
     if (document.readyState === "loading") {

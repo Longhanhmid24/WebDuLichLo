@@ -38,13 +38,17 @@ document.addEventListener("DOMContentLoaded", function () {
                 // Lưu user vào localStorage
                 localStorage.setItem("user", JSON.stringify({
                     email: email,
-                    tendangnhap: result.tendangnhap,
-                    phanquyen: result.phanquyen,
-                    hinhAnh: result.hinhAnh || ""
+                    tendangnhap: result.tendangnhap || result.Tendangnhap,
+                    phanquyen: result.phanquyen || result.Phanquyen,
+                    hinhAnh: result.hinhAnh || result.HinhAnh || ""
                 }));
 
                 if (result.token) {
                     localStorage.setItem("jwtToken", result.token);
+                }
+
+                if (typeof window.updateHeaderUserUI === "function") {
+                    window.updateHeaderUserUI();
                 }
 
                 alert("Đăng nhập thành công!");
@@ -59,72 +63,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Kiểm tra user đã đăng nhập chưa
-    const userName = document.getElementById("user-name");
-    const userInfo = document.getElementById("user-info");
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (user) {
-        userName.textContent = user.tendangnhap || user.email;
-
-        // Cập nhật Avatar và Tên đăng nhập trên Header từ API nếu chưa đủ
-        const headerAvatar = document.querySelector(".account-icon img");
-        const baseUrl = "https://webdulichlo.onrender.com";
-
-        // Xóa sạch base64 hỏng nếu lỡ lưu trước đó trong localStorage
-        if (user.hinhAnh && user.hinhAnh.startsWith("data:")) {
-            delete user.hinhAnh;
-            localStorage.setItem("user", JSON.stringify(user));
-        }
-
-        if (user.hinhAnh && user.hinhAnh.startsWith("http")) {
-            if (headerAvatar) {
-                headerAvatar.src = user.hinhAnh;
-            }
-        }
-
-        // Tự động đồng bộ với Backend API để lấy URL Cloudinary mới nhất
-        if (!user.tendangnhap || !user.hinhAnh || !user.hinhAnh.startsWith("http")) {
-            fetch(`https://webdulichlo.onrender.com/api/TaiKhoan/info/${encodeURIComponent(user.email)}`)
-                .then(res => res.ok ? res.json() : null)
-                .then(userData => {
-                    if (userData) {
-                        if (userData.tendangnhap) {
-                            user.tendangnhap = userData.tendangnhap;
-                            userName.textContent = userData.tendangnhap;
-                        }
-                        if (userData.hinhAnh && userData.hinhAnh.startsWith("http")) {
-                            user.hinhAnh = userData.hinhAnh;
-                            if (headerAvatar) headerAvatar.src = userData.hinhAnh;
-                        } else if (headerAvatar) {
-                            headerAvatar.src = "https://cdn-icons-png.flaticon.com/512/149/149071.png";
-                        }
-                        localStorage.setItem("user", JSON.stringify(user));
-                    }
-                })
-                .catch(err => console.error("Lỗi tải thông tin user header:", err));
-        }
-
-        const R = window.SITE_ROOT || "";
-        let html = `
-        <a href="#" id="logout">Đăng xuất</a>
-        <a href="${R}ThongTinCaNhan.html?email=${user.email}" id="Profile">Hồ Sơ</a>
-    `;
-
-        // Nếu quyền là Admin thì hiển thị quản lý người dùng
-        const userRole = (user.phanquyen || "").toLowerCase();
-        if (userRole === "admin") {
-            html += `<a href="${R}admin.html" id="admin">Quản Lý Người Dùng</a>`;
-        }
-
-        userInfo.innerHTML = html;
-
-        document.getElementById("logout").addEventListener("click", function (e) {
-            e.preventDefault();
-            localStorage.removeItem("user");
-            localStorage.removeItem("jwtToken");
-            window.location.href = `${R}index.html`;
-        });
+    // Cập nhật giao diện Header User
+    if (typeof window.updateHeaderUserUI === "function") {
+        window.updateHeaderUserUI();
     }
 
     // Xử lý đăng nhập bằng Google
@@ -132,7 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (googleBtn) {
         googleBtn.addEventListener("click", function (event) {
             event.preventDefault();
-            window.location.href = "https://webdulichlo.onrender.com/api/TaiKhoan/google-login"; // Chuyển hướng tới API Google
+            const baseUrl = window.API_BASE_URL || "https://webdulichlo.onrender.com";
+            window.location.href = baseUrl + "/api/TaiKhoan/google-login";
         });
     }
 });
