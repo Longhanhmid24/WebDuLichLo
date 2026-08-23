@@ -105,14 +105,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 .catch(err => console.error("Lỗi tải thông tin user header:", err));
         }
 
+        const R = window.SITE_ROOT || "";
         let html = `
         <a href="#" id="logout">Đăng xuất</a>
-        <a href="ThongTinCaNhan.html?email=${user.email}" id="Profile">Hồ Sơ</a>
+        <a href="${R}ThongTinCaNhan.html?email=${user.email}" id="Profile">Hồ Sơ</a>
     `;
 
         // Nếu quyền là Admin thì hiển thị quản lý người dùng
         if (user.phanquyen === "admin") {
-            html += `<a href="admin.html" id="admin">Quản Lý Người Dùng</a>`;
+            html += `<a href="${R}admin.html" id="admin">Quản Lý Người Dùng</a>`;
         }
 
         userInfo.innerHTML = html;
@@ -121,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             localStorage.removeItem("user");
             localStorage.removeItem("jwtToken");
-            window.location.href = "../../index.html";
+            window.location.href = `${R}index.html`;
         });
     }
 

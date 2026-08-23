@@ -8,55 +8,18 @@
     <link rel="stylesheet" href="../../resources/css/styles.css">
     <link rel="stylesheet" href="../../resources/css/computer/styles.css" media="screen and (min-width: 769px)">
     <link rel="stylesheet" href="../../resources/css/mobile/styles.css" media="screen and (max-width: 768px)">
+    <link rel="stylesheet" href="../../resources/css/theme.css">
     <!-- Thư viện Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-    <!-- Phần tiêu đề -->
-    <header class="bg-primary text-white py-3">
-        <div class="container d-flex justify-content-start align-items-center">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a href="../../index.html" class="navbar-brand">
-                    <img src="../../resources/images/brand/brandlogo.png" alt="Logo">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="../../index.html">Du Lịch</a>
-                            <div class="dropdown-menu">
-                                <a href="../../index.html#domestic">Du Lịch Trong Nước</a>
-                                <a href="../../index.html#international">Du Lịch Nước Ngoài</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link view-orders-btn" href="#">Lịch sử giao dịch</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="#">Tours</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../../index.html#news">Tin Tức</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../../index.html#about">Giới Thiệu</a></li>
-                        <li class="nav-item account-icon dropdown">
-                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Account Icon">
-                            <div class="dropdown-menu">
-                                <div id="user-info">
-                                    <a href="login.html" id="login-link">Đăng nhập</a>
-                                    <a href="register.html" id="register-link">Đăng ký</a>
-                                </div>
-                            </div>
-                            <span id="user-name"></span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
+<body class="auth-page">
+    <!-- Header dùng chung (layout.js tự chèn) -->
+    <div id="site-header"></div>
+
 
     <!-- Phần đăng ký -->
     <section class="py-5">
-        <div class="container">
+        <div class="container auth-card">
             <h2 class="text-center">Đăng Ký</h2>
             <form id="registerForm">
                 <div class="form-group">
@@ -80,14 +43,9 @@
             </form>
         </div>
     </section>
-
-    <!-- Phần chân trang -->
-    <footer class="bg-primary text-white text-center py-3">
-        <h2 class="text-center">Liên Hệ</h2>
-        <p class="text-center">Để biết thêm thông tin, vui lòng liên hệ với chúng tôi qua email:
-            longtravel@mail.com</p>
-        <p>&copy; 2023 Khám Phá Thế Giới. Bảo lưu mọi quyền.</p>
-    </footer>
+    <!-- Footer dùng chung (layout.js tự chèn) -->
+    <div id="site-footer"></div>
+    <script src="../../resources/js/layout.js"></script>
     <script src="../../resources/js/scripts.js"></script>
     <script src="oauthen/oauthen2.js"></script>
 </body>

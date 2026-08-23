@@ -60,7 +60,7 @@ document.querySelectorAll('.view-orders-btn').forEach(link => {
         }
 
         // Chuyển hướng sang list_bill.html kèm theo email
-        window.location.href = `list_bill.html?email=${encodeURIComponent(userEmail)}`;
+        window.location.href = `${window.SITE_ROOT || ""}list_bill.html?email=${encodeURIComponent(userEmail)}`;
     });
 });
 
